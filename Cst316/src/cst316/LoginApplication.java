@@ -8,7 +8,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -22,7 +24,7 @@ public final class LoginApplication extends Application {
 		
 		// The Next button
 		Button btn = new Button();
-		btn.setText("Next");
+		btn.setText("Continue");
 		btn.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
@@ -30,31 +32,31 @@ public final class LoginApplication extends Application {
 			}
 		});
 		
-		// The amount entering field
-		TextField user = new TextField();
-		TextField pass = new PasswordField();
-
-		
-		// The Labels
-		Text userLabel = new Text();
-		userLabel.setText("Username");
-		Text passLabel = new Text();
-		passLabel.setText("Password");
+		// The character selection form
+		RadioButton c1 = new RadioButton("Character #1");
+		RadioButton c2 = new RadioButton("Character #2");
+		RadioButton c3 = new RadioButton("Character #3");
+		RadioButton c4 = new RadioButton("Character #4");
+		ToggleGroup ct = new ToggleGroup();
+		c1.setToggleGroup(ct);
+		c2.setToggleGroup(ct);
+		c3.setToggleGroup(ct);
+		c4.setToggleGroup(ct);
 		
 		// The layout
 		GridPane root = new GridPane();
 		root.setAlignment(Pos.CENTER);
 		root.setHgap(10);
 		root.setVgap(10);
-		root.add(userLabel, 0, 0);
-		root.add(user, 1, 0);
-		root.add(passLabel, 0, 1);
-		root.add(pass, 1, 1);
-		root.add(btn, 0, 2);
+		root.add(c1, 0, 0);
+		root.add(c2, 0, 1);
+		root.add(c3, 0, 2);
+		root.add(c4, 0, 3);
+		root.add(btn, 0, 4);
 		
 		// Finally put it on the screen
 		Scene scene = new Scene(root, 300, 250);
-		primaryStage.setTitle("Log in");
+		primaryStage.setTitle("Choose a character");
 		primaryStage.setScene(scene);
 		primaryStage.show();
 		
