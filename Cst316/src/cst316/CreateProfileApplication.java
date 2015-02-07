@@ -15,12 +15,12 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public final class LoginApplication extends Application {
+public final class CreateProfileApplication extends Application {
 
 	/**
 	 * @param primaryStage
 	 */
-	public void start(final Stage primaryStage) {
+	public void start(Stage primaryStage) {
 		
 		// The Next button
 		Button btn = new Button();
@@ -28,36 +28,30 @@ public final class LoginApplication extends Application {
 		btn.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				CreateProfileApplication app = new CreateProfileApplication();
-				app.start(primaryStage);
+				System.out.println("Clicked Next");
 			}
 		});
 		
 		// The character selection form
-		RadioButton c1 = new RadioButton("Character #1");
-		RadioButton c2 = new RadioButton("Character #2");
-		RadioButton c3 = new RadioButton("Character #3");
-		RadioButton c4 = new RadioButton("Character #4");
-		ToggleGroup ct = new ToggleGroup();
-		c1.setToggleGroup(ct);
-		c2.setToggleGroup(ct);
-		c3.setToggleGroup(ct);
-		c4.setToggleGroup(ct);
+		TextField name = new TextField();
+		TextField location = new TextField();
+		Text nameLabel = new Text("Name");
+		Text locationLabel = new Text("Location");
 		
 		// The layout
 		GridPane root = new GridPane();
 		root.setAlignment(Pos.CENTER);
 		root.setHgap(10);
 		root.setVgap(10);
-		root.add(c1, 0, 0);
-		root.add(c2, 0, 1);
-		root.add(c3, 0, 2);
-		root.add(c4, 0, 3);
-		root.add(btn, 0, 4);
+		root.add(nameLabel, 0, 0);
+		root.add(name, 1, 0);
+		root.add(locationLabel, 0, 2);
+		root.add(location, 1, 2);
+		root.add(btn, 0, 3);
 		
 		// Finally put it on the screen
 		Scene scene = new Scene(root, 300, 250);
-		primaryStage.setTitle("Choose a character");
+		primaryStage.setTitle("Build a profile");
 		primaryStage.setScene(scene);
 		primaryStage.show();
 		
