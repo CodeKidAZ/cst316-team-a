@@ -74,21 +74,23 @@ public class Player {
 	/**
 	 * Saves the player's data to a JSON file
 	 */
-	public void saveFile() {
+	public boolean saveFile() {
 		try {
 			PrintWriter out = new PrintWriter(name + ".json");
 			out.println(toJsonString());
 			out.close();
+			return true;
 		} catch(Exception e) {
 			System.out.println("Failed to parse.");
 		}
+		return false;
 	}
 	
 	/**
 	 * Initializes Player class based off JSON data
 	 * @param playerName
 	 */
-	public void readFile(String playerName) {
+	public boolean readFile(String playerName) {
 		JSONParser parser = new JSONParser();
 		try {
 			//Read the file and store it in a json object
@@ -113,9 +115,11 @@ public class Player {
 			this.money = (Double) money;
 			this.name = (String) name;
 			this.assets = assets;
+			return true;
 		} catch (Exception e) {
 			System.out.println("Failed to parse.");
 		}
+		return false;
 	}
 	
 	/**
