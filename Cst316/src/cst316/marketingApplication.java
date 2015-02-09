@@ -9,6 +9,7 @@ package cst316;
  */
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -151,6 +152,7 @@ public final class marketingApplication extends Application {
 	 */
 	public static void main(String[] args) {
 		launch(args);
+
 	}
 
 }
