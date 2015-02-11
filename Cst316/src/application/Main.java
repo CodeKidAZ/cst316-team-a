@@ -29,7 +29,7 @@ public class Main extends Application {
             stage.setMinHeight(MINIMUM_WINDOW_HEIGHT);
 			primaryStage.setScene(scene);
 			primaryStage.show();
-			LandingController ctr = (LandingController) replaceSceneContent("landing.fxml");
+			LoginController ctr = (LoginController) replaceSceneContent("Login.fxml", LoginController.class);
 			ctr.setApp(this);
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -41,9 +41,9 @@ public class Main extends Application {
 	}
 	
 	// A lot of this was taken from the Oracle JFX samples, changes will be made
-	private Node replaceSceneContent(String fxml) throws Exception {
+	public Node replaceSceneContent(String fxml, Class<? extends AnchorPane> cls) throws Exception {
         FXMLLoader loader = new FXMLLoader();
-        loader.setController(new LandingController());
+        loader.setController(cls.getConstructor().newInstance());
         InputStream in = Main.class.getResourceAsStream(fxml);
         loader.setBuilderFactory(new JavaFXBuilderFactory());
         loader.setLocation(Main.class.getResource(fxml));
