@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="750.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="controllers.FireController">
+   <children>
+      <TableView fx:id="fireTable" layoutX="275.0" layoutY="135.0" prefHeight="395.0" prefWidth="151.0">
+        <columns>
+          <TableColumn fx:id="nameColumn" prefWidth="75.0" text="C1" />
+          <TableColumn fx:id="wageColumn" prefWidth="75.0" text="C2" />
+        </columns>
+      </TableView>
+      <Button fx:id="backButton" layoutX="282.0" layoutY="43.0" mnemonicParsing="false" onAction="#backMethod" prefHeight="30.0" prefWidth="63.0" text="Back" AnchorPane.topAnchor="30.0" />
+      <Button fx:id="fireButton" layoutX="472.0" layoutY="238.0" mnemonicParsing="false" onAction="#fireMethod" prefHeight="30.0" prefWidth="63.0" text="Fire" />
+      <Label fx:id="hireTitleLabel" layoutX="364.0" layoutY="32.0" text="FIRE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="totalHiredLabel" layoutX="154.0" layoutY="244.0" text="Label" />
+   </children>
+</AnchorPane>
