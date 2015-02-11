@@ -1,35 +1,50 @@
 package controllers;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import org.json.JSONObject;
 
 public class Employee 
 {
-    private String name ;
-    private int wage;
+    private StringProperty name ;
+    private IntegerProperty wage;
     
     public Employee()
     {
     }
     public Employee(String name, int wage)
     {
-        this.name = name;
-        this.wage = wage;
+        this.name = new SimpleStringProperty(name);
+        this.wage = new SimpleIntegerProperty(wage);
         
+    }
+     public String getName()
+    {
+        return name.get();
     }
     public void setName(String a)
     {
-        name = a;
+        this.name.set(a);
     }
-    public String getName()
+   public StringProperty getNameProperty()
+   {
+       return name;
+   }
+   
+   
+    public int getWage()
     {
-        return name;
+        return wage.get();
     }
     public void setWage(int a)
     {
-        wage = a;
+        this.wage.set(a);
     }
-    public int getWage()
-    {
-        return wage;
-    }
+    public IntegerProperty getWageProperty()
+   {
+       return wage;
+   }
+   
         
 }

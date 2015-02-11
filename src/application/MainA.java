@@ -7,8 +7,6 @@ import java.io.FileReader;
 
 import java.io.IOException;
 import static java.lang.System.in;
-import java.util.HashMap;
-import java.util.Hashtable;
 import java.util.TreeMap;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -30,11 +28,11 @@ public class MainA extends Application
     @Override
     public void start(Stage primaryStage) 
     {
+        String strLine=" ";
          try 
         {
-            //BufferedReader br = new BufferedReader(new FileReader("src\\dataFiles\\employeeData.txt"));
             BufferedReader br = new BufferedReader(new FileReader("src/dataFiles/employeeData.txt"));
-            String strLine;
+            
        
             while ((strLine = br.readLine()) != null) 
             {
@@ -42,23 +40,18 @@ public class MainA extends Application
                  String name = obj.get("name").toString();
                  int wage = (int)obj.get("wage");
                  Employee empObject = new Employee(name, wage);      //create employee objects
-                 //employees.put(name, empObject);                               //store employee object into hashtable
-                 empTree.put(name, empObject);
-                 //System.out.println(name + " "+wage);
-                 
+                 empTree.put(name, empObject);                                //store employee object into hashtable
                 
-            }//hashmap
+            }
             in.close();
         } 
         catch (Exception e) 
         {   //Catch exception if any
             System.err.println("Error: " + e.getMessage());
+            System.out.println("Error "+ strLine);
         } 
         
          System.out.println("treemap is "+empTree.size());
-         
-        //Image image = new Image("images/employeeImage.png");
-         //ImageView imageView1 = new ImageView("images/employeeImage.png");
         
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("The Entreprenuership Game");
