@@ -12,6 +12,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+
+//Eclipse Git push test1
 public final class InvestApplication extends Application {
 
 	/**
