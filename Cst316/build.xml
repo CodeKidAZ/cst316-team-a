@@ -3,7 +3,6 @@
     <property name="debug.enable" value="true"/>
     <property name="source.dir" value="src"/>
     <property name="lib.dir"    value="lib"/>
-    <property name="res.dir"    value="res"/>
     <property name="class.dir"  value="bin"/>
     <property name="jar.dir"    value="dist"/>
     <property name="jar.file"   value="${jar.dir}/${ant.project.name}.jar"/>
@@ -22,21 +21,16 @@
 
     <target name="compile" description="build class files">
         <mkdir dir="${class.dir}"/>
-        <mkdir dir="${class.dir}/${res.dir}"/>
         <javac srcdir="${source.dir}" destdir="${class.dir}" includeantruntime="false" debug="${debug.enable}">
             <classpath refid="libraries.path"/>
         </javac>
-        <copy todir="${class.dir}/${res.dir}">
-            <fileset dir="${res.dir}">
-                <include name="**/**.png"/>
-                <exclude name="**/**.psd"/>
-            </fileset>
-        </copy>
         <copy todir="${class.dir}">
             <fileset dir="${source.dir}">
                 <include name="**/**.fxml"/>
                 <include name="**/**.css"/>
+                <include name="**/**.png"/>
                 <exclude name="**/**.java"/>
+                <exclude name="**/**.psd"/>
             </fileset>
         </copy>
     </target>

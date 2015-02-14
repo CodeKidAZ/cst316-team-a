@@ -1,7 +1,6 @@
 package application;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -25,17 +24,10 @@ public class LandingController extends AnchorPane{
 
 	public void setApp(Main app){
 		application = app;
-		try {
-			in = new FileInputStream("res/inv_txt_hover.png");
-			invIn = new Image(in);
-			in = new FileInputStream("res/inv_txt_up.png");
-			if(in == null){
-
-			}
-			invOut = new Image(in);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
+		in = this.getClass().getClassLoader().getResourceAsStream("res/inv_txt_hover.png");
+		invIn = new Image(in);
+		in = this.getClass().getClassLoader().getResourceAsStream("res/inv_txt_up.png");
+		invOut = new Image(in);
 	}
 
 	@FXML
