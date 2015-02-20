@@ -69,6 +69,15 @@
                 </fileset>
             </batchtest>
         </junit>
+        <junit printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <classpath refid="jar.path"/>
+            <batchtest todir="${test.dir}">
+                <fileset dir="${source.dir}">
+                    <include name="**/*Test*.java"/>
+                </fileset>
+            </batchtest>
+        </junit>
     </target>
 
 </project>
