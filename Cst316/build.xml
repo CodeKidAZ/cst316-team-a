@@ -60,7 +60,7 @@
 
     <target name="test" depends="jar">
         <mkdir dir="${test.dir}"/>
-        <junit printsummary="yes">
+        <junit printsummary="yes" fork="true">
             <formatter type="plain"/>
             <classpath refid="jar.path"/>
             <batchtest todir="${test.dir}">
@@ -69,7 +69,7 @@
                 </fileset>
             </batchtest>
         </junit>
-        <junit printsummary="withOutAndErr">
+        <junit printsummary="withOutAndErr" fork="true">
             <formatter type="xml"/>
             <classpath refid="jar.path"/>
             <batchtest todir="${test.dir}">
