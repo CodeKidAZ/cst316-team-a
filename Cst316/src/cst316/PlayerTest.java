@@ -30,4 +30,14 @@ public class PlayerTest {
 		assertTrue(player.saveFile());
 		assertTrue(player.readFile("dan"));
 	}
+	@Test
+	public void testDuplicateAssets() {
+		Player player1 = new Player();
+		Player player2 = new Player();
+		assertEquals(player1.getAssets().size(), 0);
+		assertEquals(player2.getAssets().size(), 0);
+		player1.addAsset("Test Asset");
+		assertEquals(player1.getAssets().size(), 1);
+		assertEquals(player2.getAssets().size(), 0);
+	}
 }

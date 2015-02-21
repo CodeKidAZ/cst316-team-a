@@ -14,6 +14,7 @@ package cst316;
 import java.io.FileReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
 import java.math.*;
 
 import org.json.simple.JSONArray;
@@ -25,7 +26,7 @@ public class Player {
 	private int points;
 	private double money;
 	private String name;
-	private ArrayList<String> assets = new ArrayList<String>( );
+	private ArrayList<String> assets;
 	
 	/**
 	 * Default construction of a player
@@ -34,7 +35,7 @@ public class Player {
 		this.setPoints(0);
 		this.setMoney(0.0);
 		this.setName("noname");
-		this.assets = null;
+		this.assets = new ArrayList<String>( );
 	}
 	
 	/**
@@ -44,7 +45,7 @@ public class Player {
 	 * @param name
 	 * @param assets
 	 */
-	public Player(int points, double money, String name, ArrayList<String> assets) {
+	public Player(int points, double money, String name, List<String> assets) {
 		this.setPoints(points);
 		this.setMoney(money);
 		this.setName(name);
@@ -55,6 +56,7 @@ public class Player {
 	 * Makes a JSON string of the player data
 	 * @return ret 
 	 */
+	@SuppressWarnings("unchecked")
 	public String toJsonString() {
 		String ret = "";
 		try {
@@ -213,7 +215,7 @@ public class Player {
 	 * Takes in an ArrayList and replaces the current player list with the new one.
 	 * @param assets
 	 */
-	public void setAssets(ArrayList<String> assets) {
-		this.assets = assets;
+	public void setAssets(List<String> assets) {
+		this.assets = new ArrayList<String>(assets);
 	}
 }
