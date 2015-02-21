@@ -1,7 +1,9 @@
 package cst316;
 
 import java.util.ArrayList;
+
 import static org.junit.Assert.*;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -13,7 +15,7 @@ public class PlayerTest {
     	ArrayList<String> assets = new ArrayList<String>( );
     	assets.add("Test1");
     	assets.add("Test2");
-    	player = new Player(100, 50.5, "dan", assets);
+    	player = new Player(100,100, 50.5, "dan", assets);
     }
 	@Test
 	public void testAssets() {
@@ -24,6 +26,15 @@ public class PlayerTest {
 		ArrayList<String> assets2 = new ArrayList<String>();
 		player.setAssets(assets2);
 		assertEquals(assets2, player.getAssets());
+		
+		ArrayList<String> addMe = new ArrayList<String>();
+		addMe.add("added");
+		player.addAssets(addMe);
+		assertEquals(player.getAssets().get(0),"added");
+		assertTrue(player.printAssets());
+		
+		assertTrue(player.removeAsset("added"));
+		
 	}
 	@Test
 	public void testSaveLoad() {

@@ -23,6 +23,7 @@ import org.json.simple.parser.JSONParser;
 public class Player {
 	
 	private int points;
+	private int employees;
 	private double money;
 	private String name;
 	private ArrayList<String> assets = new ArrayList<String>( );
@@ -33,6 +34,7 @@ public class Player {
 	public Player() {
 		this.setPoints(0);
 		this.setMoney(0.0);
+		this.setEmployees(0);
 		this.setName("noname");
 		this.assets = null;
 	}
@@ -44,8 +46,9 @@ public class Player {
 	 * @param name
 	 * @param assets
 	 */
-	public Player(int points, double money, String name, ArrayList<String> assets) {
+	public Player(int points, int employees, double money, String name, ArrayList<String> assets) {
 		this.setPoints(points);
+		this.setEmployees(employees);
 		this.setMoney(money);
 		this.setName(name);
 		this.setAssets(assets);
@@ -61,6 +64,7 @@ public class Player {
 			//Add the class fields to a JSON object
 			JSONObject obj = new JSONObject();
 			obj.put("Points", points);
+			obj.put("Employees", employees);
 			obj.put("Money", money);
 			obj.put("Name", name);
 			obj.put("Assets", assets);
@@ -99,6 +103,7 @@ public class Player {
 			
 			//Extract the data from the JSON file and store it into objects
 			Object points = (Long) jsonObject.get("Points"); //JSON forces me to use Long
+			Object employees = (Long) jsonObject.get("Employees");
 			Object money = (Double) jsonObject.get("Money");
 			Object name = (String) jsonObject.get("Name");
 			//Get the list that is included in the JSON file
@@ -112,6 +117,7 @@ public class Player {
 			
 			//Set the class values to what the JSON file produced
 			this.points = new BigDecimal((Long) points).intValueExact(); //Work around to get it back to int
+			this.employees = new BigDecimal((Long) employees).intValueExact();
 			this.money = (Double) money;
 			this.name = (String) name;
 			this.assets = assets;
@@ -134,11 +140,14 @@ public class Player {
 	 * Removes an asset from the list
 	 * @param str
 	 */
-	public void removeAsset(String str) {
+	public boolean removeAsset(String str) {
 		for(int i = 0; i < assets.size(); i++) {
-			if( assets.get(i).equals(str))
+			if( assets.get(i).equals(str)){
 				assets.remove(i);
+				return true;
+			}
 		}
+		return false;
 	}
 	
 	/**
@@ -182,7 +191,18 @@ public class Player {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+	/**
+	 * @return employees
+	 */
+	public int getEmployees() {
+		return employees;
+	}
+	/**
+	 * @param employees
+	 */
+	public void setEmployees(int employees) {
+		this.employees = employees;
+	}
 	/**
 	 * @return assets
 	 */
@@ -193,9 +213,10 @@ public class Player {
 	/**
 	 * Prints the the values inside the ArrayList "assets"
 	 */
-	public void printAssets() {
+	public boolean printAssets() {
 		for(int i=0; i<assets.size(); i++)
 			System.out.print(assets.get(i)+", ");
+		return true;
 	}
 	
 	/**
