@@ -9,6 +9,7 @@
     <property name="main.class" value="application.Main"/>
     <property name="test.dir"   value="test"/>
     <property name="jacocoant.jar" value="${lib.dir}/jacocoant.jar"/>
+    <property name="jacoco.file" value="jacoco.exec"/>
 
     <taskdef uri="antlib:org.jacoco.ant" resource="org/jacoco/ant/antlib.xml">
       <classpath path="${jacocoant.jar}"/>
@@ -32,8 +33,9 @@
 
     <target name="clean" description="delete old files">
         <delete dir="${class.dir}"/>
-        <delete dir="${jar.file}"/>
+        <delete file="${jar.file}"/>
         <delete dir="${test.dir}"/>
+        <delete file="${jacoco.file}"/>
     </target>
 
     <target name="compile" description="build class files">
