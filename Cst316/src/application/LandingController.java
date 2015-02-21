@@ -1,7 +1,6 @@
 package application;
 
 import java.io.InputStream;
-import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -17,13 +16,13 @@ public class LandingController extends AnchorPane{
 	@FXML
 	ImageView invBtn;
 
-	private Main application;
+	//private Main application;
 	InputStream in;
 	Image invIn;
 	Image invOut;
 
 	public void setApp(Main app){
-		application = app;
+		//application = app;
 		in = this.getClass().getClassLoader().getResourceAsStream("res/inv_txt_hover.png");
 		invIn = new Image(in);
 		in = this.getClass().getClassLoader().getResourceAsStream("res/inv_txt_up.png");

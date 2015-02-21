@@ -3,7 +3,12 @@ import java.util.Random;
 
 public class PrintMarketing extends MarketingCampaign {
 	
-	 PrintMarketing(double a, double b, double c, String d, boolean e) {
+	 /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	PrintMarketing(double a, double b, double c, String d, boolean e) {
 		super(a, b, c, d, e);
 	}
 	

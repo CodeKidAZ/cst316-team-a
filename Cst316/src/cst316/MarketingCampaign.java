@@ -2,7 +2,11 @@ package cst316;
 
 public abstract class MarketingCampaign implements java.io.Serializable {
 	
-    protected double duration;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	protected double duration;
     protected double risk;
     protected double capital;
     protected String name;
