@@ -67,26 +67,31 @@
 
     <target name="test" depends="jar">
         <mkdir dir="${test.dir}"/>
-        <junit printsummary="yes" fork="true">
-            <formatter type="plain"/>
-            <classpath refid="jar.path"/>
-            <batchtest todir="${test.dir}">
-                <fileset dir="${source.dir}">
-                    <include name="**/*Test*.java"/>
-                </fileset>
-            </batchtest>
-        </junit>
-	<jacoco:coverage>
-	  <junit printsummary="withOutAndErr" fork="true">
-            <formatter type="xml"/>
-            <classpath refid="jar.path"/>
-            <batchtest todir="${test.dir}">
-                <fileset dir="${source.dir}">
-                    <include name="**/*Test*.java"/>
-                </fileset>
-            </batchtest>
-	  </junit>
-	</jacoco:coverage>
+	    <jacoco:coverage>
+	        <junit printsummary="withOutAndErr" fork="true">
+                <formatter type="xml"/>
+                <classpath refid="jar.path"/>
+                <batchtest todir="${test.dir}">
+                    <fileset dir="${source.dir}">
+                        <include name="**/*Test*.java"/>
+                    </fileset>
+                </batchtest>
+	        </junit>
+	    </jacoco:coverage>
+        <jacoco:report>
+            <executiondata>
+                <file file="jacoco.exec"/>
+            </executiondata>
+            <structure name="Cst316">
+                <classfiles>
+                    <fileset dir="${class.dir}"/>
+                </classfiles>
+                <sourcefiles encoding="UTF-8">
+                    <fileset dir="${source.dir}"/>
+                </sourcefiles>
+            </structure>
+            <html destdir="${test.dir}"/>
+        </jacoco:report>
     </target>
 
 </project>
