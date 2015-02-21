@@ -36,7 +36,7 @@ public class Player {
 		this.setMoney(0.0);
 		this.setEmployees(0);
 		this.setName("noname");
-		this.assets = null;
+		this.assets = new ArrayList<String>();
 	}
 	
 	/**
@@ -149,42 +149,48 @@ public class Player {
 		}
 		return false;
 	}
-	
 	/**
 	 * @return points
 	 */
 	public int getPoints() {
 		return points;
 	}
-	
 	/**
 	 * @param points
 	 */
 	public void setPoints(int points) {
 		this.points = points;
 	}
-	
+	/**
+	 * @param add
+	 */
+	public void addPoints(int points) {
+		this.points += points;
+	}
 	/**
 	 * @return money
 	 */
 	public double getMoney() {
 		return money;
 	}
-	
 	/**
 	 * @param money
 	 */
 	public void setMoney(double money) {
 		this.money = money;
 	}	
-	
+	/**
+	 * @param money
+	 */
+	public void addMoney(double money) {
+		this.money += money;
+	}
 	/**
 	 * @return name
 	 */
 	public String getName() {
 		return name;
 	}
-	
 	/**
 	 * @param name
 	 */
@@ -202,6 +208,12 @@ public class Player {
 	 */
 	public void setEmployees(int employees) {
 		this.employees = employees;
+	}
+	/**
+	 * @param employees
+	 */
+	public void addEmployees(int employees) {
+		this.employees += employees;
 	}
 	/**
 	 * @return assets
