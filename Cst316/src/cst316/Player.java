@@ -27,6 +27,7 @@ public class Player {
 	private double money;
 	private String name;
 	private ArrayList<String> assets;
+	private ArrayList<Investment> investments;
 	
 	/**
 	 * Default construction of a player
@@ -35,7 +36,8 @@ public class Player {
 		this.setPoints(0);
 		this.setMoney(0.0);
 		this.setName("noname");
-		this.assets = new ArrayList<String>( );
+		this.assets = new ArrayList<String>();
+		this.investments = new ArrayList<Investment>();
 	}
 	
 	/**
@@ -50,6 +52,7 @@ public class Player {
 		this.setMoney(money);
 		this.setName(name);
 		this.setAssets(assets);
+		this.investments = new ArrayList<Investment>();
 	}
 	
 	/**
@@ -193,11 +196,27 @@ public class Player {
 	}
 	
 	/**
+	 * @return investments
+	 */
+	public ArrayList<Investment> getInvestments() {
+		return investments;
+	}
+	
+	/**
 	 * Prints the the values inside the ArrayList "assets"
 	 */
 	public void printAssets() {
-		for(int i=0; i<assets.size(); i++)
-			System.out.print(assets.get(i)+", ");
+		for (String asset : assets) {
+			System.out.print(asset);
+			System.out.print(",");
+		}
+	}
+	
+	public void printInvestments() {
+		for (Investment investment : investments) {
+			System.out.print(investment);
+			System.out.print(",");
+		}
 	}
 	
 	/**
@@ -205,7 +224,7 @@ public class Player {
 	 * replacing any data.
 	 * @param assets
 	 */
-	public void addAssets(ArrayList<String> assets) {
+	public void addAssets(List<String> assets) {
 		for(int i = 0; i < assets.size(); i++) {
 			this.assets.add(assets.get(i));
 		}

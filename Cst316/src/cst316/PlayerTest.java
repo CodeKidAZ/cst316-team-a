@@ -40,4 +40,8 @@ public class PlayerTest {
 		assertEquals(player1.getAssets().size(), 1);
 		assertEquals(player2.getAssets().size(), 0);
 	}
+	@Test
+	public void testInvestment() {
+		// XXX
+	}
 }
