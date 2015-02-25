@@ -39,7 +39,7 @@ public class Investment implements JSONString {
 	}
 	public double calculateROI() {
 		double distribution = random.nextGaussian();
-		double adjustedDistribution = distribution + (isGood ? 1 : 0);
+		double adjustedDistribution = distribution + (isGood ? 1 : -1);
 		return amount * adjustedDistribution;
 	}
 	public String toString() {
