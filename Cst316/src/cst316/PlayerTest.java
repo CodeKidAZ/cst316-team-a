@@ -1,7 +1,10 @@
 package cst316;
 
+import java.io.File;
 import java.util.ArrayList;
+
 import static org.junit.Assert.*;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -29,6 +32,7 @@ public class PlayerTest {
 	public void testSaveLoad() {
 		assertTrue(player.saveFile());
 		assertTrue(player.readFile("dan"));
+		(new File("dan.json")).delete();
 	}
 	@Test
 	public void testDuplicateAssets() {
@@ -41,7 +45,31 @@ public class PlayerTest {
 		assertEquals(player2.getAssets().size(), 0);
 	}
 	@Test
-	public void testInvestment() {
-		// XXX
+	public void testGetInvestments() {
+		Player investing = new Player();
+		assertEquals(investing.getInvestments().size(), 0);
+		investing = new Player(15, 15.0, "Mick", new ArrayList<String>());
+		assertEquals(investing.getInvestments().size(), 0);
+		investing.printInvestments();
+	}
+	@Test
+	public void testAddInvestment() {
+		Player investing = new Player();
+		investing.addInvestment(new Investment("Name", 10.0, true));
+		assertEquals(investing.getInvestments().size(), 1);
+	}
+	@Test
+	public void testJSONInvestments() {
+		Player investing = new Player(100, 50.5, "dan", new ArrayList<String>());
+		assertEquals(investing.getInvestments().size(), 0);
+		investing.addInvestment(new Investment("Name", 10.0, true));
+		assertEquals(investing.getInvestments().size(), 1);
+		assertTrue(investing.saveFile());
+		assertEquals(investing.getInvestments().size(), 1);
+		investing.addInvestment(new Investment("Name2", 10.0, true));
+		assertEquals(investing.getInvestments().size(), 2);
+		assertTrue(investing.readFile("dan"));
+		assertEquals(investing.getInvestments().size(), 1);
+		(new File("dan.json")).delete();
 	}
 }

@@ -15,13 +15,13 @@ import java.io.FileReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
-import java.math.*;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.json.JSONString;
+import org.json.JSONTokener;
 
-public class Player {
+public class Player implements JSONString {
 	
 	private int points;
 	private double money;
@@ -59,8 +59,7 @@ public class Player {
 	 * Makes a JSON string of the player data
 	 * @return ret 
 	 */
-	@SuppressWarnings("unchecked")
-	public String toJsonString() {
+	public String toJSONString() {
 		String ret = "";
 		try {
 			//Add the class fields to a JSON object
@@ -69,6 +68,7 @@ public class Player {
 			obj.put("Money", money);
 			obj.put("Name", name);
 			obj.put("Assets", assets);
+			obj.put("Investments", investments);
 			ret = obj.toString();
 		} catch(Exception e) {
 			System.out.println("Failed to parse.");
@@ -82,7 +82,7 @@ public class Player {
 	public boolean saveFile() {
 		try {
 			PrintWriter out = new PrintWriter(name + ".json");
-			out.println(toJsonString());
+			out.println(toJSONString());
 			out.close();
 			return true;
 		} catch(Exception e) {
@@ -96,30 +96,40 @@ public class Player {
 	 * @param playerName
 	 */
 	public boolean readFile(String playerName) {
-		JSONParser parser = new JSONParser();
 		try {
+			JSONTokener tokener = new JSONTokener(new FileReader(playerName + ".json"));
 			//Read the file and store it in a json object
-			Object obj = parser.parse(new FileReader(playerName + ".json"));
-			JSONObject jsonObject = (JSONObject) obj;
+			JSONObject jsonObject = new JSONObject(tokener);
 			
 			//Extract the data from the JSON file and store it into objects
-			Object points = (Long) jsonObject.get("Points"); //JSON forces me to use Long
-			Object money = (Double) jsonObject.get("Money");
-			Object name = (String) jsonObject.get("Name");
+			int points = jsonObject.getInt("Points");
+			double money = jsonObject.getDouble("Money");
+			String name = jsonObject.getString("Name");
+			
 			//Get the list that is included in the JSON file
-			JSONArray jArray = (JSONArray) jsonObject.get("Assets");
+			JSONArray jArrayAssets = jsonObject.getJSONArray("Assets");
 			ArrayList<String> assets = new ArrayList<String>(); 
 			
 			//Populate the list with the JSON array values
-			for(int i = 0; i < jArray.size(); i++) {
-				assets.add((String)jArray.get(i));
+			for(int i = 0; i < jArrayAssets.length(); i++) {
+				assets.add(jArrayAssets.getString(i));
+			}
+			
+			//Get the list that is included in the JSON file
+			JSONArray jArrayInvestments = jsonObject.getJSONArray("Investments");
+			ArrayList<Investment> investments = new ArrayList<Investment>();
+			
+			//Populate the list with the JSON array values
+			for (int i = 0; i != jArrayInvestments.length(); ++i) {
+				investments.add(new Investment(jArrayInvestments.getJSONObject(i)));
 			}
 			
 			//Set the class values to what the JSON file produced
-			this.points = new BigDecimal((Long) points).intValueExact(); //Work around to get it back to int
-			this.money = (Double) money;
-			this.name = (String) name;
+			this.points = points;
+			this.money = money;
+			this.name = name;
 			this.assets = assets;
+			this.investments = investments;
 			return true;
 		} catch (Exception e) {
 			System.out.println("Failed to parse.");
@@ -136,13 +146,34 @@ public class Player {
 	}
 	
 	/**
+	 * Adds an investment to the list
+	 */
+	public void addInvestment(Investment inv) {
+		investments.add(inv);
+	}
+	
+	/**
 	 * Removes an asset from the list
 	 * @param str
 	 */
 	public void removeAsset(String str) {
-		for(int i = 0; i < assets.size(); i++) {
-			if( assets.get(i).equals(str))
+		for (int i = 0; i < assets.size(); i++) {
+			if (assets.get(i).equals(str)) {
 				assets.remove(i);
+				i -= 1;
+			}
+		}
+	}
+	
+	/**
+	 * Removes an investment from the list
+	 */
+	public void removeInvestment(Investment inv) {
+		for (int i = 0; i < investments.size(); ++i) {
+			if (investments.get(i).equals(inv)) {
+				investments.remove(i);
+				i -= 1;
+			}
 		}
 	}
 	
@@ -191,19 +222,19 @@ public class Player {
 	/**
 	 * @return assets
 	 */
-	public ArrayList<String> getAssets() {
+	public List<String> getAssets() {
 		return assets;
 	}
 	
 	/**
 	 * @return investments
 	 */
-	public ArrayList<Investment> getInvestments() {
+	public List<Investment> getInvestments() {
 		return investments;
 	}
 	
 	/**
-	 * Prints the the values inside the ArrayList "assets"
+	 * Prints the the values inside the List "assets"
 	 */
 	public void printAssets() {
 		for (String asset : assets) {
@@ -211,7 +242,10 @@ public class Player {
 			System.out.print(",");
 		}
 	}
-	
+
+	/**
+	 * Prints the the values inside the List "investments"
+	 */
 	public void printInvestments() {
 		for (Investment investment : investments) {
 			System.out.print(investment);
@@ -220,21 +254,40 @@ public class Player {
 	}
 	
 	/**
-	 * Takes in an ArrayList and populates the assets list, without 
+	 * Takes in a List and populates the assets list, without 
 	 * replacing any data.
 	 * @param assets
 	 */
 	public void addAssets(List<String> assets) {
-		for(int i = 0; i < assets.size(); i++) {
-			this.assets.add(assets.get(i));
+		for (String asset : assets) {
+			this.assets.add(asset);
 		}
 	}
 	
 	/**
-	 * Takes in an ArrayList and replaces the current player list with the new one.
+	 * Takes in a List and populates the assets list, without
+	 * replacing any data
+	 * @param investments
+	 */
+	public void addInvestments(List<Investment> investments) {
+		for (Investment investment : investments) {
+			this.investments.add(investment);
+		}
+	}
+	
+	/**
+	 * Takes in a List and replaces the current player list with the new one.
 	 * @param assets
 	 */
 	public void setAssets(List<String> assets) {
 		this.assets = new ArrayList<String>(assets);
+	}
+	
+	/**
+	 * Takes in a List and replaces the current player list with the new one.
+	 * @param investments
+	 */
+	public void setInvestments(List<Investment> investments) {
+		this.investments = new ArrayList<Investment>(investments);
 	}
 }

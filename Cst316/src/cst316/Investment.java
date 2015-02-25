@@ -1,6 +1,8 @@
 package cst316;
 
 import java.util.Random;
+import org.json.JSONString;
+import org.json.JSONObject;
 
 /**
  * There are good investments and bad investments. Both of these follow normal
@@ -11,7 +13,7 @@ import java.util.Random;
  * @author michael
  *
  */
-public class Investment {
+public class Investment implements JSONString {
 	private double amount;
 	private String name;
 	private boolean isGood;
@@ -20,6 +22,11 @@ public class Investment {
 		this.amount = amount;
 		this.name = name;
 		this.isGood = isGood;
+	}
+	public Investment(JSONObject object) {
+		this.amount = object.getDouble("Amount");
+		this.name = object.getString("Name");
+		this.isGood = object.getBoolean("IsGood");
 	}
 	public double getAmount() {
 		return amount;
@@ -37,5 +44,12 @@ public class Investment {
 	}
 	public String toString() {
 		return name + ": " + amount;
+	}
+	public String toJSONString() {
+		JSONObject object = new JSONObject();
+		object.put("Amount", amount);
+		object.put("Name", name);
+		object.put("IsGood", isGood);
+		return object.toString();
 	}
 }
