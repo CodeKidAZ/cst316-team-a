@@ -6,7 +6,7 @@ import org.json.JSONObject;
 
 /**
  * There are good investments and bad investments. Both of these follow normal
- * distribution, with the ROI mean at zero (for bad investments) or the
+ * distribution, with the ROI mean at -investment (for bad investments) or the
  * investment size (for good investments). The standard deviation is equal to
  * the amount invested. Note that ROI is the difference between before and after
  * making the investment.
