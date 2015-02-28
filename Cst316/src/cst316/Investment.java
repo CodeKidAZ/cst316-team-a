@@ -52,4 +52,13 @@ public class Investment implements JSONString {
 		object.put("IsGood", isGood);
 		return object.toString();
 	}
+	
+	public boolean equals(Object obj) {
+		boolean retVal = false;
+		if (obj instanceof Investment) {
+			Investment inv = (Investment)obj;
+			retVal = inv.amount == this.amount && inv.name.equals(this.name) && inv.isGood == this.isGood;
+		}
+		return retVal;
+	}
 }
