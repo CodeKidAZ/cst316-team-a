@@ -2,6 +2,7 @@ package cst316;
 
 import java.io.File;
 import java.util.ArrayList;
+import org.json.JSONObject;
 
 import static org.junit.Assert.*;
 
@@ -50,7 +51,6 @@ public class PlayerTest {
 		assertEquals(investing.getInvestments().size(), 0);
 		investing = new Player(15, 15.0, "Mick", new ArrayList<String>());
 		assertEquals(investing.getInvestments().size(), 0);
-		investing.printInvestments();
 	}
 	@Test
 	public void testAddInvestment() {
@@ -71,5 +71,34 @@ public class PlayerTest {
 		assertTrue(investing.readFile("dan"));
 		assertEquals(investing.getInvestments().size(), 1);
 		(new File("dan.json")).delete();
+	}
+	@Test
+	public void testNonExistentFile() {
+		Player tester = new Player();
+		assertFalse(tester.readFile("ThisFileHadBetterNotExistOrThisTestWillFail"));
+	}
+	@Test
+	public void testInvalidFile() {
+		Player tester = new Player(0, 0.0, "/dev/null", new ArrayList<String>());
+		assertFalse(tester.saveFile());
+	}
+	@Test
+	public void testConstructJSONObject() {
+		Player tester = new Player(new JSONObject("{\"Points\":1119,\"Money\":25.6,\"Name\":\"Billy Bob\",\"Assets\":[\"This\",\"That\",\"The Other\"],\"Investments\":[{\"Amount\":12.8,\"Name\":\"Quick Oats\",\"IsGood\":true},{\"Amount\":11.17,\"Name\":\"Grits\",\"IsGood\":false}]}"));
+		assertEquals(tester.getMoney(), 25.6, .5);
+		assertEquals(tester.getName(), "Billy Bob");
+		assertEquals(tester.getPoints(), 1119);
+		assertEquals(tester.getAssets().size(), 3);
+		assertEquals(tester.getInvestments().size() ,2);
+	}
+	@Test
+	public void testPerformInvestment() {
+		Player tester = new Player();
+		tester.takeInvestment("Test investment", 10.5, true);
+		assertEquals(tester.getMoney(), -10.5, .5);
+		assertEquals(tester.getInvestments().size(), 1);
+		assertEquals(tester.getInvestments().get(0), new Investment("Test investment", 10.5, true));
+		tester.cashInvestment(tester.getInvestments().get(0));
+		assertTrue(tester.getMoney() != -10.5);
 	}
 }

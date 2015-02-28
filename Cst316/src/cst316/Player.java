@@ -56,23 +56,26 @@ public class Player implements JSONString {
 	}
 	
 	/**
+	 * Construct a player from a JSONObject
+	 */
+	public Player(JSONObject jsonObject) {
+		this.setFromJSONObject(jsonObject);
+	}
+	
+	/**
 	 * Makes a JSON string of the player data
 	 * @return ret 
 	 */
 	public String toJSONString() {
 		String ret = "";
-		try {
-			//Add the class fields to a JSON object
-			JSONObject obj = new JSONObject();
-			obj.put("Points", points);
-			obj.put("Money", money);
-			obj.put("Name", name);
-			obj.put("Assets", assets);
-			obj.put("Investments", investments);
-			ret = obj.toString();
-		} catch(Exception e) {
-			System.out.println("Failed to parse.");
-		}
+		//Add the class fields to a JSON object
+		JSONObject obj = new JSONObject();
+		obj.put("Points", points);
+		obj.put("Money", money);
+		obj.put("Name", name);
+		obj.put("Assets", assets);
+		obj.put("Investments", investments);
+		ret = obj.toString();
 		return ret; //Return the JSON string
 	}
 	
@@ -86,9 +89,42 @@ public class Player implements JSONString {
 			out.close();
 			return true;
 		} catch(Exception e) {
-			System.out.println("Failed to parse.");
+			System.out.println("Failed to write.");
 		}
 		return false;
+	}
+	
+	public void setFromJSONObject(JSONObject jsonObject) {
+		
+		//Extract the data from the JSON file and store it into objects
+		int points = jsonObject.getInt("Points");
+		double money = jsonObject.getDouble("Money");
+		String name = jsonObject.getString("Name");
+		
+		//Get the list that is included in the JSON file
+		JSONArray jArrayAssets = jsonObject.getJSONArray("Assets");
+		ArrayList<String> assets = new ArrayList<String>(); 
+		
+		//Populate the list with the JSON array values
+		for(int i = 0; i < jArrayAssets.length(); i++) {
+			assets.add(jArrayAssets.getString(i));
+		}
+		
+		//Get the list that is included in the JSON file
+		JSONArray jArrayInvestments = jsonObject.getJSONArray("Investments");
+		ArrayList<Investment> investments = new ArrayList<Investment>();
+		
+		//Populate the list with the JSON array values
+		for (int i = 0; i != jArrayInvestments.length(); ++i) {
+			investments.add(new Investment(jArrayInvestments.getJSONObject(i)));
+		}
+		
+		//Set the class values to what the JSON file produced
+		this.points = points;
+		this.money = money;
+		this.name = name;
+		this.assets = assets;
+		this.investments = investments;
 	}
 	
 	/**
@@ -101,38 +137,12 @@ public class Player implements JSONString {
 			//Read the file and store it in a json object
 			JSONObject jsonObject = new JSONObject(tokener);
 			
-			//Extract the data from the JSON file and store it into objects
-			int points = jsonObject.getInt("Points");
-			double money = jsonObject.getDouble("Money");
-			String name = jsonObject.getString("Name");
-			
-			//Get the list that is included in the JSON file
-			JSONArray jArrayAssets = jsonObject.getJSONArray("Assets");
-			ArrayList<String> assets = new ArrayList<String>(); 
-			
-			//Populate the list with the JSON array values
-			for(int i = 0; i < jArrayAssets.length(); i++) {
-				assets.add(jArrayAssets.getString(i));
-			}
-			
-			//Get the list that is included in the JSON file
-			JSONArray jArrayInvestments = jsonObject.getJSONArray("Investments");
-			ArrayList<Investment> investments = new ArrayList<Investment>();
-			
-			//Populate the list with the JSON array values
-			for (int i = 0; i != jArrayInvestments.length(); ++i) {
-				investments.add(new Investment(jArrayInvestments.getJSONObject(i)));
-			}
-			
-			//Set the class values to what the JSON file produced
-			this.points = points;
-			this.money = money;
-			this.name = name;
-			this.assets = assets;
-			this.investments = investments;
+			// Set all the member variables.
+			this.setFromJSONObject(jsonObject);
+
 			return true;
 		} catch (Exception e) {
-			System.out.println("Failed to parse.");
+			System.out.println("Failed to read.");
 		}
 		return false;
 	}
@@ -234,26 +244,6 @@ public class Player implements JSONString {
 	}
 	
 	/**
-	 * Prints the the values inside the List "assets"
-	 */
-	public void printAssets() {
-		for (String asset : assets) {
-			System.out.print(asset);
-			System.out.print(",");
-		}
-	}
-
-	/**
-	 * Prints the the values inside the List "investments"
-	 */
-	public void printInvestments() {
-		for (Investment investment : investments) {
-			System.out.print(investment);
-			System.out.print(",");
-		}
-	}
-	
-	/**
 	 * Takes in a List and populates the assets list, without 
 	 * replacing any data.
 	 * @param assets
@@ -289,5 +279,25 @@ public class Player implements JSONString {
 	 */
 	public void setInvestments(List<Investment> investments) {
 		this.investments = new ArrayList<Investment>(investments);
+	}
+	
+	/**
+	 * Create an investment, removing the money put into it.
+	 * @param name    Name of the investment
+	 * @param amount  Amount invested
+	 * @param isGood  Secret flag; good or bad investment
+	 */
+	public void takeInvestment(String name, double amount, boolean isGood) {
+		Investment inv = new Investment(name, amount, isGood);
+		this.money -= amount;
+		this.addInvestment(inv);
+	}
+	
+	/**
+	 * Cash out on an investment.
+	 * @param inv  Investment to take a return from.
+	 */
+	public void cashInvestment(Investment inv) {
+		this.money += inv.calculateROI();
 	}
 }
