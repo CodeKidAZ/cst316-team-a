@@ -13,6 +13,7 @@ package cst316;
 
 import java.io.FileReader;
 import java.io.PrintWriter;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,12 +40,23 @@ public class Player implements JSONString {
 		this.setEmployees(0);
 		this.setName("noname");
 		this.assets = new ArrayList<String>();
-<<<<<<< HEAD
 		this.investments = new ArrayList<Investment>();
-=======
->>>>>>> ResearchAndDevelopment
 	}
-	
+	/**
+	 * @param points
+	 * @param employees
+	 * @param money
+	 * @param name
+	 * @param assets
+	 */
+	public Player(int points, double money, String name, ArrayList<String> assets) {
+		this.setPoints(points);
+		this.setEmployees(employees);
+		this.setMoney(money);
+		this.setName(name);
+		this.setAssets(assets);
+		this.investments = new ArrayList<Investment>();
+	}
 	/**
 	 * Initialize a player class
 	 * @param points
@@ -52,11 +64,8 @@ public class Player implements JSONString {
 	 * @param name
 	 * @param assets
 	 */
-<<<<<<< HEAD
-	public Player(int points, double money, String name, List<String> assets) {
-=======
+
 	public Player(int points, int employees, double money, String name, ArrayList<String> assets) {
->>>>>>> ResearchAndDevelopment
 		this.setPoints(points);
 		this.setEmployees(employees);
 		this.setMoney(money);
@@ -78,16 +87,6 @@ public class Player implements JSONString {
 	 */
 	public String toJSONString() {
 		String ret = "";
-<<<<<<< HEAD
-		//Add the class fields to a JSON object
-		JSONObject obj = new JSONObject();
-		obj.put("Points", points);
-		obj.put("Money", money);
-		obj.put("Name", name);
-		obj.put("Assets", assets);
-		obj.put("Investments", investments);
-		ret = obj.toString();
-=======
 		try {
 			//Add the class fields to a JSON object
 			JSONObject obj = new JSONObject();
@@ -96,11 +95,11 @@ public class Player implements JSONString {
 			obj.put("Money", money);
 			obj.put("Name", name);
 			obj.put("Assets", assets);
+			obj.put("Investments", investments);
 			ret = obj.toString();
 		} catch(Exception e) {
 			System.out.println("Failed to parse.");
 		}
->>>>>>> ResearchAndDevelopment
 		return ret; //Return the JSON string
 	}
 	
@@ -123,6 +122,7 @@ public class Player implements JSONString {
 		
 		//Extract the data from the JSON file and store it into objects
 		int points = jsonObject.getInt("Points");
+		int employees = jsonObject.getInt("Employees");
 		double money = jsonObject.getDouble("Money");
 		String name = jsonObject.getString("Name");
 		
@@ -149,6 +149,7 @@ public class Player implements JSONString {
 		this.money = money;
 		this.name = name;
 		this.assets = assets;
+		this.employees = employees;
 		this.investments = investments;
 	}
 	
@@ -160,37 +161,10 @@ public class Player implements JSONString {
 		try {
 			JSONTokener tokener = new JSONTokener(new FileReader(playerName + ".json"));
 			//Read the file and store it in a json object
-<<<<<<< HEAD
 			JSONObject jsonObject = new JSONObject(tokener);
 			
 			// Set all the member variables.
 			this.setFromJSONObject(jsonObject);
-
-=======
-			Object obj = parser.parse(new FileReader(playerName + ".json"));
-			JSONObject jsonObject = (JSONObject) obj;
-			
-			//Extract the data from the JSON file and store it into objects
-			Object points = (Long) jsonObject.get("Points"); //JSON forces me to use Long
-			Object employees = (Long) jsonObject.get("Employees");
-			Object money = (Double) jsonObject.get("Money");
-			Object name = (String) jsonObject.get("Name");
-			//Get the list that is included in the JSON file
-			JSONArray jArray = (JSONArray) jsonObject.get("Assets");
-			ArrayList<String> assets = new ArrayList<String>(); 
-			
-			//Populate the list with the JSON array values
-			for(int i = 0; i < jArray.size(); i++) {
-				assets.add((String)jArray.get(i));
-			}
-			
-			//Set the class values to what the JSON file produced
-			this.points = new BigDecimal((Long) points).intValueExact(); //Work around to get it back to int
-			this.employees = new BigDecimal((Long) employees).intValueExact();
-			this.money = (Double) money;
-			this.name = (String) name;
-			this.assets = assets;
->>>>>>> ResearchAndDevelopment
 			return true;
 		} catch (Exception e) {
 			System.out.println("Failed to read.");
@@ -217,7 +191,7 @@ public class Player implements JSONString {
 	 * Removes an asset from the list
 	 * @param str
 	 */
-<<<<<<< HEAD
+
 	public void removeAsset(String str) {
 		for (int i = 0; i < assets.size(); i++) {
 			if (assets.get(i).equals(str)) {
@@ -235,16 +209,8 @@ public class Player implements JSONString {
 			if (investments.get(i).equals(inv)) {
 				investments.remove(i);
 				i -= 1;
-=======
-	public boolean removeAsset(String str) {
-		for(int i = 0; i < assets.size(); i++) {
-			if( assets.get(i).equals(str)){
-				assets.remove(i);
-				return true;
->>>>>>> ResearchAndDevelopment
 			}
 		}
-		return false;
 	}
 	/**
 	 * @return points
@@ -322,15 +288,9 @@ public class Player implements JSONString {
 	/**
 	 * @return investments
 	 */
-<<<<<<< HEAD
+
 	public List<Investment> getInvestments() {
 		return investments;
-=======
-	public boolean printAssets() {
-		for(int i=0; i<assets.size(); i++)
-			System.out.print(assets.get(i)+", ");
-		return true;
->>>>>>> ResearchAndDevelopment
 	}
 	
 	/**
