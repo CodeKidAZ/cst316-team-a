@@ -8,16 +8,16 @@ public class PrintMarketing extends MarketingCampaign {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	PrintMarketing(double a, double b, double c, String d, boolean e) {
-		super(a, b, c, d, e);
+	public PrintMarketing(double duration, double risk, double capital, String name, boolean state) {
+		super(duration, risk, capital, name, state);
 	}
 	
-	 PrintMarketing() {
+	 public PrintMarketing() {
 		super();
 	}
 
 	@Override
-	public double StartCampaign() {
+	public double startCampaign() {
 		Random rng = new Random();
 		double x = ((rng.nextInt(200)) - 100);
 		x = this.risk*x;
@@ -32,7 +32,7 @@ public class PrintMarketing extends MarketingCampaign {
 	}
 
 	@Override
-	public double CancelCampaign() {
+	public double cancelCampaign() {
 		Random rng = new Random();
 		double x = ((rng.nextInt(100)) + 1);
 		if (x < 33){

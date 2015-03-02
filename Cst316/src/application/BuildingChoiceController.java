@@ -1,4 +1,4 @@
-package cst316;
+package application;
 
 import java.net.URL;
 import java.util.ResourceBundle;
