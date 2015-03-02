@@ -67,7 +67,7 @@
 
     <target name="test" depends="jar">
         <mkdir dir="${test.dir}"/>
-	    <jacoco:coverage>
+	    <jacoco:coverage excludes="*Test">
 	        <junit printsummary="withOutAndErr" fork="true">
                 <formatter type="xml"/>
                 <classpath refid="jar.path"/>
@@ -84,10 +84,14 @@
             </executiondata>
             <structure name="Cst316">
                 <classfiles>
-                    <fileset dir="${class.dir}"/>
+                    <fileset dir="${class.dir}">
+                        <exclude name="**/*Test.class"/>
+                    </fileset>
                 </classfiles>
                 <sourcefiles encoding="UTF-8">
-                    <fileset dir="${source.dir}"/>
+                    <fileset dir="${source.dir}">
+                        <exclude name="**/*Test.java"/>
+                    </fileset>
                 </sourcefiles>
             </structure>
             <html destdir="${test.dir}"/>
