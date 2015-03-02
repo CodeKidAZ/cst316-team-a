@@ -19,6 +19,8 @@ public class ResearchAndDevelopmentTest {
 		
 		assertEquals(obj.getCost(),0);
 		assertEquals(obj.getPointWorth(),0);
+		
+		assertEquals(rD2.getPlayer(), p);
 	}
 
 }
