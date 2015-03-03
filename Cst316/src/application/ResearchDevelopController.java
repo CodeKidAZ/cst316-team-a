@@ -162,5 +162,6 @@ public class ResearchDevelopController extends AnchorPane {
 	
 	public void setPlayer(Player player) {
 		this.player = player;
+		rD.setPlayer(player);
 	}
 }
