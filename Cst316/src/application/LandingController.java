@@ -15,6 +15,12 @@ public class LandingController extends AnchorPane{
 	private URL location;
 	@FXML
 	ImageView invBtn;
+	@FXML
+	ImageView mngBtn;
+	@FXML
+	ImageView rndBtn;
+	@FXML
+	ImageView markBtn;
 
 	//private Main application;
 	InputStream in;
@@ -36,15 +42,28 @@ public class LandingController extends AnchorPane{
 
 	public void onInvMouseEntered(){
 		if(invBtn != null)
-		invBtn.setImage(invIn);
+			invBtn.setImage(invIn);
 
 	}
 
 	public void onInvMouseExit(){
 		if(invBtn != null)
-		invBtn.setImage(invOut);
+			invBtn.setImage(invOut);
 
 
+	}
+
+	public void onMarketingClick(){
+		// TODO: got to marketing scene
+	}
+	public void onRNDClick(){
+		// TODO: got to Research & Development scene
+	}
+	public void onManagementClick(){
+		// TODO: got to Management scene
+	}
+	public void onInvestmentsClick(){
+		// TODO: got to Investments scene
 	}
 
 
