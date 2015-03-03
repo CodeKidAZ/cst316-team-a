@@ -24,7 +24,7 @@ public class LandingController extends AnchorPane{
 	@FXML
 	ImageView markBtn;
 
-	//private Main application;
+	private Main application;
 	Player player;
 	InputStream in;
 	Image invIn;
@@ -33,7 +33,7 @@ public class LandingController extends AnchorPane{
 	Image rndOut;
 
 	public void setApp(Main app){
-		//application = app;
+		application = app;
 		in = this.getClass().getClassLoader().getResourceAsStream("res/inv_txt_hover.png");
 		invIn = new Image(in);
 		in = this.getClass().getClassLoader().getResourceAsStream("res/inv_txt_up.png");
@@ -80,8 +80,10 @@ public class LandingController extends AnchorPane{
 	public void onMarketingClick(){
 		// TODO: got to marketing scene
 	}
-	public void onRNDClick(){
-		// TODO: got to Research & Development scene
+	public void onRNDClick() throws Exception {
+		ResearchDevelopController ctr = (ResearchDevelopController) application.replaceSceneContent("ResearchDevelop.fxml", ResearchDevelopController.class);
+		ctr.setApp(application);
+		ctr.setPlayer(player);
 	}
 	public void onManagementClick(){
 		// TODO: got to Management scene
