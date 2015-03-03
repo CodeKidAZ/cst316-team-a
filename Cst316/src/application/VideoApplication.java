@@ -30,7 +30,6 @@ public class VideoApplication extends Application {
 			primaryStage.setScene(scene);
 			primaryStage.show();
 			//LoginController ctr = (LoginController) replaceSceneContent("Login.fxml", LoginController.class);
-			
 			VideoController ctr = (VideoController) replaceSceneContent("video.fxml", VideoController.class);
 			ctr.setApp(this);
 		} catch(Exception e) {
