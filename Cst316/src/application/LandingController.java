@@ -1,7 +1,5 @@
 package application;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -17,25 +15,24 @@ public class LandingController extends AnchorPane{
 	private URL location;
 	@FXML
 	ImageView invBtn;
+	@FXML
+	ImageView mngBtn;
+	@FXML
+	ImageView rndBtn;
+	@FXML
+	ImageView markBtn;
 
-	private Main application;
+	//private Main application;
 	InputStream in;
 	Image invIn;
 	Image invOut;
 
 	public void setApp(Main app){
-		application = app;
-		try {
-			in = new FileInputStream("res/inv_txt_hover.png");
-			invIn = new Image(in);
-			in = new FileInputStream("res/inv_txt_up.png");
-			if(in == null){
-
-			}
-			invOut = new Image(in);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
+		//application = app;
+		in = this.getClass().getClassLoader().getResourceAsStream("res/inv_txt_hover.png");
+		invIn = new Image(in);
+		in = this.getClass().getClassLoader().getResourceAsStream("res/inv_txt_up.png");
+		invOut = new Image(in);
 	}
 
 	@FXML
@@ -45,15 +42,28 @@ public class LandingController extends AnchorPane{
 
 	public void onInvMouseEntered(){
 		if(invBtn != null)
-		invBtn.setImage(invIn);
+			invBtn.setImage(invIn);
 
 	}
 
 	public void onInvMouseExit(){
 		if(invBtn != null)
-		invBtn.setImage(invOut);
+			invBtn.setImage(invOut);
 
 
+	}
+
+	public void onMarketingClick(){
+		// TODO: got to marketing scene
+	}
+	public void onRNDClick(){
+		// TODO: got to Research & Development scene
+	}
+	public void onManagementClick(){
+		// TODO: got to Management scene
+	}
+	public void onInvestmentsClick(){
+		// TODO: got to Investments scene
 	}
 
 

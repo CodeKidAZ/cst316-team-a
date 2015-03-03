@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Cst316" basedir="." default="jar" xmlns:jacoco="antlib:org.jacoco.ant">
+    <property name="debug.enable" value="true"/>
+    <property name="source.dir" value="src"/>
+    <property name="lib.dir"    value="lib"/>
+    <property name="class.dir"  value="bin"/>
+    <property name="jar.dir"    value="dist"/>
+    <property name="jar.file"   value="${jar.dir}/${ant.project.name}.jar"/>
+    <property name="main.class" value="application.Main"/>
+    <property name="test.dir"   value="test"/>
+    <property name="jacocoant.jar" value="${lib.dir}/jacocoant.jar"/>
+    <property name="jacoco.file" value="jacoco.exec"/>
+
+    <taskdef uri="antlib:org.jacoco.ant" resource="org/jacoco/ant/antlib.xml">
+      <classpath path="${jacocoant.jar}"/>
+    </taskdef>
+
+    <path id="libraries.path">    
+        <fileset dir="${lib.dir}">
+            <include name="*.jar"/>
+        </fileset>
+    </path>
+
+    <path id="jar.path">    
+        <fileset dir="${jar.dir}">
+            <include name="*.jar"/>
+        </fileset>
+    </path>
+
+    <manifestclasspath property="manifest.classpath" jarfile="${jar.file}">
+      <classpath refid="libraries.path"/>
+    </manifestclasspath>
+
+    <target name="clean" description="delete old files">
+        <delete dir="${class.dir}"/>
+        <delete file="${jar.file}"/>
+        <delete dir="${test.dir}"/>
+        <delete file="${jacoco.file}"/>
+    </target>
+
+    <target name="compile" description="build class files">
+        <mkdir dir="${class.dir}"/>
+        <javac srcdir="${source.dir}" destdir="${class.dir}" includeantruntime="false" debug="${debug.enable}">
+            <classpath refid="libraries.path"/>
+        </javac>
+        <copy todir="${class.dir}">
+            <fileset dir="${source.dir}">
+                <include name="**/**.fxml"/>
+                <include name="**/**.css"/>
+                <include name="**/**.png"/>
+                <include name="**/**.json"/>
+                <exclude name="**/**.java"/>
+                <exclude name="**/**.psd"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="jar" depends="compile">
+        <mkdir dir="${jar.dir}"/>
+
+        <jar destfile="${jar.file}" basedir="${class.dir}">
+            <manifest>
+                <attribute name="Main-Class" value="${main.class}"/>
+                <attribute name="Class-Path" value="${manifest.classpath}"/>
+            </manifest>
+        </jar>  
+    </target>
+
+    <target name="test" depends="jar">
+        <mkdir dir="${test.dir}"/>
+	    <jacoco:coverage excludes="*Test">
+	        <junit printsummary="withOutAndErr" fork="true">
+                <formatter type="xml"/>
+                <classpath refid="jar.path"/>
+                <batchtest todir="${test.dir}">
+                    <fileset dir="${source.dir}">
+                        <include name="**/*Test*.java"/>
+                    </fileset>
+                </batchtest>
+	        </junit>
+	    </jacoco:coverage>
+        <jacoco:report>
+            <executiondata>
+                <file file="jacoco.exec"/>
+            </executiondata>
+            <structure name="Cst316">
+                <classfiles>
+                    <fileset dir="${class.dir}">
+                        <exclude name="**/*Test.class"/>
+                    </fileset>
+                </classfiles>
+                <sourcefiles encoding="UTF-8">
+                    <fileset dir="${source.dir}">
+                        <exclude name="**/*Test.java"/>
+                    </fileset>
+                </sourcefiles>
+            </structure>
+            <html destdir="${test.dir}"/>
+        </jacoco:report>
+    </target>
+
+</project>

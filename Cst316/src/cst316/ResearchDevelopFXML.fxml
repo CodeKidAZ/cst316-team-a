@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="721.0" prefWidth="1289.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cst316.ResearchDevelopController">
+   <children>
+      <ImageView fitHeight="721.0" fitWidth="1297.0" focusTraversable="true">
+         <image>
+            <Image url="@../../res/wood_bg.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="returnButton" layoutX="1122.0" layoutY="636.0" onMouseClicked="#returnMouseFired" onMouseEntered="#returnMouseEnter" onMouseExited="#returnMouseExit" preserveRatio="true" AnchorPane.bottomAnchor="57.0" AnchorPane.rightAnchor="68.0">
+         <image>
+            <Image url="@../../res/return.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="70.0" fitWidth="414.0" layoutX="41.0" layoutY="32.0" preserveRatio="true" AnchorPane.leftAnchor="41.0">
+         <image>
+            <Image url="@../../res/research_develop.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="49.0" fitWidth="261.0" layoutX="983.0" layoutY="127.0" preserveRatio="true" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="127.0">
+         <image>
+            <Image url="@../../res/select_research.png" />
+         </image>
+      </ImageView>
+      <TextArea fx:id="descriptionBox" layoutX="494.0" layoutY="192.0" prefHeight="468.0" prefWidth="440.0" wrapText="true" AnchorPane.bottomAnchor="61.0" AnchorPane.leftAnchor="494.0" AnchorPane.rightAnchor="355.0" AnchorPane.topAnchor="192.0" />
+      <ComboBox fx:id="researchChoiceBox" layoutX="1038.0" layoutY="215.0" onAction="#researchChoiceButtonFired" prefHeight="31.0" prefWidth="211.0" AnchorPane.rightAnchor="62.0" />
+      <ImageView fx:id="pictureBox" fitHeight="355.0" fitWidth="334.0" layoutX="68.0" layoutY="204.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="62.0" fitWidth="290.0" layoutX="972.0" layoutY="310.0" preserveRatio="true" AnchorPane.rightAnchor="27.0">
+         <image>
+            <Image url="@../../res/select_devel.png" />
+         </image>
+      </ImageView>
+      <ComboBox fx:id="devChoiceBox" layoutX="1038.0" layoutY="395.0" onAction="#devChoiceButtonFired" prefHeight="31.0" prefWidth="211.0" AnchorPane.rightAnchor="57.0" />
+      <ImageView fx:id="purchaseButton" layoutX="1047.0" layoutY="531.0" onMouseClicked="#purchaseButtonFired" onMouseEntered="#purchaseEnter" onMouseExited="#purchaseExit" preserveRatio="true" AnchorPane.rightAnchor="101.0">
+         <image>
+            <Image url="@../../res/purchase.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
