@@ -5,15 +5,19 @@ import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.ContextMenuEvent;
+import javafx.scene.layout.AnchorPane;
 
-public class BuildingChoiceController implements Initializable {
+public class BuildingChoiceController extends AnchorPane {
+	@FXML 
+	private ResourceBundle resources;
+	@FXML 
+	private URL location;
 	@FXML
 	private TextArea descriptionBox;
 	@FXML
@@ -24,7 +28,8 @@ public class BuildingChoiceController implements Initializable {
 	private ImageView buildingPicture;
 	@FXML
 	private Button purchaseButton;
-	String output;
+	
+	private String output;
 
 	// Event Listener on ComboBox[#dropMenu].onAction
 	@FXML
@@ -71,7 +76,7 @@ public class BuildingChoiceController implements Initializable {
 	}
 	
 	//@Override
-	public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
+	public void setApp(Main application) {
 		dropMenu.getItems().setAll("Basic Building",
 								   "Factory",
 								   "Advanced Building",

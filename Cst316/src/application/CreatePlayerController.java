@@ -58,7 +58,7 @@ public class CreatePlayerController extends AnchorPane{
 					Player player = new Player(0, 100.0, playerName, new ArrayList<String>());
 					player.setProduct(product);
 					player.saveFile();
-					LandingController ctr = (LandingController) application.replaceSceneContent("landing.fxml", LandingController.class);
+					LandingController ctr = (LandingController) application.replaceSceneContent("Landing.fxml", LandingController.class);
 					ctr.setApp(application);
 					ctr.setPlayer(player);
 				} catch (Exception e) {

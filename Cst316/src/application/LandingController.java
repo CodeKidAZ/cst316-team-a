@@ -17,6 +17,8 @@ public class LandingController extends AnchorPane{
 	private URL location;
 	@FXML
 	ImageView invBtn;
+	@FXML
+	ImageView rndBtn;
 	
 	Player player;
 
@@ -24,6 +26,8 @@ public class LandingController extends AnchorPane{
 	InputStream in;
 	Image invIn;
 	Image invOut;
+	Image rndIn;
+	Image rndOut;
 
 	public void setApp(Main app){
 		//application = app;
@@ -31,6 +35,10 @@ public class LandingController extends AnchorPane{
 		invIn = new Image(in);
 		in = this.getClass().getClassLoader().getResourceAsStream("res/inv_txt_up.png");
 		invOut = new Image(in);
+		in = this.getClass().getClassLoader().getResourceAsStream("res/rnd_txt_hover.png");
+		rndIn = new Image(in);
+		in = this.getClass().getClassLoader().getResourceAsStream("res/rnd_txt_up.png");
+		rndOut = new Image(in);
 	}
 	
 	public void setPlayer(Player player) {
@@ -43,16 +51,32 @@ public class LandingController extends AnchorPane{
 	}
 
 	public void onInvMouseEntered(){
-		if(invBtn != null)
-		invBtn.setImage(invIn);
+		if (invBtn != null) {
+			invBtn.setImage(invIn);
+		}
 
 	}
 
 	public void onInvMouseExit(){
-		if(invBtn != null)
-		invBtn.setImage(invOut);
+		if (invBtn != null) {
+			invBtn.setImage(invOut);
+		}
+	}
+	
+	public void onRndMouseEntered(){
+		if (rndBtn != null) {
+			rndBtn.setImage(rndIn);
+		}
+	}
 
-
+	public void onRndMouseExit(){
+		if (rndBtn != null) {
+			rndBtn.setImage(rndOut);
+		}
+	}
+	
+	public void onRndMouseClicked() {
+		// TODO
 	}
 
 

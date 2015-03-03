@@ -43,7 +43,7 @@ public class LoginController extends AnchorPane{
 					RadioButton toggle = (RadioButton) playerToggleGroup.getSelectedToggle();
 					boolean exists = player.readFile(toggle.getText());
 					if (exists) {
-						LandingController ctr = (LandingController) application.replaceSceneContent("landing.fxml", LandingController.class);
+						LandingController ctr = (LandingController) application.replaceSceneContent("Landing.fxml", LandingController.class);
 						ctr.setApp(application);
 						ctr.setPlayer(player);
 					} else {
