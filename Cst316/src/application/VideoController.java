@@ -28,7 +28,7 @@ public class VideoController extends AnchorPane{
 
 	}
 	
-	public void onSkipClick(){
+	public void onSkipClicked(){
 		// TODO: skip animation into next scene
 	}
 
