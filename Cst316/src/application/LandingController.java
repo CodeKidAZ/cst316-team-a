@@ -18,11 +18,14 @@ public class LandingController extends AnchorPane{
 	@FXML
 	ImageView invBtn;
 	@FXML
+	ImageView mngBtn;
+	@FXML
 	ImageView rndBtn;
-	
-	Player player;
+	@FXML
+	ImageView markBtn;
 
 	//private Main application;
+	Player player;
 	InputStream in;
 	Image invIn;
 	Image invOut;
@@ -54,7 +57,6 @@ public class LandingController extends AnchorPane{
 		if (invBtn != null) {
 			invBtn.setImage(invIn);
 		}
-
 	}
 
 	public void onInvMouseExit(){
@@ -75,8 +77,17 @@ public class LandingController extends AnchorPane{
 		}
 	}
 	
-	public void onRndMouseClicked() {
-		// TODO
+	public void onMarketingClick(){
+		// TODO: got to marketing scene
+	}
+	public void onRNDClick(){
+		// TODO: got to Research & Development scene
+	}
+	public void onManagementClick(){
+		// TODO: got to Management scene
+	}
+	public void onInvestmentsClick(){
+		// TODO: got to Investments scene
 	}
 
 
