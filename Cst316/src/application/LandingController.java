@@ -3,6 +3,8 @@ package application;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import cst316.Player;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -15,6 +17,8 @@ public class LandingController extends AnchorPane{
 	private URL location;
 	@FXML
 	ImageView invBtn;
+	
+	Player player;
 
 	//private Main application;
 	InputStream in;
@@ -27,6 +31,10 @@ public class LandingController extends AnchorPane{
 		invIn = new Image(in);
 		in = this.getClass().getClassLoader().getResourceAsStream("res/inv_txt_up.png");
 		invOut = new Image(in);
+	}
+	
+	public void setPlayer(Player player) {
+		this.player = player;
 	}
 
 	@FXML

@@ -29,6 +29,7 @@ public class Player implements JSONString {
 	private String name;
 	private ArrayList<String> assets;
 	private ArrayList<Investment> investments;
+	private Product product;
 	
 	/**
 	 * Default construction of a player
@@ -76,7 +77,7 @@ public class Player implements JSONString {
 	/**
 	 * Construct a player from a JSONObject
 	 */
-	public Player(JSONObject jsonObject) {
+	public Player(JSONObject jsonObject) throws Exception {
 		this.setFromJSONObject(jsonObject);
 	}
 	
@@ -95,6 +96,7 @@ public class Player implements JSONString {
 			obj.put("Name", name);
 			obj.put("Assets", assets);
 			obj.put("Investments", investments);
+			obj.put("Product", product);
 			ret = obj.toString();
 		} catch(Exception e) {
 			System.out.println("Failed to parse.");
@@ -117,13 +119,19 @@ public class Player implements JSONString {
 		return false;
 	}
 	
-	public void setFromJSONObject(JSONObject jsonObject) {
+	public void setFromJSONObject(JSONObject jsonObject) throws Exception {
 		
 		//Extract the data from the JSON file and store it into objects
 		int points = jsonObject.getInt("Points");
 		int employees = jsonObject.getInt("Employees");
 		double money = jsonObject.getDouble("Money");
 		String name = jsonObject.getString("Name");
+		if (!jsonObject.isNull("Product")) {
+			JSONObject productObject = jsonObject.getJSONObject("Product");
+			this.product = new Product(productObject);
+		} else {
+			this.product = null;
+		}
 		
 		//Get the list that is included in the JSON file
 		JSONArray jArrayAssets = jsonObject.getJSONArray("Assets");
@@ -348,5 +356,13 @@ public class Player implements JSONString {
 	 */
 	public void cashInvestment(Investment inv) {
 		this.money += inv.calculateROI();
+	}
+	
+	public Product getProduct() {
+		return this.product;
+	}
+	
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 }
