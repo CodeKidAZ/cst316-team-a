@@ -12,7 +12,7 @@
             <Image url="@../res/city_background.png" />
          </image>
       </ImageView>
-      <ImageView id="markBtn" fx:id="markBtn" fitHeight="44.0" fitWidth="171.0" layoutX="1045.0" layoutY="241.0" onMouseClicked="#onMarketingClick" pickOnBounds="true" preserveRatio="true">
+      <ImageView id="markBtn" fx:id="markBtn" fitHeight="44.0" fitWidth="171.0" layoutX="1045.0" layoutY="241.0" onMouseClicked="#onMarketingClick" onMouseEntered="#onMarkMouseEntered" onMouseExited="#onMarkMouseExit" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../res/mark_txt.png" />
          </image>

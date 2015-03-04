@@ -47,7 +47,7 @@ public class LoginController extends AnchorPane{
 						ctr.setApp(application);
 						ctr.setPlayer(player);
 					} else {
-						VideoController ctr = (VideoController) application.replaceSceneContent("video.fxml", VideoController.class);
+						VideoController ctr = (VideoController) application.replaceSceneContent("Video.fxml", VideoController.class);
 						ctr.setApp(application, toggle.getText());
 					}
 				} catch (Exception e) {

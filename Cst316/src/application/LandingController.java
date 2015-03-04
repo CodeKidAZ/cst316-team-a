@@ -31,6 +31,8 @@ public class LandingController extends AnchorPane{
 	Image invOut;
 	Image rndIn;
 	Image rndOut;
+	Image markIn;
+	Image markOut;
 
 	public void setApp(Main app){
 		application = app;
@@ -42,6 +44,10 @@ public class LandingController extends AnchorPane{
 		rndIn = new Image(in);
 		in = this.getClass().getClassLoader().getResourceAsStream("res/rnd_txt_up.png");
 		rndOut = new Image(in);
+		in = this.getClass().getClassLoader().getResourceAsStream("res/mark_txt_hover.png");
+		markIn = new Image(in);
+		in = this.getClass().getClassLoader().getResourceAsStream("res/mark_txt_up.png");
+		markOut = new Image(in);
 	}
 	
 	public void setPlayer(Player player) {
@@ -77,8 +83,22 @@ public class LandingController extends AnchorPane{
 		}
 	}
 	
-	public void onMarketingClick(){
-		// TODO: got to marketing scene
+	public void onMarkMouseEntered(){
+		if (markBtn != null) {
+			markBtn.setImage(markIn);
+		}
+	}
+
+	public void onMarkMouseExit(){
+		if (markBtn != null) {
+			markBtn.setImage(markOut);
+		}
+	}
+	
+	public void onMarketingClick() throws Exception {
+		Market3Controller ctr = (Market3Controller) application.replaceSceneContent("MarketingChoice.fxml", Market3Controller.class);
+		ctr.setApp(application);
+		ctr.setPlayer(player);
 	}
 	public void onRNDClick() throws Exception {
 		ResearchDevelopController ctr = (ResearchDevelopController) application.replaceSceneContent("ResearchDevelop.fxml", ResearchDevelopController.class);
@@ -88,8 +108,10 @@ public class LandingController extends AnchorPane{
 	public void onManagementClick(){
 		// TODO: got to Management scene
 	}
-	public void onInvestmentsClick(){
-		// TODO: got to Investments scene
+	public void onInvestmentsClick() throws Exception {
+		InvestmentController ctr = (InvestmentController) application.replaceSceneContent("Investment.fxml", InvestmentController.class);
+		ctr.setApp(application);
+		ctr.setPlayer(player);
 	}
 
 

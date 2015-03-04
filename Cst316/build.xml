@@ -48,6 +48,8 @@
                 <include name="**/**.fxml"/>
                 <include name="**/**.css"/>
                 <include name="**/**.png"/>
+                <include name="**/**.jpg"/>
+                <include name="**/**.gif"/>
                 <include name="**/**.json"/>
                 <exclude name="**/**.java"/>
                 <exclude name="**/**.psd"/>
