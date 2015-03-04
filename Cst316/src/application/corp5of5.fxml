@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CorpProcess.Corp5of5Controller">
+   <children>
+      <Label layoutX="278.0" layoutY="72.0" text="INCORPORATE PROCESS" AnchorPane.leftAnchor="292.0" AnchorPane.rightAnchor="239.0" AnchorPane.topAnchor="32.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <VBox alignment="CENTER" layoutX="136.0" layoutY="106.0" spacing="20.0">
+         <children>
+            <Text layoutX="295.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5 of 5" textAlignment="CENTER" wrappingWidth="184.283203125">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Text>
+            <Text layoutX="283.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Know your Ongoing Formalities" textAlignment="CENTER" wrappingWidth="208.283203125">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Text>
+            <Text layoutX="145.0" layoutY="239.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The essential rules of operation for a corporation are known as the “Corporate Formalities.” " textAlignment="CENTER" />
+            <Text layoutX="136.0" layoutY="273.0" strokeType="OUTSIDE" strokeWidth="0.0" text="These rules were designed to ensure that the separate legal entity status afforded a corporation is maintained, and the observance of the rules ensures that the all of the benefits commensurate with theformation of a corporation are not compromised." textAlignment="CENTER" wrappingWidth="502.44140625" />
+            <Text layoutX="249.0" layoutY="349.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create Corporate Bylaws - Rules adopted by a corporation that govern its actions and the rights and duties of corporate members and officers" textAlignment="CENTER" wrappingWidth="261.267578125" />
+            <Text layoutX="236.0" layoutY="425.0" strokeType="OUTSIDE" strokeWidth="0.0" text="There must be Annual Meetings of the Board of Directors" textAlignment="CENTER" />
+            <Text layoutX="278.0" layoutY="462.0" strokeType="OUTSIDE" strokeWidth="0.0" text="All shareholders must sign and file IRS Form 2553 to be treated as an S Corp" textAlignment="CENTER" wrappingWidth="219.0" />
+         </children>
+      </VBox>
+      <Button fx:id="doneButton" layoutX="345.0" layoutY="465.0" mnemonicParsing="false" onAction="#doneButton" prefHeight="33.0" prefWidth="63.0" text="Done" />
+      <Button fx:id="backButton" cancelButton="true" layoutX="199.0" layoutY="31.0" mnemonicParsing="false" onAction="#backButton" prefHeight="33.0" prefWidth="63.0" text="Back" AnchorPane.leftAnchor="216.0" AnchorPane.topAnchor="32.0" />
+   </children>
+</AnchorPane>
