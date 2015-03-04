@@ -1,9 +1,11 @@
-package cst316;
+package test;
 
 import static org.junit.Assert.*;
-import org.json.JSONObject;
 
+import org.json.JSONObject;
 import org.junit.Test;
+
+import cst316.Investment;
 
 public class InvestmentTest {
 
