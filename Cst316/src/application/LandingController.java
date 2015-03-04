@@ -10,7 +10,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
-public class LandingController extends AnchorPane{
+public class LandingController extends AnchorPane {
 	@FXML 
 	private ResourceBundle resources;
 	@FXML 
@@ -33,8 +33,10 @@ public class LandingController extends AnchorPane{
 	Image rndOut;
 	Image markIn;
 	Image markOut;
+	Image mngIn;
+	Image mngOut;
 
-	public void setApp(Main app){
+	public void setApp(Main app) {
 		application = app;
 		in = this.getClass().getClassLoader().getResourceAsStream("res/inv_txt_hover.png");
 		invIn = new Image(in);
@@ -48,6 +50,10 @@ public class LandingController extends AnchorPane{
 		markIn = new Image(in);
 		in = this.getClass().getClassLoader().getResourceAsStream("res/mark_txt_up.png");
 		markOut = new Image(in);
+		in = this.getClass().getClassLoader().getResourceAsStream("res/man_txt_hover.png");
+		mngIn = new Image(in);
+		in = this.getClass().getClassLoader().getResourceAsStream("res/man_txt_up.png");
+		mngOut = new Image(in);
 	}
 	
 	public void setPlayer(Player player) {
@@ -95,6 +101,18 @@ public class LandingController extends AnchorPane{
 		}
 	}
 	
+	public void onMngMouseEntered(){
+		if (mngBtn != null) {
+			mngBtn.setImage(mngIn);
+		}
+	}
+
+	public void onMngMouseExit(){
+		if (mngBtn != null) {
+			mngBtn.setImage(mngOut);
+		}
+	}
+	
 	public void onMarketingClick() throws Exception {
 		Market3Controller ctr = (Market3Controller) application.replaceSceneContent("MarketingChoice.fxml", Market3Controller.class);
 		ctr.setApp(application);
@@ -105,8 +123,10 @@ public class LandingController extends AnchorPane{
 		ctr.setApp(application);
 		ctr.setPlayer(player);
 	}
-	public void onManagementClick(){
-		// TODO: got to Management scene
+	public void onManagementClick() throws Exception {
+		HRController ctr = (HRController) application.replaceSceneContent("HR.fxml", HRController.class);
+		ctr.setApp(application);
+		ctr.setPlayer(player);
 	}
 	public void onInvestmentsClick() throws Exception {
 		InvestmentController ctr = (InvestmentController) application.replaceSceneContent("Investment.fxml", InvestmentController.class);

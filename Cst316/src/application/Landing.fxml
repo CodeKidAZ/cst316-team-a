@@ -22,7 +22,7 @@
             <Image url="@../res/rnd_txt.png" />
          </image>
       </ImageView>
-      <ImageView id="mngBtn" fx:id="mngBtn" fitHeight="150.0" fitWidth="200.0" layoutX="1030.0" layoutY="84.0" onMouseClicked="#onManagementClick" pickOnBounds="true" preserveRatio="true">
+      <ImageView id="mngBtn" fx:id="mngBtn" fitHeight="150.0" fitWidth="200.0" layoutX="1030.0" layoutY="84.0" onMouseClicked="#onManagementClick" onMouseEntered="#onMngMouseEntered" onMouseExited="#onMngMouseExit" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../res/man_txt.png" />
          </image>

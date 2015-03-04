@@ -43,13 +43,14 @@
         </javac>
         <copy todir="${class.dir}">
             <fileset dir="${source.dir}">
-                <include name="**/**.fxml"/>
-                <include name="**/**.mp4"/>
                 <include name="**/**.css"/>
-                <include name="**/**.png"/>
-                <include name="**/**.jpg"/>
+                <include name="**/**.fxml"/>
                 <include name="**/**.gif"/>
+                <include name="**/**.jpg"/>
                 <include name="**/**.json"/>
+                <include name="**/**.mp4"/>
+                <include name="**/**.png"/>
+                <include name="**/**.txt"/>
                 <exclude name="**/**.java"/>
                 <exclude name="**/**.psd"/>
             </fileset>
