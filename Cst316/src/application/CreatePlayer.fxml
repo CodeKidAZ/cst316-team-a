@@ -14,7 +14,7 @@
                <GridPane.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </GridPane.margin></Button>
-            <ComboBox fx:id="productCombo" prefWidth="150.0" promptText="Select a product" GridPane.rowIndex="0" />
+            <ComboBox fx:id="productCombo" prefHeight="25.0" prefWidth="168.0" promptText="Select a product" GridPane.rowIndex="0" />
          </children>
          <columnConstraints>
             <ColumnConstraints />
