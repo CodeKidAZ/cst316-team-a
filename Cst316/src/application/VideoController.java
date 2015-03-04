@@ -15,11 +15,25 @@ public class VideoController extends AnchorPane{
 	@FXML
 	Button skipBtn;
 	
+	private String name;
+	private Main app;
+	private MediaPlayer player;
+	private CreatePlayerController ctr;
+	
 	public void setApp(VideoApplication app){
 		Media media = new Media(Paths.get("src/res/intro.mp4").toUri().toString());
-		MediaPlayer player = new MediaPlayer(media);
+		player = new MediaPlayer(media);
 		vid.setMediaPlayer(player);
 		player.play();
+	}
+	public void setApp(Main app, String name){
+		Media media = new Media(Paths.get("src/res/intro.mp4").toUri().toString());
+		player = new MediaPlayer(media);
+		vid.setMediaPlayer(player);
+		player.play();
+		player.setOnEndOfMedia(new EndOfMedia());
+		this.name = name;
+		this.app = app;
 	}
 	
 	
@@ -29,7 +43,27 @@ public class VideoController extends AnchorPane{
 	}
 	
 	public void onSkipClicked(){
-		// TODO: skip animation into next scene
+		
+		player.stop();
+		try {
+			ctr = (CreatePlayerController) app.replaceSceneContent("CreatePlayer.fxml", CreatePlayerController.class);
+			ctr.setApp(app);
+			ctr.setPlayerName(name);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
-
+	
+	class EndOfMedia implements Runnable{
+		@Override
+		public void run() {
+			try {
+				ctr = (CreatePlayerController) app.replaceSceneContent("CreatePlayer.fxml", CreatePlayerController.class);
+				ctr.setApp(app);
+				ctr.setPlayerName(name);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
 }
