@@ -1,13 +1,17 @@
-package cst316;
+package test;
 
 import java.io.File;
 import java.util.ArrayList;
+
 import org.json.JSONObject;
 
 import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import cst316.Investment;
+import cst316.Player;
 
 public class PlayerTest {
 	Player player;
