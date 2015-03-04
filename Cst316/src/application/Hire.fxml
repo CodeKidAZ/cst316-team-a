@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label fx:id="hireTitleLabel" layoutX="354.0" layoutY="33.0" text="HIRE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Button fx:id="backButton" layoutX="272.0" layoutY="33.0" mnemonicParsing="false" onAction="#backMethod" prefHeight="30.0" prefWidth="63.0" text="Back" />
+      <Button fx:id="doneButton" layoutX="642.0" layoutY="475.0" mnemonicParsing="false" onAction="#doneMethod" prefHeight="30.0" prefWidth="63.0" text="Done" />
+      <GridPane hgap="50.0" layoutX="70.0" layoutY="146.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="135.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <VBox layoutX="250.0" layoutY="146.0" spacing="10.0" GridPane.columnIndex="1">
+               <children>
+                  <Group layoutY="-32.0">
+                     <children>
+                        <Label fx:id="wageLabel6" layoutX="130.0" layoutY="205.0" text="Wage" />
+                        <Label fx:id="nameLabel6" layoutX="130.0" layoutY="185.0" text="Name" />
+                        <ImageView fx:id="imageEmployee6" fitHeight="60.0" fitWidth="63.0" layoutX="73.0" layoutY="178.0" onMouseClicked="#emp1Clicked" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </Group>
+                  <Group layoutX="-1.0" layoutY="44.0">
+                     <children>
+                        <Label fx:id="wageLabel7" layoutX="130.0" layoutY="205.0" text="Wage" />
+                        <Label fx:id="nameLabel7" layoutX="130.0" layoutY="185.0" text="Name" />
+                        <ImageView fx:id="imageEmployee7" fitHeight="60.0" fitWidth="63.0" layoutX="73.0" layoutY="178.0" onMouseClicked="#emp1Clicked" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </Group>
+                  <Group layoutX="-2.0" layoutY="113.0">
+                     <children>
+                        <Label fx:id="wageLabel8" layoutX="130.0" layoutY="205.0" text="Wage" />
+                        <Label fx:id="nameLabel8" layoutX="130.0" layoutY="185.0" text="Name" />
+                        <ImageView fx:id="imageEmployee8" fitHeight="60.0" fitWidth="63.0" layoutX="73.0" layoutY="178.0" onMouseClicked="#emp1Clicked" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </Group>
+                  <Group layoutX="-3.0" layoutY="184.0">
+                     <children>
+                        <Label fx:id="wageLabel9" layoutX="130.0" layoutY="205.0" text="Wage" />
+                        <Label fx:id="nameLabel9" layoutX="130.0" layoutY="185.0" text="Name" />
+                        <ImageView fx:id="imageEmployee9" fitHeight="60.0" fitWidth="63.0" layoutX="73.0" layoutY="178.0" onMouseClicked="#emp1Clicked" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </Group>
+                  <Group layoutY="258.0">
+                     <children>
+                        <Label fx:id="wageLabel10" layoutX="130.0" layoutY="205.0" text="Wage" />
+                        <Label fx:id="nameLabel10" layoutX="130.0" layoutY="185.0" text="Name" />
+                        <ImageView fx:id="imageEmployee10" fitHeight="60.0" fitWidth="63.0" layoutX="73.0" layoutY="178.0" onMouseClicked="#emp1Clicked" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </Group>
+               </children>
+            </VBox>
+            <VBox layoutX="454.0" layoutY="147.0" spacing="10.0" GridPane.columnIndex="2">
+               <children>
+                  <Group layoutY="-32.0">
+                     <children>
+                        <Label fx:id="wageLabel11" layoutX="130.0" layoutY="205.0" text="Wage" />
+                        <Label fx:id="nameLabel11" layoutX="130.0" layoutY="185.0" text="Name" />
+                        <ImageView fx:id="imageEmployee11" fitHeight="60.0" fitWidth="63.0" layoutX="73.0" layoutY="178.0" onMouseClicked="#emp1Clicked" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </Group>
+                  <Group layoutX="-1.0" layoutY="44.0">
+                     <children>
+                        <Label fx:id="wageLabel12" layoutX="130.0" layoutY="205.0" text="Wage" />
+                        <Label fx:id="nameLabel12" layoutX="130.0" layoutY="185.0" text="Name" />
+                        <ImageView fx:id="imageEmployee12" fitHeight="60.0" fitWidth="63.0" layoutX="73.0" layoutY="178.0" onMouseClicked="#emp1Clicked" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </Group>
+                  <Group layoutX="-2.0" layoutY="113.0">
+                     <children>
+                        <Label fx:id="wageLabel13" layoutX="130.0" layoutY="205.0" text="Wage" />
+                        <Label fx:id="nameLabel13" layoutX="130.0" layoutY="185.0" text="Name" />
+                        <ImageView fx:id="imageEmployee13" fitHeight="60.0" fitWidth="63.0" layoutX="73.0" layoutY="178.0" onMouseClicked="#emp1Clicked" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </Group>
+                  <Group layoutX="-3.0" layoutY="184.0">
+                     <children>
+                        <Label fx:id="wageLabel14" layoutX="130.0" layoutY="205.0" text="Wage" />
+                        <Label fx:id="nameLabel14" layoutX="130.0" layoutY="185.0" text="Name" />
+                        <ImageView fx:id="imageEmployee14" fitHeight="60.0" fitWidth="63.0" layoutX="73.0" layoutY="178.0" onMouseClicked="#emp1Clicked" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </Group>
+                  <Group layoutY="258.0">
+                     <children>
+                        <Label fx:id="wageLabel15" layoutX="130.0" layoutY="205.0" text="Wage" />
+                        <Label fx:id="nameLabel15" layoutX="130.0" layoutY="185.0" text="Name" />
+                        <ImageView fx:id="imageEmployee15" fitHeight="60.0" fitWidth="63.0" layoutX="73.0" layoutY="178.0" onMouseClicked="#emp1Clicked" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </Group>
+               </children>
+            </VBox>
+            <VBox layoutX="70.0" layoutY="146.0" spacing="10.0">
+               <children>
+                  <Group layoutY="-32.0">
+                     <children>
+                        <Label fx:id="wageLabel1" layoutX="130.0" layoutY="205.0" text="Wage" />
+                        <Label fx:id="nameLabel1" layoutX="130.0" layoutY="185.0" text="Name" />
+                        <ImageView fx:id="imageEmployee1" fitHeight="60.0" fitWidth="63.0" layoutX="73.0" layoutY="178.0" onMouseClicked="#emp1Clicked" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </Group>
+                  <Group layoutX="-1.0" layoutY="44.0">
+                     <children>
+                        <Label fx:id="wageLabel2" layoutX="130.0" layoutY="205.0" text="Wage" />
+                        <Label fx:id="nameLabel2" layoutX="130.0" layoutY="185.0" text="Name" />
+                        <ImageView fx:id="imageEmployee2" fitHeight="60.0" fitWidth="63.0" layoutX="73.0" layoutY="178.0" onMouseClicked="#emp1Clicked" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </Group>
+                  <Group layoutX="-2.0" layoutY="113.0">
+                     <children>
+                        <Label fx:id="wageLabel3" layoutX="130.0" layoutY="205.0" text="Wage" />
+                        <Label fx:id="nameLabel3" layoutX="130.0" layoutY="185.0" text="Name" />
+                        <ImageView fx:id="imageEmployee3" fitHeight="60.0" fitWidth="63.0" layoutX="73.0" layoutY="178.0" onMouseClicked="#emp1Clicked" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </Group>
+                  <Group layoutX="-3.0" layoutY="184.0">
+                     <children>
+                        <Label fx:id="wageLabel4" layoutX="130.0" layoutY="205.0" text="Wage" />
+                        <Label fx:id="nameLabel4" layoutX="130.0" layoutY="185.0" text="Name" />
+                        <ImageView fx:id="imageEmployee4" fitHeight="60.0" fitWidth="63.0" layoutX="73.0" layoutY="178.0" onMouseClicked="#emp1Clicked" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </Group>
+                  <Group layoutY="258.0">
+                     <children>
+                        <Label fx:id="wageLabel5" layoutX="130.0" layoutY="205.0" text="Wage" />
+                        <Label fx:id="nameLabel5" layoutX="130.0" layoutY="185.0" text="Name" />
+                        <ImageView fx:id="imageEmployee5" fitHeight="60.0" fitWidth="63.0" layoutX="73.0" layoutY="178.0" onMouseClicked="#emp1Clicked" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </Group>
+               </children>
+            </VBox>
+         </children>
+      </GridPane>
+      <TableView fx:id="table1" layoutX="553.0" layoutY="140.0" prefHeight="316.0" prefWidth="152.0">
+        <columns>
+          <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Name" />
+          <TableColumn fx:id="wageColumn" prefWidth="75.0" text="Wage" />
+        </columns>
+      </TableView>
+      <Button fx:id="undoButton" layoutX="553.0" layoutY="475.0" mnemonicParsing="false" onAction="#undoMethod" prefHeight="30.0" prefWidth="63.0" text="Delete" />
+      <Label fx:id="totalLabel" layoutX="106.0" layoutY="497.0" text="Label" />
+   </children>
+</AnchorPane>
