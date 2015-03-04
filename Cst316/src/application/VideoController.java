@@ -20,14 +20,14 @@ public class VideoController extends AnchorPane{
 	private MediaPlayer player;
 	private CreatePlayerController ctr;
 	
-	public void setApp(VideoApplication app){
-		Media media = new Media(Paths.get("src/res/intro.mp4").toUri().toString());
-		player = new MediaPlayer(media);
-		vid.setMediaPlayer(player);
-		player.play();
-	}
 	public void setApp(Main app, String name){
-		Media media = new Media(Paths.get("src/res/intro.mp4").toUri().toString());
+		String mediaUri;
+		try {
+			mediaUri = "jar:file:"+Main.findPathJar(VideoController.class)+"!/res/intro.mp4";
+		} catch (Exception e) {
+			mediaUri = Paths.get("src/res/intro.mp4").toUri().toString();
+		}
+		Media media = new Media(mediaUri);
 		player = new MediaPlayer(media);
 		vid.setMediaPlayer(player);
 		player.play();

@@ -11,6 +11,8 @@
     <property name="jacocoant.jar" value="${lib.dir}/jacocoant.jar"/>
     <property name="jacoco.file" value="jacoco.exec"/>
 
+    <import file="${lib.dir}/one-jar-ant-task.xml" optional="true" />
+
     <taskdef uri="antlib:org.jacoco.ant" resource="org/jacoco/ant/antlib.xml">
       <classpath path="${jacocoant.jar}"/>
     </taskdef>
@@ -27,10 +29,6 @@
         </fileset>
     </path>
 
-    <manifestclasspath property="manifest.classpath" jarfile="${jar.file}">
-      <classpath refid="libraries.path"/>
-    </manifestclasspath>
-
     <target name="clean" description="delete old files">
         <delete dir="${class.dir}"/>
         <delete file="${jar.file}"/>
@@ -46,6 +44,7 @@
         <copy todir="${class.dir}">
             <fileset dir="${source.dir}">
                 <include name="**/**.fxml"/>
+                <include name="**/**.mp4"/>
                 <include name="**/**.css"/>
                 <include name="**/**.png"/>
                 <include name="**/**.jpg"/>
@@ -58,14 +57,17 @@
     </target>
 
     <target name="jar" depends="compile">
-        <mkdir dir="${jar.dir}"/>
-
-        <jar destfile="${jar.file}" basedir="${class.dir}">
+        <delete file="${jar.file}"/>
+        <taskdef name="jarjar" classname="com.tonicsystems.jarjar.JarJarTask"
+            classpath="lib/jarjar-1.4.jar"/>
+        <jarjar jarfile="${jar.file}">
+            <fileset dir="${class.dir}"/>
+            <zipfileset src="${lib.dir}/json.jar"/>
+            <zipfileset src="${lib.dir}/junit-4.10.jar"/>
             <manifest>
                 <attribute name="Main-Class" value="${main.class}"/>
-                <attribute name="Class-Path" value="${manifest.classpath}"/>
             </manifest>
-        </jar>  
+        </jarjar>
     </target>
 
     <target name="test" depends="jar">
