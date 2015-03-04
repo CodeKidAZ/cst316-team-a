@@ -105,4 +105,16 @@ public class Product implements JSONString {
         double total = (quantity * this.totalMarginalCost) + this.totalFixedCost;
         return total / quantity;
     }
+    
+    public static String[] getAllProductNames() {
+        JSONTokener tokener = new JSONTokener(Product.class.getClassLoader().getResourceAsStream("res/products.json"));
+        JSONObject allProducts = new JSONObject(tokener);
+        String[] allProductNames = new String[allProducts.length()];
+        int i = 0;
+        for (String s : allProducts.keySet()) {
+        	allProductNames[i] = s;
+        	i += 1;
+        }
+        return allProductNames;
+    }
 }

@@ -17,7 +17,7 @@
             <Image url="@../res/mark_txt.png" />
          </image>
       </ImageView>
-      <ImageView id="rndBtn" fx:id="rndBtn" fitHeight="150.0" fitWidth="200.0" layoutX="1030.0" layoutY="139.0" onMouseClicked="#onRNDClick" pickOnBounds="true" preserveRatio="true">
+      <ImageView id="rndBtn" fx:id="rndBtn" fitHeight="150.0" fitWidth="200.0" layoutX="1030.0" layoutY="139.0" onMouseClicked="#onRNDClick" onMouseEntered="#onRndMouseEntered" onMouseExited="#onRndMouseExit" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../res/rnd_txt.png" />
          </image>

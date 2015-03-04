@@ -10,29 +10,11 @@
    <children>
       <GridPane alignment="CENTER" layoutX="47.0" layoutY="49.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <RadioButton mnemonicParsing="false" selected="true" text="Player #1">
-               <padding>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </padding>
-               <toggleGroup>
-                  <ToggleGroup fx:id="playerToggleGroup" />
-               </toggleGroup></RadioButton>
-            <RadioButton mnemonicParsing="false" text="Player #2" toggleGroup="$playerToggleGroup" GridPane.rowIndex="1">
-               <padding>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </padding></RadioButton>
-            <RadioButton mnemonicParsing="false" text="Player #3" toggleGroup="$playerToggleGroup" GridPane.rowIndex="2">
-               <padding>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </padding></RadioButton>
-            <RadioButton mnemonicParsing="false" text="Player #4" toggleGroup="$playerToggleGroup" GridPane.rowIndex="3">
-               <padding>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </padding></RadioButton>
-            <Button fx:id="continueBtn" mnemonicParsing="false" text="Continue" GridPane.rowIndex="4">
+            <Button fx:id="continueBtn" mnemonicParsing="false" text="Continue" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </GridPane.margin></Button>
+            <ComboBox fx:id="productCombo" prefWidth="150.0" promptText="Select a product" GridPane.rowIndex="0" />
          </children>
          <columnConstraints>
             <ColumnConstraints />

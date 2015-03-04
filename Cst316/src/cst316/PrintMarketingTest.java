@@ -55,24 +55,24 @@ public class PrintMarketingTest {
 	@Test
 	public void testStartCampaign() {
 		print1 = new PrintMarketing(30, 1, 500, "Posters for ASU PAB", true);
-		assertTrue((print1.StartCampaign() < 100) && (print1.StartCampaign() > -100));
+		assertTrue((print1.startCampaign() <= 100) && (print1.startCampaign() >= -100));
 		print1.setRisk(5);
-		assertTrue((print1.StartCampaign() < 500) && (print1.StartCampaign() > -500));
+		assertTrue((print1.startCampaign() <= 500) && (print1.startCampaign() >= -500));
 		print2 = new PrintMarketing(30, -1, 500, "Posters for ASU PAB", true);
-		assertTrue((print2.StartCampaign() < 100) && (print1.StartCampaign() > -100));
+		assertTrue((print2.startCampaign() <= 100) && (print2.startCampaign() >= -100));
 		print2.setRisk(5);
-		assertTrue((print2.StartCampaign() < 500) && (print2.StartCampaign() > -500));
+		assertTrue((print2.startCampaign() <= 500) && (print2.startCampaign() >= -500));
 		print3 = new PrintMarketing(30, 0, 500, "Posters for ASU PAB", true);
-		assertTrue((print3.StartCampaign() == 0));
+		assertTrue((print3.startCampaign() == 0));
 		print2.setRisk(5);
-		assertTrue((print3.StartCampaign() == 0));
+		assertTrue((print3.startCampaign() == 0));
 	}
 	
 	@Test
 	public void testCancelCampaign() {
-		assertTrue((print1.CancelCampaign() < 100) && (print1.CancelCampaign() > 0));
-		assertTrue((print2.CancelCampaign() < 100) && (print2.CancelCampaign() > 0));
-		assertTrue((print3.CancelCampaign() < 100) && (print3.CancelCampaign() > 0));
+		assertTrue((print1.cancelCampaign() < 100) && (print1.cancelCampaign() > 0));
+		assertTrue((print2.cancelCampaign() < 100) && (print2.cancelCampaign() > 0));
+		assertTrue((print3.cancelCampaign() < 100) && (print3.cancelCampaign() > 0));
 	}
 
 }

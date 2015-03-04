@@ -21,9 +21,9 @@ public class PlayerTest {
     }
 	@Test
 	public void testAssets() {
-		assertEquals(player.getAssets().size(),2,0);
+		assertEquals(player.getAssets().size(),2);
 		player.addAsset("Test3");
-		assertEquals(player.getAssets().size(),3,0);
+		assertEquals(player.getAssets().size(),3);
 		assertEquals(player.getAssets().get(2),"Test3");
 		ArrayList<String> assets2 = new ArrayList<String>();
 		player.setAssets(assets2);
@@ -83,8 +83,8 @@ public class PlayerTest {
 		assertFalse(tester.saveFile());
 	}
 	@Test
-	public void testConstructJSONObject() {
-		Player tester = new Player(new JSONObject("{\"Points\":1119,\"Money\":25.6,\"Name\":\"Billy Bob\",\"Assets\":[\"This\",\"That\",\"The Other\"],\"Investments\":[{\"Amount\":12.8,\"Name\":\"Quick Oats\",\"IsGood\":true},{\"Amount\":11.17,\"Name\":\"Grits\",\"IsGood\":false}]}"));
+	public void testConstructJSONObject() throws Exception {
+		Player tester = new Player(new JSONObject("{\"Product\": {\"Name\": \"Electronics\", \"TotalFixedCost\": 10.0, \"TotalMarginalCost\": 5.0}, \"Employees\": 1, \"Points\":1119,\"Money\":25.6,\"Name\":\"Billy Bob\",\"Assets\":[\"This\",\"That\",\"The Other\"],\"Investments\":[{\"Amount\":12.8,\"Name\":\"Quick Oats\",\"IsGood\":true},{\"Amount\":11.17,\"Name\":\"Grits\",\"IsGood\":false}]}"));
 		assertEquals(tester.getMoney(), 25.6, .5);
 		assertEquals(tester.getName(), "Billy Bob");
 		assertEquals(tester.getPoints(), 1119);

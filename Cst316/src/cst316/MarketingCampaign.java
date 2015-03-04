@@ -12,7 +12,7 @@ public abstract class MarketingCampaign implements java.io.Serializable {
     protected String name;
     protected boolean state;
 
-    MarketingCampaign() {
+    public MarketingCampaign() {
     	duration = 0.0;
     	risk = 0.0;
     	capital = 0.0;
@@ -20,12 +20,12 @@ public abstract class MarketingCampaign implements java.io.Serializable {
     	state = false;
     }
     
-    MarketingCampaign(double a, double b, double c, String d, boolean e) {
-    	duration = a;
-    	risk = b;
-    	capital = c;
-    	name = d;
-    	state = e;
+    public MarketingCampaign(double duration, double risk, double capital, String name, boolean state) {
+    	this.duration = duration;
+    	this.risk = risk;
+    	this.capital = capital;
+    	this.name = name;
+    	this.state = state;
     }
 
 
@@ -95,8 +95,8 @@ public abstract class MarketingCampaign implements java.io.Serializable {
 	
 
 
-    public abstract double StartCampaign();
+    public abstract double startCampaign();
 
-    public abstract double CancelCampaign();
+    public abstract double cancelCampaign();
 
 }
