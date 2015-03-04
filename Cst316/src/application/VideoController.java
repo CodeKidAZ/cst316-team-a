@@ -1,5 +1,6 @@
 package application;
 
+import java.net.URLEncoder;
 import java.nio.file.Paths;
 
 import javafx.fxml.FXML;
@@ -23,7 +24,7 @@ public class VideoController extends AnchorPane{
 	public void setApp(Main app, String name){
 		String mediaUri;
 		try {
-			mediaUri = "jar:file:"+Main.findPathJar(VideoController.class)+"!/res/intro.mp4";
+			mediaUri = Main.findPathJar(CreatePlayerController.class, "/res/intro.mp4");
 		} catch (Exception e) {
 			mediaUri = Paths.get("src/res/intro.mp4").toUri().toString();
 		}

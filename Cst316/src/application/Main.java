@@ -94,7 +94,7 @@ public class Main extends Application {
 	 * @throws IllegalStateException If the specified class was loaded from a directory or in some other way (such as via HTTP, from a database, or some
 	 *                               other custom classloading device).
 	 */
-	public static String findPathJar(Class<?> context) throws IllegalStateException {
+	public static String findPathJar(Class<?> context, String resource) throws IllegalStateException {
 	    if (context == null) context = Main.class;
 	    String rawName = context.getName();
 	    String classFileName;
@@ -116,11 +116,6 @@ public class Main extends Application {
 	    //As far as I know, the if statement below can't ever trigger, so it's more of a sanity check thing.
 	    if (idx == -1) throw new IllegalStateException("You appear to have loaded this class from a local jar file, but I can't make sense of the URL!");
 
-	    try {
-	        String fileName = URLDecoder.decode(uri.substring("jar:file:".length(), idx), Charset.defaultCharset().name());
-	        return new File(fileName).getAbsolutePath();
-	    } catch (UnsupportedEncodingException e) {
-	        throw new InternalError("default charset doesn't exist. Your VM is borked.");
-	    }
+        return uri.substring(0, idx) + "!" + resource;
 	}
 }
