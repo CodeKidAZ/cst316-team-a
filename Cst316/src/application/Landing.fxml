@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../res/city_background.png" />
+         </image>
+      </ImageView>
+      <ImageView id="markBtn" fx:id="markBtn" fitHeight="44.0" fitWidth="171.0" layoutX="1045.0" layoutY="241.0" onMouseClicked="#onMarketingClick" onMouseEntered="#onMarkMouseEntered" onMouseExited="#onMarkMouseExit" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../res/mark_txt.png" />
+         </image>
+      </ImageView>
+      <ImageView id="rndBtn" fx:id="rndBtn" fitHeight="150.0" fitWidth="200.0" layoutX="1030.0" layoutY="139.0" onMouseClicked="#onRNDClick" onMouseEntered="#onRndMouseEntered" onMouseExited="#onRndMouseExit" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../res/rnd_txt.png" />
+         </image>
+      </ImageView>
+      <ImageView id="mngBtn" fx:id="mngBtn" fitHeight="150.0" fitWidth="200.0" layoutX="1030.0" layoutY="84.0" onMouseClicked="#onManagementClick" onMouseEntered="#onMngMouseEntered" onMouseExited="#onMngMouseExit" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../res/man_txt.png" />
+         </image>
+      </ImageView>
+      <ImageView id="invBtn" fx:id="invBtn" fitHeight="150.0" fitWidth="200.0" layoutX="1030.0" layoutY="31.0" onMouseClicked="#onInvestmentsClick" onMouseEntered="#onInvMouseEntered" onMouseExited="#onInvMouseExit" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../res/inv_txt.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

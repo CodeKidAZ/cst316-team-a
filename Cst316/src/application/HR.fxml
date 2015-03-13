@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label fx:id="hrTitleLabel" layoutX="298.0" layoutY="44.0" text="HUMAN RESOURCE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Button fx:id="hireButton" layoutX="333.0" layoutY="192.0" mnemonicParsing="false" onAction="#openHire" prefHeight="53.0" prefWidth="85.0" text="Hire" />
+      <Button fx:id="fireButton" layoutX="333.0" layoutY="300.0" mnemonicParsing="false" onAction="#openFire" prefHeight="53.0" prefWidth="85.0" text="Fire" />
+      <Button layoutX="236.0" layoutY="44.0" mnemonicParsing="false" onAction="#onBack" text="Back" />
+   </children>
+</AnchorPane>

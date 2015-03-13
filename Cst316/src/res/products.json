@@ -1,0 +1,11 @@
+{
+    "Electronics": {
+        "MarginalToFixed": 0.1
+    },
+    "Food": {
+        "MarginalToFixed": 1.5
+    },
+    "Movies": {
+        "MarginalToFixed": 0.01
+    }
+}

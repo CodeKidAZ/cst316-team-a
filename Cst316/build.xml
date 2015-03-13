@@ -11,6 +11,8 @@
     <property name="jacocoant.jar" value="${lib.dir}/jacocoant.jar"/>
     <property name="jacoco.file" value="jacoco.exec"/>
 
+    <import file="${lib.dir}/one-jar-ant-task.xml" optional="true" />
+
     <taskdef uri="antlib:org.jacoco.ant" resource="org/jacoco/ant/antlib.xml">
       <classpath path="${jacocoant.jar}"/>
     </taskdef>
@@ -27,10 +29,6 @@
         </fileset>
     </path>
 
-    <manifestclasspath property="manifest.classpath" jarfile="${jar.file}">
-      <classpath refid="libraries.path"/>
-    </manifestclasspath>
-
     <target name="clean" description="delete old files">
         <delete dir="${class.dir}"/>
         <delete file="${jar.file}"/>
@@ -45,9 +43,14 @@
         </javac>
         <copy todir="${class.dir}">
             <fileset dir="${source.dir}">
-                <include name="**/**.fxml"/>
                 <include name="**/**.css"/>
+                <include name="**/**.fxml"/>
+                <include name="**/**.gif"/>
+                <include name="**/**.jpg"/>
+                <include name="**/**.json"/>
+                <include name="**/**.mp4"/>
                 <include name="**/**.png"/>
+                <include name="**/**.txt"/>
                 <exclude name="**/**.java"/>
                 <exclude name="**/**.psd"/>
             </fileset>
@@ -55,19 +58,22 @@
     </target>
 
     <target name="jar" depends="compile">
-        <mkdir dir="${jar.dir}"/>
-
-        <jar destfile="${jar.file}" basedir="${class.dir}">
+        <delete file="${jar.file}"/>
+        <taskdef name="jarjar" classname="com.tonicsystems.jarjar.JarJarTask"
+            classpath="lib/jarjar-1.4.jar"/>
+        <jarjar jarfile="${jar.file}">
+            <fileset dir="${class.dir}"/>
+            <zipfileset src="${lib.dir}/json.jar"/>
+            <zipfileset src="${lib.dir}/junit-4.10.jar"/>
             <manifest>
                 <attribute name="Main-Class" value="${main.class}"/>
-                <attribute name="Class-Path" value="${manifest.classpath}"/>
             </manifest>
-        </jar>  
+        </jarjar>
     </target>
 
     <target name="test" depends="jar">
         <mkdir dir="${test.dir}"/>
-	    <jacoco:coverage>
+	    <jacoco:coverage excludes="*Test">
 	        <junit printsummary="withOutAndErr" fork="true">
                 <formatter type="xml"/>
                 <classpath refid="jar.path"/>
@@ -84,10 +90,14 @@
             </executiondata>
             <structure name="Cst316">
                 <classfiles>
-                    <fileset dir="${class.dir}"/>
+                    <fileset dir="${class.dir}">
+                        <exclude name="**/*Test.class"/>
+                    </fileset>
                 </classfiles>
                 <sourcefiles encoding="UTF-8">
-                    <fileset dir="${source.dir}"/>
+                    <fileset dir="${source.dir}">
+                        <exclude name="**/*Test.java"/>
+                    </fileset>
                 </sourcefiles>
             </structure>
             <html destdir="${test.dir}"/>

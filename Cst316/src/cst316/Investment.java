@@ -61,4 +61,8 @@ public class Investment implements JSONString {
 		}
 		return retVal;
 	}
+	
+	public static String[] getAllCompanyNames() {
+		return new String[] {"SOIL", "GOGL", "RDHT", "MSFT"};
+	}
 }

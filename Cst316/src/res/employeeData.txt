@@ -1,0 +1,27 @@
+{"name": "Sumit", "wage": 10}
+{"name": "Holand", "wage": 20}
+{"name": "ABC", "wage": 30}
+{"name": "Mark", "wage": 40}
+{"name": "Nemo", "wage": 50}
+{"name": "A", "wage": 10}
+{"name": "AA", "wage": 12}
+{"name": "B", "wage": 15}
+{"name": "BB", "wage":20}
+{"name": "C", "wage": 22}
+{"name": "CC", "wage": 25}
+{"name": "D", "wage": 30}
+{"name": "DD", "wage": 32}
+{"name": "E", "wage": 35}
+{"name": "EE", "wage": 40}
+{"name": "F", "wage": 45}
+{"name": "G", "wage": 10}
+{"name": "GG", "wage": 12}
+{"name": "H", "wage": 15}
+{"name": "HH", "wage":20}
+{"name": "I", "wage": 22}
+{"name": "II", "wage": 25}
+{"name": "J", "wage": 30}
+{"name": "JJ", "wage": 32}
+{"name": "K", "wage": 35}
+{"name": "KK", "wage": 40}
+{"name": "L", "wage": 45}
