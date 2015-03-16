@@ -18,7 +18,7 @@ import org.junit.Test;
 import application.Main;
 import application.LandingController;
 
-public class LandingTest extends Application{
+public class LandingTest extends Main{
 	private LandingController ctr;
 	private Stage stage;
 
@@ -37,7 +37,7 @@ public class LandingTest extends Application{
 	}
 
 	@Override
-	public void start(Stage primaryStage) throws Exception {
+	public void start(Stage primaryStage) {
 		try {
 			BorderPane root = new BorderPane();
 			stage = primaryStage;
@@ -48,8 +48,7 @@ public class LandingTest extends Application{
 			primaryStage.setScene(scene);
 			primaryStage.show();
 			ctr = (LandingController) replaceSceneContent("Landing.fxml", LandingController.class);
-			Main main = new Main();
-			ctr.setApp(main);
+			ctr.setApp(this);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

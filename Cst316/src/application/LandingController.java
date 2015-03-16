@@ -54,15 +54,11 @@ public class LandingController extends AnchorPane {
 		mngIn = new Image(in);
 		in = this.getClass().getClassLoader().getResourceAsStream("res/man_txt_up.png");
 		mngOut = new Image(in);
-	}
-	
-	public void setPlayer(Player player) {
-		this.player = player;
+		this.player = application.getPlayer();
 	}
 
 	@FXML
 	void initialize(){
-
 	}
 
 	public void onInvMouseEntered(){

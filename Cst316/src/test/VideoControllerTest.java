@@ -19,7 +19,7 @@ import org.junit.Test;
 import application.Main;
 import application.VideoController;
 
-public class VideoControllerTest extends Application{
+public class VideoControllerTest extends Main{
 	private VideoController ctr;
 	private Stage stage;
 
@@ -38,7 +38,7 @@ public class VideoControllerTest extends Application{
 	}
 
 	@Override
-	public void start(Stage primaryStage) throws Exception {
+	public void start(Stage primaryStage) {
 		try {
 			BorderPane root = new BorderPane();
 			stage = primaryStage;
@@ -49,8 +49,7 @@ public class VideoControllerTest extends Application{
 			primaryStage.setScene(scene);
 			primaryStage.show();
 			ctr = (VideoController) replaceSceneContent("Video.fxml", VideoController.class);
-			Main main = new Main();
-			ctr.setApp(main, "player 4");
+			ctr.setApp(this, "player 4");
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
