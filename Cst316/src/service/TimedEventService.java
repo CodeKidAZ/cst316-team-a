@@ -54,7 +54,7 @@ public class TimedEventService extends Service<Void> implements EventHandler<Wor
 
 			@Override
 			protected Void call() throws Exception {
-				Thread.sleep(5000);
+				Thread.sleep(2000);
 				
 				return null;
 			}
