@@ -11,6 +11,7 @@
  */
 package cst316;
 
+import java.io.File;
 import java.io.FileReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -81,6 +82,25 @@ public class Player implements JSONString {
 		this.setFromJSONObject(jsonObject);
 	}
 	
+	private static String getJSONFilePath(String playerName) {
+		StringBuilder retVal = new StringBuilder();
+		if (System.getProperty("os.name").startsWith("Windows")) {
+			retVal.append(System.getenv("USERPROFILE"));
+			retVal.append("\\Enterpreneurship Simulator\\");
+		} else {
+			retVal.append(System.getenv("HOME"));
+			retVal.append("/.enterpreneurship-simulator/");
+		}
+		File directory = new File(retVal.toString()); 
+		if (!directory.exists()) {
+			directory.mkdir();
+			
+		}
+		retVal.append(playerName);
+		retVal.append(".json");
+		return retVal.toString();
+	}
+	
 	/**
 	 * Makes a JSON string of the player data
 	 * @return ret 
@@ -109,7 +129,7 @@ public class Player implements JSONString {
 	 */
 	public boolean saveFile() {
 		try {
-			PrintWriter out = new PrintWriter(name + ".json");
+			PrintWriter out = new PrintWriter(getJSONFilePath(name));
 			out.println(toJSONString());
 			out.close();
 			return true;
@@ -166,7 +186,7 @@ public class Player implements JSONString {
 	 */
 	public boolean readFile(String playerName) {
 		try {
-			JSONTokener tokener = new JSONTokener(new FileReader(playerName + ".json"));
+			JSONTokener tokener = new JSONTokener(new FileReader(getJSONFilePath(playerName)));
 			//Read the file and store it in a json object
 			JSONObject jsonObject = new JSONObject(tokener);
 			

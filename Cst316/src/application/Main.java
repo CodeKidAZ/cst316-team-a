@@ -1,10 +1,6 @@
 package application;
 	
-import java.io.File;
 import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.nio.charset.Charset;
 
 import cst316.Management;
 import javafx.application.Application;
@@ -28,6 +24,7 @@ public class Main extends Application {
 		try {
 			// This will need to be redone, really badly!
 			Management management = new Management();
+			management.getClass();
 			BorderPane root = new BorderPane();
 			stage = primaryStage;
 			Scene scene = new Scene(root,400,400);
