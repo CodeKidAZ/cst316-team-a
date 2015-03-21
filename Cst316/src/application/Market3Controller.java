@@ -77,7 +77,6 @@ public class Market3Controller extends AnchorPane {
 	public void returnButtonFired(ActionEvent event) throws Exception {
 		LandingController ctr = (LandingController) application.replaceSceneContent("Landing.fxml", LandingController.class);
 		ctr.setApp(application);
-		ctr.setPlayer(player);
 	}
 	
 	//@Override
@@ -87,6 +86,7 @@ public class Market3Controller extends AnchorPane {
 								   "Coupon Marketing",
 								   "WWITM Marketing",
 							 	   "Television Marketing");
+		this.player = application.getPlayer();
 	}
 	
 	public void setPlayer(Player player) {
