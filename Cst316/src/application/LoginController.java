@@ -7,7 +7,7 @@ import java.util.ResourceBundle;
 import cst316.Player;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.control.ComboBox;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 
@@ -19,7 +19,7 @@ public class LoginController extends AnchorPane{
 	@FXML
 	Button continueBtn;
 	@FXML
-	TextField playerNameText;
+	ComboBox<String> playerNameText;
 
 	private Main application;
 	InputStream in;
@@ -33,7 +33,7 @@ public class LoginController extends AnchorPane{
 	@FXML
 	void continueBtnClicked() throws Exception {
 		Player player = new Player();
-		String playerName = playerNameText.getText();
+		String playerName = playerNameText.getValue().toString();
 		boolean exists = player.readFile(playerName);
 		if (exists) {
 			LandingController ctr = (LandingController) application.replaceSceneContent("Landing.fxml", LandingController.class);
@@ -47,7 +47,7 @@ public class LoginController extends AnchorPane{
 
 	@FXML
 	void initialize(){
-		// This function intentionally left blank
+		playerNameText.getItems().addAll(Player.getAvailablePlayers());
 	}
 
 

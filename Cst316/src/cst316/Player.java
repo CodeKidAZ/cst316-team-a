@@ -96,9 +96,28 @@ public class Player implements JSONString {
 			directory.mkdir();
 			
 		}
-		retVal.append(playerName);
-		retVal.append(".json");
+		if (playerName != null) {
+			if (playerName.indexOf(".") != -1 || playerName.indexOf("/") != -1 || playerName.indexOf("\\") != -1) {
+				throw new IllegalArgumentException("Invalid Player Name");
+			}
+			retVal.append(playerName);
+			retVal.append(".json");
+		}
 		return retVal.toString();
+	}
+	
+	public static List<String> getAvailablePlayers() {
+		File directory = new File(getJSONFilePath(null));
+		ArrayList<String> retVal = new ArrayList<>();
+		for (File file : directory.listFiles()) {
+			if (file.isFile()) {
+				String[] parts = file.getName().split("\\.");
+				if (parts.length == 2 && parts[1].equals("json")) {
+					retVal.add(parts[0]);
+				}
+			}
+		}
+		return retVal;
 	}
 	
 	/**
