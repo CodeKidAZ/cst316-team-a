@@ -1,59 +1,66 @@
 package test;
-
-import static org.junit.Assert.*;
-
+	
 import java.io.InputStream;
 
-import javafx.application.Application;
+import application.LandingController;
+import application.Main;
+import service.TimedEventService;
+import cst316.Management;
+import cst316.Player;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.JavaFXBuilderFactory;
+import javafx.stage.Stage;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.Stage;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import application.Main;
-import application.VideoController;
-
-public class VideoControllerTest extends Main{
-	private VideoController ctr;
+public class TimedEventServiceTest extends Main {
+	
 	private Stage stage;
+	private final double MINIMUM_WINDOW_WIDTH = 1280;
+    private final double MINIMUM_WINDOW_HEIGHT = 720;
+    private Player player;
 
-	@Before
-	public void setUp() {
-		
+    @Before
+    public void setUp(){
+    	
+    }
+    @Test
+	public void testPageChange() {
+    	try{
+    		launch("");
+    	}catch(Exception e){
+    		e.printStackTrace();
+    	}
 	}
-
-	@Test
-	public void testLoadScene() {
-		try {
-			launch("");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
+	
 	@Override
 	public void start(Stage primaryStage) {
 		try {
+			// This will need to be redone, really badly!
+			Management management = new Management();
 			BorderPane root = new BorderPane();
 			stage = primaryStage;
 			Scene scene = new Scene(root,400,400);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			stage.setMinWidth(1280);
-            stage.setMinHeight(720);
-			primaryStage.setScene(scene);
-			primaryStage.show();
-			ctr = (VideoController) replaceSceneContent("Video.fxml", VideoController.class);
-			ctr.setApp(this, "player 4");
+			stage.setMinWidth(MINIMUM_WINDOW_WIDTH);
+            stage.setMinHeight(MINIMUM_WINDOW_HEIGHT);
+			stage.setScene(scene);
+			stage.show();
+			TimedEventService.createNewInstance(this, true);
+			LandingController ctr = (LandingController) replaceSceneContent("Landing.fxml", LandingController.class);
+			ctr.setApp(this);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-		
+	}
+	
+	public Stage getStage(){
+		return stage;
 	}
 	
 	// A lot of this was taken from the Oracle JFX samples, changes will be made

@@ -42,6 +42,7 @@ public class InvestmentController extends AnchorPane{
 			items.add(name);
 		}
 		companyCombo.setItems(items);
+		this.player = application.getPlayer();
 	}
 	
 	public void setPlayer(Player player) {
@@ -55,14 +56,12 @@ public class InvestmentController extends AnchorPane{
 		Investment investment = new Investment(companyName, amount, random.nextBoolean());
 		LandingController ctr = (LandingController) application.replaceSceneContent("Landing.fxml", LandingController.class);
 		player.addInvestment(investment);
-		ctr.setApp(application);
-		ctr.setPlayer(player);		
+		ctr.setApp(application);	
 	}
 	
 	public void onCancelClick() throws Exception {
 		LandingController ctr = (LandingController) application.replaceSceneContent("Landing.fxml", LandingController.class);
-		ctr.setApp(application);
-		ctr.setPlayer(player);		
+		ctr.setApp(application);	
 	}
 
 }
