@@ -288,7 +288,7 @@ public class Player implements JSONString {
 	/**
 	 * @return assets
 	 */
-	public List<String> getAssets() {
+	public ArrayList<String> getAssets() {
 		return assets;
 	}
 	
@@ -296,7 +296,7 @@ public class Player implements JSONString {
 	 * @return investments
 	 */
 
-	public List<Investment> getInvestments() {
+	public ArrayList<Investment> getInvestments() {
 		return investments;
 	}
 	
