@@ -4,6 +4,7 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import service.TimedEventService;
 import cst316.Player;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
@@ -55,6 +56,7 @@ public class LandingController extends AnchorPane {
 		in = this.getClass().getClassLoader().getResourceAsStream("res/man_txt_up.png");
 		mngOut = new Image(in);
 		this.player = application.getPlayer();
+		TimedEventService.createNewInstance(app);
 	}
 
 	@FXML
