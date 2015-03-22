@@ -136,7 +136,6 @@ public class LandingController extends AnchorPane {
 	public void onRNDClick() throws Exception {
 		ResearchDevelopController ctr = (ResearchDevelopController) application.replaceSceneContent("ResearchDevelop.fxml", ResearchDevelopController.class);
 		ctr.setApp(application);
-		ctr.setPlayer(player);
 	}
 	public void onManagementClick() throws Exception {
 		HRController ctr = (HRController) application.replaceSceneContent("HR.fxml", HRController.class);
