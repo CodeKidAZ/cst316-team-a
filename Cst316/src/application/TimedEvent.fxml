@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ProgressBar fx:id="timeProgress" layoutX="318.0" layoutY="147.0" prefHeight="18.0" prefWidth="646.0" progress="1.0" />
+      <Label layoutX="388.0" layoutY="38.0" prefHeight="53.0" prefWidth="527.0" text="You have a new opportunity...">
+         <font>
+            <Font name="Impact" size="42.0" />
+         </font>
+      </Label>
+      <Label layoutX="506.0" layoutY="111.0" text="Time remaining:">
+         <font>
+            <Font name="Impact" size="23.0" />
+         </font>
+      </Label>
+      <Label fx:id="timeLabel" layoutX="667.0" layoutY="111.0" text="15 Seconds">
+         <font>
+            <Font name="Impact" size="23.0" />
+         </font>
+      </Label>
+      <Label fx:id="hintOne" alignment="CENTER" layoutX="285.0" layoutY="226.0" text="The opportunity is from your college friend.">
+         <font>
+            <Font size="37.0" />
+         </font>
+      </Label>
+      <Label fx:id="hintTwo" layoutX="398.0" layoutY="297.0" opacity="0.0" text="He's never been trustworthy...">
+         <font>
+            <Font size="37.0" />
+         </font>
+      </Label>
+      <Label fx:id="hintThree" layoutX="390.0" layoutY="369.0" opacity="0.0" text="The opportunity sounds fishy...">
+         <font>
+            <Font size="37.0" />
+         </font>
+      </Label>
+      <Label fx:id="hintFour" layoutX="318.0" layoutY="446.0" opacity="0.0" text="Your friend made $300,000 last quarter.">
+         <font>
+            <Font size="37.0" />
+         </font>
+      </Label>
+      <Button fx:id="invBtn" layoutX="499.0" layoutY="551.0" mnemonicParsing="false" onMouseClicked="#investClicked" prefHeight="69.0" prefWidth="107.0" text="Invest" />
+      <Button fx:id="ignBtn" layoutX="675.0" layoutY="551.0" mnemonicParsing="false" onMouseClicked="#ignoreClicked" prefHeight="69.0" prefWidth="107.0" text="Ignore" />
+   </children>
+</AnchorPane>

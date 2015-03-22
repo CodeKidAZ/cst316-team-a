@@ -51,7 +51,7 @@ public class TimedEventServiceTest extends Main {
             stage.setMinHeight(MINIMUM_WINDOW_HEIGHT);
 			stage.setScene(scene);
 			stage.show();
-			TimedEventService.createNewInstance(this, true);
+			TimedEventService.createNewInstance(this);
 			LandingController ctr = (LandingController) replaceSceneContent("Landing.fxml", LandingController.class);
 			ctr.setApp(this);
 		} catch(Exception e) {

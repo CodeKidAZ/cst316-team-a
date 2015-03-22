@@ -1,22 +1,22 @@
 package service;
 
+import java.util.Random;
+
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import application.InvestmentController;
-import application.LandingController;
 import application.Main;
+import application.TimedEventController;
 
 public class TimedEventService extends Service<Void> implements EventHandler<WorkerStateEvent>{
 	private Main app;
 	private boolean a;
 	
-	private TimedEventService(Main app, boolean a){
+	private TimedEventService(Main app){
 		this.app = app;
-		this.a = a;
 		this.setOnSucceeded(this);
 		this.start();
 	}
@@ -27,24 +27,21 @@ public class TimedEventService extends Service<Void> implements EventHandler<Wor
 		if(app!=null){
 			Stage stage = app.getStage();
 			Scene scene = stage.getScene(); // This is a copy of what the user was doing before
-			
+
 			try {
-				if(a){
-					System.out.println("changing");
-					app.replaceSceneContent("Investment.fxml", InvestmentController.class);
-					new TimedEventService(app, false);
-				}else{
-					System.out.println("changing back");
-					app.replaceSceneContent("Landing.fxml", LandingController.class);
-				}
+				TimedEventController ctr = 
+						(TimedEventController)app.replaceSceneContent("TimedEvent.fxml", 
+								TimedEventController.class);
+				ctr.setApp(app, scene);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			new TimedEventService(app);
 		}
     }
 
-	public static void createNewInstance(Main app, boolean a){
-		new TimedEventService(app, a);
+	public static void createNewInstance(Main app){
+		new TimedEventService(app);
 	}
 	
 	// This occurs off of the main UI thread and is where any timing should take place
@@ -54,8 +51,11 @@ public class TimedEventService extends Service<Void> implements EventHandler<Wor
 
 			@Override
 			protected Void call() throws Exception {
-				Thread.sleep(2000);
-				
+				int minute = 60000;
+				Random rand = new Random();
+				int time = rand.nextInt(7*minute)+3*minute;
+				//System.out.println(time/minute + "minutes");
+				Thread.sleep(time);
 				return null;
 			}
 		
