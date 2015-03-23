@@ -1,10 +1,6 @@
 package application;
 	
-import java.io.File;
 import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.nio.charset.Charset;
 
 import service.TimedEventService;
 import cst316.Management;
@@ -31,6 +27,7 @@ public class Main extends Application {
 		try {
 			// This will need to be redone, really badly!
 			Management management = new Management();
+			management.getClass();
 			BorderPane root = new BorderPane();
 			stage = primaryStage;
 			Scene scene = new Scene(root,400,400);

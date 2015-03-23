@@ -11,6 +11,7 @@
  */
 package cst316;
 
+import java.io.File;
 import java.io.FileReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -81,6 +82,44 @@ public class Player implements JSONString {
 		this.setFromJSONObject(jsonObject);
 	}
 	
+	private static String getJSONFilePath(String playerName) {
+		StringBuilder retVal = new StringBuilder();
+		if (System.getProperty("os.name").startsWith("Windows")) {
+			retVal.append(System.getenv("USERPROFILE"));
+			retVal.append("\\Enterpreneurship Simulator\\");
+		} else {
+			retVal.append(System.getenv("HOME"));
+			retVal.append("/.enterpreneurship-simulator/");
+		}
+		File directory = new File(retVal.toString()); 
+		if (!directory.exists()) {
+			directory.mkdir();
+			
+		}
+		if (playerName != null) {
+			if (playerName.indexOf(".") != -1 || playerName.indexOf("/") != -1 || playerName.indexOf("\\") != -1) {
+				throw new IllegalArgumentException("Invalid Player Name");
+			}
+			retVal.append(playerName);
+			retVal.append(".json");
+		}
+		return retVal.toString();
+	}
+	
+	public static List<String> getAvailablePlayers() {
+		File directory = new File(getJSONFilePath(null));
+		ArrayList<String> retVal = new ArrayList<>();
+		for (File file : directory.listFiles()) {
+			if (file.isFile()) {
+				String[] parts = file.getName().split("\\.");
+				if (parts.length == 2 && parts[1].equals("json")) {
+					retVal.add(parts[0]);
+				}
+			}
+		}
+		return retVal;
+	}
+	
 	/**
 	 * Makes a JSON string of the player data
 	 * @return ret 
@@ -109,7 +148,7 @@ public class Player implements JSONString {
 	 */
 	public boolean saveFile() {
 		try {
-			PrintWriter out = new PrintWriter(name + ".json");
+			PrintWriter out = new PrintWriter(getJSONFilePath(name));
 			out.println(toJSONString());
 			out.close();
 			return true;
@@ -166,7 +205,7 @@ public class Player implements JSONString {
 	 */
 	public boolean readFile(String playerName) {
 		try {
-			JSONTokener tokener = new JSONTokener(new FileReader(playerName + ".json"));
+			JSONTokener tokener = new JSONTokener(new FileReader(getJSONFilePath(playerName)));
 			//Read the file and store it in a json object
 			JSONObject jsonObject = new JSONObject(tokener);
 			
