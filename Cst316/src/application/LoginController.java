@@ -4,13 +4,11 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import service.TimedEventService;
 import cst316.Player;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.ComboBox;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 
@@ -22,7 +20,7 @@ public class LoginController extends AnchorPane{
 	@FXML
 	Button continueBtn;
 	@FXML
-	ToggleGroup playerToggleGroup;
+	ComboBox<String> playerNameText;
 
 	private Main application;
 	InputStream in;
@@ -32,29 +30,26 @@ public class LoginController extends AnchorPane{
 	public void setApp(Main app){
 		application = app;
 	}
+	
+	@FXML
+	void continueBtnClicked() throws Exception {
+		Player player = new Player();
+		String playerName = playerNameText.getValue().toString();
+		boolean exists = player.readFile(playerName);
+		TimedEventService.createNewInstance(application);
+		if (exists) {
+			LandingController ctr = (LandingController) application.replaceSceneContent("Landing.fxml", LandingController.class);
+			ctr.setApp(application);
+			application.setPlayer(player);
+		} else {
+			VideoController ctr = (VideoController) application.replaceSceneContent("Video.fxml", VideoController.class);
+			ctr.setApp(application, playerName);
+		}
+	}
 
 	@FXML
 	void initialize(){
-        continueBtn.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				try {
-					Player player = new Player();
-					RadioButton toggle = (RadioButton) playerToggleGroup.getSelectedToggle();
-					boolean exists = player.readFile(toggle.getText());
-					if (exists) {
-						LandingController ctr = (LandingController) application.replaceSceneContent("Landing.fxml", LandingController.class);
-						ctr.setApp(application);
-						ctr.setPlayer(player);
-					} else {
-						VideoController ctr = (VideoController) application.replaceSceneContent("Video.fxml", VideoController.class);
-						ctr.setApp(application, toggle.getText());
-					}
-				} catch (Exception e) {
-					throw new Error(e);
-				}
-			}
-		});
+		playerNameText.getItems().addAll(Player.getAvailablePlayers());
 	}
 
 

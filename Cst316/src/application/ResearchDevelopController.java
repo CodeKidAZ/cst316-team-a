@@ -45,7 +45,6 @@ public class ResearchDevelopController extends AnchorPane {
 	public void returnMouseFired(MouseEvent event) throws Exception {
 		LandingController ctr = (LandingController) application.replaceSceneContent("Landing.fxml", LandingController.class);
 		ctr.setApp(application);
-		ctr.setPlayer(player);
 	}
 	// Event Listener on ImageView[#returnButton].onMouseEntered
 	@FXML
@@ -158,6 +157,8 @@ public class ResearchDevelopController extends AnchorPane {
 											"Research new strategies");
 		devChoiceBox.getItems().setAll("Develop a commercial",
 									   "Develop a science lab");
+		this.player = application.getPlayer();
+		rD.setPlayer(player);
 	}
 	
 	public void setPlayer(Player player) {

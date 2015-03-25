@@ -77,7 +77,6 @@ public class BuildingChoiceController extends AnchorPane {
 	public void returnButtonFired(ActionEvent event) throws Exception {
 		LandingController ctr = (LandingController) application.replaceSceneContent("Landing.fxml", LandingController.class);
 		ctr.setApp(application);
-		ctr.setPlayer(player);
 	}
 	
 	//@Override
@@ -87,6 +86,7 @@ public class BuildingChoiceController extends AnchorPane {
 								   "Factory",
 								   "Advanced Building",
 							 	   "Corporate HQ");
+		this.player = application.getPlayer();
 	}
 	
 	public void setPlayer(Player player) {

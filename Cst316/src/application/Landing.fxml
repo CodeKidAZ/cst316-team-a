@@ -32,5 +32,10 @@
             <Image url="@../res/inv_txt.png" />
          </image>
       </ImageView>
+      <ImageView id="statBtn" fx:id="statBtn" fitHeight="35.0" fitWidth="200.0" layoutX="1031.0" layoutY="516.0" onMouseClicked="#onStatMouseClick" onMouseEntered="#onStatMouseEntered" onMouseExited="#onStatMouseExit" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../res/player_status.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

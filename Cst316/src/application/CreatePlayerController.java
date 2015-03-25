@@ -56,6 +56,7 @@ public class CreatePlayerController extends AnchorPane{
 					String productName = productCombo.getValue().toString();
 					Product product = new Product(productName, 0.0, 0.0);
 					Player player = new Player(0, 100.0, playerName, new ArrayList<String>());
+					application.setPlayer(player);
 					player.setProduct(product);
 					player.saveFile();
 					BuildingChoiceController ctr = (BuildingChoiceController) application.replaceSceneContent("BuildingChoice.fxml", BuildingChoiceController.class);

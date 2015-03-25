@@ -36,7 +36,6 @@ public class HRController extends AnchorPane {
         System.out.println("YOU CLICKED BACK");
         LandingController ctr = (LandingController) application.replaceSceneContent("Landing.fxml", LandingController.class);
         ctr.setApp(application);
-        ctr.setPlayer(player);
     }
     @FXML
     private void openHire(ActionEvent event) throws Exception {
@@ -51,11 +50,11 @@ public class HRController extends AnchorPane {
         System.out.println("YOU CLICKED FIRE");
         FireController ctr = (FireController) application.replaceSceneContent("Fire.fxml", FireController.class);
         ctr.setApp(application);
-        ctr.setPlayer(player);
     }
 
     public void setApp(Main app) {
         this.application = app;
+        this.player = application.getPlayer();
     }
 
     public void setPlayer(Player player) {

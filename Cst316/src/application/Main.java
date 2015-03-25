@@ -1,12 +1,10 @@
 package application;
 	
-import java.io.File;
 import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.nio.charset.Charset;
 
+import service.TimedEventService;
 import cst316.Management;
+import cst316.Player;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.JavaFXBuilderFactory;
@@ -22,20 +20,22 @@ public class Main extends Application {
 	private Stage stage;
 	private final double MINIMUM_WINDOW_WIDTH = 1280;
     private final double MINIMUM_WINDOW_HEIGHT = 720;
+    private Player player;
 	
 	@Override
 	public void start(Stage primaryStage) {
 		try {
 			// This will need to be redone, really badly!
 			Management management = new Management();
+			management.getClass();
 			BorderPane root = new BorderPane();
 			stage = primaryStage;
 			Scene scene = new Scene(root,400,400);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			stage.setMinWidth(MINIMUM_WINDOW_WIDTH);
             stage.setMinHeight(MINIMUM_WINDOW_HEIGHT);
-			primaryStage.setScene(scene);
-			primaryStage.show();
+			stage.setScene(scene);
+			stage.show();
 			LoginController ctr = (LoginController) replaceSceneContent("Login.fxml", LoginController.class);
 			ctr.setApp(this);
 		} catch(Exception e) {
@@ -46,6 +46,19 @@ public class Main extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}
+	
+	public Stage getStage(){
+		return stage;
+	}
+	
+	public void setPlayer(Player player){
+		this.player = player;
+	}
+	
+	public Player getPlayer(){
+		return player;
+	}
+	
 	
 	// A lot of this was taken from the Oracle JFX samples, changes will be made
 	public Node replaceSceneContent(String fxml, Class<? extends AnchorPane> cls) throws Exception {
