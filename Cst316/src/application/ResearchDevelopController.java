@@ -158,6 +158,7 @@ public class ResearchDevelopController extends AnchorPane {
 		devChoiceBox.getItems().setAll("Develop a commercial",
 									   "Develop a science lab");
 		this.player = application.getPlayer();
+		rD.setPlayer(player);
 	}
 	
 	public void setPlayer(Player player) {
