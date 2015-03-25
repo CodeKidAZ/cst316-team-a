@@ -80,7 +80,13 @@ public class TimedEventController extends AnchorPane implements EventHandler<Wor
 	// Event Listener on Button[#invBtn].onMouseClicked
 	@FXML
 	public void investClicked(MouseEvent event) {
-		// Invest in the new opportunity
+		TimedInvestmentController ctr;
+		try {
+			ctr = (TimedInvestmentController) app.replaceSceneContent("TimedInvestment.fxml", TimedInvestmentController.class);
+			ctr.setApp(app, prevScene, wait);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	// Event Listener on Button[#ignBtn].onMouseClicked
 	@FXML
