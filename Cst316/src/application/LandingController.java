@@ -4,17 +4,13 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-<<<<<<< HEAD
 import service.TimedEventService;
 import cst316.Player;
-=======
->>>>>>> PlayerStatus
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import cst316.Player;
 
 public class LandingController extends AnchorPane {
 	@FXML 
@@ -69,7 +65,6 @@ public class LandingController extends AnchorPane {
 		in = this.getClass().getClassLoader().getResourceAsStream("res/player_status.png");
 		statOut = new Image(in);
 		this.player = application.getPlayer();
-		TimedEventService.createNewInstance(app);
 	}
 
 	@FXML
