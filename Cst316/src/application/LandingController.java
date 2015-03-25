@@ -4,12 +4,17 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+<<<<<<< HEAD
 import service.TimedEventService;
 import cst316.Player;
+=======
+>>>>>>> PlayerStatus
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import cst316.Player;
 
 public class LandingController extends AnchorPane {
 	@FXML 
@@ -24,6 +29,8 @@ public class LandingController extends AnchorPane {
 	ImageView rndBtn;
 	@FXML
 	ImageView markBtn;
+	@FXML
+	ImageView statBtn;
 
 	private Main application;
 	Player player;
@@ -36,6 +43,8 @@ public class LandingController extends AnchorPane {
 	Image markOut;
 	Image mngIn;
 	Image mngOut;
+	Image statIn;
+	Image statOut;
 
 	public void setApp(Main app) {
 		application = app;
@@ -55,6 +64,10 @@ public class LandingController extends AnchorPane {
 		mngIn = new Image(in);
 		in = this.getClass().getClassLoader().getResourceAsStream("res/man_txt_up.png");
 		mngOut = new Image(in);
+		in = this.getClass().getClassLoader().getResourceAsStream("res/player_status_hover.png");
+		statIn = new Image(in);
+		in = this.getClass().getClassLoader().getResourceAsStream("res/player_status.png");
+		statOut = new Image(in);
 		this.player = application.getPlayer();
 		TimedEventService.createNewInstance(app);
 	}
@@ -62,7 +75,17 @@ public class LandingController extends AnchorPane {
 	@FXML
 	void initialize(){
 	}
-
+	
+	public void onStatMouseEntered(MouseEvent event) {
+		if (statBtn != null) {
+			statBtn.setImage(statIn);
+		}
+	}
+	public void onStatMouseExit(MouseEvent event) {
+		if (statBtn != null) {
+			statBtn.setImage(statOut);
+		}
+	}
 	public void onInvMouseEntered(){
 		if (invBtn != null) {
 			invBtn.setImage(invIn);
@@ -130,6 +153,10 @@ public class LandingController extends AnchorPane {
 		ctr.setApp(application);
 		ctr.setPlayer(player);
 	}
-
+	public void onStatMouseClick(MouseEvent event) throws Exception {
+		PlayerStatusController ctr = (PlayerStatusController) application.replaceSceneContent("PlayerStatus.fxml", PlayerStatusController.class);
+		ctr.setApp(application);
+		ctr.setPlayer(player);
+	}
 
 }
