@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import java.lang.*?>
@@ -16,26 +17,41 @@
          <image>
             <Image url="@../res/mark_txt.png" />
          </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ImageView>
       <ImageView id="rndBtn" fx:id="rndBtn" fitHeight="150.0" fitWidth="200.0" layoutX="1030.0" layoutY="139.0" onMouseClicked="#onRNDClick" onMouseEntered="#onRndMouseEntered" onMouseExited="#onRndMouseExit" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../res/rnd_txt.png" />
          </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ImageView>
       <ImageView id="mngBtn" fx:id="mngBtn" fitHeight="150.0" fitWidth="200.0" layoutX="1030.0" layoutY="84.0" onMouseClicked="#onManagementClick" onMouseEntered="#onMngMouseEntered" onMouseExited="#onMngMouseExit" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../res/man_txt.png" />
          </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ImageView>
       <ImageView id="invBtn" fx:id="invBtn" fitHeight="150.0" fitWidth="200.0" layoutX="1030.0" layoutY="31.0" onMouseClicked="#onInvestmentsClick" onMouseEntered="#onInvMouseEntered" onMouseExited="#onInvMouseExit" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../res/inv_txt.png" />
          </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ImageView>
       <ImageView id="statBtn" fx:id="statBtn" fitHeight="35.0" fitWidth="200.0" layoutX="1031.0" layoutY="516.0" onMouseClicked="#onStatMouseClick" onMouseEntered="#onStatMouseEntered" onMouseExited="#onStatMouseExit" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../res/player_status.png" />
          </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ImageView>
    </children>
 </AnchorPane>
