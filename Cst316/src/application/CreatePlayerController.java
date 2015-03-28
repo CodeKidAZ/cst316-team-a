@@ -61,7 +61,6 @@ public class CreatePlayerController extends AnchorPane{
 					player.saveFile();
 					BuildingChoiceController ctr = (BuildingChoiceController) application.replaceSceneContent("BuildingChoice.fxml", BuildingChoiceController.class);
 					ctr.setApp(application);
-					ctr.setPlayer(player);
 				} catch (Exception e) {
 					throw new Error(e);
 				}

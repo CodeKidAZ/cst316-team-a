@@ -30,6 +30,7 @@ public class Player implements JSONString {
 	private String name;
 	private ArrayList<String> assets;
 	private ArrayList<Investment> investments;
+	private ArrayList<Building> buildings;
 	private Product product;
 	
 	/**
@@ -42,6 +43,7 @@ public class Player implements JSONString {
 		this.setName("noname");
 		this.assets = new ArrayList<String>();
 		this.investments = new ArrayList<Investment>();
+		this.buildings = new ArrayList<Building>();
 	}
 	/**
 	 * @param points
@@ -57,6 +59,7 @@ public class Player implements JSONString {
 		this.setName(name);
 		this.setAssets(assets);
 		this.investments = new ArrayList<Investment>();
+		this.buildings = new ArrayList<Building>();
 	}
 	/**
 	 * Initialize a player class
@@ -73,6 +76,7 @@ public class Player implements JSONString {
 		this.setName(name);
 		this.setAssets(assets);
 		this.investments = new ArrayList<Investment>();
+		this.buildings = new ArrayList<Building>();
 	}
 	
 	/**
@@ -135,6 +139,7 @@ public class Player implements JSONString {
 			obj.put("Name", name);
 			obj.put("Assets", assets);
 			obj.put("Investments", investments);
+			obj.put("Buildings", buildings);
 			obj.put("Product", product);
 			ret = obj.toString();
 		} catch(Exception e) {
@@ -189,6 +194,15 @@ public class Player implements JSONString {
 		for (int i = 0; i != jArrayInvestments.length(); ++i) {
 			investments.add(new Investment(jArrayInvestments.getJSONObject(i)));
 		}
+
+		//Get the list that is included in the JSON file
+		JSONArray jArrayBuildings = jsonObject.getJSONArray("Buildings");
+		ArrayList<Building> buildings = new ArrayList<Building>();
+		
+		//Populate the list with the JSON array values
+		for (int i = 0; i != jArrayBuildings.length(); ++i) {
+			buildings.add(new Building(jArrayBuildings.getJSONObject(i)));
+		}
 		
 		//Set the class values to what the JSON file produced
 		this.points = points;
@@ -197,6 +211,7 @@ public class Player implements JSONString {
 		this.assets = assets;
 		this.employees = employees;
 		this.investments = investments;
+		this.buildings = buildings;
 	}
 	
 	/**
@@ -403,5 +418,9 @@ public class Player implements JSONString {
 	
 	public void setProduct(Product product) {
 		this.product = product;
+	}
+	
+	public List<Building> getBuildings() {
+		return buildings;
 	}
 }
