@@ -4,6 +4,7 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import service.TimedEventService;
 import cst316.Player;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -35,6 +36,7 @@ public class LoginController extends AnchorPane{
 		Player player = new Player();
 		String playerName = playerNameText.getValue().toString();
 		boolean exists = player.readFile(playerName);
+		TimedEventService.createNewInstance(application);
 		if (exists) {
 			LandingController ctr = (LandingController) application.replaceSceneContent("Landing.fxml", LandingController.class);
 			ctr.setApp(application);

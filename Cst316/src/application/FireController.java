@@ -24,6 +24,8 @@ public class FireController extends AnchorPane {
     private ResourceBundle resources;
     @FXML
     private URL location;
+    
+    
     @FXML
     private TableView<Employee> fireTable;
     @FXML

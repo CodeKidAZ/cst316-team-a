@@ -12,8 +12,8 @@
    <children>
       <TableView fx:id="fireTable" layoutX="275.0" layoutY="135.0" prefHeight="395.0" prefWidth="151.0">
         <columns>
-          <TableColumn fx:id="nameColumn" prefWidth="75.0" text="C1" />
-          <TableColumn fx:id="wageColumn" prefWidth="75.0" text="C2" />
+          <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Name" />
+          <TableColumn fx:id="wageColumn" prefWidth="75.0" text="Wage" />
         </columns>
       </TableView>
       <Button fx:id="backButton" layoutX="282.0" layoutY="43.0" mnemonicParsing="false" onAction="#backMethod" prefHeight="30.0" prefWidth="63.0" text="Back" AnchorPane.topAnchor="30.0" />

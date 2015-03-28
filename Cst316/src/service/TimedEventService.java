@@ -9,6 +9,7 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import application.Main;
+import application.SurpriseEventController;
 import application.TimedEventController;
 
 public class TimedEventService extends Service<Void> implements EventHandler<WorkerStateEvent>{
@@ -29,10 +30,18 @@ public class TimedEventService extends Service<Void> implements EventHandler<Wor
 			Scene scene = stage.getScene(); // This is a copy of what the user was doing before
 
 			try {
+				// TODO : investment vs. Surprise event
+				if(Math.random()>=.5){
 				TimedEventController ctr = 
 						(TimedEventController)app.replaceSceneContent("TimedEvent.fxml", 
 								TimedEventController.class);
 				ctr.setApp(app, scene);
+				}else{
+					SurpriseEventController ctr = 
+						(SurpriseEventController)app.replaceSceneContent("SurpriseEvent.fxml", 
+									SurpriseEventController.class);
+					ctr.setApp(app, scene);
+				}
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -53,6 +62,7 @@ public class TimedEventService extends Service<Void> implements EventHandler<Wor
 			protected Void call() throws Exception {
 				int minute = 60000;
 				Random rand = new Random();
+				rand.setSeed(System.currentTimeMillis());
 				int time = rand.nextInt(7*minute)+3*minute;
 				//System.out.println(time/minute + "minutes");
 				Thread.sleep(time);

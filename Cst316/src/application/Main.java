@@ -36,7 +36,7 @@ public class Main extends Application {
             stage.setMinHeight(MINIMUM_WINDOW_HEIGHT);
 			stage.setScene(scene);
 			stage.show();
-			TimedEventService.createNewInstance(this);
+			//HRController ctr = (HRController) replaceSceneContent("HR.fxml", HRController.class);
 			LoginController ctr = (LoginController) replaceSceneContent("Login.fxml", LoginController.class);
 			ctr.setApp(this);
 		} catch(Exception e) {

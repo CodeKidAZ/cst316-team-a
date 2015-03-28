@@ -65,7 +65,6 @@ public class LandingController extends AnchorPane {
 		in = this.getClass().getClassLoader().getResourceAsStream("res/player_status.png");
 		statOut = new Image(in);
 		this.player = application.getPlayer();
-		TimedEventService.createNewInstance(app);
 	}
 
 	@FXML
