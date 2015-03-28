@@ -38,6 +38,9 @@ public class TimedEventController extends AnchorPane implements EventHandler<Wor
 	private int timeMax;
 	private Wait wait;
 	private Scene prevScene;
+	private boolean good;
+	private String name;
+	Task<Void> timer;
 	public enum Wait{
 		NULL,NONE,SHORT,LONG,LONGER
 	};
@@ -46,13 +49,16 @@ public class TimedEventController extends AnchorPane implements EventHandler<Wor
 	public void setApp(Main app, Scene scene){
 		// SET TIMER HERE
 		this.timeMax = 15000;
-
+		
+		// TODO: Investment content added here (time, good/bad, etc.)
+		good = true;
+		name = "FRND1";
 		wait = Wait.NONE;
 		timeLabel.setText(timeMax/1000 + " Seconds");
 		this.app = app;
 		this.prevScene = scene;
 		try{
-			Task<Void> timer = new Task<Void>(){
+			timer = new Task<Void>(){
 				@Override
 				protected Void call() throws Exception {
 					long start = System.currentTimeMillis();
@@ -82,8 +88,9 @@ public class TimedEventController extends AnchorPane implements EventHandler<Wor
 	public void investClicked(MouseEvent event) {
 		TimedInvestmentController ctr;
 		try {
+			timer.cancel();
 			ctr = (TimedInvestmentController) app.replaceSceneContent("TimedInvestment.fxml", TimedInvestmentController.class);
-			ctr.setApp(app, prevScene, wait);
+			ctr.setApp(app, prevScene, wait, good, name);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
