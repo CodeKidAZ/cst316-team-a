@@ -4,6 +4,5 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry exported="true" kind="lib" path="lib/json.jar"/>
-	<classpathentry kind="lib" path="G:/Documents/NetBeansProjects/cst316-team-a/Cst316/lib/controlsfx-8.20.8.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
