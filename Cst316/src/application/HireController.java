@@ -18,6 +18,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.effect.Glow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -48,6 +50,9 @@ public class HireController extends AnchorPane {
     private URL location;
     
     
+  DropShadow ds = new DropShadow();
+    
+
     @FXML
     private Label hireTitleLabel;
     @FXML
@@ -468,5 +473,19 @@ public class HireController extends AnchorPane {
          nameLabels.put(imageEmployee23.getId(), nameLabel23);
          nameLabels.put(imageEmployee24.getId(), nameLabel24);
          nameLabels.put(imageEmployee25.getId(), nameLabel25);
+    }
+    @FXML
+    private void imageUnGlow(MouseEvent event) {
+        Object source = event.getSource();                                               
+        ImageView imageName = ((ImageView) source);
+        imageName.setEffect(null);
+    }
+
+    @FXML
+    private void imageGlow(MouseEvent event) {
+        Object source = event.getSource();                                                    
+        ImageView imageName = ((ImageView) source);
+        imageName.setEffect(new Glow());
+        System.out.println("Image Name is : "+imageName);
     }
 }
