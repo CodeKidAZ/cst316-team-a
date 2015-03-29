@@ -194,7 +194,7 @@ public class HRController extends AnchorPane {
                CompanyTableView.setItems(CompanyList); 
            }
           */
-                      
+                      //hello issue 28
    
 
     public void setApp(Main app) {
