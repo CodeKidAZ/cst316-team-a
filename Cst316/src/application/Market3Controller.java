@@ -26,6 +26,8 @@ public class Market3Controller extends AnchorPane {
 	@FXML
 	private Button returnButton;
 	@FXML
+	private Button shareButton;
+	@FXML
 	private ImageView marketingPicture;
 	@FXML
 	private Button purchaseButton;
@@ -76,6 +78,12 @@ public class Market3Controller extends AnchorPane {
 	@FXML
 	public void returnButtonFired(ActionEvent event) throws Exception {
 		LandingController ctr = (LandingController) application.replaceSceneContent("Landing.fxml", LandingController.class);
+		ctr.setApp(application);
+	}
+	
+	@FXML
+	public void chartButtonFired(ActionEvent event) throws Exception {
+		LandingController ctr = (LandingController) application.replaceSceneContent("MarketingStatistics.fxml", MarketingStatisticsController.class);
 		ctr.setApp(application);
 	}
 	

@@ -13,8 +13,11 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.ComboBox;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 
-public class MarketingStatisticsController implements Initializable {
+
+
+public class MarketingStatisticsController extends AnchorPane {
 	@FXML
 	private ImageView marketStatsPicture;
 	@FXML
@@ -86,14 +89,32 @@ public class MarketingStatisticsController implements Initializable {
 		}
 	}
 	
-	@Override
+	/*@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		dropMenu.getItems().setAll("Phone App Market Report",
 				"Computer Gaming Market Report",
 				"Candy Market Report",
 				"Anime Pillow Market Report");
 		
-	}
+	}*/
+	
+	
+	//@Override
+		public void setApp(Main app) {
+			application = app;
+			dropMenu.getItems().setAll(
+					"Phone App Market Report",
+					"Computer Gaming Market Report",
+					"Candy Market Report",
+					"Anime Pillow Market Report"
+					);
+			this.player = application.getPlayer();
+		}
+		
+		public void setPlayer(Player player) {
+			this.player = player;
+		}
+	
 	// Event Listener on Button[#returnButton].onAction
 	@FXML
 	public void returnButtonFired(ActionEvent event) throws Exception {
