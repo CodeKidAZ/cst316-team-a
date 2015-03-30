@@ -83,7 +83,7 @@ public class Market3Controller extends AnchorPane {
 	
 	@FXML
 	public void chartButtonFired(ActionEvent event) throws Exception {
-		LandingController ctr = (LandingController) application.replaceSceneContent("MarketingStatistics.fxml", MarketingStatisticsController.class);
+		MarketingStatisticsController ctr = (MarketingStatisticsController) application.replaceSceneContent("MarketingStatistics.fxml", MarketingStatisticsController.class);
 		ctr.setApp(application);
 	}
 	

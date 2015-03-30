@@ -71,7 +71,7 @@ public class MarketingStatisticsController extends AnchorPane {
                     new PieChart.Data("Wonka Inc.", 511),
                     new PieChart.Data("Lollipops", 95),
                     new PieChart.Data("JellyBeans", 215),
-                    new PieChart.Data("Cadbury Eggs", 356));
+                    new PieChart.Data("Mars Bars", 356));
 	        piechart.setTitle("Candy Market Report");
 	        piechart.setData(pieChartData3);
 			break;

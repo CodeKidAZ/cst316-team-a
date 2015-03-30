@@ -6,22 +6,23 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.chart.*?>
+<?import javafx.scene.effect.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="637.0" prefWidth="839.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MarketingStatisticsController">
+<AnchorPane fx:id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1098.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-      <SplitPane dividerPositions="0.3201911589008363" prefHeight="637.0" prefWidth="839.0">
+      <SplitPane dividerPositions="0.3201911589008363" prefHeight="720.0" prefWidth="1098.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <ImageView fx:id="marketStatsPicture" fitHeight="426.0" fitWidth="257.0" layoutX="4.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" />
-                  <ComboBox fx:id="dropMenu" layoutX="20.0" layoutY="447.0" onAction="#dropMenuFired" prefHeight="173.0" prefWidth="231.0" />
+                  <ImageView fx:id="marketStatsPicture" fitHeight="447.0" fitWidth="354.0" layoutX="-3.0" pickOnBounds="true" preserveRatio="true" />
+                  <ComboBox fx:id="dropMenu" layoutX="58.0" layoutY="474.0" onAction="#dropMenuFired" prefHeight="173.0" prefWidth="231.0" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                    <Button id="buttonclear" fx:id="returnButton" layoutX="447.0" layoutY="538.0" onAction="#returnButtonFired" prefHeight="52.0" prefWidth="86.0" text="Return" />
+                    <Button id="buttonclear" fx:id="returnButton" layoutX="582.0" layoutY="612.0" onAction="#returnButtonFired" prefHeight="52.0" prefWidth="86.0" text="Return" />
                      
-                    <PieChart id="piechart" fx:id="piechart" prefHeight="504.0" prefWidth="565.0" />
+                    <PieChart id="piechart" fx:id="piechart" layoutX="-24.0" prefHeight="592.0" prefWidth="780.0" />
                </children>
             </AnchorPane>
         </items>
