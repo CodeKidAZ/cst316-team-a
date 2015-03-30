@@ -22,13 +22,24 @@
             <Image url="@../res/purchase.png" />
          </image>
       </ImageView>
-      <TextArea fx:id="descriptionField" layoutX="514.0" layoutY="154.0" prefHeight="451.0" prefWidth="366.0" wrapText="true" />
-      <ComboBox fx:id="comboBox" layoutX="984.0" layoutY="154.0" onMouseClicked="#comboBoxMouseClicked" prefHeight="31.0" prefWidth="235.0" />
-      <ImageView fitHeight="55.0" fitWidth="376.0" layoutX="42.0" layoutY="37.0">
+      <TextArea fx:id="descriptionField" editable="false" layoutX="514.0" layoutY="154.0" prefHeight="451.0" prefWidth="366.0" wrapText="true" />
+      <ComboBox fx:id="comboBox" layoutX="984.0" layoutY="154.0" onAction="#comboBoxMouseClicked" prefHeight="31.0" prefWidth="235.0" />
+      <ImageView fitHeight="55.0" fitWidth="376.0" layoutX="43.0" layoutY="19.0">
          <image>
             <Image url="@../res/productmanagement.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="replacableImage" fitHeight="419.0" fitWidth="346.0" layoutX="88.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="40.0" fitWidth="260.0" layoutX="968.0" layoutY="74.0">
+         <image>
+            <Image url="@../res/select_a_product.png" />
+         </image>
+      </ImageView>
+      <TextArea fx:id="activeProduct" editable="false" layoutX="75.0" layoutY="410.0" prefHeight="195.0" prefWidth="295.0" />
+      <ImageView fitHeight="41.0" fitWidth="247.0" layoutX="107.0" layoutY="338.0">
+         <image>
+            <Image url="@../res/active_products.png" />
+         </image>
+      </ImageView>
+      <Separator layoutX="431.0" layoutY="94.0" orientation="VERTICAL" prefHeight="585.0" prefWidth="32.0" />
    </children>
 </AnchorPane>
