@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="731.0" fitWidth="1292.0" layoutX="-7.0" layoutY="-7.0">
+         <image>
+            <Image url="@../res/wood_bg.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="returnButton" fitHeight="45.0" fitWidth="144.0" layoutX="1099.0" layoutY="644.0" onMouseClicked="#returnMouseClicked" onMouseEntered="#returnMouseEntered" onMouseExited="#returnMouseExited" preserveRatio="true" AnchorPane.bottomAnchor="35.272727966308594" AnchorPane.rightAnchor="37.0">
+         <image>
+            <Image url="@../res/return.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="purchaseButton" fitHeight="41.0" fitWidth="203.0" layoutX="1000.0" layoutY="366.0" onMouseClicked="#purchaseMouseClicked" onMouseEntered="#purchaseMouseEntered" onMouseExited="#purchaseMouseExited" preserveRatio="true">
+         <image>
+            <Image url="@../res/purchase.png" />
+         </image>
+      </ImageView>
+      <TextArea fx:id="descriptionField" editable="false" layoutX="514.0" layoutY="154.0" prefHeight="451.0" prefWidth="366.0" wrapText="true" />
+      <ComboBox fx:id="comboBox" layoutX="984.0" layoutY="154.0" onAction="#comboBoxMouseClicked" prefHeight="31.0" prefWidth="235.0" />
+      <ImageView fitHeight="55.0" fitWidth="376.0" layoutX="43.0" layoutY="19.0">
+         <image>
+            <Image url="@../res/productmanagement.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="40.0" fitWidth="260.0" layoutX="968.0" layoutY="74.0">
+         <image>
+            <Image url="@../res/select_a_product.png" />
+         </image>
+      </ImageView>
+      <TextArea fx:id="activeProduct" editable="false" layoutX="75.0" layoutY="410.0" prefHeight="195.0" prefWidth="295.0" />
+      <ImageView fitHeight="41.0" fitWidth="247.0" layoutX="107.0" layoutY="338.0">
+         <image>
+            <Image url="@../res/active_products.png" />
+         </image>
+      </ImageView>
+      <Separator layoutX="431.0" layoutY="94.0" orientation="VERTICAL" prefHeight="585.0" prefWidth="32.0" />
+   </children>
+</AnchorPane>

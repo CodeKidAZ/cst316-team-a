@@ -1,8 +1,5 @@
 package application;
 //
-import cst316.Employee;
-import cst316.Player;
-
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -12,7 +9,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -21,7 +17,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.shape.Circle;
+import cst316.Employee;
+import cst316.Player;
 /**
  * FXML Controller class
  *
@@ -53,11 +50,19 @@ public class HRController extends AnchorPane {
     private ImageView hireImage1;
     @FXML
     private ImageView createCompanyImage;
+    @FXML
+    private Button productButton;
 
     private Main application;
     private Player player;
     public static ObservableList<Employee> CompanyList = FXCollections.observableArrayList(); // to store list of companies
    
+    @FXML
+    private void productMouseClicked(MouseEvent event) throws Exception {
+    	ProductManagementController ctr = (ProductManagementController) application.replaceSceneContent("ProductManagement.fxml", ProductManagementController.class);
+        ctr.setApp(application);
+    }
+    
     //____________________________________________________BACK BUTTON
     @FXML
     private void onBack() throws Exception {

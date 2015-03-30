@@ -10,12 +10,12 @@
    <children>
       <ImageView fitHeight="720.0" fitWidth="1286.0" layoutX="-6.0">
          <image>
-            <Image url="@../../res/background-7.jpg" />
+            <Image url="@../res/background-7.jpg" />
          </image>
       </ImageView>
       <ImageView fitHeight="85.0" fitWidth="466.0" layoutX="68.0" layoutY="40.0" AnchorPane.leftAnchor="68.0" AnchorPane.topAnchor="40.0">
          <image>
-            <Image url="@../../res/surprise_event.png" />
+            <Image url="@../res/surprise_event.png" />
          </image>
       </ImageView>
       <TextArea fx:id="textBox" layoutX="57.0" layoutY="163.0" prefHeight="512.0" prefWidth="732.0" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="57.0">
