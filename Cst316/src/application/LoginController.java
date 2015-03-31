@@ -13,10 +13,6 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 
 public class LoginController extends AnchorPane{
-	@FXML 
-	private ResourceBundle resources;
-	@FXML 
-	private URL location;
 	@FXML
 	Button continueBtn;
 	@FXML
@@ -26,6 +22,8 @@ public class LoginController extends AnchorPane{
 	InputStream in;
 	Image invIn;
 	Image invOut;
+    @FXML
+    private AnchorPane AnchorPane;
 
 	public void setApp(Main app){
 		application = app;
@@ -47,7 +45,6 @@ public class LoginController extends AnchorPane{
 		}
 	}
 
-	@FXML
 	void initialize(){
 		playerNameText.getItems().addAll(Player.getAvailablePlayers());
 	}
