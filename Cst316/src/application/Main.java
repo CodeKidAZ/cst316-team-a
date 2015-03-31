@@ -17,6 +17,7 @@ import javafx.scene.layout.BorderPane;
 public class Main extends Application {
 
     private Stage stage;
+    private Scene scene;
     private final double MINIMUM_WINDOW_WIDTH = 1280;
     private final double MINIMUM_WINDOW_HEIGHT = 720;
     private Player player;
@@ -29,14 +30,15 @@ public class Main extends Application {
             management.getClass();
             BorderPane root = new BorderPane();
             stage = primaryStage;
-            Scene scene = new Scene(root, 400, 400);
+            scene = new Scene(root, 400, 400);
             scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
             stage.setMinWidth(MINIMUM_WINDOW_WIDTH);
             stage.setMinHeight(MINIMUM_WINDOW_HEIGHT);
             stage.setScene(scene);
             stage.show();
 
-            LoginController ctr = (LoginController) replaceSceneContent("Login.fxml", LoginController.class);
+            LoginController ctr = (LoginController) replaceSceneContent("Login.fxml", null);
+            
             ctr.setApp(this);
             
         } catch (Exception e) {
@@ -63,7 +65,6 @@ public class Main extends Application {
     // A lot of this was taken from the Oracle JFX samples, changes will be made
     public Node replaceSceneContent(String fxml, Class<? extends AnchorPane> cls) throws Exception {
         FXMLLoader loader = new FXMLLoader();
-        //System.out.println(cls);
         if (cls == null) {
             System.out.println("controlller was set by FXML");
         } else {

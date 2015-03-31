@@ -144,7 +144,7 @@ public class LandingController extends AnchorPane {
 		ctr.setPlayer(player);
 	}
 	public void onInvestmentsClick() throws Exception {
-		InvestmentController ctr = (InvestmentController) application.replaceSceneContent("Investment.fxml", InvestmentController.class);
+		InvestmentController ctr = (InvestmentController) application.replaceSceneContent("Investment.fxml", null);
 		ctr.setApp(application);
 		ctr.setPlayer(player);
 	}
