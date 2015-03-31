@@ -34,17 +34,22 @@ public class BuildingChoiceController extends AnchorPane {
 	private Building output;
 	private Main application;
 	private Player player;
-
-	// Event Listener on ComboBox[#dropMenu].onAction
-	@FXML
-	public void dropMenuFired(ActionEvent event) throws Exception {
-		String name = (String) dropMenu.getSelectionModel().getSelectedItem().toString();
-		output = new Building(name);
+	
+	public void setBuilding(Building output) {
+		this.output = output;
+		dropMenu.getSelectionModel().select(output.getName());
 		Image image = new Image(getClass().getClassLoader().getResourceAsStream(output.getImage()));
 		buildingPicture.setImage(image);
 		descriptionBox.clear();
 		descriptionBox.appendText("Cost: " + output.getTotalCost() + "\n");
 		descriptionBox.appendText("Description: " + output.getDescription() + "\n");
+	}
+
+	// Event Listener on ComboBox[#dropMenu].onAction
+	@FXML
+	public void dropMenuFired(ActionEvent event) throws Exception {
+		String name = (String) dropMenu.getSelectionModel().getSelectedItem().toString();
+		setBuilding(new Building(name));
 	}
 
 	// Event Listener on ComboBox[#dropMenu].onContextMenuRequested

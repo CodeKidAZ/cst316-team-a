@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import service.TimedEventService;
+import cst316.Building;
 import cst316.Player;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
@@ -153,5 +154,28 @@ public class LandingController extends AnchorPane {
 		ctr.setApp(application);
 		ctr.setPlayer(player);
 	}
+	
+	public void onBasicClicked() throws Exception {
+		onBuildingClicked("Basic Building");
+	}
 
+	public void onFactoryClicked() throws Exception {
+		onBuildingClicked("Factory");
+	}
+
+	public void onAdvancedClicked() throws Exception {
+		onBuildingClicked("Advanced Building");
+	}
+	
+
+	public void onCorporateClicked() throws Exception {
+		onBuildingClicked("Corporate HQ");
+	}
+	
+	private void onBuildingClicked(String name) throws Exception {
+		Building building = new Building(name);
+		BuildingChoiceController ctr = (BuildingChoiceController) application.replaceSceneContent("BuildingChoice.fxml", BuildingChoiceController.class);
+		ctr.setApp(application);
+		ctr.setBuilding(building);
+	}
 }
