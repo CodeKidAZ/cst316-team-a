@@ -12,6 +12,7 @@ import org.junit.Test;
 
 import cst316.Investment;
 import cst316.Player;
+import cst316.Product;
 
 public class PlayerTest {
 	Player player;
@@ -37,7 +38,7 @@ public class PlayerTest {
 	public void testSaveLoad() {
 		assertTrue(player.saveFile());
 		assertTrue(player.readFile("dan"));
-		(new File("dan.json")).delete();
+		assertTrue(Player.getAvailablePlayers().contains("dan"));
 	}
 	@Test
 	public void testDuplicateAssets() {
@@ -74,7 +75,6 @@ public class PlayerTest {
 		assertEquals(investing.getInvestments().size(), 2);
 		assertTrue(investing.readFile("dan"));
 		assertEquals(investing.getInvestments().size(), 1);
-		(new File("dan.json")).delete();
 	}
 	@Test
 	public void testNonExistentFile() {
@@ -105,5 +105,68 @@ public class PlayerTest {
 		assertEquals(tester.getInvestments().get(0), new Investment("Test investment", 10.5, true));
 		tester.cashInvestment(tester.getInvestments().get(0));
 		assertTrue(tester.getMoney() != -10.5);
+	}
+	@Test
+	public void testAddPoints() {
+		Player pointed = new Player(1, 1, 0, "", new ArrayList<String>());
+		pointed.addPoints(1);
+		assertEquals(2, pointed.getPoints());
+	}
+	@Test
+	public void testRemoveAsset() {
+		ArrayList<String> assets = new ArrayList<>();
+		assets.add("What");
+		assets.add("Ever");
+		Player pointed = new Player(1, 1, 0, "", new ArrayList<String>());
+		pointed.addAssets(assets);
+		pointed.removeAsset("What");
+		assertTrue(pointed.getAssets().contains("Ever"));
+		assertEquals(1, pointed.getAssets().size());
+	}
+	@Test
+	public void testRemoveInvestment() {
+		ArrayList<Investment> investments = new ArrayList<>();
+		Investment inv1 = new Investment("What", 5.5, false); 
+		investments.add(inv1);
+		Investment inv2 = new Investment("Ever", 5.5, false); 
+		investments.add(inv2);
+		Player pointed = new Player(1, 1, 0, "", new ArrayList<String>());
+		pointed.addInvestments(investments);
+		pointed.removeInvestment(inv1);
+		assertTrue(pointed.getInvestments().contains(inv2));
+		assertEquals(1, pointed.getInvestments().size());
+	}
+	@Test
+	public void testSetInvestments() {
+		ArrayList<Investment> investments = new ArrayList<>();
+		Investment inv1 = new Investment("What", 5.5, false); 
+		investments.add(inv1);
+		Investment inv2 = new Investment("Ever", 5.5, false); 
+		investments.add(inv2);
+		Player pointed = new Player(1, 1, 0, "", new ArrayList<String>());
+		pointed.setInvestments(investments);
+		pointed.removeInvestment(inv1);
+		assertTrue(pointed.getInvestments().contains(inv2));
+		assertEquals(1, pointed.getInvestments().size());
+		assertEquals(2, investments.size());
+	}
+	@Test
+	public void testEmployees() {
+		Player pointed = new Player();
+		pointed.addEmployees(2);
+		assertEquals(2, pointed.getEmployees());
+	}
+	@Test
+	public void testMoney() {
+		Player pointed = new Player();
+		pointed.addMoney(2.0);
+		assertEquals(2.0, pointed.getMoney(), 0.1);
+	}
+	@Test
+	public void testProduct() throws Exception {
+		Player pointed = new Player();
+		Product prod = new Product("Electronics", 0.5, 0.5);
+		pointed.setProduct(prod);
+		assertEquals(pointed.getProduct(), prod);
 	}
 }
