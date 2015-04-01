@@ -51,6 +51,7 @@ public class LoginController extends AnchorPane{
 		}
 	}
 
+	@FXML
 	void initialize(){
 		playerNameText.getItems().addAll(Player.getAvailablePlayers());
                  theBox.setLayoutX(500);
