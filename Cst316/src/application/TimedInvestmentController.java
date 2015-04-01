@@ -11,18 +11,16 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.KeyEvent;
-
+/**
+ * TimedInvestment FXML Controller class
+ *
+ * @author Derek Hamel
+ */
 public class TimedInvestmentController extends AnchorPane{
-	@FXML
-	private AnchorPane AnchorPane;
 	@FXML
 	private Label moneyLbl;
 	@FXML
 	private TextField investInput;
-	@FXML
-	private Button offerBtn;
-	@FXML
-	private Button cancelBtn;
 
 	private Main app;
 	private Scene prevScene;
@@ -50,7 +48,7 @@ public class TimedInvestmentController extends AnchorPane{
 			if(player.getMoney()-input < 0){
 				moneyLbl.setText("Not enough money!");
 			}else{
-				moneyLbl.setText(Double.toString((player.getMoney()-input)));
+				moneyLbl.setText(Double.toString(player.getMoney()-input));
 			}
 		}catch(Exception e){
 			moneyLbl.setText(Double.toString(player.getMoney()));

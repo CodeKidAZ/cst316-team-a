@@ -10,10 +10,12 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-
+/**
+ * TimedEvent FXML Controller class
+ *
+ * @author Derek Hamel
+ */
 public class TimedEventController extends AnchorPane implements EventHandler<WorkerStateEvent>{
-	@FXML
-	private AnchorPane AnchorPane;
 	@FXML
 	private ProgressBar timeProgress;
 	@FXML
@@ -122,7 +124,7 @@ public class TimedEventController extends AnchorPane implements EventHandler<Wor
 	@Override
 	public void handle(WorkerStateEvent event) {
 		if(event.getEventType() == WorkerStateEvent.WORKER_STATE_SUCCEEDED){
-			updateTime(0);
+			ignoreClicked(null);
 		}
 
 	}
