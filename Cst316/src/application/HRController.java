@@ -1,9 +1,6 @@
 package application;
 //
 
-import java.net.URL;
-import java.util.Optional;
-import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,7 +10,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -21,7 +17,6 @@ import javafx.scene.layout.AnchorPane;
 import cst316.Employee;
 import cst316.Player;
 import javafx.scene.control.ComboBox;
-import javafx.scene.effect.BlendMode;
 
 /**
  * FXML Controller class
