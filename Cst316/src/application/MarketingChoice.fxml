@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
@@ -29,9 +30,10 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" SplitPane.resizableWithParent="false">
                <children>
-                  <Button fx:id="purchaseButton" layoutX="53.0" layoutY="279.0" mnemonicParsing="false" onAction="#purchaseButtonFired" prefHeight="161.0" prefWidth="277.0" text="Purchase" />
-                  <Button fx:id="returnButton" layoutX="251.0" layoutY="570.0" mnemonicParsing="false" onAction="#returnButtonFired" prefHeight="31.0" prefWidth="79.0" text="Return" AnchorPane.bottomAnchor="117.0" AnchorPane.rightAnchor="53.0" />
+                  <Button fx:id="purchaseButton" layoutX="45.0" layoutY="264.0" mnemonicParsing="false" onAction="#purchaseButtonFired" prefHeight="161.0" prefWidth="277.0" text="Purchase" />
+                  <Button fx:id="returnButton" layoutX="45.0" layoutY="623.0" mnemonicParsing="false" onAction="#returnButtonFired" prefHeight="31.0" prefWidth="79.0" text="Return" AnchorPane.bottomAnchor="64.0" AnchorPane.rightAnchor="259.0" />
                   <ComboBox fx:id="dropMenu" layoutX="45.0" layoutY="14.0" onAction="#dropMenuFired" onContextMenuRequested="#changeMenu" prefHeight="138.0" prefWidth="285.0" AnchorPane.rightAnchor="53.0" AnchorPane.topAnchor="14.0" />
+                  <Button fx:id="chartButton" layoutX="45.0" layoutY="468.0" mnemonicParsing="false" onAction="#chartButtonFired" prefHeight="94.0" prefWidth="192.0" text="Market Share" />
                </children></AnchorPane>
         </items>
       </SplitPane>

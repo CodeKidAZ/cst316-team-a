@@ -46,7 +46,7 @@ public class VideoController extends AnchorPane{
 		
 		player.stop();
 		try {
-			ctr = (CreatePlayerController) app.replaceSceneContent("CreatePlayer.fxml", CreatePlayerController.class);
+			ctr = (CreatePlayerController) app.replaceSceneContent("CreatePlayer.fxml", null);
 			ctr.setApp(app);
 			ctr.setPlayerName(name);
 		} catch (Exception e) {
@@ -58,7 +58,7 @@ public class VideoController extends AnchorPane{
 		@Override
 		public void run() {
 			try {
-				ctr = (CreatePlayerController) app.replaceSceneContent("CreatePlayer.fxml", CreatePlayerController.class);
+				ctr = (CreatePlayerController) app.replaceSceneContent("CreatePlayer.fxml", null);
 				ctr.setApp(app);
 				ctr.setPlayerName(name);
 			} catch (Exception e) {

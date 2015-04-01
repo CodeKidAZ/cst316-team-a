@@ -38,9 +38,8 @@ public class WorkersListController extends AnchorPane
      @FXML
     private void backMethod(ActionEvent event) throws Exception 
     {
-        HRController ctr = (HRController) application.replaceSceneContent("HR.fxml", HRController.class);
+        HRController ctr = (HRController) application.replaceSceneContent("HR.fxml", null);
         ctr.setApp(application);
-        ctr.setPlayer(player);
     }
    
     //___________________________________________________________SET METHODS
