@@ -68,6 +68,7 @@ public class MarketShareMeasureTest {
 		double b = rNG.nextInt(255);
 		double c = rNG.nextInt(255);
 		
+		//FB fix here: C:/Users/Wesley Local/workspace2/cst316-team-a/Cst316/src/test/MarketShareMeasureTest.java:71 Dead store to total in test.MarketShareMeasureTest.test() [Of Concern(17), Normal confidence]
 		double total = i+a+b+c;
 		
 		MarketCompany mcSample1 = new MarketCompany("Microsoft", i);
@@ -88,6 +89,10 @@ public class MarketShareMeasureTest {
 		assertEquals("Google", ((companyList.get(1)).getName()));
 		assertEquals("IBM", ((companyList.get(2)).getName()));
 		assertEquals("Sony", ((companyList.get(3)).getName()));
+		
+		double retrieveTotal = (companyList.get(0)).getMarketPower()+ (companyList.get(1)).getMarketPower()+(companyList.get(2)).getMarketPower()+(companyList.get(3)).getMarketPower();
+		
+		assertEquals(retrieveTotal, total, 1);
 
 	}
 

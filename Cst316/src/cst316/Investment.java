@@ -14,6 +14,7 @@ import org.json.JSONObject;
  *
  */
 public class Investment implements JSONString {
+	
 	private double amount;
 	private String name;
 	private boolean isGood;
