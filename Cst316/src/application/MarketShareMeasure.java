@@ -47,7 +47,12 @@ public class MarketShareMeasure {
 		return capTerm;
 	}
 	
-//
+	//This method takes in an ArrayList of MarketCompany Type, and a String of a company name that --
+	//is already in the list of MarketCompanys that will be passed in. The method iterates through 
+	//the list of MarketCompanys, and totals up their 'MarketPower' values. It also checks for the passed in Name 
+	//of company each time it iterates through the for loop. If it finds a company in the list matching the passed
+	//in name, then it stores that value and divides it by the totalMarketPower of the entire list to get the 
+	//equivalent percentage of how much the specific company owns of a market. EG. BurgerKing owns 28.65% of the fastfood Market.
 	static double getMarketPercent(ArrayList<MarketCompany> mcIn, String compName){
 		double targetPower = -1;
 		double totalPower = -2;
