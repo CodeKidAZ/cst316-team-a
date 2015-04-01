@@ -77,5 +77,8 @@ public class BuildingChoiceController extends AnchorPane {
             doneText.setText("DONE");
         }
     }
+    
+	@FXML
+	public void changeMenu(ContextMenuEvent event) {};
 
 }
