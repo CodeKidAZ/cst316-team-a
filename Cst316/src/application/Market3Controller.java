@@ -17,6 +17,7 @@ import javafx.scene.text.Text;
 
 public class Market3Controller extends AnchorPane {
 
+
     @FXML
     private ResourceBundle resources;
     @FXML
@@ -85,45 +86,48 @@ public class Market3Controller extends AnchorPane {
     ;
 	// Event Listener on Button[#returnButton].onAction
 	@FXML
-    public void returnButtonFired(ActionEvent event) throws Exception {
-        LandingController ctr = (LandingController) application.replaceSceneContent("Landing.fxml", LandingController.class);
-        ctr.setApp(application);
-    }
-
-    //@Override
-    public void setApp(Main app) {
-        application = app;
-        dropMenu.getItems().setAll("Print Marketing",
-                "Coupon Marketing",
-                "WWITM Marketing",
-                "Television Marketing");
-        this.player = application.getPlayer();
-        doneText.setText(null);
-    }
-
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
-
-    @FXML
-    public void purchaseButtonFired(ActionEvent event) {
-        doneText.setText("DONE");
-        if (output != null) {
-            switch (output) {
-                case "Print Marketing":
-                    System.out.println("PRINT MARKETING PURCHASED.");
-                    break;
-                case "Coupon Marketing":
-                    System.out.println("COUPON MARKETING PURCHASED.");
-                    break;
-                case "WWITM Marketing":
-                    System.out.println("WACKY WAVING INFLATABLE TUBE MAN MARKETING PURCHASED.");
-                    break;
-                case "Television Marketing":
-                    System.out.println("TELEVISION MARKETING PURCHASED.");
-                    break;
-            }
-        }
-
-    }
+	public void returnButtonFired(ActionEvent event) throws Exception {
+		LandingController ctr = (LandingController) application.replaceSceneContent("Landing.fxml", LandingController.class);
+		ctr.setApp(application);
+	}
+	
+	@FXML
+	public void chartButtonFired(ActionEvent event) throws Exception {
+		MarketingStatisticsController ctr = (MarketingStatisticsController) application.replaceSceneContent("MarketingStatistics.fxml", MarketingStatisticsController.class);
+		ctr.setApp(application);
+	}
+	
+	//@Override
+	public void setApp(Main app) {
+		application = app;
+		dropMenu.getItems().setAll("Print Marketing",
+								   "Coupon Marketing",
+								   "WWITM Marketing",
+							 	   "Television Marketing");
+		this.player = application.getPlayer();
+	}
+	
+	public void setPlayer(Player player) {
+		this.player = player;
+	}
+	
+	@FXML
+	public void purchaseButtonFired(ActionEvent event) {
+		if(output != null) {
+			switch(output) {
+			case "Print Marketing": 
+				System.out.println("PRINT MARKETING PURCHASED.");
+				break;
+			case "Coupon Marketing":
+				System.out.println("COUPON MARKETING PURCHASED.");
+				break;
+			case "WWITM Marketing":
+				System.out.println("WACKY WAVING INFLATABLE TUBE MAN MARKETING PURCHASED.");
+				break;
+			case "Television Marketing":
+				System.out.println("TELEVISION MARKETING PURCHASED.");
+				break;
+			}
+		}
+	}
 }
