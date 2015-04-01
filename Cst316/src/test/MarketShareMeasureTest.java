@@ -6,7 +6,6 @@ package test;
 import static org.junit.Assert.*;
 
 import java.util.Random;
-
 import java.util.ArrayList;
 
 import org.junit.After;
@@ -15,7 +14,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import application.MarketCompany;
+import cst316.MarketCompany;
 
 /**
  * @author Wesley Local

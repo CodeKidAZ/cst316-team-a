@@ -46,7 +46,7 @@ public class Market3Controller extends AnchorPane {
     // Event Listener on ComboBox[#dropMenuPotential].onAction
     @FXML
     public void dropMenuFired(ActionEvent event) {
-        doneText.setText(null);
+        //doneText.setText(null);
         output = (String) dropMenu.getSelectionModel().getSelectedItem().toString();
         switch (output) {
             case "Print Marketing":
