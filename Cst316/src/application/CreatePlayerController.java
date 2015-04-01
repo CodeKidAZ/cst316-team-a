@@ -16,57 +16,70 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 
-public class CreatePlayerController extends AnchorPane{
-	@FXML 
-	private ResourceBundle resources;
-	@FXML 
-	private URL location;
-	@FXML
-	Button continueBtn;
-	@FXML
-	ComboBox<String> productCombo;
-	
-	private String playerName;
+public class CreatePlayerController extends AnchorPane {
 
-	private Main application;
-	InputStream in;
-	Image invIn;
-	Image invOut;
+    @FXML
+    Button continueBtn;
+    @FXML
+    ComboBox<String> productCombo;
 
-	public void setApp(Main app){
-		application = app;
-		String[] allProductNames = Product.getAllProductNames();
-		ObservableList<String> items = productCombo.getItems();
-		for (String name : allProductNames) {
-			items.add(name);
-		}
-		productCombo.setItems(items);
-	}
-	
-	public void setPlayerName(String playerName) {
-		this.playerName = playerName;
-	}
+    private String playerName;
 
-	@FXML
-	void initialize(){
+    private Main application;
+    InputStream in;
+    Image invIn;
+    Image invOut;
+    @FXML
+    private AnchorPane AnchorPane;
+
+    public void setApp(Main app) {
+        application = app;
+        String[] allProductNames = Product.getAllProductNames();
+        ObservableList<String> items = productCombo.getItems();
+        for (String name : allProductNames) {
+            items.add(name);
+        }
+        productCombo.setItems(items);
+    }
+
+    public void setPlayerName(String playerName) {
+        this.playerName = playerName;
+    }
+
+    /*void initialize() {
         continueBtn.setOnAction(new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				try {
-					String productName = productCombo.getValue().toString();
-					Product product = new Product(productName, 0.0, 0.0);
-					Player player = new Player(0, 100.0, playerName, new ArrayList<String>());
-					application.setPlayer(player);
-					player.setProduct(product);
-					player.saveFile();
-					BuildingChoiceController ctr = (BuildingChoiceController) application.replaceSceneContent("BuildingChoice.fxml", BuildingChoiceController.class);
-					ctr.setApp(application);
-				} catch (Exception e) {
-					throw new Error(e);
-				}
-			}
-		});
-	}
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    String productName = productCombo.getValue().toString();
+                    Product product = new Product(productName, 0.0, 0.0);
+                    Player player = new Player(0, 100.0, playerName, new ArrayList<String>());
+                    application.setPlayer(player);
+                    player.setProduct(product);
+                    player.saveFile();
+                    BuildingChoiceController ctr = (BuildingChoiceController) application.replaceSceneContent("BuildingChoice.fxml", BuildingChoiceController.class);
+                    ctr.setApp(application);
+                } catch (Exception e) {
+                    throw new Error(e);
+                }
+            }
+        });
+    }*/
 
+    @FXML
+    private void handle(ActionEvent event) {
+        try {
+            String productName = productCombo.getValue().toString();
+            Product product = new Product(productName, 0.0, 0.0);
+            Player player = new Player(0, 100.0, playerName, new ArrayList<String>());
+            application.setPlayer(player);
+            player.setProduct(product);
+            player.saveFile();
+            BuildingChoiceController ctr = (BuildingChoiceController) application.replaceSceneContent("BuildingChoice.fxml", null);
+            ctr.setApp(application);
+        } catch (Exception e) {
+            throw new Error(e);
+        }
+    }
 
 }

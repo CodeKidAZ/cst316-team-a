@@ -7,16 +7,13 @@ import java.util.ResourceBundle;
 import service.TimedEventService;
 import cst316.Player;
 import javafx.fxml.FXML;
+import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 
 public class LoginController extends AnchorPane{
-	@FXML 
-	private ResourceBundle resources;
-	@FXML 
-	private URL location;
 	@FXML
 	Button continueBtn;
 	@FXML
@@ -26,9 +23,16 @@ public class LoginController extends AnchorPane{
 	InputStream in;
 	Image invIn;
 	Image invOut;
+                Main a;
+        
+    @FXML
+    private AnchorPane AnchorPane;
+    @FXML
+    private Group theBox;
 
 	public void setApp(Main app){
 		application = app;
+               
 	}
 	
 	@FXML
@@ -47,9 +51,10 @@ public class LoginController extends AnchorPane{
 		}
 	}
 
-	@FXML
 	void initialize(){
 		playerNameText.getItems().addAll(Player.getAvailablePlayers());
+                 theBox.setLayoutX(500);
+                 theBox.setLayoutY(500);
 	}
 
 

@@ -43,7 +43,7 @@ public class CorpController extends AnchorPane {
 
     @FXML
     private void backButton(ActionEvent event) throws Exception {
-         HRController ctr = (HRController) application.replaceSceneContent("HR.fxml", HRController.class);
+         HRController ctr = (HRController) application.replaceSceneContent("HR.fxml", null);
         ctr.setApp(application);
         ctr.setPlayer(player);
         

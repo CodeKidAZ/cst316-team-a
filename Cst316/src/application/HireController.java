@@ -224,7 +224,7 @@ public class HireController extends AnchorPane {
     @FXML
     private void backMethod(ActionEvent event) throws Exception {
         System.out.println("YOU CLICKED BACK");
-        HRController ctr = (HRController) application.replaceSceneContent("HR.fxml", HRController.class);
+        HRController ctr = (HRController) application.replaceSceneContent("HR.fxml", null);
         ctr.setApp(application);
         ctr.setPlayer(player);
     }

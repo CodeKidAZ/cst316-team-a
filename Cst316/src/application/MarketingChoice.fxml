@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
@@ -29,9 +30,14 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" SplitPane.resizableWithParent="false">
                <children>
-                  <Button fx:id="purchaseButton" layoutX="53.0" layoutY="279.0" mnemonicParsing="false" onAction="#purchaseButtonFired" prefHeight="161.0" prefWidth="277.0" text="Purchase" />
-                  <Button fx:id="returnButton" layoutX="251.0" layoutY="570.0" mnemonicParsing="false" onAction="#returnButtonFired" prefHeight="31.0" prefWidth="79.0" text="Return" AnchorPane.bottomAnchor="117.0" AnchorPane.rightAnchor="53.0" />
-                  <ComboBox fx:id="dropMenu" layoutX="45.0" layoutY="14.0" onAction="#dropMenuFired" onContextMenuRequested="#changeMenu" prefHeight="138.0" prefWidth="285.0" AnchorPane.rightAnchor="53.0" AnchorPane.topAnchor="14.0" />
+                  <VBox alignment="CENTER" layoutX="46.0" layoutY="14.0" spacing="50.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <ComboBox fx:id="dropMenu" layoutX="45.0" layoutY="14.0" onAction="#dropMenuFired" onContextMenuRequested="#changeMenu" prefHeight="138.0" prefWidth="285.0" AnchorPane.rightAnchor="53.0" AnchorPane.topAnchor="14.0" />
+                        <Button fx:id="purchaseButton" layoutX="53.0" layoutY="279.0" mnemonicParsing="false" onAction="#purchaseButtonFired" prefHeight="161.0" prefWidth="277.0" text="Purchase" />
+                        <Button fx:id="returnButton" layoutX="251.0" layoutY="570.0" mnemonicParsing="false" onAction="#returnButtonFired" prefHeight="31.0" prefWidth="79.0" text="Return" AnchorPane.bottomAnchor="117.0" AnchorPane.rightAnchor="53.0" />
+                        <Text fx:id="doneText" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                     </children>
+                  </VBox>
                </children></AnchorPane>
         </items>
       </SplitPane>
