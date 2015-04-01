@@ -69,7 +69,7 @@ public class ProductManagementController extends AnchorPane  {
 
 	@FXML
 	public void returnMouseClicked(MouseEvent event) throws Exception {
-		HRController ctr = (HRController) application.replaceSceneContent("HR.fxml", HRController.class);
+		HRController ctr = (HRController) application.replaceSceneContent("HR.fxml", null);
 		ctr.setApp(application);
 	}
 
