@@ -39,6 +39,9 @@ public class MarketingStatisticsController extends AnchorPane {
 		output = (String) dropMenu.getSelectionModel().getSelectedItem().toString();
 		switch(output) {
 			case "Phone App Market Report": 
+				//If the 'Phone App Market Report' choice is selected from the dropDown menu, then draw this pieChart of sample data
+				//The area for each slice is determined by the integer parameter divided by the total
+				//EG. 'Calculator' occupies 77/2436 = 0.03 = 3% of the total pie circle
 				ObservableList<PieChart.Data> pieChartData =
                 FXCollections.observableArrayList(
 					new PieChart.Data("Calculator", 77),
