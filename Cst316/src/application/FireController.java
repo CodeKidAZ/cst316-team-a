@@ -1,4 +1,5 @@
 package application;
+
 import cst316.Employee;
 import cst316.Management;
 import cst316.Player;
@@ -18,8 +19,11 @@ import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 
 public class FireController extends AnchorPane {
+
     private Main application;
     private Player player;
+    private ObservableList<Employee> tableData = FXCollections.observableArrayList();
+
     @FXML
     private ResourceBundle resources;
     @FXML
@@ -34,8 +38,6 @@ public class FireController extends AnchorPane {
     private Label hireTitleLabel;
     @FXML
     private Label totalHiredLabel;
-
-    private ObservableList<Employee> tableData = FXCollections.observableArrayList(); 
     @FXML
     private TableColumn<Employee, String> nameColumn;
     @FXML
@@ -44,32 +46,33 @@ public class FireController extends AnchorPane {
     public void setPlayer(Player player) {
         this.player = player;
     }
+
     public void setApp(Main app) {
         this.application = app;
 
         nameColumn.setCellValueFactory(cellData -> cellData.getValue().getNameProperty());    // -> is lambda expression
-        wageColumn.setCellValueFactory(cellData -> cellData.getValue().getWageProperty()); 
-        
-        System.out.println("hired Tree is : "+ Management.hiredTree.size());
+        wageColumn.setCellValueFactory(cellData -> cellData.getValue().getWageProperty());
+
+        System.out.println("hired Tree is : " + Management.hiredTree.size());
         Set<String> setNames = Management.hiredTree.keySet();  //get keys from Employee Tree Map
         System.out.println("Names are " + setNames);
-        for (String key: setNames) {
-            
+        for (String key : setNames) {
+
             String employeeName = Management.hiredTree.get(key).getName();
-             System.out.println("EmployeeNames are " + key);
-            
+            System.out.println("EmployeeNames are " + key);
+
             int employeeWage = Management.hiredTree.get(key).getWage();
             Employee node = new Employee(employeeName, employeeWage);
             tableData.add(node);
         }
         fireTable.setItems(tableData);
-        totalHiredLabel.setText("Total Hired : "+Management.hiredTree.size());
+        totalHiredLabel.setText("Total Hired : " + Management.hiredTree.size());
     }
 
     @FXML
     private void backMethod(ActionEvent event) throws Exception {
         System.out.println("YOU CLICKED BACK");
-        HRController ctr = (HRController) application.replaceSceneContent("HR.fxml", HRController.class);
+        HRController ctr = (HRController) application.replaceSceneContent("HR.fxml", null);
         ctr.setApp(application);
         ctr.setPlayer(player);
     }
@@ -77,19 +80,15 @@ public class FireController extends AnchorPane {
     @FXML
     private void fireMethod(ActionEvent event) {
         int selectedIndex = fireTable.getSelectionModel().getSelectedIndex();
-        if (selectedIndex >= 0) 
-        {
-            Employee a = new Employee(fireTable.getSelectionModel().getSelectedItem().getName(),fireTable.getSelectionModel().getSelectedItem().getWage());
-            Management.empTree.put(player.getName(), a);                                            // put the fired employee back into employement tree
+        if (selectedIndex >= 0) {
+
+            Employee a = new Employee(fireTable.getSelectionModel().getSelectedItem().getName(), fireTable.getSelectionModel().getSelectedItem().getWage());
+            Management.empTree.put(a.getName(), a);                                            // put the fired employee back into employement tree
             Management.hiredTree.remove(fireTable.getSelectionModel().getSelectedItem().getName()); // remove employee from hired tree
             fireTable.getItems().remove(selectedIndex);                                 //remove the selected item from TableView 
-            totalHiredLabel.setText("Total Hired : "+Management.hiredTree.size());
-            
-            System.out.println("empTree is "+Management.empTree.size());
-            System.out.println("HireTree is  "+Management.hiredTree.size());
-        }
-        else
-        {
+            totalHiredLabel.setText("Total Hired : " + Management.hiredTree.size());
+
+        } else {
             System.out.println(" nothing");
         }
     }

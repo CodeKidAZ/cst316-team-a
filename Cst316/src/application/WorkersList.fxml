@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" > <!-- fx:controller="application.WorkersListController" -->
+   <children>
+      <TableView fx:id="workerTable" layoutX="62.0" layoutY="113.0" prefHeight="415.0" prefWidth="152.0">
+        <columns>
+          <TableColumn fx:id="nameColumn" prefWidth="75.0" text="C1" />
+          <TableColumn fx:id="wageColumn" prefWidth="75.0" text="C2" />
+        </columns>
+      </TableView>
+      <Label fx:id="hrTitleLabel" layoutX="345.0" layoutY="30.0" text="WORKERS LIST" AnchorPane.topAnchor="30.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Button fx:id="backButton" layoutX="270.0" layoutY="30.0" mnemonicParsing="false" onAction="#backMethod" prefHeight="30.0" prefWidth="63.0" text="Back" AnchorPane.topAnchor="30.0" />
+      <Button layoutX="287.0" layoutY="113.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="70.0" text="Position 1" />
+      <Button layoutX="383.0" layoutY="113.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="70.0" text="Position 2" />
+      <Button layoutX="477.0" layoutY="113.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="70.0" text="Position 3" />
+   </children>
+</AnchorPane>

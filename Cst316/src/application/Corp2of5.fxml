@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" > <!--  fx:controller="application.Corp2of5Controller"-->
+   <children>
+      <Text layoutX="285.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2 of 5" textAlignment="CENTER" wrappingWidth="184.283203125">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Text>
+      <Text layoutX="273.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose your Bussiness Type" textAlignment="CENTER" wrappingWidth="208.283203125">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Text>
+      <Label layoutX="292.0" layoutY="55.0" prefHeight="30.0" prefWidth="372.0" text="INCORPORATE PROCESS" AnchorPane.leftAnchor="298.0" AnchorPane.rightAnchor="610.0" AnchorPane.topAnchor="32.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <GridPane hgap="50.0" layoutX="218.0" layoutY="309.0" vgap="20.0" AnchorPane.leftAnchor="260.0" AnchorPane.topAnchor="250.0">
+         <columnConstraints>
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="129.0" minWidth="10.0" prefWidth="86.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="84.0" minWidth="10.0" prefWidth="84.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="28.0" minHeight="10.0" prefHeight="18.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="52.0" minHeight="10.0" prefHeight="52.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <Button fx:id="nextButton2" layoutX="233.0" layoutY="364.0" mnemonicParsing="false" onAction="#open3of5" prefHeight="33.0" prefWidth="63.0" text="S Corp" GridPane.rowIndex="2" />
+            <Button layoutX="455.0" layoutY="364.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="63.0" text="C Corp" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+         </children>
+      </GridPane>
+      <Button fx:id="backButton" cancelButton="true" layoutX="216.0" layoutY="32.0" mnemonicParsing="false" onAction="#backButton" prefHeight="30.0" prefWidth="63.0" text="Back" AnchorPane.leftAnchor="216.0" AnchorPane.topAnchor="32.0" />
+      <TextArea layoutX="581.0" layoutY="144.0" prefHeight="240.0" prefWidth="252.0" text="                  S CORP                     &#10;LIABILITY                low&#10;TAX                        single                       &#10;OWNER                 500 shareholders&#10;PAPERWORK         less&#10;&#10;                  C CORP&#10;LIABILITY               high&#10;TAX                       double&#10;OWNER                 shareholders&#10;PAPERWORK         more                   ">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextArea>
+   </children>
+</AnchorPane>

@@ -18,6 +18,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.effect.Glow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -26,12 +28,16 @@ import javafx.scene.layout.AnchorPane;
 public class HireController extends AnchorPane {
      Main application;
      Player player;
+     
      Employee val = new Employee();
      Set<String> empObjects;
      int s = Management.empTree.size(); //get the size of Employee Tree Map
     String[] namesArray = new String[s]; //this array will store all Employee Names
     String[] wagesArray = new String[s];
     Image image;
+    Image image2;
+    Image image3;
+    Image image4;
  
     private ObservableList<Employee> tableData = FXCollections.observableArrayList(); 
     private TreeMap<String, Label> nameLabels = new TreeMap<String,Label>();
@@ -42,6 +48,11 @@ public class HireController extends AnchorPane {
     private ResourceBundle resources;
     @FXML
     private URL location;
+    
+    
+  DropShadow ds = new DropShadow();
+    
+
     @FXML
     private Label hireTitleLabel;
     @FXML
@@ -148,12 +159,72 @@ public class HireController extends AnchorPane {
     private Button undoButton;
     @FXML
     private Label totalLabel;
+    @FXML
+    private Label wageLabel16;
+    @FXML
+    private Label nameLabel16;
+    @FXML
+    private ImageView imageEmployee16;
+    @FXML
+    private Label wageLabel21;
+    @FXML
+    private Label nameLabel17;
+    @FXML
+    private ImageView imageEmployee17;
+    @FXML
+    private Label wageLabel18;
+    @FXML
+    private Label nameLabel18;
+    @FXML
+    private ImageView imageEmployee18;
+    @FXML
+    private Label wageLabel19;
+    @FXML
+    private Label nameLabel19;
+    @FXML
+    private ImageView imageEmployee19;
+    @FXML
+    private Label wageLabel20;
+    @FXML
+    private Label nameLabel20;
+    @FXML
+    private ImageView imageEmployee20;
+    @FXML
+    private Label nameLabel21;
+    @FXML
+    private ImageView imageEmployee21;
+    @FXML
+    private Label wageLabel22;
+    @FXML
+    private Label nameLabel22;
+    @FXML
+    private ImageView imageEmployee22;
+    @FXML
+    private Label wageLabel23;
+    @FXML
+    private Label nameLabel23;
+    @FXML
+    private ImageView imageEmployee23;
+    @FXML
+    private Label wageLabel24;
+    @FXML
+    private Label nameLabel24;
+    @FXML
+    private ImageView imageEmployee24;
+    @FXML
+    private Label wageLabel25;
+    @FXML
+    private Label nameLabel25;
+    @FXML
+    private ImageView imageEmployee25;
+    @FXML
+    private Label wageLabel17;
     
     //_______________________________________________ BACK BUTTON
     @FXML
     private void backMethod(ActionEvent event) throws Exception {
         System.out.println("YOU CLICKED BACK");
-        HRController ctr = (HRController) application.replaceSceneContent("HR.fxml", HRController.class);
+        HRController ctr = (HRController) application.replaceSceneContent("HR.fxml", null);
         ctr.setApp(application);
         ctr.setPlayer(player);
     }
@@ -196,12 +267,17 @@ public class HireController extends AnchorPane {
         createNameArray();
         createWageArray();
         image = new Image(this.getClass().getClassLoader().getResourceAsStream("res/employeeImage.png"));
+        image2 = new Image(this.getClass().getClassLoader().getResourceAsStream("res/employeeImage2.png"));
+        image3 = new Image(this.getClass().getClassLoader().getResourceAsStream("res/employeeImage3.png"));
+        image4 = new Image(this.getClass().getClassLoader().getResourceAsStream("res/employeeImage4.png"));
         createEmployeeImages();
         createEmployeeLabels();
         linkImagesToNames();
         nameColumn.setCellValueFactory(cellData -> cellData.getValue().getNameProperty());    // -> is lambda expression
         wageColumn.setCellValueFactory(cellData -> cellData.getValue().getWageProperty()); 
         totalLabel.setText(" ");
+         totalLabel.setText("You have Hired : "+ tableData.size()+ "           Total Hired : "+ Management.hiredTree.size());
+
 
     }
 
@@ -271,23 +347,36 @@ public class HireController extends AnchorPane {
     //__________________________________________________Shows employee images on GUI
     private void createEmployeeImages() 
     {
-        imageEmployee1.setImage(image);
-        imageEmployee2.setImage(image);
-        imageEmployee3.setImage(image);
-        imageEmployee4.setImage(image);
+    	imageEmployee1.setImage(image);
+        imageEmployee2.setImage(image2);
+        imageEmployee3.setImage(image3);
+        imageEmployee4.setImage(image4);
         imageEmployee5.setImage(image);
         
-        imageEmployee6.setImage(image);
-        imageEmployee7.setImage(image);
-        imageEmployee8.setImage(image);
+        imageEmployee6.setImage(image2);
+        imageEmployee7.setImage(image3);
+        imageEmployee8.setImage(image4);
         imageEmployee9.setImage(image);
-        imageEmployee10.setImage(image);
+        imageEmployee10.setImage(image2);
         
-        imageEmployee11.setImage(image);
-        imageEmployee12.setImage(image);
+        imageEmployee11.setImage(image3);
+        imageEmployee12.setImage(image4);
         imageEmployee13.setImage(image);
-        imageEmployee14.setImage(image);
-        imageEmployee15.setImage(image);
+        imageEmployee14.setImage(image2);
+        imageEmployee15.setImage(image3);
+        
+        imageEmployee16.setImage(image4);
+        imageEmployee17.setImage(image);
+        imageEmployee18.setImage(image2);
+        
+        imageEmployee19.setImage(image3);
+        imageEmployee20.setImage(image4);
+        imageEmployee21.setImage(image);
+        imageEmployee22.setImage(image2);
+        imageEmployee23.setImage(image3);
+        
+         imageEmployee24.setImage(image4);
+        imageEmployee25.setImage(image);     
     }
 
     //___________________________________________________ Shows employee names on GUI  (2 arrays used here)
@@ -325,6 +414,30 @@ public class HireController extends AnchorPane {
          wageLabel14.setText(wagesArray[13]+"/hr");
          nameLabel15.setText(namesArray[14]);
          wageLabel15.setText(wagesArray[14]+"/hr");
+         
+         nameLabel16.setText(namesArray[15]);
+         wageLabel16.setText(wagesArray[15]+"/hr");
+         nameLabel17.setText(namesArray[16]);
+         wageLabel17.setText(wagesArray[16]+"/hr");
+         nameLabel18.setText(namesArray[17]);
+         wageLabel18.setText(wagesArray[17]+"/hr");
+         nameLabel19.setText(namesArray[18]);
+         wageLabel19.setText(wagesArray[18]+"/hr");
+         nameLabel20.setText(namesArray[19]);
+         wageLabel20.setText(wagesArray[19]+"/hr");
+         
+         nameLabel21.setText(namesArray[20]);
+         wageLabel21.setText(wagesArray[20]+"/hr");
+         nameLabel22.setText(namesArray[21]);
+         wageLabel22.setText(wagesArray[21]+"/hr");
+         nameLabel23.setText(namesArray[22]);
+         wageLabel23.setText(wagesArray[22]+"/hr");
+         nameLabel24.setText(namesArray[23]);
+         wageLabel24.setText(wagesArray[23]+"/hr");
+         nameLabel25.setText(namesArray[24]);
+         wageLabel25.setText(wagesArray[24]+"/hr");
+     
+        
         
     }
 
@@ -348,5 +461,31 @@ public class HireController extends AnchorPane {
          nameLabels.put(imageEmployee13.getId(), nameLabel13);
          nameLabels.put(imageEmployee14.getId(), nameLabel14);
          nameLabels.put(imageEmployee15.getId(), nameLabel15);
+         
+          nameLabels.put(imageEmployee16.getId(), nameLabel16);
+         nameLabels.put(imageEmployee17.getId(), nameLabel17);
+         nameLabels.put(imageEmployee18.getId(), nameLabel18);
+         nameLabels.put(imageEmployee19.getId(), nameLabel19);
+         nameLabels.put(imageEmployee20.getId(), nameLabel20);
+         
+         nameLabels.put(imageEmployee21.getId(), nameLabel21);
+         nameLabels.put(imageEmployee22.getId(), nameLabel22);
+         nameLabels.put(imageEmployee23.getId(), nameLabel23);
+         nameLabels.put(imageEmployee24.getId(), nameLabel24);
+         nameLabels.put(imageEmployee25.getId(), nameLabel25);
+    }
+    @FXML
+    private void imageUnGlow(MouseEvent event) {
+        Object source = event.getSource();                                               
+        ImageView imageName = ((ImageView) source);
+        imageName.setEffect(null);
+    }
+
+    @FXML
+    private void imageGlow(MouseEvent event) {
+        Object source = event.getSource();                                                    
+        ImageView imageName = ((ImageView) source);
+        imageName.setEffect(new Glow());
+        System.out.println("Image Name is : "+imageName);
     }
 }

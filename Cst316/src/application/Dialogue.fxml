@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.DialogueController">
+   <children>
+      <VBox alignment="CENTER" layoutX="334.0" layoutY="157.0" spacing="15.0" AnchorPane.topAnchor="157.0">
+         <children>
+            <ImageView fx:id="companyImage" fitHeight="91.0" fitWidth="97.0" layoutX="323.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../Pictures/createCompany.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="302.0" layoutY="174.0" text="Please name your new company" />
+            <TextField fx:id="nameField" layoutX="309.0" layoutY="212.0" />
+         </children>
+      </VBox>
+      <Button fx:id="okButton" layoutX="334.0" layoutY="347.0" mnemonicParsing="false" onAction="#okMethod" prefHeight="35.0" prefWidth="64.0" text="Ok" />
+      <Button fx:id="cancelButton" layoutX="433.0" layoutY="347.0" mnemonicParsing="false" onAction="#cancelMethod" prefHeight="35.0" prefWidth="64.0" text="Cancel" />
+   </children>
+</AnchorPane>

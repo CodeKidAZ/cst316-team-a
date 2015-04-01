@@ -5,7 +5,6 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane fx:id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="350.0" layoutY="65.0" text="Investment Opportunity">
@@ -28,7 +27,8 @@
             <Font size="39.0" />
          </font>
       </Label>
-      <TextField fx:id="investInput" layoutX="567.0" layoutY="411.0" onKeyTyped="#investOnkey" />
-      <Button fx:id="offerBtn" layoutX="596.0" layoutY="489.0" mnemonicParsing="false" onMouseClicked="#onOfferClicked" prefHeight="69.0" prefWidth="89.0" text="Submit Offer" />
+      <TextField fx:id="investInput" layoutX="567.0" layoutY="411.0" onKeyReleased="#investOnkey" />
+      <Button fx:id="offerBtn" layoutX="533.0" layoutY="496.0" mnemonicParsing="false" onMouseClicked="#onOfferClicked" prefHeight="69.0" prefWidth="89.0" text="Submit Offer" />
+      <Button fx:id="cancelBtn" layoutX="662.0" layoutY="496.0" mnemonicParsing="false" onMouseClicked="#onCancelClicked" prefHeight="69.0" prefWidth="89.0" text="Cancel" />
    </children>
 </AnchorPane>

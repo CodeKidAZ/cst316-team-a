@@ -14,6 +14,7 @@ import org.json.JSONObject;
  *
  */
 public class Investment implements JSONString {
+	
 	private double amount;
 	private String name;
 	private boolean isGood;
@@ -63,6 +64,6 @@ public class Investment implements JSONString {
 	}
 	
 	public static String[] getAllCompanyNames() {
-		return new String[] {"SOIL", "GOGL", "RDHT", "MSFT"};
+		return new String[] {"SOIL", "Google", "Red Hat", "Microsoft"};
 	}
 }

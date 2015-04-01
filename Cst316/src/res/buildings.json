@@ -1,0 +1,22 @@
+{
+    "Basic Building": {
+        "TotalCost": 10,
+        "Image": "res/building_1.png",
+        "Description": "The basic building for entrepreneurs"
+    },
+    "Factory": {
+        "TotalCost": 10,
+        "Image": "res/building_2.png",
+        "Description": "A small scale factory for mass production"
+    },
+    "Advanced Building": {
+        "TotalCost": 10,
+        "Image": "res/building_3.png",
+        "Description": "A larger building and factory combo yeilds great production"
+    },
+    "Corporate HQ": {
+        "TotalCost": 10,
+        "Image": "res/building_4.png",
+        "Description": "The best building in the game yields massive production"
+    }
+}
