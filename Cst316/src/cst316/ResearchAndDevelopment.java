@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class ResearchAndDevelopment {
 	ArrayList<ResearchDevelObject> resDevObjs = new ArrayList<ResearchDevelObject>();
-	Player p = new Player();
+	Player p;
 	
 	public ResearchAndDevelopment() {
 		generateResDevObjs();
