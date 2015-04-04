@@ -1,11 +1,11 @@
 package application;
 
-import java.net.URL;
-import java.util.ResourceBundle;
+//import java.net.URL;
+//import java.util.ResourceBundle;
 
 import cst316.Player;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
+//import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.chart.PieChart;
 import javafx.collections.FXCollections;
@@ -51,8 +51,8 @@ public class MarketingStatisticsController extends AnchorPane {
 					new PieChart.Data("Mail-Order Bride Finder", 215),
 					new PieChart.Data("Fantasy Football Tracker", 356),
 					new PieChart.Data("FaceBiik", 111));
-        piechart.setTitle("Phone App Market Report");
-        piechart.setData(pieChartData);
+			        piechart.setTitle("Phone App Market Report");
+			        piechart.setData(pieChartData);
 				break;
 			case "Computer Gaming Market Report":
 				  ObservableList<PieChart.Data> pieChartData2 =
@@ -63,8 +63,8 @@ public class MarketingStatisticsController extends AnchorPane {
                     new PieChart.Data("Riot Games", 12.5),
                     new PieChart.Data("Thanks Obama Inc.", 30),
                     new PieChart.Data("All Other Companies", 10));
-	        piechart.setTitle("Computer Gaming Market Report");
-	        piechart.setData(pieChartData2);				; 
+			        piechart.setTitle("Computer Gaming Market Report");
+			        piechart.setData(pieChartData2);				; 
 				break;
 			case "Candy Market Report": 
 				ObservableList<PieChart.Data> pieChartData3 =
@@ -75,8 +75,8 @@ public class MarketingStatisticsController extends AnchorPane {
                     new PieChart.Data("Lollipops", 95),
                     new PieChart.Data("JellyBeans", 215),
                     new PieChart.Data("Mars Bars", 356));
-	        piechart.setTitle("Candy Market Report");
-	        piechart.setData(pieChartData3);
+			        piechart.setTitle("Candy Market Report");
+			        piechart.setData(pieChartData3);
 			break;
 			case "Anime Pillow Market Report": 
 				ObservableList<PieChart.Data> pieChartData4 =
@@ -86,9 +86,8 @@ public class MarketingStatisticsController extends AnchorPane {
                     new PieChart.Data("Hatsune Miku", 335),
                     new PieChart.Data("Wesley-Chan", 115),
                     new PieChart.Data("Midori", 256));
-	        piechart.setTitle("Anime Pillow Market Report");
-	        piechart.setData(pieChartData4);
-			break;
+			        piechart.setTitle("Anime Pillow Market Report");
+			        piechart.setData(pieChartData4);
 		}
 	}
 	

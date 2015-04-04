@@ -113,21 +113,18 @@ public class Market3Controller extends AnchorPane {
 	
 	@FXML
 	public void purchaseButtonFired(ActionEvent event) {
-		if(output != null) {
-			switch(output) {
-			case "Print Marketing": 
-				System.out.println("PRINT MARKETING PURCHASED.");
-				break;
-			case "Coupon Marketing":
-				System.out.println("COUPON MARKETING PURCHASED.");
-				break;
-			case "WWITM Marketing":
-				System.out.println("WACKY WAVING INFLATABLE TUBE MAN MARKETING PURCHASED.");
-				break;
-			case "Television Marketing":
-				System.out.println("TELEVISION MARKETING PURCHASED.");
-				break;
-			}
+		if(output == "Print Marketing") {
+			System.out.println("PRINT MARKETING PURCHASED.");
+		}
+		else if(output == "Coupon Marketing") {
+			System.out.println("COUPON MARKETING PURCHASED.");
+		}
+		else if(output == "WWITM Marketing") {
+			System.out.println("WACKY WAVING INFLATABLE TUBE MAN MARKETING PURCHASED.");
+		}
+		else{ 
+			System.out.println("TELEVISION MARKETING PURCHASED.");
+		}
+		
 		}
 	}
-}
