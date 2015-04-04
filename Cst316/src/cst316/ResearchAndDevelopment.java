@@ -1,5 +1,11 @@
 package cst316;
-
+/**
+ * 
+ * Description: A class that creates many R&D objects with their own values.
+ * This class handles the player association not R&DObject.class
+ * 
+ * @author daniel
+ */
 import java.util.ArrayList;
 
 public class ResearchAndDevelopment {

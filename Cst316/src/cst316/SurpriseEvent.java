@@ -1,6 +1,13 @@
 package cst316;
 
-
+/**
+ * Description: A class that gives the player a surprise event with different
+ * outcomes or situations that affect that player stats.
+ * This is used to simulate uncontrollable market or company events.
+ * 
+ * @author daniel
+ *
+ */
 public class SurpriseEvent {
 	private String eventTxt;
 	private Player player;
