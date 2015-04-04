@@ -1,8 +1,5 @@
 package application;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import cst316.Building;
 import cst316.Player;
 import javafx.event.ActionEvent;
@@ -33,7 +30,7 @@ public class BuildingChoiceController extends AnchorPane {
     private Main application;
     private Player player;
     @FXML
-    private AnchorPane AnchorPane;
+    private AnchorPane anchorPane;
     @FXML
     private Text doneText;
 
