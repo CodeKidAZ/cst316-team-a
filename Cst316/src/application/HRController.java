@@ -34,7 +34,7 @@ public class HRController extends AnchorPane {
     private Button incorporateButton;
 
     @FXML
-    private TableView<Employee> CompanyTableView;
+    private TableView<Employee> companyTableView;
     @FXML
     private TableColumn<Employee, String> companyNameColumn;
 
@@ -51,7 +51,6 @@ public class HRController extends AnchorPane {
     private Player player;
     public static ObservableList<Employee> CompanyList = FXCollections.observableArrayList(); // to store list of companies
     public static ObservableList<String> comboList = FXCollections.observableArrayList();
-    Image dark;
 
     @FXML
     private TableColumn<?, ?> employeesColumn1;
@@ -173,7 +172,7 @@ public class HRController extends AnchorPane {
     public void setApp(Main app) {
         this.application = app;
         companyNameColumn.setCellValueFactory(cellData -> cellData.getValue().getNameProperty());    // -> is lambda expression
-        CompanyTableView.setItems(CompanyList);
+        companyTableView.setItems(CompanyList);
         companyComboBox.setItems(comboList);
         Image fire = new Image(this.getClass().getClassLoader().getResourceAsStream("res/deleteEmployee.png"));
         fireImage.setImage(fire);

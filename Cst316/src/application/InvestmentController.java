@@ -1,10 +1,7 @@
 package application;
 
-import java.io.InputStream;
-import java.net.URL;
-import java.util.Random;
-import java.util.ResourceBundle;
 
+import java.util.Random;
 import cst316.Investment;
 import cst316.Player;
 import javafx.collections.ObservableList;
@@ -29,9 +26,6 @@ public class InvestmentController extends AnchorPane {
     private Player player;
 
     private Main application;
-    InputStream in;
-    Image invIn;
-    Image invOut;
     @FXML
     private AnchorPane AnchorPane;
     @FXML

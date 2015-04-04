@@ -4,7 +4,6 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import service.TimedEventService;
 import cst316.Building;
 import cst316.Player;
 import javafx.fxml.FXML;

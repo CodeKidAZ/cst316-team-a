@@ -23,7 +23,6 @@ public class DialogueController extends AnchorPane{
 
     private Main application;
     private Player player;
-    Image dark;
    
     private ImageView darkBackground;
     @FXML

@@ -2,7 +2,6 @@ package application;
 
 import java.io.InputStream;
 
-import service.TimedEventService;
 import cst316.Management;
 import cst316.Player;
 import javafx.application.Application;

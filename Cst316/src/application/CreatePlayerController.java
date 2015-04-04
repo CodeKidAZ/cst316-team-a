@@ -1,15 +1,12 @@
 package application;
 
 import java.io.InputStream;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.ResourceBundle;
 
 import cst316.Player;
 import cst316.Product;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -75,7 +72,7 @@ public class CreatePlayerController extends AnchorPane {
             application.setPlayer(player);
             player.setProduct(product);
             player.saveFile();
-            BuildingChoiceController ctr = (BuildingChoiceController) application.replaceSceneContent("BuildingChoice.fxml", null);
+            BuildingChoiceController ctr = (BuildingChoiceController) application.replaceSceneContent("BuildingChoice.fxml", BuildingChoiceController.class);
             ctr.setApp(application);
         } catch (Exception e) {
             throw new Error(e);
