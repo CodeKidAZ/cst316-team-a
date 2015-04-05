@@ -1,5 +1,7 @@
 package application;
 
+import cst316.CompanyClass;
+import cst316.Employee;
 import java.io.InputStream;
 
 import cst316.Management;
@@ -35,7 +37,7 @@ public class Main extends Application {
             stage.setMinHeight(MINIMUM_WINDOW_HEIGHT);
             stage.setScene(scene);
             stage.show();
-
+            CompanyClass a = new CompanyClass();
             LoginController ctr = (LoginController) replaceSceneContent("Login.fxml", null);
             
             ctr.setApp(this);
