@@ -37,7 +37,8 @@ public class Main extends Application {
             stage.setMinHeight(MINIMUM_WINDOW_HEIGHT);
             stage.setScene(scene);
             stage.show();
-            CompanyClass a = new CompanyClass();
+          
+           
             LoginController ctr = (LoginController) replaceSceneContent("Login.fxml", null);
             
             ctr.setApp(this);
