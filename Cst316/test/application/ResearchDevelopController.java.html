@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>ResearchDevelopController.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Cst316</a> &gt; <a href="index.source.html" class="el_package">application</a> &gt; <span class="el_source">ResearchDevelopController.java</span></div><h1>ResearchDevelopController.java</h1><pre class="source lang-java linenums">package application;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import cst316.Player;
+import cst316.ResearchAndDevelopment;
+import cst316.ResearchDevelObject;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+
+<span class="nc" id="L18">public class ResearchDevelopController extends AnchorPane {</span>
+	@FXML 
+	private ResourceBundle resources;
+	@FXML 
+	private URL location;
+	@FXML
+	private ImageView returnButton;
+	@FXML
+	private TextArea descriptionBox;
+	@FXML
+	private ComboBox&lt;String&gt; researchChoiceBox;
+	@FXML
+	private ImageView pictureBox;
+	@FXML
+	private ComboBox&lt;String&gt; devChoiceBox;
+	@FXML
+	private ImageView purchaseButton;
+	
+<span class="nc" id="L36">	ResearchAndDevelopment rD = new ResearchAndDevelopment();</span>
+<span class="nc" id="L37">	ResearchDevelObject current = new ResearchDevelObject();</span>
+	String outputDev;
+	String outputResearch;
+	Player player;
+	Main application;
+	
+	// Event Listener on ImageView[#returnButton].onMouseClicked
+	@FXML
+	public void returnMouseFired(MouseEvent event) throws Exception {
+<span class="nc" id="L46">		LandingController ctr = (LandingController) application.replaceSceneContent(&quot;Landing.fxml&quot;, LandingController.class);</span>
+<span class="nc" id="L47">		ctr.setApp(application);</span>
+<span class="nc" id="L48">	}</span>
+	// Event Listener on ImageView[#returnButton].onMouseEntered
+	@FXML
+	public void returnMouseEnter(MouseEvent event) {
+<span class="nc" id="L52">		Image image = new Image(this.getClass().getClassLoader().getResourceAsStream(&quot;res/return_highlight.png&quot;));</span>
+<span class="nc" id="L53">		returnButton.setImage(image);</span>
+<span class="nc" id="L54">	}</span>
+	// Event Listener on ImageView[#returnButton].onMouseExited
+	@FXML
+	public void returnMouseExit(MouseEvent event) {
+<span class="nc" id="L58">		Image image = new Image(this.getClass().getClassLoader().getResourceAsStream(&quot;res/return.png&quot;));</span>
+<span class="nc" id="L59">		returnButton.setImage(image);</span>
+<span class="nc" id="L60">	}</span>
+	// Event Listener on ComboBox[#researchChoiceBox].onAction
+	@FXML
+	public void researchChoiceButtonFired(ActionEvent event) {
+<span class="nc" id="L64">		Image image = new Image(this.getClass().getClassLoader().getResourceAsStream(&quot;res/research_logo.png&quot;));</span>
+<span class="nc" id="L65">		pictureBox.setImage(image);</span>
+<span class="nc" id="L66">		outputResearch = (String) researchChoiceBox.getSelectionModel().getSelectedItem().toString();</span>
+<span class="nc bnc" id="L67" title="All 13 branches missed.">		switch(outputResearch) {</span>
+		case &quot;Research new materials&quot;: 
+<span class="nc" id="L69">			descriptionBox.clear();</span>
+<span class="nc" id="L70">			descriptionBox.appendText(&quot;Cost: 5 Employees \n&quot;);</span>
+<span class="nc" id="L71">			descriptionBox.appendText(&quot;Description: Researches new materials for &quot;</span>
+					+ &quot;your products so that they are more &quot;
+					+ &quot;reliable an aesthetically appealing&quot;);
+<span class="nc" id="L74">			current = rD.getResDevObjsElement(&quot;materials&quot;);</span>
+<span class="nc" id="L75">			break;</span>
+		case &quot;Research new media trends&quot;: 
+<span class="nc" id="L77">			descriptionBox.clear();</span>
+<span class="nc" id="L78">			descriptionBox.appendText(&quot;Cost: 10 Employees \n&quot;);</span>
+<span class="nc" id="L79">			descriptionBox.appendText(&quot;Description: Researches what is currently &quot;</span>
+					+ &quot;trending and in style so that your products a&quot;
+					+ &quot;ren't seen as 'old fashioned' or unappealing especially &quot;
+					+ &quot;to the younger demographics&quot;);
+<span class="nc" id="L83">			current = rD.getResDevObjsElement(&quot;mediaTrends&quot;);</span>
+<span class="nc" id="L84">			break;</span>
+		case &quot;Research new technology&quot;: 
+<span class="nc" id="L86">			descriptionBox.clear();</span>
+<span class="nc" id="L87">			descriptionBox.appendText(&quot;Cost: 15 Employees \n&quot;);</span>
+<span class="nc" id="L88">			descriptionBox.appendText(&quot;Description: Researches newer and faster &quot;</span>
+					+ &quot;technologies for your products so that it is overall more &quot;
+					+ &quot;effective and responsive to the end users.&quot;);
+<span class="nc" id="L91">			current = rD.getResDevObjsElement(&quot;technology&quot;);</span>
+<span class="nc" id="L92">			break;</span>
+		case &quot;Research new strategies&quot;: 
+<span class="nc" id="L94">			descriptionBox.clear();</span>
+<span class="nc" id="L95">			descriptionBox.appendText(&quot;Cost: 20 Employees \n&quot;);</span>
+<span class="nc" id="L96">			descriptionBox.appendText(&quot;Description: Researches new strategies for &quot;</span>
+					+ &quot;the employees so that they can work in a more efficient manner &quot;
+					+ &quot;and achieve more with less time.&quot;);
+<span class="nc" id="L99">			current = rD.getResDevObjsElement(&quot;strategies&quot;);</span>
+			break;
+		}
+<span class="nc" id="L102">	}</span>
+	// Event Listener on ComboBox[#devChoiceBox].onAction
+	@FXML
+	public void devChoiceButtonFired(ActionEvent event) {
+<span class="nc" id="L106">		Image image = new Image(this.getClass().getClassLoader().getResourceAsStream(&quot;res/development_logo.png&quot;));</span>
+<span class="nc" id="L107">		pictureBox.setImage(image);</span>
+<span class="nc" id="L108">		outputDev = (String) devChoiceBox.getSelectionModel().getSelectedItem().toString();</span>
+<span class="nc bnc" id="L109" title="All 7 branches missed.">		switch(outputDev) {</span>
+		case &quot;Develop a commercial&quot;:
+<span class="nc" id="L111">			descriptionBox.clear();</span>
+<span class="nc" id="L112">			descriptionBox.appendText(&quot;Cost: 25 Employees \n&quot;);</span>
+<span class="nc" id="L113">			descriptionBox.appendText(&quot;Description: Develops a commercial that &quot;</span>
+					+ &quot;advertises your product and allows for more people to be aware of it.&quot;);
+<span class="nc" id="L115">			current = rD.getResDevObjsElement(&quot;commercial&quot;);</span>
+<span class="nc" id="L116">		break;</span>
+		case &quot;Develop a science lab&quot;:
+<span class="nc" id="L118">			descriptionBox.clear();</span>
+<span class="nc" id="L119">			descriptionBox.appendText(&quot;Cost: 30 Employees \n&quot;);</span>
+<span class="nc" id="L120">			descriptionBox.appendText(&quot;Description: Develop a science lab that &quot;</span>
+					+ &quot;increases the quality of all research that the company has invested in.&quot;);
+<span class="nc" id="L122">			current = rD.getResDevObjsElement(&quot;scienceLab&quot;);</span>
+		break;
+		}
+<span class="nc" id="L125">	}</span>
+	// Event Listener on ImageView[#purchaseButton].onMouseClicked
+	@FXML
+	public void purchaseButtonFired(MouseEvent event) {
+		//Check to see if player has enough employees for the 'purchase'
+		//If they do, add to their assets and increase their point value associated with asset
+<span class="nc bnc" id="L131" title="All 2 branches missed.">		if(current != null) {</span>
+<span class="nc bnc" id="L132" title="All 2 branches missed.">			if(rD.getPlayer().getEmployees() &gt;= current.getCost()) {</span>
+<span class="nc" id="L133">				rD.getPlayer().addAsset(current.getName());</span>
+<span class="nc" id="L134">				rD.getPlayer().addPoints(current.getPointWorth());</span>
+<span class="nc" id="L135">				rD.getPlayer().addEmployees(-(current.getCost())); //Subtract employee # by cost</span>
+			}
+		}
+<span class="nc" id="L138">	}</span>
+	// Event Listener on ImageView[#purchaseButton].onMouseEntered
+	@FXML
+	public void purchaseEnter(MouseEvent event) {
+<span class="nc" id="L142">		Image image = new Image(this.getClass().getClassLoader().getResourceAsStream(&quot;res/purchase_highlight.png&quot;));</span>
+<span class="nc" id="L143">		purchaseButton.setImage(image);</span>
+<span class="nc" id="L144">	}</span>
+	// Event Listener on ImageView[#purchaseButton].onMouseExited
+	@FXML
+	public void purchaseExit(MouseEvent event) {
+<span class="nc" id="L148">		Image image = new Image(this.getClass().getClassLoader().getResourceAsStream(&quot;res/purchase.png&quot;));</span>
+<span class="nc" id="L149">		purchaseButton.setImage(image);</span>
+<span class="nc" id="L150">	}</span>
+	
+	public void setApp(Main app) {
+<span class="nc" id="L153">		application = app;</span>
+<span class="nc" id="L154">		researchChoiceBox.getItems().setAll(&quot;Research new materials&quot;,</span>
+<span class="nc" id="L155">											&quot;Research new media trends&quot;,</span>
+<span class="nc" id="L156">											&quot;Research new technology&quot;,</span>
+<span class="nc" id="L157">											&quot;Research new strategies&quot;);</span>
+<span class="nc" id="L158">		devChoiceBox.getItems().setAll(&quot;Develop a commercial&quot;,</span>
+<span class="nc" id="L159">									   &quot;Develop a science lab&quot;);</span>
+<span class="nc" id="L160">		this.player = application.getPlayer();</span>
+<span class="nc" id="L161">		rD.setPlayer(player);</span>
+<span class="nc" id="L162">	}</span>
+	
+	public void setPlayer(Player player) {
+<span class="nc" id="L165">		this.player = player;</span>
+<span class="nc" id="L166">		rD.setPlayer(player);</span>
+<span class="nc" id="L167">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.2.201409121644</span></div></body></html>

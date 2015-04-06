@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>PlayerStatusController.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Cst316</a> &gt; <a href="index.source.html" class="el_package">application</a> &gt; <span class="el_source">PlayerStatusController.java</span></div><h1>PlayerStatusController.java</h1><pre class="source lang-java linenums">package application;
+
+import java.io.InputStream;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
+import javafx.fxml.FXML;
+import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import cst316.Player;
+import cst316.Investment;
+
+<span class="nc" id="L16">public class PlayerStatusController extends AnchorPane {</span>
+	@FXML 
+	private ResourceBundle resources;
+	@FXML 
+	private URL location;
+	@FXML
+	private AnchorPane anchorPane;
+	@FXML
+	private TextArea pointsText;
+	@FXML
+	private TextArea employeesText;
+	@FXML
+	private TextArea moneyText;
+	@FXML
+	private TextArea assetsText;
+	@FXML
+	private TextArea investmentsText;
+	@FXML
+	private TextArea productText;
+	@FXML
+	private ImageView returnBtn;
+	
+	Image retIn;
+	Image retOut;
+
+	private Player player;
+	private Main application;
+	InputStream in;
+	
+	public void setApp(Main app){
+<span class="nc" id="L46">		application = app;</span>
+<span class="nc" id="L47">		in = this.getClass().getClassLoader().getResourceAsStream(&quot;res/return_highlight.png&quot;);</span>
+<span class="nc" id="L48">		retIn = new Image(in);</span>
+<span class="nc" id="L49">		in = this.getClass().getClassLoader().getResourceAsStream(&quot;res/return.png&quot;);</span>
+<span class="nc" id="L50">		retOut = new Image(in);</span>
+<span class="nc" id="L51">		this.player = application.getPlayer();</span>
+<span class="nc bnc" id="L52" title="All 2 branches missed.">		if(player != null) {</span>
+<span class="nc" id="L53">			pointsText.appendText(player.getPoints()+&quot;&quot;);</span>
+<span class="nc" id="L54">			employeesText.appendText(player.getEmployees()+&quot;&quot;);</span>
+<span class="nc" id="L55">			moneyText.appendText(player.getMoney()+&quot;&quot;);</span>
+<span class="nc" id="L56">			ArrayList&lt;String&gt; assets = player.getAssets();</span>
+<span class="nc bnc" id="L57" title="All 2 branches missed.">			for(int i=0; i&lt;assets.size(); i++){</span>
+<span class="nc" id="L58">				assetsText.appendText(assets.get(i)+&quot;, &quot;);</span>
+			}
+<span class="nc" id="L60">			ArrayList&lt;Investment&gt; investment = player.getInvestments();</span>
+<span class="nc bnc" id="L61" title="All 2 branches missed.">			for(int i=0; i&lt;investment.size(); i++) {</span>
+<span class="nc" id="L62">				investmentsText.appendText(investment.get(i).getName()+&quot;, &quot;);</span>
+			}
+<span class="nc" id="L64">			productText.appendText(player.getProduct().getName());</span>
+		}
+<span class="nc" id="L66">	}	</span>
+	public void setPlayer(Player player) {
+<span class="nc" id="L68">		this.player = player;</span>
+<span class="nc" id="L69">	}</span>
+	public void onReturnMouseClick(MouseEvent event) throws Exception {
+<span class="nc" id="L71">		LandingController ctr = (LandingController) application.replaceSceneContent(&quot;Landing.fxml&quot;, LandingController.class);</span>
+<span class="nc" id="L72">		ctr.setApp(application);</span>
+		//ctr.setPlayer(player);
+<span class="nc" id="L74">	}</span>
+	public void onReturnMouseEnter(MouseEvent event) {
+<span class="nc bnc" id="L76" title="All 2 branches missed.">		if (returnBtn != null) {</span>
+<span class="nc" id="L77">			returnBtn.setImage(retIn);</span>
+		}
+<span class="nc" id="L79">	}</span>
+	public void onReturnMouseExit(MouseEvent event) {
+<span class="nc bnc" id="L81" title="All 2 branches missed.">		if (returnBtn != null) {</span>
+<span class="nc" id="L82">			returnBtn.setImage(retOut);</span>
+		}
+<span class="nc" id="L84">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.2.201409121644</span></div></body></html>

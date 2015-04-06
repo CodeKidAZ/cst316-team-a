@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Corp2of5Controller.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Cst316</a> &gt; <a href="index.source.html" class="el_package">application</a> &gt; <span class="el_source">Corp2of5Controller.java</span></div><h1>Corp2of5Controller.java</h1><pre class="source lang-java linenums">package application;
+
+import cst316.Player;
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
+
+<span class="nc" id="L12">public class Corp2of5Controller extends AnchorPane {</span>
+    private Main application;
+    private Player player;
+    
+//=======================USER DEFINED VARIABLES ABOVE =========+++==========
+   
+    @FXML
+    private Button nextButton2;
+    @FXML
+    private Button backButton;
+   
+  
+//____________________________________________________SET METHODS
+    public void setApp(Main app) {
+<span class="nc" id="L26">        this.application = app;</span>
+<span class="nc" id="L27">    }</span>
+
+    public void setPlayer(Player player) {
+<span class="nc" id="L30">        this.player = player;</span>
+<span class="nc" id="L31">    }</span>
+    
+    @FXML
+    private void open3of5(ActionEvent event) throws Exception {
+<span class="nc" id="L35">      Corp3of5Controller ctr = (Corp3of5Controller) application.replaceSceneContent(&quot;Corp3of5.fxml&quot;, Corp3of5Controller.class);</span>
+<span class="nc" id="L36">        ctr.setApp(application);</span>
+<span class="nc" id="L37">        ctr.setPlayer(player);</span>
+<span class="nc" id="L38">    }</span>
+    
+    @FXML
+    private void backButton(ActionEvent event) throws Exception {
+<span class="nc" id="L42">       CorpController ctr = (CorpController) application.replaceSceneContent(&quot;Corp.fxml&quot;, CorpController.class);</span>
+<span class="nc" id="L43">        ctr.setApp(application);</span>
+<span class="nc" id="L44">        ctr.setPlayer(player);</span>
+<span class="nc" id="L45">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.2.201409121644</span></div></body></html>

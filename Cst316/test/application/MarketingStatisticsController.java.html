@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>MarketingStatisticsController.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Cst316</a> &gt; <a href="index.source.html" class="el_package">application</a> &gt; <span class="el_source">MarketingStatisticsController.java</span></div><h1>MarketingStatisticsController.java</h1><pre class="source lang-java linenums">package application;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import cst316.Player;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.chart.PieChart;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.scene.control.ComboBox;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+
+
+
+<span class="nc" id="L20">public class MarketingStatisticsController extends AnchorPane {</span>
+	@FXML
+	private ImageView marketStatsPicture;
+	@FXML
+	private ComboBox&lt;String&gt; dropMenu;
+	@FXML
+	private Button returnButton;
+	@FXML
+	private PieChart piechart;
+	
+	//Declaring local variables to be used in the Marketing Statistics Display
+	String output;
+	Main application;
+	Player player;
+
+
+	// Event Listener on ComboBox[#dropMenu].onAction
+	@FXML
+	public void dropMenuFired(ActionEvent event) {
+<span class="nc" id="L39">		output = (String) dropMenu.getSelectionModel().getSelectedItem().toString();</span>
+<span class="nc bnc" id="L40" title="All 13 branches missed.">		switch(output) {</span>
+			case &quot;Phone App Market Report&quot;: 
+				//If the 'Phone App Market Report' choice is selected from the dropDown menu, then draw this pieChart of sample data
+				//The area for each slice is determined by the integer parameter divided by the total
+				//EG. 'Calculator' occupies 77/2436 = 0.03 = 3% of the total pie circle
+<span class="nc" id="L45">				ObservableList&lt;PieChart.Data&gt; pieChartData =</span>
+<span class="nc" id="L46">                FXCollections.observableArrayList(</span>
+<span class="nc" id="L47">					new PieChart.Data(&quot;Calculator&quot;, 77),</span>
+<span class="nc" id="L48">					new PieChart.Data(&quot;Calculator II the Sequel&quot;, 211),</span>
+<span class="nc" id="L49">					new PieChart.Data(&quot;Selfie Taker 5000&quot;, 911),</span>
+<span class="nc" id="L50">					new PieChart.Data(&quot;SnapChoot&quot;, 555),</span>
+<span class="nc" id="L51">					new PieChart.Data(&quot;Mail-Order Bride Finder&quot;, 215),</span>
+<span class="nc" id="L52">					new PieChart.Data(&quot;Fantasy Football Tracker&quot;, 356),</span>
+<span class="nc" id="L53">					new PieChart.Data(&quot;FaceBiik&quot;, 111));</span>
+<span class="nc" id="L54">        piechart.setTitle(&quot;Phone App Market Report&quot;);</span>
+<span class="nc" id="L55">        piechart.setData(pieChartData);</span>
+<span class="nc" id="L56">				break;</span>
+			case &quot;Computer Gaming Market Report&quot;:
+<span class="nc" id="L58">				  ObservableList&lt;PieChart.Data&gt; pieChartData2 =</span>
+<span class="nc" id="L59">	                FXCollections.observableArrayList(</span>
+<span class="nc" id="L60">            		new PieChart.Data(&quot;MikkelSoft&quot;, 17),</span>
+<span class="nc" id="L61">                    new PieChart.Data(&quot;Boggle&quot;, 25),</span>
+<span class="nc" id="L62">                    new PieChart.Data(&quot;Pear&quot;, 5.5),</span>
+<span class="nc" id="L63">                    new PieChart.Data(&quot;Riot Games&quot;, 12.5),</span>
+<span class="nc" id="L64">                    new PieChart.Data(&quot;Thanks Obama Inc.&quot;, 30),</span>
+<span class="nc" id="L65">                    new PieChart.Data(&quot;All Other Companies&quot;, 10));</span>
+<span class="nc" id="L66">	        piechart.setTitle(&quot;Computer Gaming Market Report&quot;);</span>
+<span class="nc" id="L67">	        piechart.setData(pieChartData2);				; </span>
+<span class="nc" id="L68">				break;</span>
+			case &quot;Candy Market Report&quot;: 
+<span class="nc" id="L70">				ObservableList&lt;PieChart.Data&gt; pieChartData3 =</span>
+<span class="nc" id="L71">                FXCollections.observableArrayList(</span>
+<span class="nc" id="L72">                    new PieChart.Data(&quot;Hersheys&quot;, 999),</span>
+<span class="nc" id="L73">                    new PieChart.Data(&quot;Jaw Breakers&quot;, 11),</span>
+<span class="nc" id="L74">                    new PieChart.Data(&quot;Wonka Inc.&quot;, 511),</span>
+<span class="nc" id="L75">                    new PieChart.Data(&quot;Lollipops&quot;, 95),</span>
+<span class="nc" id="L76">                    new PieChart.Data(&quot;JellyBeans&quot;, 215),</span>
+<span class="nc" id="L77">                    new PieChart.Data(&quot;Mars Bars&quot;, 356));</span>
+<span class="nc" id="L78">	        piechart.setTitle(&quot;Candy Market Report&quot;);</span>
+<span class="nc" id="L79">	        piechart.setData(pieChartData3);</span>
+<span class="nc" id="L80">			break;</span>
+			case &quot;Anime Pillow Market Report&quot;: 
+<span class="nc" id="L82">				ObservableList&lt;PieChart.Data&gt; pieChartData4 =</span>
+<span class="nc" id="L83">                FXCollections.observableArrayList(</span>
+<span class="nc" id="L84">                    new PieChart.Data(&quot;Kirishima&quot;, 90),</span>
+<span class="nc" id="L85">                    new PieChart.Data(&quot;Sakura Haruno&quot;, 211),</span>
+<span class="nc" id="L86">                    new PieChart.Data(&quot;Hatsune Miku&quot;, 335),</span>
+<span class="nc" id="L87">                    new PieChart.Data(&quot;Wesley-Chan&quot;, 115),</span>
+<span class="nc" id="L88">                    new PieChart.Data(&quot;Midori&quot;, 256));</span>
+<span class="nc" id="L89">	        piechart.setTitle(&quot;Anime Pillow Market Report&quot;);</span>
+<span class="nc" id="L90">	        piechart.setData(pieChartData4);</span>
+			break;
+		}
+<span class="nc" id="L93">	}</span>
+	
+	/*@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		dropMenu.getItems().setAll(&quot;Phone App Market Report&quot;,
+				&quot;Computer Gaming Market Report&quot;,
+				&quot;Candy Market Report&quot;,
+				&quot;Anime Pillow Market Report&quot;);
+		
+	}*/
+	
+	
+	//@Override
+		public void setApp(Main app) {
+<span class="nc" id="L107">			application = app;</span>
+<span class="nc" id="L108">			dropMenu.getItems().setAll(</span>
+<span class="nc" id="L109">					&quot;Phone App Market Report&quot;,</span>
+<span class="nc" id="L110">					&quot;Computer Gaming Market Report&quot;,</span>
+<span class="nc" id="L111">					&quot;Candy Market Report&quot;,</span>
+<span class="nc" id="L112">					&quot;Anime Pillow Market Report&quot;</span>
+					);
+<span class="nc" id="L114">			this.player = application.getPlayer();</span>
+<span class="nc" id="L115">		}</span>
+		
+		public void setPlayer(Player player) {
+<span class="nc" id="L118">			this.player = player;</span>
+<span class="nc" id="L119">		}</span>
+	
+	// Event Listener on Button[#returnButton].onAction
+	@FXML
+	public void returnButtonFired(ActionEvent event) throws Exception {
+<span class="nc" id="L124">		LandingController ctr = (LandingController) application.replaceSceneContent(&quot;Landing.fxml&quot;, LandingController.class);</span>
+<span class="nc" id="L125">		ctr.setApp(application);</span>
+<span class="nc" id="L126">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.2.201409121644</span></div></body></html>
