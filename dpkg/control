@@ -1,0 +1,11 @@
+Package: enterpreneurship-simulator
+Version: 0.1-1
+Section: games
+Priority: optional
+Architecture: all
+Depends: java8-runtime
+Maintainer: Michael Howell <michael@notriddle.com>
+Description: CST316 Project Team A
+ Enterpreneurship Simulator
+Homepage: https://github.com/notriddle/cst316-team-a
+
