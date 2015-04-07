@@ -1,6 +1,5 @@
 package application;
 
-import cst316.CompanyClass;
 import cst316.Employee;
 import java.io.InputStream;
 
