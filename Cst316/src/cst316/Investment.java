@@ -26,6 +26,7 @@ public class Investment implements JSONString {
 		this.amount = amount;
 		this.name = name;
 		this.isGood = isGood;
+		gains = new JSONArray();
 	}
 	public Investment(JSONObject object) {
 		this.amount = object.getDouble("Amount");
