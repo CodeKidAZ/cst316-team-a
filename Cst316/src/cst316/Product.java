@@ -18,7 +18,6 @@ public class Product implements JSONString {
      * defined in products.json.
      */
     private String name;
-
     private double totalFixedCost;
     private double totalMarginalCost;
     private double marginalToFixed;
