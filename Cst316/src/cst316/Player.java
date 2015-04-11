@@ -436,21 +436,46 @@ public class Player implements JSONString {
 	public List<Building> getBuildings() {
 		return buildings;
 	}
+	/**
+	 * Returns the entire company list
+	 * @return ArrayList<Company>
+	 */
 	public ArrayList<Company> getCompanyList() {
 		if(companies == null) {
 			companies = new ArrayList<Company>();
 		}
 		return companies;
 	}
-	public void addCompanies(Company c) {
-		companies.add(c);
+	public void addCompanies(Company company) {
+		companies.add(company);
 	}
+	/**
+	 * Searches the company array and if it finds a company equal to the parameter name
+	 * it returns that company object
+	 * @param name             Company's name
+	 * @return Company         Returns a company object or null
+	 */
 	public Company getCompany(String name) {
 		for(int i = 0; i<companies.size(); i++) {
 			if(name.equals(companies.get(i).getCompanyName()))
 				return companies.get(i);
 		}
 		return null;
+	}
+	/**
+	 * Linear search through the company to try and find one with a matching name,
+	 * if it succeeds, that index is removed.
+	 * @param name             Company's name
+	 * @return boolean 	       true = success; false = failure
+	 */
+	public boolean removeCompany(String name) {
+		for(int i = 0; i<companies.size(); i++) {
+			if(name.equals(companies.get(i).getCompanyName())) {
+				companies.remove(i);
+				return true;
+			}
+		}
+		return false;
 	}
 }
 

@@ -32,9 +32,13 @@ public class ProductManagementController extends AnchorPane  {
 	@FXML
 	private ImageView purchaseButton;
 	@FXML
+	private ImageView successImage;
+	@FXML
 	private TextArea descriptionField;
 	@FXML
 	private ComboBox<String> comboBox;
+	@FXML
+	private ComboBox<String> cComboBox;
 	@FXML 
 	private TextArea activeProduct;
 
@@ -50,6 +54,7 @@ public class ProductManagementController extends AnchorPane  {
 	
 	public void setApp(Main app){
 		application = app;
+		this.player = application.getPlayer();
 		in = this.getClass().getClassLoader().getResourceAsStream("res/return.png");
 		retOut = new Image(in);
 		in = this.getClass().getClassLoader().getResourceAsStream("res/return_highlight.png");
@@ -63,7 +68,9 @@ public class ProductManagementController extends AnchorPane  {
 				"Movie Development",
 				"Vehical Product",
 				"Software Application");
-		this.player = application.getPlayer();
+		for(int i = 0; i<player.getCompanyList().size(); i++) {
+			cComboBox.getItems().add(player.getCompanyList().get(i).getCompanyName());
+		}
 	}	
 	
 
@@ -113,7 +120,6 @@ public class ProductManagementController extends AnchorPane  {
 		case "Cellphone Product": 
 			descriptionField.clear();
 			descriptionField.appendText("Cost: 5 Employees \n");
-			descriptionField.appendText("Production Time: 10 days \n");
 			descriptionField.appendText("Potential Profit: 1000$ \n");
 			descriptionField.appendText("Risk: 80% chance for success \n");
 			descriptionField.appendText("Description: Cell phones are huge in the market right now, try to cash in on this new technology. \n");
@@ -121,7 +127,6 @@ public class ProductManagementController extends AnchorPane  {
 		case "Houseware Product": 
 			descriptionField.clear();
 			descriptionField.appendText("Cost: 4 Employees \n");
-			descriptionField.appendText("Production Time: 7 days \n");
 			descriptionField.appendText("Potential Profit: 700$ \n");
 			descriptionField.appendText("Risk: 90% chance for success \n");
 			descriptionField.appendText("Description: Everyone needs house wares. Not a big reward investment, but also not a big risk. Safe product. \n");
@@ -129,7 +134,6 @@ public class ProductManagementController extends AnchorPane  {
 		case "Movie Development": 
 			descriptionField.clear();
 			descriptionField.appendText("Cost: 10 Employees \n");
-			descriptionField.appendText("Production Time: 20 days \n");
 			descriptionField.appendText("Potential Profit: 3000$ \n");
 			descriptionField.appendText("Risk: 50% chance for success \n");
 			descriptionField.appendText("Description: Everyone loves movies, but not everyne loves ALL movies. This is a high risk high reward investment. \n");
@@ -137,7 +141,6 @@ public class ProductManagementController extends AnchorPane  {
 		case "Vehical Product": 
 			descriptionField.clear();
 			descriptionField.appendText("Cost: 8 Employees \n");
-			descriptionField.appendText("Production Time: 25 days \n");
 			descriptionField.appendText("Potential Profit: 2000$ \n");
 			descriptionField.appendText("Risk: 70% chance for success \n");
 			descriptionField.appendText("Description: Cars are a stable product to invest in since everyone needs them, however you still have to put effort into making them worth buying. Mid range investment risk. \n");
@@ -145,12 +148,16 @@ public class ProductManagementController extends AnchorPane  {
 		case "Software Application": 
 			descriptionField.clear();
 			descriptionField.appendText("Cost: 4 Employees \n"); 
-			descriptionField.appendText("Production Time: 15 days \n");
 			descriptionField.appendText("Potential Profit: 1500$ \n");
 			descriptionField.appendText("Risk: 75% chance for success \n");
 			descriptionField.appendText("Description: Software teams are small in your business so applications dont require many employees. Decent chance for success and good net profit. \n");
 			break;
 		}
+	}
+
+	@FXML
+	public void cComboBoxMouseClicked(ActionEvent event) {
+		
 	}
 	
 	public void setPlayer(Player player) {

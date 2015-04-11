@@ -11,21 +11,26 @@ public class Company
     
     private ArrayList<Product> myProducts;
     private ArrayList<ResearchDevelObject> myRandD;
-    private ArrayList<Employee> myEmployees;
+    private int employees;
+
+    public Company(String name){
+    	this.name = name;
+    	this.employees = 0;
+    	this.myProducts = new ArrayList<Product>();
+    	
+    } 
     
-    public Company(JSONObject jsonObject) throws Exception {
+	public Company(JSONObject jsonObject) throws Exception {
         this.name = jsonObject.getString("companyName");
+        //this.employees = jsonObject.getInt("Employees");
     }
-    
+	
     public String toJSONString() {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("Name", this.name);
         return jsonObject.toString(); //Return the JSON string
     }
     
-    public Company(String name){
-    	this.name = name;
-    }
     public void setname(String name){
     	this.name = name;
     }
@@ -38,16 +43,19 @@ public class Company
     public ArrayList<ResearchDevelObject> getRandD() {
 		return myRandD;
     }
-    public ArrayList<Employee> myEmployees(){
-    	return myEmployees();
-    }
    public void addProducts(Product prod){
 	   myProducts.add(prod);
    }
    public void addRandD(ResearchDevelObject rd){
 	   myRandD.add(rd);
-   }
-   public void addEmployees(Employee emp){
-	   myEmployees.add(emp);
-   }   
+   } 
+   public int getEmployees() {
+		return employees;
+	}
+	public void setEmployees(int employees) {
+		this.employees = employees;
+	}
+	public void addEmployees(int employees) {
+		this.employees += employees;
+	}
 }
