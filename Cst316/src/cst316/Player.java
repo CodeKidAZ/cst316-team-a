@@ -407,7 +407,8 @@ public class Player implements JSONString {
 	 * @param inv  Investment to take a return from.
 	 */
 	public void cashInvestment(Investment inv) {
-		this.money += inv.calculateROI();
+		// TODO: Sell investment 
+		//this.money += inv.calculateROI();
 	}
 	
 	public Product getProduct() {
