@@ -5,8 +5,6 @@
  */
 package application;
 
-import cst316.Employee;
-import cst316.Player;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -14,6 +12,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import cst316.Company;
+import cst316.Employee;
+import cst316.Player;
 
 /**
  *
@@ -38,6 +39,7 @@ public class DialogueController extends AnchorPane{
          this.application = app;
          Image company = new Image(this.getClass().getClassLoader().getResourceAsStream("res/createCompany.png"));
          companyImage.setImage(company);
+         this.player = application.getPlayer();
          
     }
     public void setPlayer(Player player) {
@@ -46,9 +48,14 @@ public class DialogueController extends AnchorPane{
 
     @FXML
     private void okMethod(ActionEvent event) throws Exception{
-        Employee a = new Employee(nameField.getText(),0);
+    	String name = nameField.getText();
+        Employee a = new Employee(name,0);
         HRController.CompanyList.add(a);
-        HRController.comboList.add(nameField.getText());
+        HRController.comboList.add(name);
+        
+        Company company = new Company(name);
+        player.addCompanies(company);
+        
         HRController ctr = (HRController) application.replaceSceneContent("HR.fxml", null);
               ctr.setApp(application);
     }

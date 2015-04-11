@@ -1,23 +1,23 @@
 package cst316;
 
-
 import java.util.ArrayList;
-import java.util.TreeMap;
 
 public class Company 
 {
-   // String playerName;
     String companyName;
     
     private ArrayList<Product> myProducts;
     private ArrayList<ResearchDevelObject> myRandD;
     private ArrayList<Employee> myEmployees;
     
-    public Company(String cname){
-    	this.companyName = cname;
+    public Company(String companyName){
+    	this.companyName = companyName;
     }
-    public void setCompanyName(String cname){
-    	this.companyName = cname;
+    public void setCompanyName(String companyName){
+    	this.companyName = companyName;
+    }
+    public String getCompanyName() {
+    	return companyName;
     }
     public ArrayList<Product> getProducts(){	
     	return myProducts;

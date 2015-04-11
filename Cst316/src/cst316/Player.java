@@ -425,7 +425,17 @@ public class Player implements JSONString {
 		return companies;
 	}
 	public void addCompanies(Company c) {
+		if(companies == null) {
+			companies = new ArrayList<Company>();
+		}
 		companies.add(c);
+	}
+	public Company getCompany(String name) {
+		for(int i = 0; i<companies.size(); i++) {
+			if(name.equals(companies.get(i).getCompanyName()))
+				return companies.get(i);
+		}
+		return null;
 	}
 }
 
