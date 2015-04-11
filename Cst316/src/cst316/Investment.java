@@ -86,4 +86,7 @@ public class Investment implements JSONString {
 	public int getTimeInMonths(){
 		return gains.length();
 	}
+	public JSONArray getGains(){
+		return gains;
+	}
 }
