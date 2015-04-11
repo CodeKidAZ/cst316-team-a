@@ -20,16 +20,15 @@
          <children>
             <Group fx:id="theBox">
                <children>
-                  <Text layoutX="92.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Team A Enterpreneurship Simulator" wrappingWidth="326.25" AnchorPane.bottomAnchor="339.984375" AnchorPane.topAnchor="28.734375">
+                  <Text layoutX="92.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Installing..." wrappingWidth="326.25" AnchorPane.bottomAnchor="339.984375" AnchorPane.topAnchor="28.734375">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Text>
                   <VBox alignment="CENTER" layoutX="115.0" layoutY="103.0" spacing="20.0" AnchorPane.bottomAnchor="158.0" AnchorPane.leftAnchor="115.0" AnchorPane.rightAnchor="106.0" AnchorPane.topAnchor="103.0">
                      <children>
-                        <Label layoutX="179.0" layoutY="105.0" prefHeight="53.0" prefWidth="307.0" text="This wizard will automatically install the Team A's CST316 Enterprensurship Simulator onto your Windows system" wrapText="true" />
-                        <ComboBox fx:id="installLocationText" editable="true" layoutX="118.0" layoutY="133.0" prefHeight="32.0" prefWidth="294.0" promptText="Install Location" GridPane.rowIndex="2" />
-                        <Button fx:id="continueBtn" layoutX="161.0" layoutY="183.0" mnemonicParsing="false" onMouseClicked="#continueBtnClicked" prefHeight="40.0" prefWidth="77.0" text="Continue" GridPane.rowIndex="3">
+                        <ProgressBar fx:id="progress" prefHeight="20.0" prefWidth="312.0" progress="0.0" />
+                        <Button fx:id="continueBtn" disable="true" layoutX="161.0" layoutY="183.0" mnemonicParsing="false" onMouseClicked="#continueBtnClicked" prefHeight="40.0" prefWidth="77.0" text="Continue" GridPane.rowIndex="3">
                            <GridPane.margin>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </GridPane.margin>

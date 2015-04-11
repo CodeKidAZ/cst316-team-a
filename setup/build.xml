@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="Cst316Setup" basedir="." default="jar" xmlns:jacoco="antlib:org.jacoco.ant">
-    <property name="debug.enable" value="true"/>
-    <property name="source.dir" value="src"/>
-    <property name="lib.dir"    value="lib"/>
-    <property name="class.dir"  value="bin"/>
-    <property name="jar.dir"    value="dist"/>
-    <property name="jar.file"   value="${jar.dir}/${ant.project.name}.jar"/>
-    <property name="main.class" value="setup.Main"/>
-    <property name="test.dir"   value="test"/>
-    <property name="jacocoant.jar" value="${lib.dir}/jacocoant.jar"/>
-    <property name="jacoco.file" value="jacoco.exec"/>
+    <property name="debug.enable"       value="true"/>
+    <property name="source.dir"         value="src"/>
+    <property name="lib.dir"            value="lib"/>
+    <property name="class.dir"          value="bin"/>
+    <property name="payload.source.dir" value="../Cst316/dist"/>
+    <property name="payload.icon.file"  value="../enterpreneurship-simulator.png"/>
+    <property name="payload.dest.dir"   value="${class.dir}/dist"/>
+    <property name="jar.dir"            value="dist"/>
+    <property name="jar.file"           value="${jar.dir}/${ant.project.name}.jar"/>
+    <property name="main.class"         value="setup.Main"/>
+    <property name="test.dir"           value="test"/>
+    <property name="jacocoant.jar"      value="${lib.dir}/jacocoant.jar"/>
+    <property name="jacoco.file"        value="jacoco.exec"/>
 
     <taskdef uri="antlib:org.jacoco.ant" resource="org/jacoco/ant/antlib.xml">
       <classpath path="${jacocoant.jar}"/>
@@ -53,6 +56,12 @@
                 <exclude name="**/**.psd"/>
             </fileset>
         </copy>
+        <copy todir="${payload.dest.dir}">
+            <fileset dir="${payload.source.dir}">
+                <include name="**/**.jar"/>
+            </fileset>
+        </copy>
+        <copy todir="${payload.dest.dir}" file="${payload.icon.file}"/>
     </target>
 
     <target name="jar" depends="compile">
@@ -63,6 +72,8 @@
             <fileset dir="${class.dir}"/>
             <zipfileset src="${lib.dir}/json.jar"/>
             <zipfileset src="${lib.dir}/junit-4.10.jar"/>
+            <zipfileset src="${lib.dir}/jna-4.1.0.jar"/>
+            <zipfileset src="${lib.dir}/jna-platform-4.1.0.jar"/>
             <manifest>
                 <attribute name="Main-Class" value="${main.class}"/>
             </manifest>

@@ -29,6 +29,7 @@
                      <children>
                         <Label layoutX="179.0" layoutY="105.0" prefHeight="53.0" prefWidth="307.0" text="This wizard will automatically install the Team A's CST316 Enterprensurship Simulator onto your Windows system" wrapText="true" />
                         <ComboBox fx:id="installLocationText" editable="true" layoutX="118.0" layoutY="133.0" prefHeight="32.0" prefWidth="294.0" promptText="Install Location" GridPane.rowIndex="2" />
+                        <CheckBox fx:id="isGlobalCheck" mnemonicParsing="false" selected="true" text="Available to all users" />
                         <Button fx:id="continueBtn" layoutX="161.0" layoutY="183.0" mnemonicParsing="false" onMouseClicked="#continueBtnClicked" prefHeight="40.0" prefWidth="77.0" text="Continue" GridPane.rowIndex="3">
                            <GridPane.margin>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
