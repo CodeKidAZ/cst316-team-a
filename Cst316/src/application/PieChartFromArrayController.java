@@ -35,15 +35,24 @@ public class PieChartFromArrayController extends AnchorPane {
 	Main application;
 	Player player;
 	
-	static MarketCompany mcSample1 = new MarketCompany("Wendys", 15.5);
-	static MarketCompany mcSample2 = new MarketCompany("BurgerKing", 35.9);
-	static MarketCompany mcSample3 = new MarketCompany("McDonalds", 75.9);
+	ObservableList<PieChart.Data> pieChartData =
+            FXCollections.observableArrayList();
 	
-	static MarketCompany mcSample4 = new MarketCompany("Taylor Swift", 35.6);
-	static MarketCompany mcSample5 = new MarketCompany("Pharrel Williams", 44);
-	static MarketCompany mcSample6 = new MarketCompany("Tupac Shakur", 103.3);
-	static MarketCompany mcSample7 = new MarketCompany("Kendrick Lamar", 77.7);
-	static MarketCompany mcSample8 = new MarketCompany("Pink Floyd", 11.9);
+	static MarketCompany wendys = new MarketCompany("Wendys", 15.5);
+	static MarketCompany bk = new MarketCompany("BurgerKing", 35.9);
+	static MarketCompany mcD = new MarketCompany("McDonalds", 75.9);
+	
+	static MarketCompany tSwift = new MarketCompany("Taylor Swift", 35.6);
+	static MarketCompany pharrel = new MarketCompany("Pharrel Williams", 44);
+	static MarketCompany tupac = new MarketCompany("Tupac Shakur", 103.3);
+	static MarketCompany kendrick = new MarketCompany("Kendrick Lamar", 77.7);
+	static MarketCompany pinkF = new MarketCompany("Pink Floyd", 11.9);
+	
+	static MarketCompany p25 = new MarketCompany("25 Percent", 25);
+	static MarketCompany p33 = new MarketCompany("33 Percent", 44);
+	static MarketCompany p2 = new MarketCompany("2 Percent", 2);
+	static MarketCompany p10 = new MarketCompany("10 Percent", 10);
+	static MarketCompany p30 = new MarketCompany("30 Percent", 30);
 
 	ArrayList<MarketCompany> companyList = new ArrayList<MarketCompany>();
 
@@ -51,48 +60,131 @@ public class PieChartFromArrayController extends AnchorPane {
 	// Event Listener on Button[#Button1].onAction
 	@FXML
 	public void button1Fired(ActionEvent event) {
-		companyList.add(mcSample1);
-		companyList.add(mcSample2);
-		companyList.add(mcSample3);
+		pieChartData.clear();
+		companyList.add(wendys);
+		companyList.add(bk);
+		companyList.add(mcD);
 		
-		ObservableList<PieChart.Data> pieChartData =
-                FXCollections.observableArrayList(
-                		//for (int z = 0; z < companyList.size(); z ++){
-					new PieChart.Data((companyList.get(1)).getName(), (companyList.get(1)).getMarketPower()),
-					new PieChart.Data((companyList.get(2)).getName(), (companyList.get(2)).getMarketPower()),
-					new PieChart.Data((companyList.get(3)).getName(), (companyList.get(3)).getMarketPower()));
-			        piechart.setTitle("Fast Food Market Report");
-			        piechart.setData(pieChartData);
+		/*ObservableList<PieChart.Data> pieChartData =
+        FXCollections.observableArrayList(
+			//new PieChart.Data((companyList.get(0)).getName(), (companyList.get(0)).getMarketPower()),
+			//new PieChart.Data((companyList.get(1)).getName(), (companyList.get(1)).getMarketPower()),
+			//new PieChart.Data((companyList.get(2)).getName(), (companyList.get(2)).getMarketPower())
+        		);*/
+					
+		for (int z = 0; z < companyList.size(); z ++){
+			pieChartData.add(new PieChart.Data((companyList.get(z)).getName(), (companyList.get(z)).getMarketPower()));
+		}
+        piechart.setTitle("Fast Food Market Report");
+        piechart.setData(pieChartData);
+        companyList.removeAll(companyList);
 	}
 	// Event Listener on Button[#Button2].onAction
 	@FXML
 	public void button2Fired(ActionEvent event) {
+		pieChartData.clear();
+		companyList.add(tSwift);
+		companyList.add(pharrel);
+		companyList.add(tupac);
+		companyList.add(kendrick);
+		companyList.add(pinkF);
+		
+		/*
 		ObservableList<PieChart.Data> pieChartData =
-                FXCollections.observableArrayList(
-                		//for (int z = 0; z < companyList.size(); z ++){
-					new PieChart.Data((companyList.get(4)).getName(), (companyList.get(4)).getMarketPower()),
-					new PieChart.Data((companyList.get(5)).getName(), (companyList.get(5)).getMarketPower()),
-					new PieChart.Data((companyList.get(6)).getName(), (companyList.get(6)).getMarketPower()),
-					new PieChart.Data((companyList.get(7)).getName(), (companyList.get(7)).getMarketPower()),
-					new PieChart.Data((companyList.get(8)).getName(), (companyList.get(8)).getMarketPower()));
-			        piechart.setTitle("Pop Music Charts Top 100 Report");
-			        piechart.setData(pieChartData);
+        FXCollections.observableArrayList(
+			new PieChart.Data((companyList.get(0)).getName(), (companyList.get(0)).getMarketPower()),
+			new PieChart.Data((companyList.get(1)).getName(), (companyList.get(1)).getMarketPower()),
+			new PieChart.Data((companyList.get(2)).getName(), (companyList.get(2)).getMarketPower()),
+			new PieChart.Data((companyList.get(3)).getName(), (companyList.get(3)).getMarketPower()),
+			new PieChart.Data((companyList.get(4)).getName(), (companyList.get(4)).getMarketPower()));
+			*/
+                	
+		for (int z = 0; z < companyList.size(); z ++){
+			pieChartData.add(new PieChart.Data((companyList.get(z)).getName(), (companyList.get(z)).getMarketPower()));
+		}	
+        piechart.setTitle("Pop Music Charts Top 100 Report");
+        piechart.setData(pieChartData);
+        companyList.removeAll(companyList);
 		// TODO Autogenerated
 	}
 	// Event Listener on Button[#Button3].onAction
 	@FXML
 	public void button3Fired(ActionEvent event) {
+		pieChartData.clear();
+		companyList.add(p25);
+		companyList.add(p33);
+		companyList.add(p2);
+		companyList.add(p10);
+		companyList.add(p30);
+		
+		/*
+		ObservableList<PieChart.Data> pieChartData =
+        FXCollections.observableArrayList(
+			new PieChart.Data((companyList.get(0)).getName(), (companyList.get(0)).getMarketPower()),
+			new PieChart.Data((companyList.get(1)).getName(), (companyList.get(1)).getMarketPower()),
+			new PieChart.Data((companyList.get(2)).getName(), (companyList.get(2)).getMarketPower()),
+			new PieChart.Data((companyList.get(3)).getName(), (companyList.get(3)).getMarketPower()),
+			new PieChart.Data((companyList.get(4)).getName(), (companyList.get(4)).getMarketPower()));
+			*/
+                	
+		for (int z = 0; z < companyList.size(); z ++){
+			pieChartData.add(new PieChart.Data((companyList.get(z)).getName(), (companyList.get(z)).getMarketPower()));
+		}	
+        piechart.setTitle("Showing off Displaying Exact Percent");
+        piechart.setData(pieChartData);
+        companyList.removeAll(companyList);
 		// TODO Autogenerated
 	}
 	// Event Listener on Button[#Button4].onAction
 	@FXML
 	public void button4Fired(ActionEvent event) {
-		// TODO Autogenerated
+		pieChartData.clear();
+		
+		companyList.add(wendys);
+		companyList.add(bk);
+		companyList.add(mcD);
+		
+		companyList.add(tSwift);
+		companyList.add(pharrel);
+		companyList.add(tupac);
+		companyList.add(kendrick);
+		companyList.add(pinkF);
+		
+		for (int z = 0; z < companyList.size(); z ++){
+			pieChartData.add(new PieChart.Data((companyList.get(z)).getName(), (companyList.get(z)).getMarketPower()));
+		}	
+        piechart.setTitle("Combination of \"Fast Food Market Report\" & \"Pop Music Charts Top 100 Report\"");
+        piechart.setData(pieChartData);
+        companyList.removeAll(companyList);
+		
 	}
 	// Event Listener on Button[#Button5].onAction
 	@FXML
 	public void button5Fired(ActionEvent event) {
-		// TODO Autogenerated
+		pieChartData.clear();
+		
+		companyList.add(wendys);
+		companyList.add(bk);
+		companyList.add(mcD);
+		
+		companyList.add(tSwift);
+		companyList.add(pharrel);
+		companyList.add(tupac);
+		companyList.add(kendrick);
+		companyList.add(pinkF);
+		
+		companyList.add(p25);
+		companyList.add(p33);
+		companyList.add(p2);
+		companyList.add(p10);
+		companyList.add(p30);
+		
+		for (int z = 0; z < companyList.size(); z ++){
+			pieChartData.add(new PieChart.Data((companyList.get(z)).getName(), (companyList.get(z)).getMarketPower()));
+		}	
+        piechart.setTitle("Combination of Everything (Just for Demo Purposes)");
+        piechart.setData(pieChartData);
+        companyList.removeAll(companyList);
 	}
 	
 	//@Override
