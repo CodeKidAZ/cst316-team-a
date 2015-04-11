@@ -23,6 +23,7 @@ public class MarketingStatisticsController extends AnchorPane {
 	@FXML
 	private PieChart piechart;
 	
+	//git test
 	//Declaring local variables to be used in the Marketing Statistics Display
 	String output;
 	Main application;

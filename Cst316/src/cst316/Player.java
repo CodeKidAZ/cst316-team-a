@@ -32,7 +32,7 @@ public class Player implements JSONString {
 	private ArrayList<Investment> investments;
 	private ArrayList<Building> buildings;
 	private Product product;
-	
+	private ArrayList<Company> companies;
 	/**
 	 * Default construction of a player
 	 */
@@ -345,11 +345,9 @@ public class Player implements JSONString {
 	public ArrayList<String> getAssets() {
 		return assets;
 	}
-	
 	/**
 	 * @return investments
 	 */
-
 	public ArrayList<Investment> getInvestments() {
 		return investments;
 	}
@@ -424,4 +422,21 @@ public class Player implements JSONString {
 	public List<Building> getBuildings() {
 		return buildings;
 	}
+	public ArrayList<Company> getCompanies() {
+		return companies;
+	}
+	public void addCompanies(Company c) {
+		if(companies == null) {
+			companies = new ArrayList<Company>();
+		}
+		companies.add(c);
+	}
+	public Company getCompany(String name) {
+		for(int i = 0; i<companies.size(); i++) {
+			if(name.equals(companies.get(i).getCompanyName()))
+				return companies.get(i);
+		}
+		return null;
+	}
 }
+
