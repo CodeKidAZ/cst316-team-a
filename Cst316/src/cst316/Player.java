@@ -44,6 +44,7 @@ public class Player implements JSONString {
 		this.assets = new ArrayList<String>();
 		this.investments = new ArrayList<Investment>();
 		this.buildings = new ArrayList<Building>();
+		this.companies = new ArrayList<Company>();
 	}
 	/**
 	 * @param points
@@ -60,6 +61,7 @@ public class Player implements JSONString {
 		this.setAssets(assets);
 		this.investments = new ArrayList<Investment>();
 		this.buildings = new ArrayList<Building>();
+		this.companies = new ArrayList<Company>();
 	}
 	/**
 	 * Initialize a player class
@@ -77,6 +79,7 @@ public class Player implements JSONString {
 		this.setAssets(assets);
 		this.investments = new ArrayList<Investment>();
 		this.buildings = new ArrayList<Building>();
+		this.companies = new ArrayList<Company>();
 	}
 	
 	/**
@@ -141,6 +144,7 @@ public class Player implements JSONString {
 			obj.put("Investments", investments);
 			obj.put("Buildings", buildings);
 			obj.put("Product", product);
+			obj.put("Companies", companies);
 			ret = obj.toString();
 		} catch(Exception e) {
 			System.out.println("Failed to parse.");
@@ -204,6 +208,15 @@ public class Player implements JSONString {
 			buildings.add(new Building(jArrayBuildings.getJSONObject(i)));
 		}
 		
+		//Get the list that is included in the JSON file
+		JSONArray jArrayCompanies = jsonObject.getJSONArray("Companies");
+		ArrayList<Company> companies = new ArrayList<Company>();
+		
+		//Populate the list with the JSON array values
+		for (int i = 0; i != jArrayCompanies.length(); ++i) {
+			companies.add(new Company(jArrayCompanies.getJSONObject(i)));
+		}
+		
 		//Set the class values to what the JSON file produced
 		this.points = points;
 		this.money = money;
@@ -212,6 +225,7 @@ public class Player implements JSONString {
 		this.employees = employees;
 		this.investments = investments;
 		this.buildings = buildings;
+		this.companies = companies;
 	}
 	
 	/**
@@ -421,13 +435,13 @@ public class Player implements JSONString {
 	public List<Building> getBuildings() {
 		return buildings;
 	}
-	public ArrayList<Company> getCompanies() {
-		return companies;
-	}
-	public void addCompanies(Company c) {
+	public ArrayList<Company> getCompanyList() {
 		if(companies == null) {
 			companies = new ArrayList<Company>();
 		}
+		return companies;
+	}
+	public void addCompanies(Company c) {
 		companies.add(c);
 	}
 	public Company getCompany(String name) {

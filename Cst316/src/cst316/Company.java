@@ -2,22 +2,35 @@ package cst316;
 
 import java.util.ArrayList;
 
+import org.json.JSONObject;
+import org.json.JSONTokener;
+
 public class Company 
 {
-    String companyName;
+    String name;
     
     private ArrayList<Product> myProducts;
     private ArrayList<ResearchDevelObject> myRandD;
     private ArrayList<Employee> myEmployees;
     
-    public Company(String companyName){
-    	this.companyName = companyName;
+    public Company(JSONObject jsonObject) throws Exception {
+        this.name = jsonObject.getString("companyName");
     }
-    public void setCompanyName(String companyName){
-    	this.companyName = companyName;
+    
+    public String toJSONString() {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("Name", this.name);
+        return jsonObject.toString(); //Return the JSON string
+    }
+    
+    public Company(String name){
+    	this.name = name;
+    }
+    public void setname(String name){
+    	this.name = name;
     }
     public String getCompanyName() {
-    	return companyName;
+    	return name;
     }
     public ArrayList<Product> getProducts(){	
     	return myProducts;
