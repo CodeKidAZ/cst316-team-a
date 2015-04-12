@@ -20,7 +20,11 @@ public class Company
     	this.myProducts = new ArrayList<Product>();
     	
     } 
-    
+    /**
+     * Creates a company based on JSON values in a text file
+     * @param jsonObject
+     * @throws Exception
+     */
 	public Company(JSONObject jsonObject) throws Exception {
         this.name = jsonObject.getString("companyName");
         this.employees = jsonObject.getDouble("employees");

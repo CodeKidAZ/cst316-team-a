@@ -55,6 +55,10 @@ public class ProductManagementController extends AnchorPane  {
 	private Main application;
 	private InputStream in;	
 	
+	/**
+	 * Sets up images and selection options for the menus
+	 * @param app
+	 */
 	public void setApp(Main app){
 		application = app;
 		this.player = application.getPlayer();
@@ -96,7 +100,12 @@ public class ProductManagementController extends AnchorPane  {
 			returnButton.setImage(retOut);
 		}
 	}
-
+	/**
+	 * Add the product to your company
+	 * Subtract employees from your company and then save progress
+	 * and update the stat box.
+	 * @param event
+	 */
 	@FXML
 	public void purchaseMouseClicked(MouseEvent event) {
 		selectedCompany.addProducts(selectedProduct);
@@ -119,6 +128,10 @@ public class ProductManagementController extends AnchorPane  {
 		}
 	}
 	
+	/**
+	 * Populates the description box based on what was clicked last.
+	 * @param event
+	 */
 	@FXML
 	public void comboBoxMouseClicked(ActionEvent event) { 
 		comboBoxOutput = (String) comboBox.getSelectionModel().getSelectedItem().toString();
@@ -165,7 +178,11 @@ public class ProductManagementController extends AnchorPane  {
 			break;
 		}
 	}
-
+	
+	/**
+	 * Handles the Company combo box clicks
+	 * @param event
+	 */
 	@FXML
 	public void cComboBoxMouseClicked(ActionEvent event) {
 		cComboBoxOutput = (String) cComboBox.getSelectionModel().getSelectedItem().toString();
@@ -173,6 +190,10 @@ public class ProductManagementController extends AnchorPane  {
 		setupProductStats( );
 	}
 	
+	/**
+	 * Updates the product stats based on what the company the player
+	 * has currently selected.
+	 */
 	public void setupProductStats( ) {
 		activeProduct.clear();
 		activeProduct.appendText("Company: " + selectedCompany.getCompanyName()+"\n");
