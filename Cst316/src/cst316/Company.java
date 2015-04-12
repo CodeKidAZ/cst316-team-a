@@ -2,22 +2,59 @@ package cst316;
 
 import java.util.ArrayList;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.json.JSONTokener;
+
 public class Company 
 {
-    String companyName;
+    String name;
     
     private ArrayList<Product> myProducts;
     private ArrayList<ResearchDevelObject> myRandD;
-    private ArrayList<Employee> myEmployees;
-    
-    public Company(String companyName){
-    	this.companyName = companyName;
+    private double employees;
+
+    public Company(String name){
+    	this.name = name;
+    	this.employees = 0;
+    	this.myProducts = new ArrayList<Product>();
+    	
+    } 
+    /**
+     * Creates a company based on JSON values in a text file
+     * @param jsonObject
+     * @throws Exception
+     */
+	public Company(JSONObject jsonObject) throws Exception {
+        this.name = jsonObject.getString("companyName");
+        this.employees = jsonObject.getDouble("employees");
+        
+        try {
+		JSONArray jArrayProducts = jsonObject.getJSONArray("products");
+		ArrayList<Product> tempProducts = new ArrayList<Product>();
+        
+		for (int i = 0; i != jArrayProducts.length(); ++i) {
+			tempProducts.add(new Product(jArrayProducts.getJSONObject(i)));
+		}
+		
+        this.myProducts = tempProducts;
+        } catch (Exception e) {
+        	System.out.println("Failed to read products inside company class.");
+        }
+        
     }
-    public void setCompanyName(String companyName){
-    	this.companyName = companyName;
+	
+    public String toJSONString() {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("Name", this.name);
+        return jsonObject.toString(); //Return the JSON string
+    }
+    
+    public void setname(String name){
+    	this.name = name;
     }
     public String getCompanyName() {
-    	return companyName;
+    	return name;
     }
     public ArrayList<Product> getProducts(){	
     	return myProducts;
@@ -25,16 +62,19 @@ public class Company
     public ArrayList<ResearchDevelObject> getRandD() {
 		return myRandD;
     }
-    public ArrayList<Employee> myEmployees(){
-    	return myEmployees();
-    }
    public void addProducts(Product prod){
 	   myProducts.add(prod);
    }
    public void addRandD(ResearchDevelObject rd){
 	   myRandD.add(rd);
-   }
-   public void addEmployees(Employee emp){
-	   myEmployees.add(emp);
-   }   
+   } 
+   public double getEmployees() {
+		return employees;
+	}
+	public void setEmployees(double employees) {
+		this.employees = employees;
+	}
+	public void addEmployees(double employees) {
+		this.employees += employees;
+	}
 }

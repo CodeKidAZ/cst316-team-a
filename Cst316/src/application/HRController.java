@@ -2,11 +2,14 @@ package application;
 //
 
 
+import java.util.ArrayList;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -14,9 +17,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import cst316.Company;
 import cst316.Employee;
 import cst316.Player;
-import javafx.scene.control.ComboBox;
 
 /**
  * FXML Controller class
@@ -180,7 +183,13 @@ public class HRController extends AnchorPane {
         hireImage1.setImage(hire);
         Image company = new Image(this.getClass().getClassLoader().getResourceAsStream("res/createCompany.png"));
         createCompanyImage.setImage(company);
-
+        this.player = application.getPlayer();
+        
+        ArrayList<Company> companies = player.getCompanyList();
+        for(int i = 0; i<companies.size(); i++) {
+        	CompanyList.add(new Employee(companies.get(i).getCompanyName(),0));
+        	comboList.add(companies.get(i).getCompanyName());
+        }
     }
 
     public void setPlayer(Player player) {

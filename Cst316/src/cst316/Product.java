@@ -24,6 +24,18 @@ public class Product implements JSONString {
     private double marginalToFixed;
     
     /**
+     * 
+     * @param name				Name of product
+     * @param totalFixedCost	Cost to purchase product
+     */
+    public Product(String name, double totalFixedCost) {
+    	this.name = name;
+    	this.totalFixedCost = totalFixedCost;
+    	totalMarginalCost = 0;
+    	marginalToFixed = 0;
+    }
+    
+    /**
      * @param name              Must exist in products.json
      * @param totalFixedCost    Amount of money invested in fixed capital.
      * @param totalMarginalCost Amount of money invested in consumed capital.
