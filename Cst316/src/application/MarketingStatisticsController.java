@@ -35,10 +35,17 @@ public class MarketingStatisticsController extends AnchorPane {
     Image image4 = new Image(MarketingStatisticsController.class.getClassLoader().getResourceAsStream("res/animePillow.gif"));
     */
 	
-	Image image1 = new Image("file:/../res/phoneApp.gif");
+	/*Image image1 = new Image("file:/../res/phoneApp.gif");
 	Image image2 = new Image("file:/../res/cGames.jpg");
 	Image image3 = new Image("file:/../res/candy.gif");
 	Image image4 = new Image("file:/../res/animePillow.gif");
+	*/
+	
+    Image image1 = new Image(MarketingStatisticsController.class.getClassLoader().getResourceAsStream("res/phoneApp.gif"));
+    Image image2 = new Image(MarketingStatisticsController.class.getClassLoader().getResourceAsStream("res/cGames.gif"));
+    Image image3 = new Image(MarketingStatisticsController.class.getClassLoader().getResourceAsStream("res/candy.gif"));
+    Image image4 = new Image(MarketingStatisticsController.class.getClassLoader().getResourceAsStream("res/animePillow.gif"));
+	
 
 
 
