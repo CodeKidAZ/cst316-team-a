@@ -8,14 +8,14 @@
 <?import javafx.scene.chart.*?>
 <?import javafx.scene.effect.*?>
 
-<AnchorPane fx:id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
     <children>
       <SplitPane dividerPositions="0.3201911589008363" prefHeight="720.0" prefWidth="1280.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
                   <ComboBox fx:id="dropMenu" layoutX="58.0" layoutY="509.0" onAction="#dropMenuFired" prefHeight="209.0" prefWidth="405.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="509.0" />
-                  <ImageView fx:id="marketStatsPicture" fitHeight="471.0" fitWidth="405.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="marketStatsPicture" fitHeight="477.0" fitWidth="405.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
