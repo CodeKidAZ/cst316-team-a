@@ -12,12 +12,13 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import cst316.Company;
 import cst316.Player;
+import cst316.Product;
 
 /**
  * This class is meant to allow the user to buy a new product for their company
- * Implementation is not yet here since it depends on having a company.class
- * that does not yet exist. Essentially this is a UI shell.
+ * and see what products are with which existing companies.
  * 
  * @author daniel
  */
@@ -46,11 +47,13 @@ public class ProductManagementController extends AnchorPane  {
 	Image retOut;
 	Image purIn;
 	Image purOut;
-
+	
+	private String cComboBoxOutput, comboBoxOutput;
+	private Company selectedCompany;
+	private Product selectedProduct;
 	private Player player;
 	private Main application;
-	InputStream in;	
-	String output;
+	private InputStream in;	
 	
 	public void setApp(Main app){
 		application = app;
@@ -96,7 +99,10 @@ public class ProductManagementController extends AnchorPane  {
 
 	@FXML
 	public void purchaseMouseClicked(MouseEvent event) {
-		// TODO Make the player's company gain this as their new product
+		selectedCompany.addProducts(selectedProduct);
+		selectedCompany.addEmployees(-selectedProduct.getTotalFixedCost());
+		player.saveFile();
+		setupProductStats( );
 	}
 
 	@FXML
@@ -115,9 +121,10 @@ public class ProductManagementController extends AnchorPane  {
 	
 	@FXML
 	public void comboBoxMouseClicked(ActionEvent event) { 
-		output = (String) comboBox.getSelectionModel().getSelectedItem().toString();
-		switch(output) {
+		comboBoxOutput = (String) comboBox.getSelectionModel().getSelectedItem().toString();
+		switch(comboBoxOutput) {
 		case "Cellphone Product": 
+			selectedProduct = new Product("Cell Phone",5);
 			descriptionField.clear();
 			descriptionField.appendText("Cost: 5 Employees \n");
 			descriptionField.appendText("Potential Profit: 1000$ \n");
@@ -125,6 +132,7 @@ public class ProductManagementController extends AnchorPane  {
 			descriptionField.appendText("Description: Cell phones are huge in the market right now, try to cash in on this new technology. \n");
 			break;
 		case "Houseware Product": 
+			selectedProduct = new Product("House Wares",4);
 			descriptionField.clear();
 			descriptionField.appendText("Cost: 4 Employees \n");
 			descriptionField.appendText("Potential Profit: 700$ \n");
@@ -132,6 +140,7 @@ public class ProductManagementController extends AnchorPane  {
 			descriptionField.appendText("Description: Everyone needs house wares. Not a big reward investment, but also not a big risk. Safe product. \n");
 			break;
 		case "Movie Development": 
+			selectedProduct = new Product("Movies",10);
 			descriptionField.clear();
 			descriptionField.appendText("Cost: 10 Employees \n");
 			descriptionField.appendText("Potential Profit: 3000$ \n");
@@ -139,17 +148,19 @@ public class ProductManagementController extends AnchorPane  {
 			descriptionField.appendText("Description: Everyone loves movies, but not everyne loves ALL movies. This is a high risk high reward investment. \n");
 			break;
 		case "Vehical Product": 
+			selectedProduct = new Product("Vehical",7);
 			descriptionField.clear();
-			descriptionField.appendText("Cost: 8 Employees \n");
+			descriptionField.appendText("Cost: 7 Employees \n");
 			descriptionField.appendText("Potential Profit: 2000$ \n");
 			descriptionField.appendText("Risk: 70% chance for success \n");
 			descriptionField.appendText("Description: Cars are a stable product to invest in since everyone needs them, however you still have to put effort into making them worth buying. Mid range investment risk. \n");
 			break;
 		case "Software Application": 
+			selectedProduct = new Product("Software",4);
 			descriptionField.clear();
 			descriptionField.appendText("Cost: 4 Employees \n"); 
 			descriptionField.appendText("Potential Profit: 1500$ \n");
-			descriptionField.appendText("Risk: 75% chance for success \n");
+			descriptionField.appendText("Risk: 70% chance for success \n");
 			descriptionField.appendText("Description: Software teams are small in your business so applications dont require many employees. Decent chance for success and good net profit. \n");
 			break;
 		}
@@ -157,7 +168,19 @@ public class ProductManagementController extends AnchorPane  {
 
 	@FXML
 	public void cComboBoxMouseClicked(ActionEvent event) {
-		
+		cComboBoxOutput = (String) cComboBox.getSelectionModel().getSelectedItem().toString();
+		selectedCompany = player.getCompany(cComboBoxOutput);
+		setupProductStats( );
+	}
+	
+	public void setupProductStats( ) {
+		activeProduct.clear();
+		activeProduct.appendText("Company: " + selectedCompany.getCompanyName()+"\n");
+		if(selectedCompany.getProducts() != null) {
+			for(int i = 0; i<selectedCompany.getProducts().size(); i++) {
+				activeProduct.appendText(selectedCompany.getProducts().get(i).getName()+"\n");
+			}
+		}
 	}
 	
 	public void setPlayer(Player player) {

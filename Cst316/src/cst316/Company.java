@@ -2,6 +2,7 @@ package cst316;
 
 import java.util.ArrayList;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
@@ -11,7 +12,7 @@ public class Company
     
     private ArrayList<Product> myProducts;
     private ArrayList<ResearchDevelObject> myRandD;
-    private int employees;
+    private double employees;
 
     public Company(String name){
     	this.name = name;
@@ -22,7 +23,21 @@ public class Company
     
 	public Company(JSONObject jsonObject) throws Exception {
         this.name = jsonObject.getString("companyName");
-        //this.employees = jsonObject.getInt("Employees");
+        this.employees = jsonObject.getDouble("employees");
+        
+        try {
+		JSONArray jArrayProducts = jsonObject.getJSONArray("products");
+		ArrayList<Product> tempProducts = new ArrayList<Product>();
+        
+		for (int i = 0; i != jArrayProducts.length(); ++i) {
+			tempProducts.add(new Product(jArrayProducts.getJSONObject(i)));
+		}
+		
+        this.myProducts = tempProducts;
+        } catch (Exception e) {
+        	System.out.println("Failed to read products inside company class.");
+        }
+        
     }
 	
     public String toJSONString() {
@@ -49,13 +64,13 @@ public class Company
    public void addRandD(ResearchDevelObject rd){
 	   myRandD.add(rd);
    } 
-   public int getEmployees() {
+   public double getEmployees() {
 		return employees;
 	}
-	public void setEmployees(int employees) {
+	public void setEmployees(double employees) {
 		this.employees = employees;
 	}
-	public void addEmployees(int employees) {
+	public void addEmployees(double employees) {
 		this.employees += employees;
 	}
 }
