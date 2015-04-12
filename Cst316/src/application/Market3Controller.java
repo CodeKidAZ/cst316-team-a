@@ -42,10 +42,13 @@ public class Market3Controller extends AnchorPane {
     Main application;
     Player player;
 
+    
     Image image1 = new Image(Market3Controller.class.getClassLoader().getResourceAsStream("res/printM.gif"));
     Image image2 = new Image(Market3Controller.class.getClassLoader().getResourceAsStream("res/couponM.jpg"));
     Image image3 = new Image(Market3Controller.class.getClassLoader().getResourceAsStream("res/wackyM2.gif"));
     Image image4 = new Image(Market3Controller.class.getClassLoader().getResourceAsStream("res/tvM.gif"));
+	
+    
 
     // Event Listener on ComboBox[#dropMenuPotential].onAction
     @FXML
