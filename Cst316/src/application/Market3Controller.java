@@ -33,6 +33,10 @@ public class Market3Controller extends AnchorPane {
     @FXML
     private Button purchaseButton;
     @FXML
+    private Button chartButton;
+    @FXML
+    private Button test1Button;
+    @FXML
     private Text doneText;
     String output;
     Main application;
@@ -94,6 +98,12 @@ public class Market3Controller extends AnchorPane {
 	@FXML
 	public void chartButtonFired(ActionEvent event) throws Exception {
 		MarketingStatisticsController ctr = (MarketingStatisticsController) application.replaceSceneContent("MarketingStatistics.fxml", MarketingStatisticsController.class);
+		ctr.setApp(application);
+	}
+	
+	@FXML
+	public void test1ButtonFired(ActionEvent event) throws Exception {
+		PieChartFromArrayController ctr = (PieChartFromArrayController) application.replaceSceneContent("PieChartFromArray.fxml", PieChartFromArrayController.class);
 		ctr.setApp(application);
 	}
 	

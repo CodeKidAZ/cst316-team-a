@@ -8,10 +8,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.ComboBox;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-
-
 
 public class MarketingStatisticsController extends AnchorPane {
 	@FXML
@@ -28,6 +27,19 @@ public class MarketingStatisticsController extends AnchorPane {
 	String output;
 	Main application;
 	Player player;
+
+	
+    /*Image image1 = new Image(MarketingStatisticsController.class.getClassLoader().getResourceAsStream("res/phoneApp.gif"));
+    Image image2 = new Image(MarketingStatisticsController.class.getClassLoader().getResourceAsStream("res/cGames.gif"));
+    Image image3 = new Image(MarketingStatisticsController.class.getClassLoader().getResourceAsStream("res/candy.gif"));
+    Image image4 = new Image(MarketingStatisticsController.class.getClassLoader().getResourceAsStream("res/animePillow.gif"));
+    */
+	
+	Image image1 = new Image("file:/../res/phoneApp.gif");
+	Image image2 = new Image("file:/../res/cGames.jpg");
+	Image image3 = new Image("file:/../res/candy.gif");
+	Image image4 = new Image("file:/../res/animePillow.gif");
+
 
 
 	// Event Listener on ComboBox[#dropMenu].onAction
@@ -50,6 +62,7 @@ public class MarketingStatisticsController extends AnchorPane {
 					new PieChart.Data("FaceBiik", 111));
 			        piechart.setTitle("Phone App Market Report");
 			        piechart.setData(pieChartData);
+			        marketStatsPicture.setImage(image1);
 				break;
 			case "Computer Gaming Market Report":
 				  ObservableList<PieChart.Data> pieChartData2 =
@@ -61,7 +74,8 @@ public class MarketingStatisticsController extends AnchorPane {
                     new PieChart.Data("Thanks Obama Inc.", 30),
                     new PieChart.Data("All Other Companies", 10));
 			        piechart.setTitle("Computer Gaming Market Report");
-			        piechart.setData(pieChartData2);				; 
+			        piechart.setData(pieChartData2);				
+			        marketStatsPicture.setImage(image2);
 				break;
 			case "Candy Market Report": 
 				ObservableList<PieChart.Data> pieChartData3 =
@@ -74,6 +88,7 @@ public class MarketingStatisticsController extends AnchorPane {
                     new PieChart.Data("Mars Bars", 356));
 			        piechart.setTitle("Candy Market Report");
 			        piechart.setData(pieChartData3);
+			        marketStatsPicture.setImage(image3);
 			break;
 			case "Anime Pillow Market Report": 
 				ObservableList<PieChart.Data> pieChartData4 =
@@ -85,6 +100,7 @@ public class MarketingStatisticsController extends AnchorPane {
                     new PieChart.Data("Midori", 256));
 			        piechart.setTitle("Anime Pillow Market Report");
 			        piechart.setData(pieChartData4);
+			        marketStatsPicture.setImage(image4);
 		}
 	}
 	
