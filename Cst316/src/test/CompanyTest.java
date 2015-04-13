@@ -2,8 +2,6 @@ package test;
 
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
-
 import org.json.JSONObject;
 import org.junit.Test;
 
@@ -13,58 +11,85 @@ import cst316.ResearchDevelObject;
 
 public class CompanyTest {
 
-	Company a = new Company("Intel");
-	private ArrayList<Product> myProducts;
-	
+	Company c = new Company("PQR.Corp");
+	double totalEmp = 25;
 	@Test
-	public void testCompany() {
-	
+	public void testCompanyString() {
+		Company  a = new Company("ABC.Corp");
 	}
 
 	@Test
-	public void testSetCompanyName() {
-		a.setCompanyName("Samsung");
-		assertEquals(a.getCompanyName(),"Samsung");
-	}
-
-	@Test
-	public void testGetProducts() throws Exception {
+	public void testCompanyJSONObject() throws Exception {
+		JSONObject js = new JSONObject();
+		js.put("companyName", "NuclearBombs");
+		js.put("employees", "1");
 		
+		Product a = new Product("Drones", 55);
+		Product b = new Product("Fighter", 505);
+		c.addProducts(a);
+		c.addProducts(b);
+		
+		Company z = new Company(js);
+	}
+
+	@Test
+	public void testToJSONString() {
+		//fail("Not yet implemented");
+	}
+
+	@Test
+	public void testSetname() {
+		Company b = new Company("XYZ.Corp");
+		b.setname("PQR.Corp");
+		assertEquals(b.getCompanyName(), "PQR.Corp");
 	}
 
 	@Test
 	public void testGetCompanyName() {
-		assertEquals(a.getCompanyName(),"Intel");
+		
+		assertEquals(c.getCompanyName(), "PQR.Corp");
 	}
-	
+
 	@Test
-	public void testAddProducts() throws Exception {
-		//Product b= new Product("Electronics", 80.0, 5.00);
-	
-		a.addProducts(new Product("Electronics", 5.5, 0.5));
-		//System.out.println(a.getProducts());
+	public void testGetProducts() {
+		Product a = new Product("Drones", 55);
+		c.addProducts(a);
+		assertEquals(c.getProducts().get(0).getName(), a.getName());
 	}
+
 	@Test
 	public void testGetRandD() {
-		fail("Not yet implemented");
+		assertEquals(c.getRandD(), null);
 	}
 
 	@Test
-	public void testMyEmployees() {
-		fail("Not yet implemented");
+	public void testAddProducts() {
+		Product a = new Product("Drones", 55);
+		c.addProducts(a);
+		assertEquals(c.getProducts().get(0).getName(), a.getName());
 	}
-
-	
 
 	@Test
 	public void testAddRandD() {
-		ResearchDevelObject r = new ResearchDevelObject();
-		a.addRandD(r);
+		ResearchDevelObject r = new ResearchDevelObject(22, 100, "DroneResearch");
+		// c.addRandD(r);
+	}
+
+	@Test
+	public void testGetEmployees() {
+		assertEquals(c.getEmployees(), 0,0);
+	}
+
+	@Test
+	public void testSetEmployees() {
+		c.setEmployees(30);
+		assertEquals(c.getEmployees(), 30,0);
 	}
 
 	@Test
 	public void testAddEmployees() {
-		fail("Not yet implemented");
+		c.addEmployees(totalEmp);
+		assertEquals(c.getEmployees(), 25,0);
 	}
 
 }
