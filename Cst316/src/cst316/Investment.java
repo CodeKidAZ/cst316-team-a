@@ -89,4 +89,15 @@ public class Investment implements JSONString {
 	public JSONArray getGains(){
 		return gains;
 	}
+	public Double getFee(){
+		if(gains.length() < 2){
+			return amount*.9;
+		}else if(gains.length() < 4){
+			return amount * .75;
+		}else if(gains.length() < 8){
+			return amount * .75;
+		}else {
+			return amount * .4;
+		}
+	}
 }

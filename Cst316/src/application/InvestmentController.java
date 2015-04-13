@@ -11,6 +11,7 @@ import cst316.Player;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Group;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
@@ -28,6 +29,8 @@ public class InvestmentController extends AnchorPane {
 	@FXML
 	Button continueBtn;
 	@FXML
+	Button sellBtn;
+	@FXML
 	ComboBox<String> companyCombo;
 	@FXML
 	TextField amountText;
@@ -35,7 +38,11 @@ public class InvestmentController extends AnchorPane {
 	LineChart<Number, Number> chart;
 	@FXML
 	Label noDataLbl;
-
+	@FXML
+	Group sellGrp;
+	@FXML
+	Label valueLbl;
+	
 	private Player player;
 
 	private Main application;
@@ -48,7 +55,7 @@ public class InvestmentController extends AnchorPane {
 	Image Google = new Image(this.getClass().getClassLoader().getResourceAsStream("res/google.jpg"));
 	Image RedHat = new Image(this.getClass().getClassLoader().getResourceAsStream("res/redhat.jpg"));
 	Image Microsoft = new Image(this.getClass().getClassLoader().getResourceAsStream("res/microsoft.jpg"));
-	//Image SOIL = new Image(this.getClass().getClassLoader().getResourceAsStream("res/soil.jpg"));
+	Image SOIL = new Image(this.getClass().getClassLoader().getResourceAsStream("res/soil.jpg"));
 
 	public void setApp(Main app) {
 
@@ -93,7 +100,7 @@ public class InvestmentController extends AnchorPane {
 
 		switch (a) {
 		case "SOIL":
-			companyImage.setImage(Microsoft);
+			companyImage.setImage(SOIL);
 			break;
 		case "Google":
 			companyImage.setImage(Google);
