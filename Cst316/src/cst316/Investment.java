@@ -2,6 +2,8 @@ package cst316;
 
 import java.util.Random;
 
+import javafx.scene.image.Image;
+
 import org.json.JSONArray;
 import org.json.JSONString;
 import org.json.JSONObject;
@@ -36,6 +38,9 @@ public class Investment implements JSONString {
 	}
 	public double getAmount() {
 		return amount;
+	}
+	public void addAmount(double amt){
+		amount += amt;
 	}
 	public String getName() {
 		return name;
@@ -81,12 +86,28 @@ public class Investment implements JSONString {
 	}
 	
 	public static String[] getAllCompanyNames() {
-		return new String[] {"SOIL", "Google", "Red Hat", "Microsoft"};
+		return new String[] {"SOIL", "Google", "RedHat", "Microsoft"};
 	}
 	public int getTimeInMonths(){
 		return gains.length();
 	}
 	public JSONArray getGains(){
 		return gains;
+	}
+	public Double getFee(){
+		if(gains.length() < 2){
+			return amount*.9;
+		}else if(gains.length() < 4){
+			return amount * .75;
+		}else if(gains.length() < 8){
+			return amount * .75;
+		}else if(gains.length() < 12){
+			return amount * .4;
+		}else{
+			return amount * .1;
+		}
+	}
+	public static Image getImage(String name){
+		return new Image(Investment.class.getClassLoader().getResourceAsStream("res/"+name.toLowerCase()+".jpg"));
 	}
 }

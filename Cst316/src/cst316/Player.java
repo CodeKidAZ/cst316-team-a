@@ -477,5 +477,23 @@ public class Player implements JSONString {
 		}
 		return false;
 	}
+	public boolean investmentExists(String companyName) {
+		boolean e = false;
+		for(int x = 0; x < investments.size(); x++){
+			if(investments.get(x).getName().equals(companyName)){
+				e = true;
+			}
+		}
+		return e;
+	}
+	public Investment getInvestment(String name){
+		Investment inv = null;
+		for(int x = 0; x < investments.size(); x++){
+			if(investments.get(x).getName().equals(name)){
+				inv = investments.get(x);
+			}
+		}
+		return inv;
+	}
 }
 
