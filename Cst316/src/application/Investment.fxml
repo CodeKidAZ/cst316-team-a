@@ -80,16 +80,16 @@
                <GridPane.margin>
                   <Insets bottom="100.0" />
                </GridPane.margin></Label>
-            <Group fx:id="sellGrp" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+            <Group fx:id="sellGrp" opacity="0.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
                <children>
                   <VBox prefHeight="200.0" prefWidth="566.0">
                      <children>
-                        <Label alignment="CENTER" prefHeight="39.0" prefWidth="590.0" text="Current value:">
+                        <Label fx:id="valueMsg" alignment="CENTER" prefHeight="39.0" prefWidth="590.0" text="Current value:">
                            <font>
                               <Font size="27.0" />
                            </font>
                            <VBox.margin>
-                              <Insets bottom="30.0" />
+                              <Insets bottom="10.0" />
                            </VBox.margin>
                         </Label>
                         <Label fx:id="valueLbl" alignment="CENTER" prefHeight="68.0" prefWidth="578.0" text="100">
@@ -107,11 +107,19 @@
                   <Insets top="20.0" />
                </GridPane.margin>
             </Group>
-            <Button fx:id="sellBtn" alignment="CENTER" mnemonicParsing="false" prefHeight="40.0" prefWidth="58.0" text="Sell" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+            <Button fx:id="sellBtn" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#onSellClicked" opacity="0.0" prefHeight="40.0" prefWidth="76.0" text="Sell" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
                <GridPane.margin>
                   <Insets bottom="30.0" />
                </GridPane.margin>
             </Button>
+            <Label fx:id="moneyLbl" text="Player Money: $100" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets top="50.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Label>
          </children>
       </GridPane>
    </children>
