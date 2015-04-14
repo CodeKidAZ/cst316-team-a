@@ -107,6 +107,7 @@ public class Investment implements JSONString {
 			return amount * .1;
 		}
 	}
+	// frnd.jpg courtesy of kev-shine (https://www.flickr.com/people/kevinshine/)
 	public static Image getImage(String name){
 		return new Image(Investment.class.getClassLoader().getResourceAsStream("res/"+name.toLowerCase()+".jpg"));
 	}
