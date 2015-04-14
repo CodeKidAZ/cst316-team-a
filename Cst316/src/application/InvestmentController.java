@@ -65,15 +65,22 @@ public class InvestmentController extends AnchorPane {
 	public void setApp(Main app) {
 		numForm = new DecimalFormat("#0.00");
 		application = app;
-
+		this.player = application.getPlayer();
+		moneyLbl.setText("Player money: $" + numForm.format(player.getMoney()));
+		
 		String[] allCompanyNames = Investment.getAllCompanyNames();
 		ObservableList<String> items = companyCombo.getItems();
 		for (String name : allCompanyNames) {
 			items.add(name);
 		}
+		ArrayList<Investment> inv = player.getInvestments();
+		Investment i = null;
+		for(int x = 0; x < inv.size(); x++){
+			if(!items.contains(inv.get(x).getName())){
+				items.add(inv.get(x).getName());
+			}
+		}
 		companyCombo.setItems(items);
-		this.player = application.getPlayer();
-		moneyLbl.setText("Player money: $" + numForm.format(player.getMoney()));
 
 	}
 	public void setPlayer(Player player) {
