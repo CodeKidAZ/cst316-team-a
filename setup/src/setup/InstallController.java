@@ -44,34 +44,34 @@ public class InstallController extends AnchorPane{
         progress.setProgress(0.28);
         Advapi32Util.registryCreateKey(
             WinReg.HKEY_LOCAL_MACHINE,
-            "SOFTWARE\\Microsoft\\Windows\\Uninstall",
+            "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall",
             "EnterpreneurshipSimulator"
         );
         progress.setProgress(0.42);
         Advapi32Util.registrySetStringValue(
             WinReg.HKEY_LOCAL_MACHINE,
-            "SOFTWARE\\Microsoft\\Windows\\Uninstall\\EnterpreneurshipSimulator",
+            "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\EnterpreneurshipSimulator",
             "DisplayName",
             "Enterprensurship Simulator"
         );
         progress.setProgress(0.56);
         Advapi32Util.registrySetStringValue(
             WinReg.HKEY_LOCAL_MACHINE,
-            "SOFTWARE\\Microsoft\\Windows\\Uninstall\\EnterpreneurshipSimulator",
+            "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\EnterpreneurshipSimulator",
             "UninstallString",
             installLocation + "\\Uninstall.jar"
         );
         progress.setProgress(0.70);
         Advapi32Util.registrySetStringValue(
             WinReg.HKEY_LOCAL_MACHINE,
-            "SOFTWARE\\Microsoft\\Windows\\Uninstall\\EnterpreneurshipSimulator",
+            "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\EnterpreneurshipSimulator",
             "DisplayIcon",
             installLocation + "\\enterpreneurship-simulator.png"
         );
         progress.setProgress(0.84);
         Advapi32Util.registrySetStringValue(
             WinReg.HKEY_LOCAL_MACHINE,
-            "SOFTWARE\\Microsoft\\Windows\\Uninstall\\EnterpreneurshipSimulator",
+            "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\EnterpreneurshipSimulator",
             "DisplayVersion",
             "0.1"
         );
