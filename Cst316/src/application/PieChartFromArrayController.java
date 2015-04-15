@@ -200,7 +200,7 @@ public class PieChartFromArrayController extends AnchorPane {
 	// Event Listener on Button[#returnButton].onAction
 	@FXML
 	public void returnButtonFired(ActionEvent event) throws Exception {
-		LandingController ctr = (LandingController) application.replaceSceneContent("Landing.fxml", LandingController.class);
+		Market3Controller ctr = (Market3Controller) application.replaceSceneContent("MarketingChoice.fxml", Market3Controller.class);
 		ctr.setApp(application);
 	}
 }
