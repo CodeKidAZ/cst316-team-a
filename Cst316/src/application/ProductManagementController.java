@@ -80,7 +80,7 @@ public class ProductManagementController extends AnchorPane  {
 				"Vehical Product",
 				"Software Application");
 		for(int i = 0; i<player.getCompanyList().size(); i++) {
-			cComboBox.getItems().add(player.getCompanyList().get(i).getCompanyName());
+			cComboBox.getItems().add(player.fetchCompanyString(i));
 		}
 	}	
 	
@@ -205,7 +205,7 @@ public class ProductManagementController extends AnchorPane  {
 		activeProduct.appendText("Company: " + selectedCompany.getCompanyName()+"\n");
 		if(selectedCompany.getProducts() != null) {
 			for(int i = 0; i<selectedCompany.getProducts().size(); i++) {
-				activeProduct.appendText(selectedCompany.getProducts().get(i).getName()+"\n");
+				activeProduct.appendText(selectedCompany.fetchProductString(i)+"\n");
 			}
 		}
 	}

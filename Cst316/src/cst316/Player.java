@@ -463,6 +463,20 @@ public class Player implements JSONString {
 		return null;
 	}
 	/**
+	 * Get the string name of a company using it's index #
+	 * Purpose is to reduce long chain calls to get company names.
+	 * @param index		Company's location in the array list
+	 * @return
+	 */
+	public String fetchCompanyString(int index) {
+		//If statement to ensure that the index actually exists
+		if(!(companies.size() < index))
+			return companies.get(index).getCompanyName();
+		//If the index is bad input, return a null value
+		else 
+			return null;
+	}
+	/**
 	 * Linear search through the company to try and find one with a matching name,
 	 * if it succeeds, that index is removed.
 	 * @param name             Company's name
