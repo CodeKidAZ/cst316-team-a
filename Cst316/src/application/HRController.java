@@ -186,9 +186,12 @@ public class HRController extends AnchorPane {
         this.player = application.getPlayer();
         
         ArrayList<Company> companies = player.getCompanyList();
+        assert companies != null: "Companies are null!";
         for(int i = 0; i<companies.size(); i++) {
-        	CompanyList.add(new Employee(companies.get(i).getCompanyName(),0));
-        	comboList.add(companies.get(i).getCompanyName());
+        	if( !comboList.contains(companies.get(i).getCompanyName()) ) {
+        		CompanyList.add(new Employee(companies.get(i).getCompanyName(),0));
+        		comboList.add(companies.get(i).getCompanyName());
+        	}
         }
     }
 
