@@ -56,7 +56,6 @@ public class DialogueController extends AnchorPane{
     	{
     		String name = nameField.getText();
         	System.out.println(name);
-           // Employee employee = new Employee(name,0);
         	Company company = new Company(name);
             HRController.CompanyList.add(company);
             HRController.comboList.add(name); 
