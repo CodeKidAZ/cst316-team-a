@@ -48,14 +48,23 @@ public class DialogueController extends AnchorPane{
 
     @FXML
     private void okMethod(ActionEvent event) throws Exception{
-    	String name = nameField.getText();
-        Employee employee = new Employee(name,0);
-        HRController.CompanyList.add(employee);
-        HRController.comboList.add(name);
-        
-        Company company = new Company(name);
-        player.addCompanies(company);
-        player.saveFile();
+    	if(nameField.getText().equals(" "))
+    	{
+    		System.out.println("name is EMPTY");
+    	}
+    	else
+    	{
+    		String name = nameField.getText();
+        	System.out.println(name);
+           // Employee employee = new Employee(name,0);
+        	Company company = new Company(name);
+            HRController.CompanyList.add(company);
+            HRController.comboList.add(name); 
+            
+            player.addCompanies(company);
+            player.saveFile();
+    	}
+    	
         
         HRController ctr = (HRController) application.replaceSceneContent("HR.fxml", null);
               ctr.setApp(application);

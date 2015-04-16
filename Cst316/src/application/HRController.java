@@ -37,9 +37,9 @@ public class HRController extends AnchorPane {
     private Button incorporateButton;
 
     @FXML
-    private TableView<Employee> companyTableView;
+    private TableView<Company> companyTableView;
     @FXML
-    private TableColumn<Employee, String> companyNameColumn;
+    private TableColumn<Company, String> companyNameColumn;
 
     @FXML
     private ImageView fireImage;
@@ -52,7 +52,7 @@ public class HRController extends AnchorPane {
 
     private Main application;
     private Player player;
-    public static ObservableList<Employee> CompanyList = FXCollections.observableArrayList(); // to store list of companies
+    public static ObservableList<Company> CompanyList = FXCollections.observableArrayList(); // to store list of companies
     public static ObservableList<String> comboList = FXCollections.observableArrayList();
 
     @FXML
@@ -175,8 +175,8 @@ public class HRController extends AnchorPane {
     public void setApp(Main app) {
         this.application = app;
         companyNameColumn.setCellValueFactory(cellData -> cellData.getValue().getNameProperty());    // -> is lambda expression
-        companyTableView.setItems(CompanyList);
-        companyComboBox.setItems(comboList);
+     
+     
         Image fire = new Image(this.getClass().getClassLoader().getResourceAsStream("res/deleteEmployee.png"));
         fireImage.setImage(fire);
         Image hire = new Image(this.getClass().getClassLoader().getResourceAsStream("res/hireEmployee.png"));
@@ -184,12 +184,16 @@ public class HRController extends AnchorPane {
         Image company = new Image(this.getClass().getClassLoader().getResourceAsStream("res/createCompany.png"));
         createCompanyImage.setImage(company);
         this.player = application.getPlayer();
-        
+       
         ArrayList<Company> companies = player.getCompanyList();
-        for(int i = 0; i<companies.size(); i++) {
-        	CompanyList.add(new Employee(companies.get(i).getCompanyName(),0));
+        for(int i = 0; i<companies.size(); i++) 
+        {
+        	
+        	CompanyList.add(new Company(companies.get(i).getCompanyName()));
         	comboList.add(companies.get(i).getCompanyName());
         }
+       // companyTableView.setItems(CompanyList);
+        companyComboBox.setItems(comboList);
     }
 
     public void setPlayer(Player player) {

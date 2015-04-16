@@ -2,6 +2,8 @@ package cst316;
 
 import java.util.ArrayList;
 
+import javafx.beans.property.StringProperty;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
@@ -10,6 +12,7 @@ public class Company
 {
     String name;
     
+    
   
 	private ArrayList<Product> myProducts;
     private ArrayList<ResearchDevelObject> myRandD;
@@ -17,6 +20,7 @@ public class Company
 
     public Company(String name){
     	this.name = name;
+    	
     	this.employees = 0;
     	this.myProducts = new ArrayList<Product>();
     	
@@ -58,6 +62,12 @@ public class Company
     public String getCompanyName() {
     	return name;
     }
+    public StringProperty getNameProperty()
+	{
+    	StringProperty cname = null;
+    	cname.set(name);
+		return cname;
+	}
     public ArrayList<Product> getProducts(){	
     	return myProducts;
     }

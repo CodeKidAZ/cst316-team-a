@@ -42,16 +42,6 @@ public class HireController extends AnchorPane {
     private ObservableList<Employee> tableData = FXCollections.observableArrayList(); 
     private TreeMap<String, Label> nameLabels = new TreeMap<String,Label>();
    
-    
-
-    @FXML
-    private ResourceBundle resources;
-    @FXML
-    private URL location;
-    
-    
-  DropShadow ds = new DropShadow();
-    
 
     @FXML
     private Label hireTitleLabel;
@@ -66,7 +56,7 @@ public class HireController extends AnchorPane {
     @FXML
     private ImageView imageEmployee1;
     @FXML
-    private Label wageLabel2;
+    private Label wageLabel2; 
     @FXML
     private Label nameLabel2;
     @FXML
