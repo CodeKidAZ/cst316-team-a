@@ -16,7 +16,6 @@ public class LoginController extends AnchorPane{
 	ComboBox<String> playerNameText;
 
 	private Main application;
-                Main a;
         
     @FXML
     private AnchorPane AnchorPane;

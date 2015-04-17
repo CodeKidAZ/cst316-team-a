@@ -40,7 +40,7 @@ public class CompanyTest {
 	@Test
 	public void testSetname() {
 		Company b = new Company("XYZ.Corp");
-		b.setname("PQR.Corp");
+		b.setName("PQR.Corp");
 		assertEquals(b.getCompanyName(), "PQR.Corp");
 	}
 

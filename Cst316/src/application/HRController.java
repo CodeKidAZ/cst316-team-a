@@ -52,8 +52,8 @@ public class HRController extends AnchorPane {
 
     private Main application;
     private Player player;
-    public static ObservableList<Employee> CompanyList = FXCollections.observableArrayList(); // to store list of companies
-    public static ObservableList<String> comboList = FXCollections.observableArrayList();
+    final public static ObservableList<Employee> CompanyList = FXCollections.observableArrayList(); // to store list of companies
+    final public static ObservableList<String> comboList = FXCollections.observableArrayList();
 
     @FXML
     private TableColumn<?, ?> employeesColumn1;

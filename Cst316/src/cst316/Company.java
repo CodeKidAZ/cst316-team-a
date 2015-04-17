@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.json.JSONTokener;
 
 public class Company 
 {
@@ -18,6 +17,7 @@ public class Company
     public Company(String name){
     	this.name = name;
     	this.employees = 0;
+    	this.myRandD = new ArrayList<ResearchDevelObject>();
     	this.myProducts = new ArrayList<Product>();
     	
     } 
@@ -51,7 +51,7 @@ public class Company
         return jsonObject.toString(); //Return the JSON string
     }
     
-    public void setname(String name){
+    public void setName(String name){
     	this.name = name;
     }
     //___________________________________________GET
