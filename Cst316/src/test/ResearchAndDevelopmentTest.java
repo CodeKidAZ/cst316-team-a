@@ -2,6 +2,8 @@ package test;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.junit.Test;
 
 import cst316.Player;
@@ -25,6 +27,10 @@ public class ResearchAndDevelopmentTest {
 		assertEquals(obj.getPointWorth(),0);
 		
 		assertEquals(rD2.getPlayer(), p);
+		
+		ArrayList<ResearchDevelObject> test = rD.getResDevObjs();
+		assert(test instanceof ArrayList<?>);
+		assertTrue(rD.setResDevObjs(test));
 	}
 
 }

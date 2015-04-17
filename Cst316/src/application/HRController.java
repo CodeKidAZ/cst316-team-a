@@ -52,8 +52,8 @@ public class HRController extends AnchorPane {
 
     private Main application;
     private Player player;
-    public static ObservableList<Employee> CompanyList = FXCollections.observableArrayList(); // to store list of companies
-    public static ObservableList<String> comboList = FXCollections.observableArrayList();
+    final public static ObservableList<Employee> CompanyList = FXCollections.observableArrayList(); // to store list of companies
+    final public static ObservableList<String> comboList = FXCollections.observableArrayList();
 
     @FXML
     private TableColumn<?, ?> employeesColumn1;
@@ -186,9 +186,12 @@ public class HRController extends AnchorPane {
         this.player = application.getPlayer();
         
         ArrayList<Company> companies = player.getCompanyList();
+        assert companies != null: "Companies are null!";
         for(int i = 0; i<companies.size(); i++) {
-        	CompanyList.add(new Employee(companies.get(i).getCompanyName(),0));
-        	comboList.add(companies.get(i).getCompanyName());
+        	if( !comboList.contains(companies.get(i).getCompanyName()) ) {
+        		CompanyList.add(new Employee(companies.get(i).getCompanyName(),0));
+        		comboList.add(companies.get(i).getCompanyName());
+        	}
         }
     }
 

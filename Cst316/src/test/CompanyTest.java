@@ -40,7 +40,7 @@ public class CompanyTest {
 	@Test
 	public void testSetname() {
 		Company b = new Company("XYZ.Corp");
-		b.setname("PQR.Corp");
+		b.setName("PQR.Corp");
 		assertEquals(b.getCompanyName(), "PQR.Corp");
 	}
 
@@ -90,6 +90,21 @@ public class CompanyTest {
 	public void testAddEmployees() {
 		c.addEmployees(totalEmp);
 		assertEquals(c.getEmployees(), 25,0);
+	}
+	
+	@Test
+	public void testToJson() {
+		String test = c.toJSONString();
+		assert(test.equals("{\"Name\":\"ABC.Corp\"}"));
+	}
+	
+	@Test
+	public void testFetchProductString() {
+		Product test = new Product("aProduct", 505);
+		c.addProducts(test);
+		String name = c.fetchProductString(0);
+		assert(name.equals("aProduct"));
+		assertNull(c.fetchProductString(1000));
 	}
 
 }

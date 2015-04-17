@@ -5,8 +5,6 @@ import java.io.InputStream;
 import application.LandingController;
 import application.Main;
 import service.TimedEventService;
-import cst316.Management;
-import cst316.Player;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.JavaFXBuilderFactory;
 import javafx.stage.Stage;
@@ -23,7 +21,6 @@ public class TimedEventServiceTest extends Main {
 	private Stage stage;
 	private final double MINIMUM_WINDOW_WIDTH = 1280;
     private final double MINIMUM_WINDOW_HEIGHT = 720;
-    private Player player;
 
     @Before
     public void setUp(){

@@ -60,8 +60,12 @@ public class ProductManagementController extends AnchorPane  {
 	 * @param app
 	 */
 	public void setApp(Main app){
-		application = app;
-		this.player = application.getPlayer();
+		try {
+			application = app;
+			this.player = application.getPlayer();
+		} catch (Exception e) {
+			System.out.println("Could not load application!");
+		}
 		in = this.getClass().getClassLoader().getResourceAsStream("res/return.png");
 		retOut = new Image(in);
 		in = this.getClass().getClassLoader().getResourceAsStream("res/return_highlight.png");
@@ -76,7 +80,7 @@ public class ProductManagementController extends AnchorPane  {
 				"Vehical Product",
 				"Software Application");
 		for(int i = 0; i<player.getCompanyList().size(); i++) {
-			cComboBox.getItems().add(player.getCompanyList().get(i).getCompanyName());
+			cComboBox.getItems().add(player.fetchCompanyString(i));
 		}
 	}	
 	
@@ -108,6 +112,7 @@ public class ProductManagementController extends AnchorPane  {
 	 */
 	@FXML
 	public void purchaseMouseClicked(MouseEvent event) {
+		assert selectedCompany != null: "selected company is null!";
 		selectedCompany.addProducts(selectedProduct);
 		selectedCompany.addEmployees(-selectedProduct.getTotalFixedCost());
 		player.saveFile();
@@ -135,6 +140,7 @@ public class ProductManagementController extends AnchorPane  {
 	@FXML
 	public void comboBoxMouseClicked(ActionEvent event) { 
 		comboBoxOutput = (String) comboBox.getSelectionModel().getSelectedItem().toString();
+		assert (comboBoxOutput.length() > 0): "Output is not of usable length";
 		switch(comboBoxOutput) {
 		case "Cellphone Product": 
 			selectedProduct = new Product("Cell Phone",5);
@@ -199,7 +205,7 @@ public class ProductManagementController extends AnchorPane  {
 		activeProduct.appendText("Company: " + selectedCompany.getCompanyName()+"\n");
 		if(selectedCompany.getProducts() != null) {
 			for(int i = 0; i<selectedCompany.getProducts().size(); i++) {
-				activeProduct.appendText(selectedCompany.getProducts().get(i).getName()+"\n");
+				activeProduct.appendText(selectedCompany.fetchProductString(i)+"\n");
 			}
 		}
 	}

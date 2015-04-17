@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.json.JSONTokener;
 
 public class Company 
 {
@@ -18,6 +17,7 @@ public class Company
     public Company(String name){
     	this.name = name;
     	this.employees = 0;
+    	this.myRandD = new ArrayList<ResearchDevelObject>();
     	this.myProducts = new ArrayList<Product>();
     	
     } 
@@ -51,7 +51,7 @@ public class Company
         return jsonObject.toString(); //Return the JSON string
     }
     
-    public void setname(String name){
+    public void setName(String name){
     	this.name = name;
     }
     //___________________________________________GET
@@ -68,6 +68,20 @@ public class Company
   
    public void addProducts(Product prod){
 	   myProducts.add(prod);
+   }
+   /**
+    * Gets the product's string associated with that index
+    * Purpose is to reduce long method chains.
+    * @param index		Location of the desired product in the array list
+    * @return			Product name
+    */
+   public String fetchProductString(int index) {
+	   //Ensure that the ArrayList actually has that index
+	   if(!(myProducts.size() < index))
+		   return myProducts.get(index).getName();
+	   //If it does not exist, return a null value
+	   else
+		   return null;
    }
    public void addRandD(ResearchDevelObject rd){
 	   myRandD.add(rd);

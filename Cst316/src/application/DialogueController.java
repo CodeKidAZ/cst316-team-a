@@ -25,7 +25,6 @@ public class DialogueController extends AnchorPane{
     private Main application;
     private Player player;
    
-    private ImageView darkBackground;
     @FXML
     private TextField nameField;
     @FXML
