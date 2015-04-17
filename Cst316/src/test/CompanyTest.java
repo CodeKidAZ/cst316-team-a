@@ -91,5 +91,20 @@ public class CompanyTest {
 		c.addEmployees(totalEmp);
 		assertEquals(c.getEmployees(), 25,0);
 	}
+	
+	@Test
+	public void testToJson() {
+		String test = c.toJSONString();
+		assert(test.equals("{\"Name\":\"ABC.Corp\"}"));
+	}
+	
+	@Test
+	public void testFetchProductString() {
+		Product test = new Product("aProduct", 505);
+		c.addProducts(test);
+		String name = c.fetchProductString(0);
+		assert(name.equals("aProduct"));
+		assertNull(c.fetchProductString(1000));
+	}
 
 }

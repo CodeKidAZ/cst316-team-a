@@ -51,8 +51,9 @@ public class ResearchAndDevelopment {
 		return resDevObjs;
 	}
 
-	public void setResDevObjs(ArrayList<ResearchDevelObject> resDevObjs) {
+	public boolean setResDevObjs(ArrayList<ResearchDevelObject> resDevObjs) {
 		this.resDevObjs = resDevObjs;
+		return true;
 	}
 	
 	//Use this to attach the player class to this class
