@@ -18,10 +18,21 @@ public class Product implements JSONString {
      * defined in products.json.
      */
     private String name;
-
     private double totalFixedCost;
     private double totalMarginalCost;
     private double marginalToFixed;
+    
+    /**
+     * 
+     * @param name				Name of product
+     * @param totalFixedCost	Cost to purchase product
+     */
+    public Product(String name, double totalFixedCost) {
+    	this.name = name;
+    	this.totalFixedCost = totalFixedCost;
+    	totalMarginalCost = 0;
+    	marginalToFixed = 0;
+    }
     
     /**
      * @param name              Must exist in products.json

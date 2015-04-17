@@ -14,7 +14,6 @@ import application.TimedEventController;
 
 public class TimedEventService extends Service<Void> implements EventHandler<WorkerStateEvent>{
 	private Main app;
-	private boolean a;
 	
 	private TimedEventService(Main app){
 		this.app = app;

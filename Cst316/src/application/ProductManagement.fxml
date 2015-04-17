@@ -17,19 +17,19 @@
             <Image url="@../res/return.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="purchaseButton" fitHeight="41.0" fitWidth="203.0" layoutX="1000.0" layoutY="366.0" onMouseClicked="#purchaseMouseClicked" onMouseEntered="#purchaseMouseEntered" onMouseExited="#purchaseMouseExited" preserveRatio="true">
+      <ImageView fx:id="purchaseButton" fitHeight="41.0" fitWidth="203.0" layoutX="985.0" layoutY="379.0" onMouseClicked="#purchaseMouseClicked" onMouseEntered="#purchaseMouseEntered" onMouseExited="#purchaseMouseExited" preserveRatio="true">
          <image>
             <Image url="@../res/purchase.png" />
          </image>
       </ImageView>
-      <TextArea fx:id="descriptionField" editable="false" layoutX="514.0" layoutY="154.0" prefHeight="451.0" prefWidth="366.0" wrapText="true" />
-      <ComboBox fx:id="comboBox" layoutX="984.0" layoutY="154.0" onAction="#comboBoxMouseClicked" prefHeight="31.0" prefWidth="235.0" />
+      <TextArea fx:id="descriptionField" editable="false" layoutX="515.0" layoutY="193.0" prefHeight="451.0" prefWidth="366.0" wrapText="true" />
+      <ComboBox fx:id="comboBox" layoutX="970.0" layoutY="307.0" onAction="#comboBoxMouseClicked" prefHeight="31.0" prefWidth="235.0" />
       <ImageView fitHeight="55.0" fitWidth="376.0" layoutX="43.0" layoutY="19.0">
          <image>
             <Image url="@../res/productmanagement.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="40.0" fitWidth="260.0" layoutX="968.0" layoutY="74.0">
+      <ImageView fitHeight="40.0" fitWidth="260.0" layoutX="957.0" layoutY="228.0">
          <image>
             <Image url="@../res/select_a_product.png" />
          </image>
@@ -41,5 +41,22 @@
          </image>
       </ImageView>
       <Separator layoutX="431.0" layoutY="94.0" orientation="VERTICAL" prefHeight="585.0" prefWidth="32.0" />
+      <ImageView fitHeight="63.0" fitWidth="305.0" layoutX="945.0" layoutY="74.0" preserveRatio="true">
+         <image>
+            <Image url="@../res/SelectYourCompany.png" />
+         </image>
+      </ImageView>
+      <ComboBox fx:id="cComboBox" layoutX="969.0" layoutY="154.0" onAction="#cComboBoxMouseClicked" prefHeight="31.0" prefWidth="235.0" />
+      <ImageView fitHeight="91.0" fitWidth="366.0" layoutX="515.0" layoutY="91.0" preserveRatio="true">
+         <image>
+            <Image url="@../res/PM_Description.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="123.0" fitWidth="341.0" layoutX="60.0" layoutY="193.0" preserveRatio="true">
+         <image>
+            <Image url="@../res/PM_Description2.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="successImage" fitHeight="150.0" fitWidth="200.0" layoutX="987.0" layoutY="444.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

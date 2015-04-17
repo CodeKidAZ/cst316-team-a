@@ -88,13 +88,17 @@ public class PlayerTest {
 	}
 	@Test
 	public void testConstructJSONObject() throws Exception {
-		Player tester = new Player(new JSONObject("{\"Product\": {\"Name\": \"Electronics\", \"TotalFixedCost\": 10.0, \"TotalMarginalCost\": 5.0}, \"Employees\": 1, \"Points\":1119,\"Money\":25.6,\"Name\":\"Billy Bob\",\"Assets\":[\"This\",\"That\",\"The Other\"],\"Buildings\":[],\"Investments\":[{\"Amount\":12.8,\"Name\":\"Quick Oats\",\"IsGood\":true},{\"Amount\":11.17,\"Name\":\"Grits\",\"IsGood\":false}]}"));
-		assertEquals(tester.getMoney(), 25.6, .5);
-		assertEquals(tester.getName(), "Billy Bob");
-		assertEquals(tester.getPoints(), 1119);
-		assertEquals(tester.getAssets().size(), 3);
-		assertEquals(tester.getInvestments().size() ,2);
+		Player tester = new Player(new JSONObject("{\"Money\":100,\"Points\":0,\"Investments\":[],\"Buildings\":[],\"Assets\":[],"
+				+ "\"Companies\":[{\"companyName\":\"test\",\"employees\":-7,\"products\":[{\"TotalMarginalCost\":0,\"TotalFixedCost\":7,"
+				+ "\"Name\":\"Vehical\"}]}],\"Employees\":0,\"Product\":{\"TotalMarginalCost\":0,\"TotalFixedCost\":0"
+				+ ",\"Name\":\"House Wares\"},\"Name\":\"testMe\"}"));
+		assertEquals(tester.getMoney(), 100, .5);
+		assertEquals(tester.getName(), "testMe");
+		assertEquals(tester.getPoints(), 0);
+		assertEquals(tester.getAssets().size(), 0);
+		assertEquals(tester.getInvestments().size(), 0);
 		assertEquals(tester.getBuildings().size(), 0);
+		assertEquals(tester.getCompanyList().size(), 1);
 	}
 	@Test
 	public void testPerformInvestment() {
@@ -104,6 +108,6 @@ public class PlayerTest {
 		assertEquals(tester.getInvestments().size(), 1);
 		assertEquals(tester.getInvestments().get(0), new Investment("Test investment", 10.5, true));
 		tester.cashInvestment(tester.getInvestments().get(0));
-		assertTrue(tester.getMoney() != -10.5);
+		assertTrue(tester.getMoney() == -10.5);
 	}
 }
