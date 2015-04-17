@@ -5,7 +5,7 @@
     <property name="lib.dir"            value="lib"/>
     <property name="class.dir"          value="bin"/>
     <property name="payload.source.dir" value="../Cst316/dist"/>
-    <property name="payload.icon.file"  value="../enterpreneurship-simulator.png"/>
+    <property name="payload.icon.file"  value="../enterpreneurship-simulator.ico"/>
     <property name="payload.dest.dir"   value="${class.dir}/dist"/>
     <property name="jar.dir"            value="dist"/>
     <property name="jar.file"           value="${jar.dir}/${ant.project.name}.jar"/>
@@ -51,6 +51,7 @@
                 <include name="**/**.json"/>
                 <include name="**/**.mp4"/>
                 <include name="**/**.png"/>
+                <include name="**/**.ico"/>
                 <include name="**/**.txt"/>
                 <exclude name="**/**.java"/>
                 <exclude name="**/**.psd"/>

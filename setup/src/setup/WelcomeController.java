@@ -17,8 +17,27 @@ public class WelcomeController extends AnchorPane{
 
 	private Main application;
         
-	public void setApp(Main app){
+	public void setApp(Main app) throws Exception {
 		application = app;
+
+        InstallController installer = new InstallController();
+        installer.setGlobal(false);
+        if (installer.getCurrentInstallLocation() != null) {
+          installer = (InstallController) application.replaceSceneContent("Install.fxml", InstallController.class);
+          installer.setApp(application);
+          installer.setGlobal(false);
+          installer.setInstallLocation(installer.getCurrentInstallLocation());
+          installer.startUninstall();
+        } else {
+            installer.setGlobal(true);
+            if (installer.getCurrentInstallLocation() != null) {
+                installer = (InstallController) application.replaceSceneContent("Install.fxml", InstallController.class);
+                installer.setApp(application);
+                installer.setGlobal(true);
+                installer.setInstallLocation(installer.getCurrentInstallLocation());
+                installer.startUninstall();
+            }
+        }
 	}
 	
 	@FXML

@@ -51,12 +51,8 @@ public class Main extends Application {
         // If we don't have permission, get it!
         if (args.length == 0) {
             Shell32X.SHELLEXECUTEINFO execInfo = new Shell32X.SHELLEXECUTEINFO();
-            String javaHome = System.getProperty("java.home");
-            File f = new File(javaHome);
-            f = new File(f, "bin");
-            f = new File(f, "java.exe");
-            execInfo.lpFile = new WString(f.getCanonicalPath());
-            execInfo.lpParameters = new WString("-jar " + (new File(findPathJar(Main.class))).getCanonicalPath() + " admin");
+            execInfo.lpFile = new WString(findPathJava());
+            execInfo.lpParameters = new WString("-jar \"" + (new File(findPathJar(Main.class))).getCanonicalPath() + "\" admin");
             execInfo.nShow = Shell32X.SW_SHOWDEFAULT;
             execInfo.fMask = Shell32X.SEE_MASK_NOCLOSEPROCESS;
             execInfo.lpVerb = new WString("runas");
@@ -188,7 +184,15 @@ public class Main extends Application {
             throw new IllegalStateException("You appear to have loaded this class from a local jar file, but I can't make sense of the URL!");
         }
 
-        return uri.substring(9, idx);
+        return uri.substring(9, idx).replace("%20", " ");
+    }
+
+    public static String findPathJava() throws Exception {
+        String javaHome = System.getProperty("java.home");
+        File f = new File(javaHome);
+        f = new File(f, "bin");
+        f = new File(f, "java.exe");
+        return f.getCanonicalPath();
     }
 
 }
