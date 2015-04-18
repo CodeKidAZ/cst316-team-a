@@ -1,12 +1,15 @@
 package application;
 
+import cst316.Company;
 import cst316.Employee;
 import cst316.Management;
 import cst316.Player;
+import java.io.IOException;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.Set;
+import java.util.TreeMap;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -23,11 +26,8 @@ public class FireController extends AnchorPane {
     private Main application;
     private Player player;
     private ObservableList<Employee> tableData = FXCollections.observableArrayList();
+    Company myCompany;
 
-    @FXML
-    private ResourceBundle resources;
-    @FXML
-    private URL location;
     @FXML
     private TableView<Employee> fireTable;
     @FXML
@@ -42,6 +42,8 @@ public class FireController extends AnchorPane {
     private TableColumn<Employee, String> nameColumn;
     @FXML
     private TableColumn<Employee, Number> wageColumn;
+    @FXML
+    private Label currentCompanyLabel;
 
     public void setPlayer(Player player) {
         this.player = player;
@@ -49,26 +51,20 @@ public class FireController extends AnchorPane {
 
     public void setApp(Main app) {
         this.application = app;
-
-        nameColumn.setCellValueFactory(cellData -> cellData.getValue().getNameProperty());    // -> is lambda expression
+        nameColumn.setCellValueFactory(cellData -> cellData.getValue().getNameProperty());
         wageColumn.setCellValueFactory(cellData -> cellData.getValue().getWageProperty());
-
-        System.out.println("hired Tree is : " + Management.hiredTree.size());
-        Set<String> setNames = Management.hiredTree.keySet();  //get keys from Employee Tree Map
-        System.out.println("Names are " + setNames);
+        Set<String> setNames = myCompany.getHiredTree().keySet();  //get keys from Employee Tree Map
         for (String key : setNames) {
-
-            String employeeName = Management.hiredTree.get(key).getName();
-            System.out.println("EmployeeNames are " + key);
-
-            int employeeWage = Management.hiredTree.get(key).getWage();
-            Employee node = new Employee(employeeName, employeeWage);
+            String name = myCompany.hiredTree.get(key).getName();
+            int wage = myCompany.hiredTree.get(key).getWage();
+             Employee node = new Employee(name, wage);
             tableData.add(node);
         }
+        System.out.println("out");
         fireTable.setItems(tableData);
-        totalHiredLabel.setText("Total Hired : " + Management.hiredTree.size());
+        totalHiredLabel.setText("Total Hired : " + myCompany.getHiredTree().size());
+        
     }
-
     @FXML
     private void backMethod(ActionEvent event) throws Exception {
         System.out.println("YOU CLICKED BACK");
@@ -83,13 +79,22 @@ public class FireController extends AnchorPane {
         if (selectedIndex >= 0) {
 
             Employee a = new Employee(fireTable.getSelectionModel().getSelectedItem().getName(), fireTable.getSelectionModel().getSelectedItem().getWage());
-            Management.empTree.put(a.getName(), a);                                            // put the fired employee back into employement tree
-            Management.hiredTree.remove(fireTable.getSelectionModel().getSelectedItem().getName()); // remove employee from hired tree
+            myCompany.employmentTree.put(a.getName(), a);                                            // put the fired employee back into employement tree
+            myCompany.fireEmployees(a); // remove employee from hired tree
             fireTable.getItems().remove(selectedIndex);                                 //remove the selected item from TableView 
-            totalHiredLabel.setText("Total Hired : " + Management.hiredTree.size());
+            totalHiredLabel.setText("Total Hired : " + myCompany.getTotalHiredEmployees());
 
         } else {
             System.out.println(" nothing");
         }
+    }
+
+    public void setCompany(Company x) throws IOException {
+        myCompany = x;
+        currentCompanyLabel.setText(myCompany.getCompanyName());
+        int s = myCompany.employmentTree.size(); //get the size of Employee Tree Map
+        System.out.println("Company empTr  is " + myCompany.employmentTree.size());
+        System.out.println("Company hiredTr is " + myCompany.getTotalHiredEmployees());
+
     }
 }
