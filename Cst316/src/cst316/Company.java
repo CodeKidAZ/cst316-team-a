@@ -13,10 +13,21 @@ public class Company
 	private ArrayList<Product> myProducts;
     private ArrayList<ResearchDevelObject> myRandD;
     private double employees;
+    private double marketPower;
 
     public Company(String name){
     	this.name = name;
     	this.employees = 0;
+    	this.marketPower = 0;
+    	this.myRandD = new ArrayList<ResearchDevelObject>();
+    	this.myProducts = new ArrayList<Product>();
+    	
+    } 
+    
+    public Company(String name, double marketPower){
+    	this.name = name;
+    	this.employees = 0;
+    	this.marketPower = marketPower;
     	this.myRandD = new ArrayList<ResearchDevelObject>();
     	this.myProducts = new ArrayList<Product>();
     	
@@ -29,6 +40,7 @@ public class Company
 	public Company(JSONObject jsonObject) throws Exception {
         this.name = jsonObject.getString("companyName");
         this.employees = jsonObject.getDouble("employees");
+        this.marketPower = jsonObject.getDouble("marketPower");
         
         try {
 		JSONArray jArrayProducts = jsonObject.getJSONArray("products");
@@ -89,10 +101,25 @@ public class Company
    public double getEmployees() {
 		return employees;
 	}
+	/**
+	 * @return the marketPower
+	 */
+	public double getMarketPower() {
+		return marketPower;
+	}
+	/**
+	 * @param marketPower the marketPower to set
+	 */
+	public void setMarketPower(double marketPower) {
+		this.marketPower = marketPower;
+	}
 	public void setEmployees(double employees) {
 		this.employees = employees;
 	}
 	public void addEmployees(double employees) {
 		this.employees += employees;
+	}
+	public String getName() {
+		return name;
 	}
 }
