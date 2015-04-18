@@ -57,8 +57,9 @@ public class HRController extends AnchorPane {
 	private Player player;
 	public static ObservableList<Company> CompanyList = FXCollections.observableArrayList(); // to store list of companies
 	public static ObservableList<String> comboList = FXCollections.observableArrayList();
-
 	public static TreeMap<String, Company> tree1 = new TreeMap<String, Company>(); 
+	ArrayList<Company> companies;
+	
 	@FXML
 	private TableColumn<?, ?> employeesColumn1;
 	@FXML
@@ -91,9 +92,25 @@ public class HRController extends AnchorPane {
 	@FXML
 	private void openHire(MouseEvent event) throws Exception {
 		System.out.println("YOU CLICKED HIRE");
-		HireController ctr = (HireController) application.replaceSceneContent("Hire.fxml", HireController.class);
-		ctr.setApp(application);
-		ctr.setPlayer(player);
+
+		String a = companyComboBox.getValue();
+		for(int i = 0; i<companies.size(); i++) 
+		{
+			if (companies.get(i).getCompanyName() ==a)
+			{
+				System.out.println("Company is" + companies.get(i).getCompanyName());
+				/*HireController ctr = (HireController) application.replaceSceneContent("Hire.fxml", HireController.class);
+				ctr.setCompany(companies.get(i));
+				ctr.setApp(application);
+				ctr.setPlayer(player);
+				 */
+			}
+			else
+			{
+				
+			}
+		}
+
 	}
 
 	@FXML
@@ -212,7 +229,7 @@ public class HRController extends AnchorPane {
 		 */
 		if(comboList.size() ==0)
 		{
-			ArrayList<Company> companies = player.getCompanyList();
+			companies = player.getCompanyList();
 			for(int i = 0; i<companies.size(); i++) 
 			{
 				tree1.put(companies.get(i).getCompanyName(), (new Company(companies.get(i).getCompanyName())));
@@ -222,7 +239,7 @@ public class HRController extends AnchorPane {
 				comboList.add(companies.get(i).getCompanyName());
 				CompanyList.add(new Company(companies.get(i).getCompanyName()));
 				//System.out.println("Name Property is"+companies.get(i).getNameProperty().toString());
-				//combo
+				
 			}
 			/*
 			Set<String> setNames = tree1.keySet(); 
@@ -245,8 +262,11 @@ public class HRController extends AnchorPane {
 		totalLabel.setText(Integer.toString(a));
 		companyComboBox.setItems(comboList);
 		companyTableView.setItems(CompanyList);
+		//companyComboBox.getSelectionModel().getSelectedItem();
+		//System.out.println(companyComboBox.getSelectionModel().getSelectedItem());
 		
 	}
+	
 
 	public void setPlayer(Player player) {
 		this.player = player;
@@ -256,4 +276,26 @@ public class HRController extends AnchorPane {
 	private void deleteCompany(ActionEvent event) {
 	}
 
+    @FXML
+    private void currentCompany(ActionEvent event) {
+    	System.out.println("YOU SELECTED" + companyComboBox.getSelectionModel().getSelectedItem());
+    	/*String a = companyComboBox.getValue();
+    	System.out.println(a);
+    	companies = player.getCompanyList();
+    	
+		for(int i = 0; i<companies.size(); i++) 
+		{
+			if (companies.get(i).getCompanyName() ==a);
+			{
+				
+			}
+			System.out.println(tree1.keySet());
+			System.out.println(companies.get(i).getCompanyName());
+
+			comboList.add(companies.get(i).getCompanyName());
+			CompanyList.add(new Company(companies.get(i).getCompanyName()));
+			//System.out.println("Name Property is"+companies.get(i).getNameProperty().toString());
+			
+		}*/
+    }
 }

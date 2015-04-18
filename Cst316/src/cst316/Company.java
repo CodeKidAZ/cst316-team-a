@@ -15,6 +15,7 @@ public class Company
   
 	private ArrayList<Product> myProducts;
     private ArrayList<ResearchDevelObject> myRandD;
+    private ArrayList<Employee> emp;
     private double employees;
     private StringProperty cname;
 
@@ -65,7 +66,6 @@ public class Company
     public StringProperty getNameProperty()
 	{
     	cname = new SimpleStringProperty(name);
-    	//cname.set(name);
 		return cname;
 	}
     public ArrayList<Product> getProducts(){	
@@ -73,6 +73,9 @@ public class Company
     }
     public ArrayList<ResearchDevelObject> getRandD() {
 		return myRandD;
+    }
+    public ArrayList<Employee> getEmployeesList() {
+		return emp;
     }
     //___________________________________________SET
   
@@ -90,5 +93,8 @@ public class Company
 	}
 	public void addEmployees(double employees) {
 		this.employees += employees;
+	}
+	public void addEmployeesList(Employee employees) {
+		emp.add(employees);
 	}
 }
