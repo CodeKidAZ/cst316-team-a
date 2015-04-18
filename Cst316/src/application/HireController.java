@@ -1,5 +1,6 @@
 package application;
 
+import cst316.Company;
 import cst316.Management;
 import cst316.Employee;
 import cst316.Player;
@@ -28,8 +29,10 @@ import javafx.scene.layout.AnchorPane;
 public class HireController extends AnchorPane {
      Main application;
      Player player;
+     HRController hr;
      
      Employee val = new Employee();
+     Company a;
      Set<String> empObjects;
      int s = Management.empTree.size(); //get the size of Employee Tree Map
     String[] namesArray = new String[s]; //this array will store all Employee Names
@@ -42,16 +45,6 @@ public class HireController extends AnchorPane {
     private ObservableList<Employee> tableData = FXCollections.observableArrayList(); 
     private TreeMap<String, Label> nameLabels = new TreeMap<String,Label>();
    
-    
-
-    @FXML
-    private ResourceBundle resources;
-    @FXML
-    private URL location;
-    
-    
-  DropShadow ds = new DropShadow();
-    
 
     @FXML
     private Label hireTitleLabel;
@@ -66,7 +59,7 @@ public class HireController extends AnchorPane {
     @FXML
     private ImageView imageEmployee1;
     @FXML
-    private Label wageLabel2;
+    private Label wageLabel2; 
     @FXML
     private Label nameLabel2;
     @FXML
@@ -237,6 +230,8 @@ public class HireController extends AnchorPane {
               Management.empTree.remove(currentTab.getName());
               Management.hiredTree.put(currentTab.getName(), currentTab);
               
+              
+              
               createNameArray();                                        // refresh the array with new names
               createWageArray();                                       // refresh the array with new wages
               createEmployeeLabels();                                // show new employees on GUI after they are hired
@@ -278,6 +273,7 @@ public class HireController extends AnchorPane {
         totalLabel.setText(" ");
          totalLabel.setText("You have Hired : "+ tableData.size()+ "           Total Hired : "+ Management.hiredTree.size());
 
+         //System.out.println("company is " + a.getCompanyName());
 
     }
 
@@ -486,6 +482,10 @@ public class HireController extends AnchorPane {
         Object source = event.getSource();                                                    
         ImageView imageName = ((ImageView) source);
         imageName.setEffect(new Glow());
-        System.out.println("Image Name is : "+imageName);
+        //System.out.println("Image Name is : "+imageName);
+    }
+    public void setCompany(Company x)
+    {
+    	a = x;
     }
 }

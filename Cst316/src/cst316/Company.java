@@ -2,20 +2,25 @@ package cst316;
 
 import java.util.ArrayList;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class Company 
 {
     String name;
-    
   
 	private ArrayList<Product> myProducts;
     private ArrayList<ResearchDevelObject> myRandD;
+    private ArrayList<Employee> emp;
     private double employees;
+    private StringProperty cname;
 
     public Company(String name){
     	this.name = name;
+    	
     	this.employees = 0;
     	this.myRandD = new ArrayList<ResearchDevelObject>();
     	this.myProducts = new ArrayList<Product>();
@@ -58,11 +63,19 @@ public class Company
     public String getCompanyName() {
     	return name;
     }
+    public StringProperty getNameProperty()
+	{
+    	cname = new SimpleStringProperty(name);
+		return cname;
+	}
     public ArrayList<Product> getProducts(){	
     	return myProducts;
     }
     public ArrayList<ResearchDevelObject> getRandD() {
 		return myRandD;
+    }
+    public ArrayList<Employee> getEmployeesList() {
+		return emp;
     }
     //___________________________________________SET
   
@@ -94,5 +107,8 @@ public class Company
 	}
 	public void addEmployees(double employees) {
 		this.employees += employees;
+	}
+	public void addEmployeesList(Employee employees) {
+		emp.add(employees);
 	}
 }
