@@ -48,6 +48,7 @@
                         <Glow />
                      </effect>
                   </ImageView>
+                  <ComboBox fx:id="dropMenu2" layoutY="169.0" onAction="#dropMenu2Fired" onContextMenuRequested="#changeMenu" prefHeight="60.0" prefWidth="447.0" />
                </children></AnchorPane>
         </items>
       </SplitPane>
