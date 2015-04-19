@@ -145,7 +145,6 @@ public class InvestmentController extends AnchorPane {
 			Investment inv = player.getInvestment(name);
 			valueLbl.setText("$" + numForm.format(inv.getAmount()));
 			generateChart(name);
-			System.out.println(inv.isGood());
 		}else{
 			sellGrp.setOpacity(0);
 			sellBtn.setOpacity(0);

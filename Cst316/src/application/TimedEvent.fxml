@@ -23,22 +23,22 @@
             <Font name="Impact" size="23.0" />
          </font>
       </Label>
-      <Label fx:id="hintOne" alignment="CENTER" layoutX="285.0" layoutY="226.0" text="The opportunity is from your college friend.">
+      <Label fx:id="hintOne" alignment="CENTER" layoutX="-1.0" layoutY="226.0" prefHeight="54.0" prefWidth="1280.0" text="The opportunity is from your college friend.">
          <font>
             <Font size="37.0" />
          </font>
       </Label>
-      <Label fx:id="hintTwo" layoutX="398.0" layoutY="297.0" opacity="0.0" text="He's never been trustworthy...">
+      <Label fx:id="hintTwo" alignment="CENTER" layoutY="297.0" opacity="0.0" prefHeight="54.0" prefWidth="1280.0" text="He's never been trustworthy...">
          <font>
             <Font size="37.0" />
          </font>
       </Label>
-      <Label fx:id="hintThree" layoutX="390.0" layoutY="369.0" opacity="0.0" text="The opportunity sounds fishy...">
+      <Label fx:id="hintThree" alignment="CENTER" layoutY="369.0" opacity="0.0" prefHeight="54.0" prefWidth="1280.0" text="The opportunity sounds fishy...">
          <font>
             <Font size="37.0" />
          </font>
       </Label>
-      <Label fx:id="hintFour" layoutX="318.0" layoutY="446.0" opacity="0.0" text="Your friend made $300,000 last quarter.">
+      <Label fx:id="hintFour" alignment="CENTER" layoutX="-1.0" layoutY="446.0" opacity="0.0" prefHeight="54.0" prefWidth="1280.0" text="Your friend made $300,000 last quarter.">
          <font>
             <Font size="37.0" />
          </font>
