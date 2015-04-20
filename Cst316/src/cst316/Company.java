@@ -23,11 +23,11 @@ public class Company {
 
 	private ArrayList<Product> myProducts;
 	private ArrayList<ResearchDevelObject> myRandD;
-	// private ArrayList<Employee> emp;
 	private double employees;
 
 
 	// private double totalEmployees; //sumit added these
+	// private ArrayList<Employee> emp;
 	private StringProperty compName;
 	private IntegerProperty totalEmp;
 	public TreeMap<String, Employee> employmentTree = new TreeMap<String, Employee>(); //to store all employee data
@@ -38,7 +38,6 @@ public class Company {
 		this.myRandD = new ArrayList<ResearchDevelObject>();
 		this.employees = 0;
 		this.myProducts = new ArrayList<Product>();
-
 	}
 
 
@@ -124,20 +123,11 @@ public class Company {
 	}
 
 
-			public TreeMap getHiredTree(){
+	public TreeMap getHiredTree(){ //something wrong with this one - suppose to access employee objects
 		return hiredTree;
 	}
-	public Employee getValue() {
-		Set<String> setNames = hiredTree.keySet(); 
-		for (String key : setNames) 
-		{
-			Employee value = hiredTree.get(key);
 
-		}
-		return null;
-	}
-	
-	/*public void copyHiredTreeToArrayList()
+	/*public void copyHiredTreeToArrayList() //if needed
 	{
 		emp.clear();
 		emp = new ArrayList<Employee>(hiredTree.values());
@@ -151,10 +141,10 @@ public class Company {
         return employees;
     }*/
 
-    /* public ArrayList<Employee> getEmployeesList() { //returns a list
+	/* public ArrayList<Employee> getEmployeesList() { //returns a list
         return emp;
     }*/
-	
+
 	/* public void setEmployees(double employees) {
     this.employees = employees;
     }*/
@@ -162,7 +152,7 @@ public class Company {
 	/* public void addEmployees(double employees) {
     this.employees += employees;
     }*/
-	
+
 	//______________________________________________________SET
 
 	public void addProducts(Product prod) {

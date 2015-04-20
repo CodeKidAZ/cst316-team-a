@@ -56,8 +56,8 @@ public class DialogueController extends AnchorPane {
             HRController.CompanyList.add(company);
             HRController.comboList.add(name);
 
-            //player.addCompanies(company);
-            //player.saveFile();
+            player.addCompanies(company);
+            player.saveFile();
         }
 
         HRController ctr = (HRController) application.replaceSceneContent("HR.fxml", null);
