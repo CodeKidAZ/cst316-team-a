@@ -76,12 +76,49 @@ public class HRController extends AnchorPane {
         ProductManagementController ctr = (ProductManagementController) application.replaceSceneContent("ProductManagement.fxml", ProductManagementController.class);
         ctr.setApp(application);
     }
+    public void setApp(Main app) {
+        this.application = app;
+        companyNameColumn.setCellValueFactory(cellData -> cellData.getValue().getNameProperty());    // -> is lambda expression
+        //employeesColumn.setCellValueFactory(cellData ->cellData.getValue().getTotalEmployeesProperty());
+        Image fire = new Image(this.getClass().getClassLoader().getResourceAsStream("res/deleteEmployee.png"));
+        fireImage.setImage(fire);
+        Image hire = new Image(this.getClass().getClassLoader().getResourceAsStream("res/hireEmployee.png"));
+        hireImage1.setImage(hire);
+        Image company = new Image(this.getClass().getClassLoader().getResourceAsStream("res/createCompany.png"));
+        createCompanyImage.setImage(company);
+        this.player = application.getPlayer();
+
+        if (comboList.size() == 0) {
+            companies = player.getCompanyList();
+            for (int i = 0; i < companies.size(); i++) {
+                tree1.put(companies.get(i).getCompanyName(), (new Company(companies.get(i).getCompanyName())));
+                System.out.println(tree1.keySet());
+                System.out.println(companies.get(i).getCompanyName());
+
+                comboList.add(companies.get(i).getCompanyName());
+                CompanyList.add(new Company(companies.get(i).getCompanyName()));
+
+            }
+        
+        } else {
+            System.out.println("dont load player company data again");
+        }
+
+        int a = comboList.size();
+        totalLabel.setText(Integer.toString(a));
+        companyComboBox.setItems(comboList);
+        companyTableView.setItems(CompanyList);
+        companies = player.getCompanyList();
+        System.out.println("com size is "+companies.size());
+
+    }
 
     //____________________________________________________BACK BUTTON
     @FXML
     private void onBack() throws Exception {
         System.out.println("YOU CLICKED BACK");
-        //player.saveFile();
+        
+        player.saveFile();
         LandingController ctr = (LandingController) application.replaceSceneContent("Landing.fxml", LandingController.class);
         ctr.setApp(application);
 
@@ -207,42 +244,7 @@ public class HRController extends AnchorPane {
         }
     }
 
-    public void setApp(Main app) {
-        this.application = app;
-        companyNameColumn.setCellValueFactory(cellData -> cellData.getValue().getNameProperty());    // -> is lambda expression
-        //employeesColumn.setCellValueFactory(cellData ->cellData.getValue().getTotalEmployeesProperty());
-        Image fire = new Image(this.getClass().getClassLoader().getResourceAsStream("res/deleteEmployee.png"));
-        fireImage.setImage(fire);
-        Image hire = new Image(this.getClass().getClassLoader().getResourceAsStream("res/hireEmployee.png"));
-        hireImage1.setImage(hire);
-        Image company = new Image(this.getClass().getClassLoader().getResourceAsStream("res/createCompany.png"));
-        createCompanyImage.setImage(company);
-        this.player = application.getPlayer();
-
-        if (comboList.size() == 0) {
-            companies = player.getCompanyList();
-            for (int i = 0; i < companies.size(); i++) {
-                tree1.put(companies.get(i).getCompanyName(), (new Company(companies.get(i).getCompanyName())));
-                System.out.println(tree1.keySet());
-                System.out.println(companies.get(i).getCompanyName());
-
-                comboList.add(companies.get(i).getCompanyName());
-                CompanyList.add(new Company(companies.get(i).getCompanyName()));
-
-            }
-        
-        } else {
-            System.out.println("dont load player company data again");
-        }
-
-        int a = comboList.size();
-        totalLabel.setText(Integer.toString(a));
-        companyComboBox.setItems(comboList);
-        companyTableView.setItems(CompanyList);
-        companies = player.getCompanyList();
-        System.out.println("com size is "+companies.size());
-
-    }
+    
 
     public void setPlayer(Player player) {
         this.player = player;

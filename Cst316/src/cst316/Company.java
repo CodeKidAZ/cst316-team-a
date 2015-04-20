@@ -20,6 +20,7 @@ import org.json.JSONTokener;
 public class Company {
 
     String name;
+    Player pl;
 
     private ArrayList<Product> myProducts;
     private ArrayList<ResearchDevelObject> myRandD;
@@ -161,6 +162,16 @@ public class Company {
         }
         in.close();
     }
+     public void saveCompany(){
+        Set<String> setNames = hiredTree.keySet(); 
+        for (String key : setNames) 
+        {
+             //Employee value = hiredTree.get(key).;
+             
+        }
+         pl.addCompanies(this);
+     }
+}
     
 
-}
+
