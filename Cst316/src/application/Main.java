@@ -77,7 +77,7 @@ public class Main extends Application {
     public Node replaceSceneContent(String fxml, Class<? extends AnchorPane> cls) throws Exception {
         FXMLLoader loader = new FXMLLoader();
         if (cls == null) {
-            System.out.println("controlller was set by FXML");
+            //System.out.println("controlller was set by FXML");
         } else {
             loader.setController(cls.getConstructor().newInstance()); //set controller manually
         }
