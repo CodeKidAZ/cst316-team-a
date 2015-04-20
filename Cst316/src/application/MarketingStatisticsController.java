@@ -81,6 +81,7 @@ public class MarketingStatisticsController extends AnchorPane {
 	static Company candy5 = new Company("JellyBeans", 215);
 	static Company candy6 = new Company("Mars Bars", 356);
 
+	ArrayList<Company> playerCompanyList = new ArrayList<Company>();
 
 
 
@@ -95,8 +96,8 @@ public class MarketingStatisticsController extends AnchorPane {
 				//EG. 'Calculator' occupies 77/2436 = 0.03 = 3% of the total pie circle
 				pieChartData.clear();
 				
-				for (int z = 0; z < companyListPhone.size(); z ++){
-					pieChartData.add(new PieChart.Data((companyListPhone.get(z)).getName(), (companyListPhone.get(z)).getMarketPower()));
+				for (int z = 0; z < playerCompanyList.size(); z ++){
+					pieChartData.add(new PieChart.Data((playerCompanyList.get(z)).getName(), (playerCompanyList.get(z)).getMarketPower()));
 				}
 				 piechart.setTitle("Phone App Company Market Report (Equal Market Example)");
 			        piechart.setData(pieChartData);
@@ -105,8 +106,8 @@ public class MarketingStatisticsController extends AnchorPane {
 			case "Computer Gaming Market Report":
 				pieChartData.clear();
 				
-				for (int z = 0; z < companyListGames.size(); z ++){
-					pieChartData.add(new PieChart.Data((companyListGames.get(z)).getName(), (companyListGames.get(z)).getMarketPower()));
+				for (int z = 0; z < playerCompanyList.size(); z ++){
+					pieChartData.add(new PieChart.Data((playerCompanyList.get(z)).getName(), (playerCompanyList.get(z)).getMarketPower()));
 				}
 			        piechart.setTitle("Computer Gaming Market Report (Dominant Market Example)");
 			        piechart.setData(pieChartData);				
@@ -115,8 +116,8 @@ public class MarketingStatisticsController extends AnchorPane {
 			case "Candy Market Report": 
 				pieChartData.clear();
 				
-				for (int z = 0; z < companyListCandy.size(); z ++){
-					pieChartData.add(new PieChart.Data((companyListCandy.get(z)).getName(), (companyListCandy.get(z)).getMarketPower()));
+				for (int z = 0; z < playerCompanyList.size(); z ++){
+					pieChartData.add(new PieChart.Data((playerCompanyList.get(z)).getName(), (playerCompanyList.get(z)).getMarketPower()));
 				}
 			        piechart.setTitle("Candy Market Report (Plurality Market Example)");
 			        piechart.setData(pieChartData);
@@ -125,8 +126,8 @@ public class MarketingStatisticsController extends AnchorPane {
 			case "Anime Pillow Market Report": 
 				pieChartData.clear();
 				
-				for (int z = 0; z < companyListCandy.size(); z ++){
-					pieChartData.add(new PieChart.Data((companyListCandy.get(z)).getName(), (companyListCandy.get(z)).getMarketPower()));
+				for (int z = 0; z < playerCompanyList.size(); z ++){
+					pieChartData.add(new PieChart.Data((playerCompanyList.get(z)).getName(), (playerCompanyList.get(z)).getMarketPower()));
 				}
 			        piechart.setTitle("Candy Market Report");
 			        piechart.setData(pieChartData);
@@ -177,6 +178,17 @@ public class MarketingStatisticsController extends AnchorPane {
 			companyListCandy.add(candy5);
 			companyListCandy.add(candy6);
 
+			playerCompanyList = player.getCompanyList();
+			
+			  ArrayList<String> companiesName = null;
+			  
+		        assert playerCompanyList != null: "Companies are null!";
+		        for(int i = 0; i<playerCompanyList.size(); i++) {
+		        	if( !dropMenu.getItems().contains(playerCompanyList.get(i).getCompanyName()) ) {
+		        		dropMenu.getItems().add(playerCompanyList.get(i).getCompanyName());
+		        	}
+		        }
+		        playerCompanyList.add(candy1);
 		}
 		
 		public void setPlayer(Player player) {
