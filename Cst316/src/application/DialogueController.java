@@ -5,8 +5,6 @@
  */
 package application;
 
-import cst316.Employee;
-import cst316.Player;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -14,18 +12,18 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import cst316.Company;
+import cst316.Employee;
+import cst316.Player;
 
 /**
  *
  * @author Sumit
  */
-public class DialogueController extends AnchorPane{
+public class DialogueController extends AnchorPane {
 
     private Main application;
     private Player player;
-    Image dark;
-   
-    private ImageView darkBackground;
     @FXML
     private TextField nameField;
     @FXML
@@ -34,32 +32,45 @@ public class DialogueController extends AnchorPane{
     private Button cancelButton;
     @FXML
     private ImageView companyImage;
-    
+
     public void setApp(Main app) {
-         this.application = app;
-         Image company = new Image(this.getClass().getClassLoader().getResourceAsStream("res/createCompany.png"));
-         companyImage.setImage(company);
-         
+        this.application = app;
+        Image company = new Image(this.getClass().getClassLoader().getResourceAsStream("res/createCompany.png"));
+        companyImage.setImage(company);
+        this.player = application.getPlayer();
+
     }
+
     public void setPlayer(Player player) {
         this.player = player;
     }
 
     @FXML
-    private void okMethod(ActionEvent event) throws Exception{
-        Employee a = new Employee(nameField.getText(),0);
-        HRController.CompanyList.add(a);
-        HRController.comboList.add(nameField.getText());
+    private void okMethod(ActionEvent event) throws Exception {
+        if (nameField.getText().equals(" ")) {
+            System.out.println("name is EMPTY");
+        } else {
+            String name = nameField.getText();
+            System.out.println(name);
+            Company company = new Company(name);
+            HRController.CompanyList.add(company);
+            HRController.comboList.add(name);
+
+            player.addCompanies(company);
+            player.saveFile();
+        }
+
         HRController ctr = (HRController) application.replaceSceneContent("HR.fxml", null);
-              ctr.setApp(application);
+        ctr.setApp(application);
     }
+
     @FXML
-    private void cancelMethod(ActionEvent event) throws Exception{
-         HRController ctr = (HRController) application.replaceSceneContent("HR.fxml", null);
-              ctr.setApp(application);
+    private void cancelMethod(ActionEvent event) throws Exception {
+        HRController ctr = (HRController) application.replaceSceneContent("HR.fxml", null);
+        ctr.setApp(application);
     }
-    public String getName()
-    {
+
+    public String getName() {
         return nameField.getText();
-    }    
+    }
 }

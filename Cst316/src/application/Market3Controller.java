@@ -33,6 +33,10 @@ public class Market3Controller extends AnchorPane {
     @FXML
     private Button purchaseButton;
     @FXML
+    private Button chartButton;
+    @FXML
+    private Button test1Button;
+    @FXML
     private Text doneText;
     String output;
     Main application;
@@ -46,7 +50,7 @@ public class Market3Controller extends AnchorPane {
     // Event Listener on ComboBox[#dropMenuPotential].onAction
     @FXML
     public void dropMenuFired(ActionEvent event) {
-        doneText.setText(null);
+        //doneText.setText(null);
         output = (String) dropMenu.getSelectionModel().getSelectedItem().toString();
         switch (output) {
             case "Print Marketing":
@@ -97,6 +101,12 @@ public class Market3Controller extends AnchorPane {
 		ctr.setApp(application);
 	}
 	
+	@FXML
+	public void test1ButtonFired(ActionEvent event) throws Exception {
+		PieChartFromArrayController ctr = (PieChartFromArrayController) application.replaceSceneContent("PieChartFromArray.fxml", PieChartFromArrayController.class);
+		ctr.setApp(application);
+	}
+	
 	//@Override
 	public void setApp(Main app) {
 		application = app;
@@ -113,21 +123,18 @@ public class Market3Controller extends AnchorPane {
 	
 	@FXML
 	public void purchaseButtonFired(ActionEvent event) {
-		if(output != null) {
-			switch(output) {
-			case "Print Marketing": 
-				System.out.println("PRINT MARKETING PURCHASED.");
-				break;
-			case "Coupon Marketing":
-				System.out.println("COUPON MARKETING PURCHASED.");
-				break;
-			case "WWITM Marketing":
-				System.out.println("WACKY WAVING INFLATABLE TUBE MAN MARKETING PURCHASED.");
-				break;
-			case "Television Marketing":
-				System.out.println("TELEVISION MARKETING PURCHASED.");
-				break;
-			}
+		if(output.equals("Print Marketing")) {
+			System.out.println("PRINT MARKETING PURCHASED.");
+		}
+		else if(output.equals("Coupon Marketing")) {
+			System.out.println("COUPON MARKETING PURCHASED.");
+		}
+		else if(output.equals("WWITM Marketing")) {
+			System.out.println("WACKY WAVING INFLATABLE TUBE MAN MARKETING PURCHASED.");
+		}
+		else{ 
+			System.out.println("TELEVISION MARKETING PURCHASED.");
+		}
+		
 		}
 	}
-}

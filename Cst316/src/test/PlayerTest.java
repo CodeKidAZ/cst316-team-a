@@ -170,3 +170,4 @@ public class PlayerTest {
 		assertEquals(pointed.getProduct(), prod);
 	}
 }
+

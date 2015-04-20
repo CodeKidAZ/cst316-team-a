@@ -4,7 +4,6 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import service.TimedEventService;
 import cst316.Building;
 import cst316.Player;
 import javafx.fxml.FXML;
@@ -147,7 +146,6 @@ public class LandingController extends AnchorPane {
 	public void onInvestmentsClick() throws Exception {
 		InvestmentController ctr = (InvestmentController) application.replaceSceneContent("Investment.fxml", null);
 		ctr.setApp(application);
-		ctr.setPlayer(player);
 	}
 	public void onStatMouseClick(MouseEvent event) throws Exception {
 		PlayerStatusController ctr = (PlayerStatusController) application.replaceSceneContent("PlayerStatus.fxml", PlayerStatusController.class);

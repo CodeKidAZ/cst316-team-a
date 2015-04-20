@@ -1,13 +1,13 @@
 /**
  * 
  */
-package application;
+package cst316;
 
 import java.util.ArrayList; 
 
 /**
  * @author Wesley Local
- *
+ * issue 47 branch creation 
  */
 public class MarketShareMeasure {
 

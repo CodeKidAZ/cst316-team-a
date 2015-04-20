@@ -26,12 +26,12 @@
       <Button layoutX="236.0" layoutY="44.0" mnemonicParsing="false" onAction="#onBack" prefHeight="30.0" prefWidth="63.0" text="Back" AnchorPane.leftAnchor="216.0" AnchorPane.topAnchor="32.0" />
       <Button fx:id="workersListButt" layoutX="422.0" layoutY="144.0" mnemonicParsing="false" onAction="#openWorkersList" prefHeight="53.0" prefWidth="110.0" text="Workers List" />
       <Button fx:id="incorporateButton" layoutX="546.0" layoutY="144.0" mnemonicParsing="false" onAction="#openCorpScreen" prefHeight="53.0" prefWidth="118.0" text="Incorporate" />
-      <TableView fx:id="CompanyTableView" layoutX="100.0" layoutY="342.0" prefHeight="200.0" prefWidth="432.0">
+      <TableView fx:id="companyTableView" layoutX="100.0" layoutY="342.0" prefHeight="200.0" prefWidth="432.0">
         <columns>
           <TableColumn fx:id="companyNameColumn" prefWidth="112.0" text="Company Name" />
             <TableColumn fx:id="employeesColumn1" prefWidth="87.0" text="CEO" />
             <TableColumn fx:id="employeesColumn11" prefWidth="108.0" text="Market Share" />
-          <TableColumn prefWidth="124.0" text="Employees" />
+          <TableColumn fx:id="employeesColumn" prefWidth="124.0" text="Employees" />
         </columns>
       </TableView>
       <Group layoutX="53.0" layoutY="-122.0">
@@ -76,8 +76,10 @@
       <Button fx:id="productButton" layoutX="820.0" layoutY="140.0" mnemonicParsing="false" onMouseClicked="#productMouseClicked" prefHeight="47.0" prefWidth="218.0" text="Go to Product management" />
       <Separator layoutX="707.0" layoutY="-1.0" orientation="VERTICAL" prefHeight="720.0" prefWidth="11.0" />
       <Button fx:id="deleteCompanyButt" layoutX="546.0" layoutY="395.0" mnemonicParsing="false" onAction="#deleteCompany" prefHeight="53.0" prefWidth="118.0" text="Delete Company" />
-      <ComboBox fx:id="companyComboBox" layoutX="241.0" layoutY="262.0" prefWidth="150.0" />
+      <ComboBox fx:id="companyComboBox" layoutX="241.0" layoutY="262.0" onAction="#currentCompany" prefWidth="150.0" />
       <Label layoutX="141.0" layoutY="266.0" text="Curent company: " />
+      <Label layoutX="408.0" layoutY="266.0" text="Total:" />
+      <Label fx:id="totalLabel" layoutX="444.0" layoutY="266.0" text="0" />
 
    </children>
 </AnchorPane>

@@ -1,10 +1,16 @@
 package cst316;
-
+/**
+ * 
+ * Description: A class that creates many R&D objects with their own values.
+ * This class handles the player association not R&DObject.class
+ * 
+ * @author daniel
+ */
 import java.util.ArrayList;
 
 public class ResearchAndDevelopment {
 	ArrayList<ResearchDevelObject> resDevObjs = new ArrayList<ResearchDevelObject>();
-	Player p = new Player();
+	Player p;
 	
 	public ResearchAndDevelopment() {
 		generateResDevObjs();
@@ -45,8 +51,9 @@ public class ResearchAndDevelopment {
 		return resDevObjs;
 	}
 
-	public void setResDevObjs(ArrayList<ResearchDevelObject> resDevObjs) {
+	public boolean setResDevObjs(ArrayList<ResearchDevelObject> resDevObjs) {
 		this.resDevObjs = resDevObjs;
+		return true;
 	}
 	
 	//Use this to attach the player class to this class

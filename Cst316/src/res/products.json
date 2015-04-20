@@ -7,5 +7,17 @@
     },
     "Movies": {
         "MarginalToFixed": 0.01
+    },
+    "Cell Phone": {
+        "MarginalToFixed": 0.01
+    },
+    "Software": {
+        "MarginalToFixed": 1.0
+    },
+    "Vehical": {
+        "MarginalToFixed": 0.1
+    },
+    "House Wares": {
+        "MarginalToFixed": 0.5
     }
 }

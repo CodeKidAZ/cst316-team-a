@@ -1,14 +1,17 @@
 package application;
 
+import cst316.Employee;
+
 import java.io.InputStream;
 
-import service.TimedEventService;
 import cst316.Management;
 import cst316.Player;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.JavaFXBuilderFactory;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
@@ -36,7 +39,15 @@ public class Main extends Application {
             stage.setMinHeight(MINIMUM_WINDOW_HEIGHT);
             stage.setScene(scene);
             stage.show();
-
+            stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                @Override
+                public void handle(WindowEvent event) {
+                	if(player != null){
+                		player.saveFile();
+                	}
+                }
+            });
+           
             LoginController ctr = (LoginController) replaceSceneContent("Login.fxml", null);
             
             ctr.setApp(this);
@@ -66,7 +77,7 @@ public class Main extends Application {
     public Node replaceSceneContent(String fxml, Class<? extends AnchorPane> cls) throws Exception {
         FXMLLoader loader = new FXMLLoader();
         if (cls == null) {
-            System.out.println("controlller was set by FXML");
+            //System.out.println("controlller was set by FXML");
         } else {
             loader.setController(cls.getConstructor().newInstance()); //set controller manually
         }

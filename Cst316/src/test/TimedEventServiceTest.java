@@ -1,12 +1,10 @@
 package test;
-	
+
 import java.io.InputStream;
 
 import application.LandingController;
 import application.Main;
 import service.TimedEventService;
-import cst316.Management;
-import cst316.Player;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.JavaFXBuilderFactory;
 import javafx.stage.Stage;
@@ -24,7 +22,6 @@ public class TimedEventServiceTest extends Main {
 	private Stage stage;
 	private final double MINIMUM_WINDOW_WIDTH = 1280;
     private final double MINIMUM_WINDOW_HEIGHT = 720;
-    private Player player;
 
     @Before
     public void setUp(){
@@ -43,7 +40,10 @@ public class TimedEventServiceTest extends Main {
 	public void start(Stage primaryStage) {
 		try {
 			// This will need to be redone, really badly!
-			Management management = new Management();
+			//FB pointed out that the line below this was a Dead store to local variable 'management' that isn't
+			//used anywhere else in the program. Just in case this is a WiP instead of deleting the line,
+			//I have commented it for the time being out to resolve the issue.
+			//Management management = new Management();
 			BorderPane root = new BorderPane();
 			stage = primaryStage;
 			Scene scene = new Scene(root,400,400);
