@@ -29,7 +29,7 @@ import application.Market3Controller;
 import application.PlayerStatusController;
 import application.ResearchDevelopController;
 
-public class LandingTest extends Main {
+public class LandingControllerTest extends Main {
     LandingController ctrl;
     ImageView invBtn;
     ImageView mngBtn;
@@ -128,7 +128,7 @@ public class LandingTest extends Main {
 		currentTesting = new Market3Controller() {
 			public void setApp(Main application) {
 				bool.flag = true;
-				assertTrue(application.equals(LandingTest.this));
+				assertTrue(application.equals(LandingControllerTest.this));
 			}
 		};
 		ctrl.onMarketingClick();
@@ -141,7 +141,7 @@ public class LandingTest extends Main {
 		currentTesting = new ResearchDevelopController() {
 			public void setApp(Main application) {
 				bool.flag = true;
-				assertTrue(application.equals(LandingTest.this));
+				assertTrue(application.equals(LandingControllerTest.this));
 			}
 		};
 		ctrl.onRNDClick();
@@ -154,7 +154,7 @@ public class LandingTest extends Main {
 		currentTesting = new HRController() {
 			public void setApp(Main application) {
 				bool.flag = true;
-				assertTrue(application.equals(LandingTest.this));
+				assertTrue(application.equals(LandingControllerTest.this));
 			}
 		};
 		ctrl.onManagementClick();
@@ -167,7 +167,7 @@ public class LandingTest extends Main {
 		currentTesting = new InvestmentController() {
 			public void setApp(Main application) {
 				bool.flag = true;
-				assertTrue(application.equals(LandingTest.this));
+				assertTrue(application.equals(LandingControllerTest.this));
 			}
 		};
 		ctrl.onInvestmentsClick();
@@ -180,14 +180,13 @@ public class LandingTest extends Main {
 		currentTesting = new PlayerStatusController() {
 			public void setApp(Main application) {
 				bool.flag = true;
-				assertTrue(application.equals(LandingTest.this));
+				assertTrue(application.equals(LandingControllerTest.this));
 			}
 		};
 		ctrl.onStatMouseClick();
 		assertTrue(bool.flag);
 	}
 	
-	// A lot of this was taken from the Oracle JFX samples, changes will be made
 	public Node replaceSceneContent(String fxml, Class<? extends AnchorPane> cls) throws Exception {
         return currentTesting;
 	}
