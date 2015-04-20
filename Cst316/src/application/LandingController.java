@@ -66,67 +66,43 @@ public class LandingController extends AnchorPane {
 		statOut = new Image(in);
 		this.player = application.getPlayer();
 	}
-
-	@FXML
-	void initialize(){
-	}
 	
-	public void onStatMouseEntered(MouseEvent event) {
-		if (statBtn != null) {
-			statBtn.setImage(statIn);
-		}
+	public void onStatMouseEntered() {
+		statBtn.setImage(statIn);
 	}
-	public void onStatMouseExit(MouseEvent event) {
-		if (statBtn != null) {
-			statBtn.setImage(statOut);
-		}
+	public void onStatMouseExit() {
+		statBtn.setImage(statOut);
 	}
 	public void onInvMouseEntered(){
-		if (invBtn != null) {
-			invBtn.setImage(invIn);
-		}
+		invBtn.setImage(invIn);
 	}
 
 	public void onInvMouseExit(){
-		if (invBtn != null) {
-			invBtn.setImage(invOut);
-		}
+		invBtn.setImage(invOut);
 	}
 	
 	public void onRndMouseEntered(){
-		if (rndBtn != null) {
-			rndBtn.setImage(rndIn);
-		}
+		rndBtn.setImage(rndIn);
 	}
 
 	public void onRndMouseExit(){
-		if (rndBtn != null) {
-			rndBtn.setImage(rndOut);
-		}
+		rndBtn.setImage(rndOut);
 	}
 	
 	public void onMarkMouseEntered(){
-		if (markBtn != null) {
-			markBtn.setImage(markIn);
-		}
+		markBtn.setImage(markIn);
 	}
 
 	public void onMarkMouseExit(){
-		if (markBtn != null) {
-			markBtn.setImage(markOut);
-		}
+		markBtn.setImage(markOut);
 	}
 	
 	public void onMngMouseEntered(){
-		if (mngBtn != null) {
-			mngBtn.setImage(mngIn);
-		}
+		mngBtn.setImage(mngIn);
 	}
 
 	public void onMngMouseExit(){
-		if (mngBtn != null) {
-			mngBtn.setImage(mngOut);
-		}
+		mngBtn.setImage(mngOut);
 	}
 	
 	public void onMarketingClick() throws Exception {
