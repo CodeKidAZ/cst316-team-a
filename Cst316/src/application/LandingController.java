@@ -123,7 +123,7 @@ public class LandingController extends AnchorPane {
 		InvestmentController ctr = (InvestmentController) application.replaceSceneContent("Investment.fxml", null);
 		ctr.setApp(application);
 	}
-	public void onStatMouseClick(MouseEvent event) throws Exception {
+	public void onStatMouseClick() throws Exception {
 		PlayerStatusController ctr = (PlayerStatusController) application.replaceSceneContent("PlayerStatus.fxml", PlayerStatusController.class);
 		ctr.setApp(application);
 		ctr.setPlayer(player);

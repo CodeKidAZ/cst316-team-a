@@ -21,8 +21,13 @@ import org.junit.Before;
 import org.junit.Test;
 
 import cst316.Player;
+import application.HRController;
+import application.InvestmentController;
 import application.Main;
 import application.LandingController;
+import application.Market3Controller;
+import application.PlayerStatusController;
+import application.ResearchDevelopController;
 
 public class LandingTest extends Main {
     LandingController ctrl;
@@ -31,6 +36,12 @@ public class LandingTest extends Main {
     ImageView rndBtn;
     ImageView markBtn;
     ImageView statBtn;
+    
+    Node currentTesting;
+    
+    class BooleanClosure {
+    	public boolean flag = false;
+    };
 
 	@Before
 	public void setUp() throws Exception {
@@ -111,9 +122,74 @@ public class LandingTest extends Main {
 		assertTrue(defaultBg.equals(mngBtn.getImage()));
 	}
 	
+	@Test
+	public void testMarketingClick() throws Exception {
+		BooleanClosure bool = new BooleanClosure();
+		currentTesting = new Market3Controller() {
+			public void setApp(Main application) {
+				bool.flag = true;
+				assertTrue(application.equals(LandingTest.this));
+			}
+		};
+		ctrl.onMarketingClick();
+		assertTrue(bool.flag);
+	}
+	
+	@Test
+	public void testRNDClick() throws Exception {
+		BooleanClosure bool = new BooleanClosure();
+		currentTesting = new ResearchDevelopController() {
+			public void setApp(Main application) {
+				bool.flag = true;
+				assertTrue(application.equals(LandingTest.this));
+			}
+		};
+		ctrl.onRNDClick();
+		assertTrue(bool.flag);
+	}
+
+	@Test
+	public void testManagementClick() throws Exception {
+		BooleanClosure bool = new BooleanClosure();
+		currentTesting = new HRController() {
+			public void setApp(Main application) {
+				bool.flag = true;
+				assertTrue(application.equals(LandingTest.this));
+			}
+		};
+		ctrl.onManagementClick();
+		assertTrue(bool.flag);
+	}
+	
+	@Test
+	public void testInvestmentsClick() throws Exception {
+		BooleanClosure bool = new BooleanClosure();
+		currentTesting = new InvestmentController() {
+			public void setApp(Main application) {
+				bool.flag = true;
+				assertTrue(application.equals(LandingTest.this));
+			}
+		};
+		ctrl.onInvestmentsClick();
+		assertTrue(bool.flag);
+	}
+	
+	@Test
+	public void testStatMouseClick() throws Exception {
+		BooleanClosure bool = new BooleanClosure();
+		currentTesting = new PlayerStatusController() {
+			public void setApp(Main application) {
+				bool.flag = true;
+				assertTrue(application.equals(LandingTest.this));
+			}
+		};
+		ctrl.onStatMouseClick();
+		assertTrue(bool.flag);
+	}
+	
 	// A lot of this was taken from the Oracle JFX samples, changes will be made
 	public Node replaceSceneContent(String fxml, Class<? extends AnchorPane> cls) throws Exception {
-        return null;
+        return currentTesting;
 	}
 
 }
