@@ -130,8 +130,6 @@ public class InstallController extends AnchorPane{
           out.write(buffer, 0, amount);
           amount = in.read(buffer);
         }
-        in.close();
-        out.close();
     }
 
     private void copy(String src, String dest) throws Exception {
@@ -143,8 +141,6 @@ public class InstallController extends AnchorPane{
           out.write(buffer, 0, amount);
           amount = in.read(buffer);
         }
-        in.close();
-        out.close();
     }
 
     private void createShortcut(String src, String dest, String icon) throws Exception {

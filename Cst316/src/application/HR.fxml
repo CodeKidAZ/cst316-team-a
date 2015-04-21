@@ -31,7 +31,7 @@
           <TableColumn fx:id="companyNameColumn" prefWidth="112.0" text="Company Name" />
             <TableColumn fx:id="employeesColumn1" prefWidth="87.0" text="CEO" />
             <TableColumn fx:id="employeesColumn11" prefWidth="108.0" text="Market Share" />
-          <TableColumn fx:id="employeesColumn" prefWidth="124.0" text="Employees" />
+          <TableColumn prefWidth="124.0" text="Employees" />
         </columns>
       </TableView>
       <Group layoutX="53.0" layoutY="-122.0">

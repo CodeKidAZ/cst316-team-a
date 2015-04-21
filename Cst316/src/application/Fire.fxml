@@ -7,7 +7,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.FireController">
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="750.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
    <children>
       <TableView fx:id="fireTable" layoutX="275.0" layoutY="135.0" prefHeight="395.0" prefWidth="151.0">
         <columns>
@@ -23,7 +24,5 @@
          </font>
       </Label>
       <Label fx:id="totalHiredLabel" layoutX="154.0" layoutY="244.0" text="Label" />
-      <Label layoutX="275.0" layoutY="101.0" text="Current Company :" />
-      <Label fx:id="currentCompanyLabel" layoutX="381.0" layoutY="102.0" text="Label" />
    </children>
 </AnchorPane>

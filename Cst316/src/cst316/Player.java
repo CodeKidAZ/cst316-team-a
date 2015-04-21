@@ -1,12 +1,12 @@
 /**
- * Description: This class's purpose is to store player's data and be able to
- * retrieve or manipulate any field using the given methods. This class supports
- * exporting and importing JSON files as a saving/loading feature.
- *
- * Note: When importing the JSON data, be sure to prompt a player for their
- * name. The "load" method is dependent on knowing the name of the JSON file.
- *
- * @author Daniel Tracy
+ * Description: This class's purpose is to store player's data and
+ * be able to retrieve or manipulate any field using the given methods.
+ * This class supports exporting and importing JSON files as a saving/loading feature.
+ * 
+ * Note: When importing the JSON data, be sure to prompt a player for their name.
+ * The "load" method is dependent on knowing the name of the JSON file.
+ * 
+ * @author  Daniel Tracy
  * @version 1.0
  */
 package cst316;
@@ -68,13 +68,11 @@ public class Player implements JSONString {
 
 	/**
 	 * Initialize a player class
-	 *
 	 * @param points
 	 * @param money
 	 * @param name
 	 * @param assets
 	 */
-
 	public Player(int points, int employees, double money, String name, ArrayList<String> assets) {
 		this.setPoints(points);
 		this.setEmployees(employees);
@@ -102,10 +100,9 @@ public class Player implements JSONString {
 			retVal.append(System.getenv("HOME"));
 			retVal.append("/.enterpreneurship-simulator/");
 		}
-		File directory = new File(retVal.toString());
+		File directory = new File(retVal.toString()); 
 		if (!directory.exists()) {
 			directory.mkdir();
-
 		}
 		if (playerName != null) {
 			if (playerName.indexOf(".") != -1 || playerName.indexOf("/") != -1 || playerName.indexOf("\\") != -1) {
@@ -130,11 +127,10 @@ public class Player implements JSONString {
 		}
 		return retVal;
 	}
-
+	
 	/**
 	 * Makes a JSON string of the player data
-	 *
-	 * @return ret
+	 * @return ret 
 	 */
 	public String toJSONString() {
 		String ret = "";
@@ -160,8 +156,7 @@ public class Player implements JSONString {
 	/**
 	 * Saves the player's data to a JSON file
 	 */
-	public boolean saveFile() 
-	{
+	public boolean saveFile() {
 		try {
 			PrintWriter out = new PrintWriter(getJSONFilePath(name));
 			out.println(toJSONString());
@@ -172,34 +167,22 @@ public class Player implements JSONString {
 		}
 		return false;
 	}
-
+	
 	public void setFromJSONObject(JSONObject jsonObject) throws Exception {
-
-		//Extract the data from the JSON file and store it into objects
-		int points = jsonObject.getInt("Points");
-		int employees = jsonObject.getInt("Employees");
-		double money = jsonObject.getDouble("Money");
-		String name = jsonObject.getString("Name");
-		if (!jsonObject.isNull("Product")) {
-			JSONObject productObject = jsonObject.getJSONObject("Product");
-			this.product = new Product(productObject);
-		} else {
-			this.product = null;
-		}
-
+		
 		//Get the list that is included in the JSON file
 		JSONArray jArrayAssets = jsonObject.getJSONArray("Assets");
-		ArrayList<String> assets = new ArrayList<String>();
-
+		ArrayList<String> assets = new ArrayList<String>(); 
+		
 		//Populate the list with the JSON array values
-		for (int i = 0; i < jArrayAssets.length(); i++) {
+		for(int i = 0; i < jArrayAssets.length(); i++) {
 			assets.add(jArrayAssets.getString(i));
 		}
-
+		
 		//Get the list that is included in the JSON file
 		JSONArray jArrayInvestments = jsonObject.getJSONArray("Investments");
 		ArrayList<Investment> investments = new ArrayList<Investment>();
-
+		
 		//Populate the list with the JSON array values
 		for (int i = 0; i != jArrayInvestments.length(); ++i) {
 			investments.add(new Investment(jArrayInvestments.getJSONObject(i)));
@@ -208,21 +191,21 @@ public class Player implements JSONString {
 		//Get the list that is included in the JSON file
 		JSONArray jArrayBuildings = jsonObject.getJSONArray("Buildings");
 		ArrayList<Building> buildings = new ArrayList<Building>();
-
+		
 		//Populate the list with the JSON array values
 		for (int i = 0; i != jArrayBuildings.length(); ++i) {
 			buildings.add(new Building(jArrayBuildings.getJSONObject(i)));
 		}
-
+		
 		//Get the list that is included in the JSON file
 		JSONArray jArrayCompanies = jsonObject.getJSONArray("Companies");
 		ArrayList<Company> companies = new ArrayList<Company>();
-
+		
 		//Populate the list with the JSON array values
 		for (int i = 0; i != jArrayCompanies.length(); ++i) {
 			companies.add(new Company(jArrayCompanies.getJSONObject(i)));
 		}
-
+		
 		//Set the class values to what the JSON file produced
 		this.points = points;
 		this.money = money;
@@ -233,10 +216,9 @@ public class Player implements JSONString {
 		this.buildings = buildings;
 		this.companies = companies;
 	}
-
+	
 	/**
 	 * Initializes Player class based off JSON data
-	 *
 	 * @param playerName
 	 */
 	public boolean readFile(String playerName) {
@@ -244,7 +226,7 @@ public class Player implements JSONString {
 			JSONTokener tokener = new JSONTokener(new FileReader(getJSONFilePath(playerName)));
 			//Read the file and store it in a json object
 			JSONObject jsonObject = new JSONObject(tokener);
-
+			
 			// Set all the member variables.
 			this.setFromJSONObject(jsonObject);
 			return true;
@@ -253,26 +235,24 @@ public class Player implements JSONString {
 		}
 		return false;
 	}
-
+	
 	/**
 	 * Adds an asset to the list
-	 *
 	 * @param str
 	 */
 	public void addAsset(String str) {
 		assets.add(str);
 	}
-
+	
 	/**
 	 * Adds an investment to the list
 	 */
 	public void addInvestment(Investment inv) {
 		investments.add(inv);
 	}
-
+	
 	/**
 	 * Removes an asset from the list
-	 *
 	 * @param str
 	 */
 	public void removeAsset(String str) {
@@ -283,7 +263,7 @@ public class Player implements JSONString {
 			}
 		}
 	}
-
+	
 	/**
 	 * Removes an investment from the list
 	 */
@@ -295,7 +275,7 @@ public class Player implements JSONString {
 			}
 		}
 	}
-
+    
 	/**
 	 * @return points
 	 */
@@ -400,11 +380,10 @@ public class Player implements JSONString {
 		}
 		return retVal;
 	}
-
+    
 	/**
-	 * Takes in a List and populates the assets list, without replacing any
-	 * data.
-	 *
+	 * Takes in a List and populates the assets list, without 
+	 * replacing any data.
 	 * @param assets
 	 */
 	public void addAssets(List<String> assets) {
@@ -412,10 +391,10 @@ public class Player implements JSONString {
 			this.assets.add(asset);
 		}
 	}
-
+	
 	/**
-	 * Takes in a List and populates the assets list, without replacing any data
-	 *
+	 * Takes in a List and populates the assets list, without
+	 * replacing any data
 	 * @param investments
 	 */
 	public void addInvestments(List<Investment> investments) {
@@ -423,52 +402,48 @@ public class Player implements JSONString {
 			this.investments.add(investment);
 		}
 	}
-
+	
 	/**
 	 * Takes in a List and replaces the current player list with the new one.
-	 *
 	 * @param assets
 	 */
 	public void setAssets(List<String> assets) {
 		this.assets = new ArrayList<String>(assets);
 	}
-
+	
 	/**
 	 * Takes in a List and replaces the current player list with the new one.
-	 *
 	 * @param investments
 	 */
 	public void setInvestments(List<Investment> investments) {
 		this.investments = new ArrayList<Investment>(investments);
 	}
-
+	
 	/**
 	 * Create an investment, removing the money put into it.
-	 *
-	 * @param name Name of the investment
-	 * @param amount Amount invested
-	 * @param isGood Secret flag; good or bad investment
+	 * @param name	Name of the investment
+	 * @param amount  Amount invested
+	 * @param isGood  Secret flag; good or bad investment
 	 */
 	public void takeInvestment(String name, double amount, boolean isGood) {
 		Investment inv = new Investment(name, amount, isGood);
 		this.money -= amount;
 		this.addInvestment(inv);
 	}
-
+	
 	/**
 	 * Cash out on an investment.
-	 *
-	 * @param inv Investment to take a return from.
+	 * @param inv  Investment to take a return from.
 	 */
 	public void cashInvestment(Investment inv) {
 		// TODO: Sell investment 
 		//this.money += inv.calculateROI();
 	}
 	
-	
 	public List<Building> getBuildings() {
 		return buildings;
 	}
+    
 	/**
 	 * Returns the entire company list
 	 * @return ArrayList<Company>
@@ -479,9 +454,11 @@ public class Player implements JSONString {
 		}
 		return companies;
 	}
+    
 	public void addCompanies(Company company) {
 		companies.add(company);
 	}
+    
 	/**
 	 * Searches the company array and if it finds a company equal to the parameter name
 	 * it returns that company object
@@ -509,13 +486,7 @@ public class Player implements JSONString {
 		else 
 			return null;
 	}
-	/**
-	 * Linear search through the company to try and find one with a matching name,
-	 * if it succeeds, that index is removed.
-	 * @param name			 Company's name
-	 * @return boolean 		   true = success; false = failure
-	 */
-	
+
 	public boolean investmentExists(String companyName) {
 		boolean e = false;
 		for(int x = 0; x < investments.size(); x++){
@@ -525,8 +496,6 @@ public class Player implements JSONString {
 		}
 		return e;
 	}
-
-		//this.money += inv.calculateROI();
    
 
 	public Product getProduct() {
@@ -555,6 +524,5 @@ public class Player implements JSONString {
 		return false;
 	}
 
-
-  
 }
+

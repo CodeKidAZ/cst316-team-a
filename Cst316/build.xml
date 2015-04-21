@@ -11,6 +11,8 @@
     <property name="jacocoant.jar" value="${lib.dir}/jacocoant.jar"/>
     <property name="jacoco.file" value="jacoco.exec"/>
 
+    <import file="${lib.dir}/one-jar-ant-task.xml" optional="true" />
+
     <taskdef uri="antlib:org.jacoco.ant" resource="org/jacoco/ant/antlib.xml">
       <classpath path="${jacocoant.jar}"/>
     </taskdef>
