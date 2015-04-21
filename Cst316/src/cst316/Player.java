@@ -206,6 +206,11 @@ public class Player implements JSONString {
 			companies.add(new Company(jArrayCompanies.getJSONObject(i)));
 		}
 		
+		double money = jsonObject.getDouble("Money");
+		int points = jsonObject.getInt("Points");
+		String name = jsonObject.getString("Name");
+		int employees = jsonObject.getInt("Employees");
+		
 		//Set the class values to what the JSON file produced
 		this.points = points;
 		this.money = money;
