@@ -152,7 +152,7 @@ public class MarketingChoiceTutController extends AnchorPane {
             	 descriptionBox.clear();
                  descriptionBox.appendText("Cost: x \n");
                   mP = targetComp.getMarketPower();
-                  mProjected = mP + 1005;
+                  mProjected = mP + 100;
                  descriptionBox.appendText("Current Market Power of " + targetComp.getName() + " is " +targetComp.getMarketPower() + ".");
                  descriptionBox.appendText("\nIf Television Marketing Campaign is purchased the new Market Power value will be: " + mProjected);
                  break;

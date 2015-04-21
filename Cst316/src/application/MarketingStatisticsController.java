@@ -76,7 +76,8 @@ public class MarketingStatisticsController extends AnchorPane {
 					pieChartData.add(new PieChart.Data((playerCompanyList.get(z)).getName(), power));
 
 					otherComp.setName("All Other Companies");
-	        		otherComp.setMarketPower((100-(playerCompanyList.get(z).getMarketPower())));
+	
+	        		otherComp.setMarketPower((200-(playerCompanyList.get(z).getMarketPower())));
 					pieChartData.add(new PieChart.Data((otherComp.getName()), (otherComp.getMarketPower())));
 				}
 				
@@ -84,13 +85,13 @@ public class MarketingStatisticsController extends AnchorPane {
 			 piechart.setTitle("Current Market Power Report");
 		        piechart.setData(pieChartData);
 		        
-		        if (power > 55){
+		        if (power > 110){
 			        marketStatsPicture.setImage(goodImg);
 		        }
-		        if (power < 55 && power > 40){
+		        if (power < 110 && power > 80){
 			        marketStatsPicture.setImage(okayImg);
 		        }
-		        if (power < 40){
+		        if (power < 80){
 			        marketStatsPicture.setImage(badImg);
 		        }
 		        	
@@ -102,57 +103,8 @@ public class MarketingStatisticsController extends AnchorPane {
 				System.out.println(companiesName.get(z));
 			}
 		}
-		
-		/*
-		switch(output) {
-			case "Phone App Market Report": 
-				//If the 'Phone App Market Report' choice is selected from the dropDown menu, then draw this pieChart of sample data
-				//The area for each slice is determined by the integer parameter divided by the total
-				//EG. 'Calculator' occupies 77/2436 = 0.03 = 3% of the total pie circle
-				pieChartData.clear();
-				
-				for (int z = 0; z < playerCompanyList.size(); z ++){
-					pieChartData.add(new PieChart.Data((playerCompanyList.get(z)).getName(), (playerCompanyList.get(z)).getMarketPower()));
-				}
-				 piechart.setTitle("Phone App Company Market Report (Equal Market Example)");
-			        piechart.setData(pieChartData);
-			        marketStatsPicture.setImage(image1);
-				break;
-			case "Computer Gaming Market Report":
-				pieChartData.clear();
-				
-				for (int z = 0; z < playerCompanyList.size(); z ++){
-					pieChartData.add(new PieChart.Data((playerCompanyList.get(z)).getName(), (playerCompanyList.get(z)).getMarketPower()));
-				}
-			        piechart.setTitle("Computer Gaming Market Report (Dominant Market Example)");
-			        piechart.setData(pieChartData);				
-			        marketStatsPicture.setImage(image2);
-				break;
-			case "Candy Market Report": 
-				pieChartData.clear();
-				
-				for (int z = 0; z < playerCompanyList.size(); z ++){
-					pieChartData.add(new PieChart.Data((playerCompanyList.get(z)).getName(), (playerCompanyList.get(z)).getMarketPower()));
-				}
-			        piechart.setTitle("Candy Market Report (Plurality Market Example)");
-			        piechart.setData(pieChartData);
-			        marketStatsPicture.setImage(image3);
-			break;
-			case "Anime Pillow Market Report": 
-				pieChartData.clear();
-				
-				for (int z = 0; z < playerCompanyList.size(); z ++){
-					pieChartData.add(new PieChart.Data((playerCompanyList.get(z)).getName(), (playerCompanyList.get(z)).getMarketPower()));
-				}
-			        piechart.setTitle("Candy Market Report");
-			        piechart.setData(pieChartData);
-			        piechart.setTitle("Anime Pillow Market Report");
-			        piechart.setData(pieChartData);
-			        marketStatsPicture.setImage(image4);
-		}
-		*/
 	}
-	
+		
 	
 	//@Override
 		public void setApp(Main app) {

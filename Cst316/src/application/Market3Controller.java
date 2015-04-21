@@ -2,6 +2,7 @@ package application;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 import cst316.Company;
@@ -57,6 +58,12 @@ public class Market3Controller extends AnchorPane {
     double mP = -1;
     double mProjected = -1;
     
+    double mPTemp;
+    double MProjTemp;
+    
+	private double power;
+	private boolean isGood = false;
+    
     
 	ArrayList<Company> playerCompanyList = new ArrayList<Company>();
     
@@ -70,6 +77,8 @@ public class Market3Controller extends AnchorPane {
     Image image5 = new Image(Market3Controller.class.getClassLoader().getResourceAsStream("res/question.gif"));
     
     Image image6 = new Image(Market3Controller.class.getClassLoader().getResourceAsStream("res/cGames.gif"));
+    
+	private static Random random = new Random();
 	
     
 
@@ -83,26 +92,26 @@ public class Market3Controller extends AnchorPane {
                 marketingPicture.setImage(image1);
                 descriptionBox.clear();
                 descriptionBox.appendText("Cost: x \n");
-                descriptionBox.appendText("Description: Moderately expensive and moderately reliable form of Marketing. + 25MP");
+                descriptionBox.appendText("Description: Moderately expensive and moderately reliable form of Marketing. +5MP to +15");
                 break;
             case "Coupon Marketing":
                 marketingPicture.setImage(image2);
                 descriptionBox.clear();
                 descriptionBox.appendText("Cost: x \n");
-                descriptionBox.appendText("Description: A more expensive and more reliable form of Marketing +45MP");
+                descriptionBox.appendText("Description: A more expensive and more reliable form of Marketing. +15 MP to +20 MP");
                 ;
                 break;
             case "WWITM Marketing":
                 marketingPicture.setImage(image3);
                 descriptionBox.clear();
                 descriptionBox.appendText("Cost: x \n");
-                descriptionBox.appendText("Description: The Cheapest Marketing option, and the most unreliable. The 'Wacky Waving Inflatable Tube Man' is either hit or miss with the audience. -25MP");
+                descriptionBox.appendText("Description: The Cheapest Marketing option, and the most unreliable. The 'Wacky Waving Inflatable Tube Man' is either hit or miss with the audience. -10 MP to +40 MP");
                 break;
             case "Television Marketing":
                 marketingPicture.setImage(image4);
                 descriptionBox.clear();
                 descriptionBox.appendText("Cost: x \n");
-                descriptionBox.appendText("Description: The Most Expensive Marketing option, and the most reliable form of marketing.+100 MP");
+                descriptionBox.appendText("Description: The Most Expensive Marketing option, and the most reliable form of marketing. +33 MP to +35 MP");
                 break;
         }
     }
@@ -128,41 +137,40 @@ public class Market3Controller extends AnchorPane {
         output = (dropMenu2.getSelectionModel().getSelectedItem()).toString();
         Company targetComp = player.getCompany(output);
 
-        double mPTemp;
-        double MProjTemp;
+
 
         switch (outputType) {
             case "Print Marketing":
                 descriptionBox.clear();
                 descriptionBox.appendText("Cost: x \n");
                 mPTemp = targetComp.getMarketPower();
-                MProjTemp = mPTemp + 25;
+                MProjTemp = mPTemp + calcPrintPower();
                 descriptionBox.appendText("Current Market Power of " + targetComp.getName() + " is " +targetComp.getMarketPower() + ".");
-                descriptionBox.appendText("\nIf Print Marketing Campaign is purchased the new Market Power value will be: " + MProjTemp);
+                descriptionBox.appendText("\nIf Print Marketing Campaign is purchased the new Market Power value will be estimated: " + MProjTemp);
                 break;
             case "Coupon Marketing":
                 descriptionBox.clear();
                 descriptionBox.appendText("Cost: x \n");
                 mPTemp = targetComp.getMarketPower();
-                MProjTemp = mPTemp + 45;
+                MProjTemp = mPTemp + calcCouponPower();
                 descriptionBox.appendText("Current Market Power of " + targetComp.getName() + " is " +targetComp.getMarketPower() + ".");
-                descriptionBox.appendText("\nIf Coupon Marketing Campaign is purchased the new Market Power value will be: " + MProjTemp);
+                descriptionBox.appendText("\nIf Coupon Marketing Campaign is purchased the new Market Power value will be estimated: " + MProjTemp);
                 break;
             case "WWITM Marketing":
             	 descriptionBox.clear();
                  descriptionBox.appendText("Cost: x \n");
                  mPTemp = targetComp.getMarketPower();
-                 MProjTemp = mPTemp - 25;
+                 MProjTemp = mPTemp + calcWackyPower();
                  descriptionBox.appendText("Current Market Power of " + targetComp.getName() + " is " +targetComp.getMarketPower() + ".");
-                 descriptionBox.appendText("\nIf WWITM Marketing Campaign is purchased the new Market Power value will be: " + MProjTemp);
+                 descriptionBox.appendText("\nIf WWITM Marketing Campaign is purchased the new Market Power value will be estimated: " + MProjTemp);
                  break;
             case "Television Marketing":
             	 descriptionBox.clear();
                  descriptionBox.appendText("Cost: x \n");
                  mPTemp = targetComp.getMarketPower();
-                 MProjTemp = mPTemp + 100;
+                 MProjTemp = mPTemp + calcTVPower();
                  descriptionBox.appendText("Current Market Power of " + targetComp.getName() + " is " +targetComp.getMarketPower() + ".");
-                 descriptionBox.appendText("\nIf Television Marketing Campaign is purchased the new Market Power value will be: " + MProjTemp);
+                 descriptionBox.appendText("\nIf Television Marketing Campaign is purchased the new Market Power value will be estimated: " + MProjTemp);
                  break;
         }
     }
@@ -200,6 +208,26 @@ public class Market3Controller extends AnchorPane {
 		ctr.setApp(application);
 	}
 	
+    public double calcPrintPower() {
+			power = (Math.abs((random.nextGaussian() * 10)) + 5);
+		return power;
+	}
+    
+    public double calcCouponPower() {
+		power = (Math.abs((random.nextGaussian() * 5)) + 15);
+		return power;
+	}
+    
+    public double calcWackyPower() {
+		power = (((random.nextDouble() * 50)) - 10);
+		return power;
+	}
+    
+    public double calcTVPower() {
+    	power = (Math.abs((random.nextGaussian() * 2)) + 33);
+		return power;
+	}
+	
 	//@Override
 	public void setApp(Main app) {
 		application = app;
@@ -213,7 +241,7 @@ public class Market3Controller extends AnchorPane {
         marketingPicture.setImage(image1);
         descriptionBox.clear();
         descriptionBox.appendText("Cost: x \n");
-        descriptionBox.appendText("Description: Moderately expensive and moderately reliable form of Marketing. + 25MP");
+        descriptionBox.appendText("Description: Moderately expensive and moderately reliable form of Marketing. +5MP to +15");
 
 		playerCompanyList = player.getCompanyList();
 		
@@ -241,33 +269,37 @@ public class Market3Controller extends AnchorPane {
 		if(outputType.equals("Print Marketing")) {
 			System.out.println("PRINT MARKETING PURCHASED." + targetComp.getMarketPower());
 		      mP = targetComp.getMarketPower();
-              mProjected = mP + 25;
+              mProjected = mP + calcPrintPower();
 	        targetComp.setMarketPower(mProjected);
 			System.out.println("PRINT MARKETING PURCHASED." + targetComp.getMarketPower());
+            descriptionBox.appendText("\nNEW MARKET POWER IS: " + mProjected);
 			marketingPicture.setImage(image6);
 		}
 		else if(outputType.equals("Coupon Marketing")) {
 			System.out.println("COUPON MARKETING PURCHASED." + targetComp.getMarketPower());
             mP = targetComp.getMarketPower();
-            mProjected = mP + 45;
+            mProjected = mP + calcCouponPower();
 	        targetComp.setMarketPower(mProjected);
 			System.out.println("COUPON MARKETING PURCHASED." + targetComp.getMarketPower());
+            descriptionBox.appendText("\nNEW MARKET POWER IS: " + mProjected);
 			marketingPicture.setImage(image6);
 		}
 		else if(outputType.equals("WWITM Marketing")) {
 			System.out.println("WACKY WAVING INFLATABLE TUBE MAN MARKETING PURCHASED." + targetComp.getMarketPower());
             mP = targetComp.getMarketPower();
-            mProjected = mP - 25;
+            mProjected = mP + calcWackyPower();
 	        targetComp.setMarketPower(mProjected);
 			System.out.println("WACKY WAVING INFLATABLE TUBE MAN MARKETING PURCHASED." + targetComp.getMarketPower());
+            descriptionBox.appendText("\nNEW MARKET POWER IS: " + mProjected);
 			marketingPicture.setImage(image6);
 		}
 		else if (outputType.equals("Television Marketing")){ 
 			System.out.println("TELEVISION MARKETING PURCHASED." + targetComp.getMarketPower());
             mP = targetComp.getMarketPower();
-            mProjected = mP + 100;
+            mProjected = mP + calcWackyPower();
 	        targetComp.setMarketPower(mProjected);
 			System.out.println("TELEVISION MARKETING PURCHASED." + targetComp.getMarketPower());
+            descriptionBox.appendText("\nNEW MARKET POWER IS: " + mProjected);
 			marketingPicture.setImage(image6);
 		}
 		else{
