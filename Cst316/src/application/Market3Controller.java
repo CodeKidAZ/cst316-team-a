@@ -37,6 +37,8 @@ public class Market3Controller extends AnchorPane {
     @FXML
     private ImageView marketingPicture;
     @FXML
+    private ImageView marketLogo;
+    @FXML
     private Button purchaseButton;
     @FXML
     private Button chartButton;
@@ -66,6 +68,8 @@ public class Market3Controller extends AnchorPane {
     Image image4 = new Image(Market3Controller.class.getClassLoader().getResourceAsStream("res/tvM.gif"));
     
     Image image5 = new Image(Market3Controller.class.getClassLoader().getResourceAsStream("res/question.gif"));
+    
+    Image image6 = new Image(Market3Controller.class.getClassLoader().getResourceAsStream("res/cGames.gif"));
 	
     
 
@@ -240,13 +244,15 @@ public class Market3Controller extends AnchorPane {
               mProjected = mP + 25;
 	        targetComp.setMarketPower(mProjected);
 			System.out.println("PRINT MARKETING PURCHASED." + targetComp.getMarketPower());
+			marketingPicture.setImage(image6);
 		}
 		else if(outputType.equals("Coupon Marketing")) {
 			System.out.println("COUPON MARKETING PURCHASED." + targetComp.getMarketPower());
             mP = targetComp.getMarketPower();
             mProjected = mP + 45;
 	        targetComp.setMarketPower(mProjected);
-			System.out.println("HELLLOOOCOUPON MARKETING PURCHASED." + targetComp.getMarketPower());
+			System.out.println("COUPON MARKETING PURCHASED." + targetComp.getMarketPower());
+			marketingPicture.setImage(image6);
 		}
 		else if(outputType.equals("WWITM Marketing")) {
 			System.out.println("WACKY WAVING INFLATABLE TUBE MAN MARKETING PURCHASED." + targetComp.getMarketPower());
@@ -254,6 +260,7 @@ public class Market3Controller extends AnchorPane {
             mProjected = mP - 25;
 	        targetComp.setMarketPower(mProjected);
 			System.out.println("WACKY WAVING INFLATABLE TUBE MAN MARKETING PURCHASED." + targetComp.getMarketPower());
+			marketingPicture.setImage(image6);
 		}
 		else if (outputType.equals("Television Marketing")){ 
 			System.out.println("TELEVISION MARKETING PURCHASED." + targetComp.getMarketPower());
@@ -261,6 +268,7 @@ public class Market3Controller extends AnchorPane {
             mProjected = mP + 100;
 	        targetComp.setMarketPower(mProjected);
 			System.out.println("TELEVISION MARKETING PURCHASED." + targetComp.getMarketPower());
+			marketingPicture.setImage(image6);
 		}
 		else{
 			System.out.println("ERROR: CAMPAIGN AND/OR COMPANY NOT SELECTED.");
