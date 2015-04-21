@@ -85,13 +85,13 @@ public class MarketingStatisticsController extends AnchorPane {
 			 piechart.setTitle("Current Market Power Report");
 		        piechart.setData(pieChartData);
 		        
-		        if (power > 110){
+		        if (power > 105){
 			        marketStatsPicture.setImage(goodImg);
 		        }
-		        if (power < 110 && power > 80){
+		        if (power < 105 && power > 95){
 			        marketStatsPicture.setImage(okayImg);
 		        }
-		        if (power < 80){
+		        if (power < 95){
 			        marketStatsPicture.setImage(badImg);
 		        }
 		        	

@@ -272,6 +272,7 @@ public class Market3Controller extends AnchorPane {
               mProjected = mP + calcPrintPower();
 	        targetComp.setMarketPower(mProjected);
 			System.out.println("PRINT MARKETING PURCHASED." + targetComp.getMarketPower());
+	        descriptionBox.clear();
             descriptionBox.appendText("\nNEW MARKET POWER IS: " + mProjected);
 			marketingPicture.setImage(image6);
 		}
@@ -281,6 +282,7 @@ public class Market3Controller extends AnchorPane {
             mProjected = mP + calcCouponPower();
 	        targetComp.setMarketPower(mProjected);
 			System.out.println("COUPON MARKETING PURCHASED." + targetComp.getMarketPower());
+	        descriptionBox.clear();
             descriptionBox.appendText("\nNEW MARKET POWER IS: " + mProjected);
 			marketingPicture.setImage(image6);
 		}
@@ -290,6 +292,7 @@ public class Market3Controller extends AnchorPane {
             mProjected = mP + calcWackyPower();
 	        targetComp.setMarketPower(mProjected);
 			System.out.println("WACKY WAVING INFLATABLE TUBE MAN MARKETING PURCHASED." + targetComp.getMarketPower());
+	        descriptionBox.clear();
             descriptionBox.appendText("\nNEW MARKET POWER IS: " + mProjected);
 			marketingPicture.setImage(image6);
 		}
@@ -299,6 +302,7 @@ public class Market3Controller extends AnchorPane {
             mProjected = mP + calcWackyPower();
 	        targetComp.setMarketPower(mProjected);
 			System.out.println("TELEVISION MARKETING PURCHASED." + targetComp.getMarketPower());
+	        descriptionBox.clear();
             descriptionBox.appendText("\nNEW MARKET POWER IS: " + mProjected);
 			marketingPicture.setImage(image6);
 		}
