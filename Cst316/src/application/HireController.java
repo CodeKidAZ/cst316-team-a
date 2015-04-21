@@ -32,11 +32,11 @@ public class HireController extends AnchorPane {
      HRController hr;
      
      Employee val = new Employee();
-     Company myCompany;
+     Company a;
      Set<String> empObjects;
-     int s;// = myCompany.empTree.size(); //get the size of Employee Tree Map
-    String[] namesArray;// = new String[s]; //this array will store all Employee Names
-    String[] wagesArray; // = new String[s];
+     int s = Management.empTree.size(); //get the size of Employee Tree Map
+    String[] namesArray = new String[s]; //this array will store all Employee Names
+    String[] wagesArray = new String[s];
     Image image;
     Image image2;
     Image image3;
@@ -212,8 +212,6 @@ public class HireController extends AnchorPane {
     private ImageView imageEmployee25;
     @FXML
     private Label wageLabel17;
-    @FXML
-    private Label currentCompanyLabel;
     
     //_______________________________________________ BACK BUTTON
     @FXML
@@ -229,22 +227,20 @@ public class HireController extends AnchorPane {
     {
           for(Employee currentTab : tableData) //remove employees from Employement Tree and put them in Hired Tree
           {
+              Management.empTree.remove(currentTab.getName());
+              Management.hiredTree.put(currentTab.getName(), currentTab);
               
-              myCompany.employmentTree.remove(currentTab.getName());
-              myCompany.hireEmployees(currentTab);
               
-              
-              //myCompany.addEmployeesList(currentTab);
               
               createNameArray();                                        // refresh the array with new names
               createWageArray();                                       // refresh the array with new wages
               createEmployeeLabels();                                // show new employees on GUI after they are hired
               linkImagesToNames();              
           }
-          System.out.println("Employment Tree is"+myCompany.employmentTree.size());
-          System.out.println("Hired Tree is "+myCompany.getTotalHiredEmployees());
+          System.out.println("Employment Tree is "+Management.empTree.size());
+          System.out.println("Hired Tree is "+Management.hiredTree.size());
         
-          totalLabel.setText("You have Hired : "+ tableData.size()+ "           Total Hired : "+ myCompany.getTotalHiredEmployees());
+          totalLabel.setText("You have Hired : "+ tableData.size()+ "           Total Hired : "+ Management.hiredTree.size());
          clearTheTable();
          
     }
@@ -275,8 +271,7 @@ public class HireController extends AnchorPane {
         nameColumn.setCellValueFactory(cellData -> cellData.getValue().getNameProperty());    // -> is lambda expression
         wageColumn.setCellValueFactory(cellData -> cellData.getValue().getWageProperty()); 
         totalLabel.setText(" ");
-         totalLabel.setText("You have Hired : "+ tableData.size()+ "           Total Hired : "+ myCompany.getTotalHiredEmployees());
-         currentCompanyLabel.setText(myCompany.getCompanyName());
+         totalLabel.setText("You have Hired : "+ tableData.size()+ "           Total Hired : "+ Management.hiredTree.size());
 
          //System.out.println("company is " + a.getCompanyName());
 
@@ -285,40 +280,41 @@ public class HireController extends AnchorPane {
     //________________________________________________ IMAGE CLICK METHOD
     @FXML
     private void emp1Clicked(MouseEvent event) throws IOException
-    {  
+    {   
+        System.out.println("  ");
         Object source = event.getSource();                                                    // getting the event source object
         String imageName = ((ImageView) source).getId();                              // converting  the source object to image object and then getting its name
 
         String employeeName = nameLabels.get(imageName).getText();            // get the employee name
-        int employeeWage = myCompany.employmentTree.get(employeeName).getWage();   // get the employee wage
+        int employeeWage = Management.empTree.get(employeeName).getWage();   // get the employee wage
         Employee a = new Employee(employeeName, employeeWage);
          
         tableData.add(a);                                                                            // add Employee object to linked list 
         table1.setItems(tableData);                                                             // add the linked list to the TableView
-        totalLabel.setText("You selected : "+ Integer.toString(tableData.size()) + "           Total Hired : "+ myCompany.getTotalHiredEmployees());              // show total employees clicked to hire
+        totalLabel.setText("You selected : "+ Integer.toString(tableData.size()) + "           Total Hired : "+ Management.hiredTree.size());              // show total employees clicked to hire
 
     }
     
     //_______________________________________________ CREATE NAME ARRAY 
     public void createNameArray()
     {
-        Set<String> setNames = myCompany.employmentTree.keySet();  //get keys from Employee Tree Map
+        Set<String> setNames = Management.empTree.keySet();  //get keys from Employee Tree Map
         int p = 0;
         for (String key: setNames)
         {
-            String value = myCompany.employmentTree.get(key).getName();
+            String value = Management.empTree.get(key).getName();
             namesArray[p] = value;
             p++;
         }
-    
+        
     }
     public void createWageArray()
     {
-         Set<String> setNames = myCompany.employmentTree.keySet();  //get keys from Employee Tree Map
+         Set<String> setNames = Management.empTree.keySet();  //get keys from Employee Tree Map
           int q=0;
          for (String key: setNames)
         {
-            String u = Integer.toString(myCompany.employmentTree.get(key).getWage());
+            String u = Integer.toString(Management.empTree.get(key).getWage());
             wagesArray[q] = u;
             q++;
         }
@@ -334,8 +330,8 @@ public class HireController extends AnchorPane {
             table1.getItems().remove(selectedIndex);                               //remove the selected item from TableView
             totalLabel.setText(Integer.toString(tableData.size()));               // show total employees selected to hire
             
-            System.out.println("empTree is "+myCompany.employmentTree.size());
-            System.out.println("HireTree is  "+myCompany.getTotalHiredEmployees());
+            System.out.println("empTree is "+Management.empTree.size());
+            System.out.println("HireTree is  "+Management.hiredTree.size());
             
         }
         else
@@ -488,15 +484,8 @@ public class HireController extends AnchorPane {
         imageName.setEffect(new Glow());
         //System.out.println("Image Name is : "+imageName);
     }
-    public void setCompany(Company x) throws IOException
+    public void setCompany(Company x)
     {
-    	myCompany = x;
-               myCompany.loadEmployeeData();
-                int s = myCompany.employmentTree.size(); //get the size of Employee Tree Map
-                namesArray = new String[s]; //this array will store all Employee Names
-                 wagesArray = new String[s];
-                  System.out.println("Company empTr  is " + myCompany.employmentTree.size());
-                System.out.println("Company hiredTr is " + myCompany.getTotalHiredEmployees());
-        
+    	a = x;
     }
 }

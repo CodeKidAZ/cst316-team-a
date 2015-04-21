@@ -10,9 +10,8 @@ import org.json.JSONObject;
 
 public class Management {
 
-    /*public static TreeMap<String, Employee> empTree = new TreeMap<String, Employee>(); //to store all employee data
-    public static TreeMap<String, Employee> hiredTree = new TreeMap<String, Employee>(); // to store all hired employees data
-
+    final public static TreeMap<String, Employee> empTree = new TreeMap<String, Employee>(); //to store all employee data
+    final public static TreeMap<String, Employee> hiredTree = new TreeMap<String, Employee>(); // to store all hired employees data
 
     public Management() throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(Management.class.getClassLoader().getResourceAsStream("res/employeeData.txt")));
@@ -27,7 +26,5 @@ public class Management {
         }
         in.close();
         br.close();
-    
-    }*/
-
+    }
 }
