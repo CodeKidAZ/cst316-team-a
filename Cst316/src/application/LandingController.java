@@ -108,7 +108,6 @@ public class LandingController extends AnchorPane {
 	public void onMarketingClick() throws Exception {
 		Market3Controller ctr = (Market3Controller) application.replaceSceneContent("MarketingChoice.fxml", Market3Controller.class);
 		ctr.setApp(application);
-		ctr.setPlayer(player);
 	}
 	public void onRNDClick() throws Exception {
 		ResearchDevelopController ctr = (ResearchDevelopController) application.replaceSceneContent("ResearchDevelop.fxml", ResearchDevelopController.class);
