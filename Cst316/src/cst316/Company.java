@@ -138,20 +138,20 @@ public class Company {
 	}*/
 
 	public double getEmployees() {
-        return employees;
-    }
+		return employees;
+	}
 
 	/* public ArrayList<Employee> getEmployeesList() { //returns a list
-        return emp;
-    }*/
+		return emp;
+	}*/
 
 	public void setEmployees(double employees) {
-        this.employees = employees;
-    }
+		this.employees = employees;
+	}
 
 	public void addEmployees(double employees) {
-        this.employees += employees;
-    }
+		this.employees += employees;
+	}
 
 	//______________________________________________________SET
 
@@ -176,11 +176,11 @@ public class Company {
 		BufferedReader br = new BufferedReader(new InputStreamReader(Management.class.getClassLoader().getResourceAsStream("res/employeeData.txt")));
 		String strLine;
 		while ((strLine = br.readLine()) != null) {
-			JSONObject obj = new JSONObject(strLine);                  //extract employee info from datafile
+			JSONObject obj = new JSONObject(strLine);				  //extract employee info from datafile
 			String name = obj.get("name").toString();
 			int wage = obj.getInt("wage");
-			Employee empObject = new Employee(name, wage);      //create employee objects
-			employmentTree.put(name, empObject);                                //store employee object into hashtable
+			Employee empObject = new Employee(name, wage);	  //create employee objects
+			employmentTree.put(name, empObject);								//store employee object into hashtable
 		}
 		in.close();
 	}
