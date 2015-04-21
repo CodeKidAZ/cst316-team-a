@@ -146,7 +146,7 @@ public class Market3Controller extends AnchorPane {
                 mPTemp = targetComp.getMarketPower();
                 MProjTemp = mPTemp + calcPrintPower();
                 descriptionBox.appendText("Current Market Power of " + targetComp.getName() + " is " +targetComp.getMarketPower() + ".");
-                descriptionBox.appendText("\nIf Print Marketing Campaign is purchased the new Market Power value will be estimated: " + MProjTemp);
+                descriptionBox.appendText("\nIf Print Marketing Campaign is purchased the new Market Power value will be an estimated: " + MProjTemp);
                 break;
             case "Coupon Marketing":
                 descriptionBox.clear();
@@ -154,7 +154,7 @@ public class Market3Controller extends AnchorPane {
                 mPTemp = targetComp.getMarketPower();
                 MProjTemp = mPTemp + calcCouponPower();
                 descriptionBox.appendText("Current Market Power of " + targetComp.getName() + " is " +targetComp.getMarketPower() + ".");
-                descriptionBox.appendText("\nIf Coupon Marketing Campaign is purchased the new Market Power value will be estimated: " + MProjTemp);
+                descriptionBox.appendText("\nIf Coupon Marketing Campaign is purchased the new Market Power value will be an estimated: " + MProjTemp);
                 break;
             case "WWITM Marketing":
             	 descriptionBox.clear();
@@ -162,7 +162,7 @@ public class Market3Controller extends AnchorPane {
                  mPTemp = targetComp.getMarketPower();
                  MProjTemp = mPTemp + calcWackyPower();
                  descriptionBox.appendText("Current Market Power of " + targetComp.getName() + " is " +targetComp.getMarketPower() + ".");
-                 descriptionBox.appendText("\nIf WWITM Marketing Campaign is purchased the new Market Power value will be estimated: " + MProjTemp);
+                 descriptionBox.appendText("\nIf WWITM Marketing Campaign is purchased the new Market Power value will be an estimated: " + MProjTemp);
                  break;
             case "Television Marketing":
             	 descriptionBox.clear();
@@ -170,7 +170,7 @@ public class Market3Controller extends AnchorPane {
                  mPTemp = targetComp.getMarketPower();
                  MProjTemp = mPTemp + calcTVPower();
                  descriptionBox.appendText("Current Market Power of " + targetComp.getName() + " is " +targetComp.getMarketPower() + ".");
-                 descriptionBox.appendText("\nIf Television Marketing Campaign is purchased the new Market Power value will be estimated: " + MProjTemp);
+                 descriptionBox.appendText("\nIf Television Marketing Campaign is purchased the new Market Power value will be an estimated: " + MProjTemp);
                  break;
         }
     }
