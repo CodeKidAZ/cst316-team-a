@@ -406,7 +406,7 @@ public class Player implements JSONString {
 	
 	/**
 	 * Create an investment, removing the money put into it.
-	 * @param name    Name of the investment
+	 * @param name	Name of the investment
 	 * @param amount  Amount invested
 	 * @param isGood  Secret flag; good or bad investment
 	 */
@@ -452,8 +452,8 @@ public class Player implements JSONString {
 	/**
 	 * Searches the company array and if it finds a company equal to the parameter name
 	 * it returns that company object
-	 * @param name             Company's name
-	 * @return Company         Returns a company object or null
+	 * @param name			 Company's name
+	 * @return Company		 Returns a company object or null
 	 */
 	public Company getCompany(String name) {
 		for(int i = 0; i<companies.size(); i++) {
@@ -479,8 +479,8 @@ public class Player implements JSONString {
 	/**
 	 * Linear search through the company to try and find one with a matching name,
 	 * if it succeeds, that index is removed.
-	 * @param name             Company's name
-	 * @return boolean 	       true = success; false = failure
+	 * @param name			 Company's name
+	 * @return boolean 		   true = success; false = failure
 	 */
 	public boolean removeCompany(String name) {
 		for(int i = 0; i<companies.size(); i++) {
