@@ -45,6 +45,7 @@ public class Market3ControllerTest extends Main {
     ComboBox<String> dropMenu;
     Button returnButton;
     ImageView marketingPicture;
+    ImageView questionMark;
     Button purchaseButton;
     Text doneText;
     
@@ -78,6 +79,10 @@ public class Market3ControllerTest extends Main {
         field = market3Controller.getDeclaredField("returnButton");
         field.setAccessible(true);
         field.set(ctrl, returnButton);
+        questionMark = new ImageView();
+        field = market3Controller.getDeclaredField("questionMark");
+        field.setAccessible(true);
+        field.set(ctrl, questionMark);
         marketingPicture = new ImageView();
         field = market3Controller.getDeclaredField("marketingPicture");
         field.setAccessible(true);
@@ -105,7 +110,7 @@ public class Market3ControllerTest extends Main {
 		ctrl.dropMenuFired(null);
 		assertEquals("Print Marketing", dropMenu.getSelectionModel().getSelectedItem());
 		assertTrue(marketingPicture.getImage() != null);
-		assertEquals("Cost: x \nDescription: Moderately expensive and moderately reliable form of Marketing.", descriptionBox.getText());
+		assertEquals("Cost: 100.0\nDescription: HEEELLLOOModerately expensive and moderately reliable form of Marketing. +5MP to +15\n", descriptionBox.getText());
 	}
 	
 	@Test
