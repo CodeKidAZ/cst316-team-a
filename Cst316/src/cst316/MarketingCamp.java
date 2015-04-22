@@ -50,7 +50,7 @@ public class MarketingCamp {
     
     /**Similar to the Calculate ROI on the investment.java class, except instead of affecting player's money, this affect's company's marketPower
      * 
-     * @return a random double value between +0.31 and +1.0 if isGood = true, if not then returns a random double value between -0.01 and -0.61
+     * @return a random double value between +0.31 and +0.01 if isGood = true, if not then returns a random double value between -0.01 and -0.61
      */
     public double calculateReturnPower() {
 		if(isGood){
