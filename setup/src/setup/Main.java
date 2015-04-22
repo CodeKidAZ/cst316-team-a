@@ -1,17 +1,18 @@
-package application;
+package setup;
 
-import cst316.Employee;
+import win32utils.Shell32X;
 
+import com.sun.jna.WString;
+import com.sun.jna.platform.win32.Kernel32;
+import com.sun.jna.platform.win32.Kernel32Util;
+
+import java.io.File;
 import java.io.InputStream;
 
-import cst316.Management;
-import cst316.Player;
 import javafx.application.Application;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.JavaFXBuilderFactory;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
@@ -23,14 +24,10 @@ public class Main extends Application {
     private Scene scene;
     private final double MINIMUM_WINDOW_WIDTH = 1280;
     private final double MINIMUM_WINDOW_HEIGHT = 720;
-    private Player player;
 
     @Override
     public void start(Stage primaryStage) {
         try {
-            // This will need to be redone, really badly!
-            Management management = new Management();
-            management.getClass();
             BorderPane root = new BorderPane();
             stage = primaryStage;
             scene = new Scene(root, 400, 400);
@@ -39,16 +36,9 @@ public class Main extends Application {
             stage.setMinHeight(MINIMUM_WINDOW_HEIGHT);
             stage.setScene(scene);
             stage.show();
-            stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-                @Override
-                public void handle(WindowEvent event) {
-                	if(player != null){
-                		player.saveFile();
-                	}
-                }
-            });
+          
            
-            LoginController ctr = (LoginController) replaceSceneContent("Login.fxml", null);
+            WelcomeController ctr = (WelcomeController) replaceSceneContent("Welcome.fxml", WelcomeController.class);
             
             ctr.setApp(this);
             
@@ -57,20 +47,28 @@ public class Main extends Application {
         }
     }
 
-    public static void main(String[] args) {
-        launch(args);
+    public static void main(String[] args) throws Exception {
+        // If we don't have permission, get it!
+        if (args.length == 0) {
+            Shell32X.SHELLEXECUTEINFO execInfo = new Shell32X.SHELLEXECUTEINFO();
+            execInfo.lpFile = new WString(findPathJava());
+            execInfo.lpParameters = new WString("-jar \"" + (new File(findPathJar(Main.class))).getCanonicalPath() + "\" admin");
+            execInfo.nShow = Shell32X.SW_SHOWDEFAULT;
+            execInfo.fMask = Shell32X.SEE_MASK_NOCLOSEPROCESS;
+            execInfo.lpVerb = new WString("runas");
+            boolean result = Shell32X.INSTANCE.ShellExecuteEx(execInfo);
+            if (!result) {
+                int lastError = Kernel32.INSTANCE.GetLastError();
+                String errorMessage = Kernel32Util.formatMessageFromLastErrorCode(lastError);
+                throw new RuntimeException("Error performing elevation: " + lastError + ": " + errorMessage + " (apperror=" + execInfo.hInstApp + ")");
+            }
+        } else {
+          launch(args);
+        }
     }
 
     public Stage getStage() {
         return stage;
-    }
-
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
-
-    public Player getPlayer() {
-        return player;
     }
 
     // A lot of this was taken from the Oracle JFX samples, changes will be made
@@ -158,5 +156,44 @@ public class Main extends Application {
 
         return uri.substring(0, idx) + "!" + resource;
     }
+    public static String findPathJar(Class<?> context) throws IllegalStateException {
+        if (context == null) {
+            context = Main.class;
+        }
+        String rawName = context.getName();
+        String classFileName;
+        /* rawName is something like package.name.ContainingClass$ClassName. We need to turn this into ContainingClass$ClassName.class. */ {
+            int idx = rawName.lastIndexOf('.');
+            classFileName = (idx == -1 ? rawName : rawName.substring(idx + 1)) + ".class";
+        }
+
+        String uri = context.getResource(classFileName).toString();
+        if (uri.startsWith("file:")) {
+            throw new IllegalStateException("This class has been loaded from a directory and not from a jar file.");
+        }
+        if (!uri.startsWith("jar:file:")) {
+            int idx = uri.indexOf(':');
+            String protocol = idx == -1 ? "(unknown)" : uri.substring(0, idx);
+            throw new IllegalStateException("This class has been loaded remotely via the " + protocol
+                    + " protocol. Only loading from a jar on the local file system is supported.");
+        }
+
+        int idx = uri.indexOf('!');
+        //As far as I know, the if statement below can't ever trigger, so it's more of a sanity check thing.
+        if (idx == -1) {
+            throw new IllegalStateException("You appear to have loaded this class from a local jar file, but I can't make sense of the URL!");
+        }
+
+        return uri.substring(9, idx).replace("%20", " ");
+    }
+
+    public static String findPathJava() throws Exception {
+        String javaHome = System.getProperty("java.home");
+        File f = new File(javaHome);
+        f = new File(f, "bin");
+        f = new File(f, "java.exe");
+        return f.getCanonicalPath();
+    }
+
 }
 

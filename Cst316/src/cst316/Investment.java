@@ -24,6 +24,7 @@ public class Investment implements JSONString {
 	private boolean isGood;
 	private JSONArray gains;
 	private static Random random = new Random();
+	private static InvestmentLib lib = new InvestmentLib();
 	public Investment(String name, double amount, boolean isGood) {
 		this.amount = amount;
 		this.name = name;
@@ -86,7 +87,7 @@ public class Investment implements JSONString {
 	}
 	
 	public static String[] getAllCompanyNames() {
-		return new String[] {"SOIL", "Google", "RedHat", "Microsoft"};
+		return lib.getCompanyNames();
 	}
 	public int getTimeInMonths(){
 		return gains.length();
@@ -110,5 +111,13 @@ public class Investment implements JSONString {
 	// frnd.jpg courtesy of kev-shine (https://www.flickr.com/people/kevinshine/)
 	public static Image getImage(String name){
 		return new Image(Investment.class.getClassLoader().getResourceAsStream("res/"+name.toLowerCase()+".jpg"));
+	}
+	
+	public static boolean randomBoolean(){
+		return random.nextBoolean();
+	}
+	
+	public static String[] getTimedInvestment(){
+		return lib.getRandomTimedInvestment();
 	}
 }

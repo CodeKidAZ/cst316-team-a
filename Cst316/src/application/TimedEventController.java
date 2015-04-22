@@ -1,5 +1,8 @@
 package application;
 
+import java.util.Random;
+
+import cst316.Investment;
 import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.event.EventHandler;
@@ -46,14 +49,18 @@ public class TimedEventController extends AnchorPane implements EventHandler<Wor
 
 
 	public void setApp(Main app, Scene scene){
-		// SET TIMER HERE
+		// Always 15 seconds
 		this.timeMax = 15000;
 		
-		// TODO: Investment content added here (time, good/bad, etc.)
-		good = true;
-		name = "FRND";
-		wait = Wait.NONE;
+		String[] rnd = Investment.getTimedInvestment();
+		name = rnd[0];
+		good = rnd[1].equals("0");
+		hintOne.setText(rnd[2]);
+		hintTwo.setText(rnd[3]);
+		hintThree.setText(rnd[4]);
+		hintFour.setText(rnd[5]);
 		timeLabel.setText(timeMax/1000 + " Seconds");
+		wait = Wait.NONE;
 		this.app = app;
 		this.prevScene = scene;
 		try{
