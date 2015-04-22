@@ -219,7 +219,6 @@ public class HireController extends AnchorPane {
         System.out.println("YOU CLICKED BACK");
         HRController ctr = (HRController) application.replaceSceneContent("HR.fxml", null);
         ctr.setApp(application);
-        ctr.setPlayer(player);
     }
    //________________________________________________ DONE BUTTON
     @FXML

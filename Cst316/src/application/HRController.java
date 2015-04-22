@@ -32,14 +32,6 @@ import cst316.Player;
 public class HRController extends AnchorPane {
 
 	@FXML
-	private Label hrTitleLabel;
-
-	@FXML
-	private Button workersListButt;
-	@FXML
-	private Button incorporateButton;
-
-	@FXML
 	private TableView<Company> companyTableView;
 	@FXML
 	private TableColumn<Company, String> companyNameColumn;
@@ -51,7 +43,9 @@ public class HRController extends AnchorPane {
 	@FXML
 	private ImageView createCompanyImage;
 	@FXML
-	private Button productButton;
+	private ComboBox<String> companyComboBox;
+    @FXML
+    private Label totalLabel;
 
 	private Main application;
 	private Player player;
@@ -59,17 +53,6 @@ public class HRController extends AnchorPane {
 	public static ObservableList<String> comboList = FXCollections.observableArrayList();
 	public static TreeMap<String, Company> tree1 = new TreeMap<String, Company>(); 
 	ArrayList<Company> companies;
-	
-	@FXML
-	private TableColumn<?, ?> employeesColumn1;
-	@FXML
-	private TableColumn<?, ?> employeesColumn11;
-	@FXML
-	private Button deleteCompanyButt;
-	@FXML
-	private ComboBox<String> companyComboBox;
-    @FXML
-    private Label totalLabel;
 
 	@FXML
 	private void productMouseClicked(MouseEvent event) throws Exception {
@@ -141,7 +124,7 @@ public class HRController extends AnchorPane {
 	}
 
 	@FXML
-	private void openFire(MouseEvent event) throws Exception {
+	public void openFire(MouseEvent event) throws Exception {
 		System.out.println("YOU CLICKED FIRE");
 		FireController ctr = (FireController) application.replaceSceneContent("Fire.fxml", FireController.class);
 		ctr.setApp(application);
@@ -152,7 +135,7 @@ public class HRController extends AnchorPane {
 	//____________________________________________________OPEN WORKERS LIST SCREEN
 
 	@FXML
-	private void openWorkersList(ActionEvent event) throws Exception {
+	public void openWorkersList(ActionEvent event) throws Exception {
 		WorkersListController ctr = (WorkersListController) application.replaceSceneContent("WorkersList.fxml", WorkersListController.class);
 		ctr.setApp(application);
 		ctr.setPlayer(player);
@@ -162,7 +145,7 @@ public class HRController extends AnchorPane {
 	//____________________________________________________OPEN CORP SCREEN
 
 	@FXML
-	private void openCorpScreen(ActionEvent event) {//throws Exception{
+	public void openCorpScreen(ActionEvent event) {//throws Exception{
 		try {
 			CorpController ctr = (CorpController) application.replaceSceneContent("Corp.fxml", CorpController.class);
 			ctr.setApp(application);
@@ -201,14 +184,12 @@ public class HRController extends AnchorPane {
 		companyNameColumn.setCellValueFactory(cellData -> cellData.getValue().getNameProperty());    // -> is lambda expression
 		this.player = application.getPlayer();
 
-
 		Image fire = new Image(this.getClass().getClassLoader().getResourceAsStream("res/deleteEmployee.png"));
 		fireImage.setImage(fire);
 		Image hire = new Image(this.getClass().getClassLoader().getResourceAsStream("res/hireEmployee.png"));
 		hireImage1.setImage(hire);
 		Image company = new Image(this.getClass().getClassLoader().getResourceAsStream("res/createCompany.png"));
 		createCompanyImage.setImage(company);
-		this.player = application.getPlayer();
 
 		//tree1 = player.getCompanyList();
 		
@@ -227,35 +208,31 @@ public class HRController extends AnchorPane {
 		// companyComboBox.setItems(t);
 		 * 
 		 */
-		if(comboList.size() ==0)
+		companies = player.getCompanyList();
+		comboList.clear();
+		tree1.clear();
+		CompanyList.clear();
+		for(int i = 0; i<companies.size(); i++) 
 		{
-			companies = player.getCompanyList();
-			for(int i = 0; i<companies.size(); i++) 
-			{
-				tree1.put(companies.get(i).getCompanyName(), (new Company(companies.get(i).getCompanyName())));
-				System.out.println(tree1.keySet());
-				System.out.println(companies.get(i).getCompanyName());
+			tree1.put(companies.get(i).getCompanyName(), (new Company(companies.get(i).getCompanyName())));
+			System.out.println(tree1.keySet());
+			System.out.println(companies.get(i).getCompanyName());
 
-				comboList.add(companies.get(i).getCompanyName());
-				CompanyList.add(new Company(companies.get(i).getCompanyName()));
-				//System.out.println("Name Property is"+companies.get(i).getNameProperty().toString());
+			comboList.add(companies.get(i).getCompanyName());
+			CompanyList.add(new Company(companies.get(i).getCompanyName()));
+			//System.out.println("Name Property is"+companies.get(i).getNameProperty().toString());
 				
-			}
-			/*
-			Set<String> setNames = tree1.keySet(); 
-			int q=0;
-			for (String key: setNames)
-			{
-				String u = tree1.get(key).getCompanyName();
-				comboList.add(u);
-				CompanyList.add;
-				q++;
-			}*/
 		}
-		else
+		/*
+		Set<String> setNames = tree1.keySet(); 
+		int q=0;
+		for (String key: setNames)
 		{
-			System.out.println("dont load player company data again");
-		}
+			String u = tree1.get(key).getCompanyName();
+			comboList.add(u);
+			CompanyList.add;
+			q++;
+		}*/
 
 		//comboList.add();
 		int a = comboList.size();
@@ -265,11 +242,6 @@ public class HRController extends AnchorPane {
 		//companyComboBox.getSelectionModel().getSelectedItem();
 		//System.out.println(companyComboBox.getSelectionModel().getSelectedItem());
 		
-	}
-	
-
-	public void setPlayer(Player player) {
-		this.player = player;
 	}
 
 	@FXML

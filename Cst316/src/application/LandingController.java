@@ -116,7 +116,6 @@ public class LandingController extends AnchorPane {
 	public void onManagementClick() throws Exception {
 		HRController ctr = (HRController) application.replaceSceneContent("HR.fxml", null);
 		ctr.setApp(application);
-		ctr.setPlayer(player);
 	}
 	public void onInvestmentsClick() throws Exception {
 		InvestmentController ctr = (InvestmentController) application.replaceSceneContent("Investment.fxml", null);

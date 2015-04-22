@@ -42,7 +42,6 @@ public class Corp5of5Controller extends AnchorPane {
     private void doneButton(ActionEvent event) throws Exception {
         HRController ctr = (HRController) application.replaceSceneContent("HR.fxml", null);
         ctr.setApp(application);
-        ctr.setPlayer(player);
     }
 
     @FXML
