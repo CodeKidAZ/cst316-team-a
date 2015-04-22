@@ -1,6 +1,7 @@
 package cst316;
 
 import java.util.ArrayList;
+import java.util.TreeMap;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -113,6 +114,7 @@ public class Company {
    public double getEmployees() {
 		return employees;
 	}
+
 	/**
 	 * @return the marketPower
 	 */
