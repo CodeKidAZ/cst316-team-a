@@ -1,5 +1,5 @@
 package test;
-	
+
 import java.io.InputStream;
 
 import application.LandingController;
@@ -14,6 +14,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class TimedEventServiceTest extends Main {
@@ -26,7 +27,7 @@ public class TimedEventServiceTest extends Main {
     public void setUp(){
     	
     }
-    @Test
+    @Ignore @Test
 	public void testPageChange() {
     	try{
     		launch("");

@@ -49,24 +49,21 @@ public class PlayerStatusController extends AnchorPane {
 		in = this.getClass().getClassLoader().getResourceAsStream("res/return.png");
 		retOut = new Image(in);
 		this.player = application.getPlayer();
-		if(player != null) {
+		if (player != null) {
 			pointsText.appendText(player.getPoints()+"");
 			employeesText.appendText(player.getEmployees()+"");
 			moneyText.appendText(player.getMoney()+"");
 			ArrayList<String> assets = player.getAssets();
-			for(int i=0; i<assets.size(); i++){
+			for (int i = 0; i < assets.size(); i++){
 				assetsText.appendText(assets.get(i)+", ");
 			}
 			ArrayList<Investment> investment = player.getInvestments();
-			for(int i=0; i<investment.size(); i++) {
+			for (int i = 0; i < investment.size(); i++) {
 				investmentsText.appendText(investment.get(i).getName()+", ");
 			}
 			productText.appendText(player.getProduct().getName());
 		}
 	}	
-	public void setPlayer(Player player) {
-		this.player = player;
-	}
 	public void onReturnMouseClick(MouseEvent event) throws Exception {
 		LandingController ctr = (LandingController) application.replaceSceneContent("Landing.fxml", LandingController.class);
 		ctr.setApp(application);

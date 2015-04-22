@@ -3,6 +3,7 @@ package test;
 import static org.junit.Assert.*;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import service.InvestmentService;
@@ -26,7 +27,7 @@ public class InvestmentServiceTest extends Main{
         InvestmentService.createNewInstance(this);
     }
 	
-	@Test
+	@Ignore @Test
 	public void test() {
 		try {
 			Thread.sleep(61000);

@@ -14,6 +14,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import cst316.Investment;
@@ -104,7 +105,7 @@ public class ChartTest extends Main{
 		stage.sizeToScene();
 		return (Node) loader.getController();
 	}
-	@Test
+	@Ignore @Test
 	public void testInvestment() {
 
 		for(int x = 0; x < 15; x++){

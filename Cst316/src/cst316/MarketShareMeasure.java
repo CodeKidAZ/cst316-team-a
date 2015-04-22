@@ -3,7 +3,12 @@
  */
 package cst316;
 
+import cst316.MyMarketPercentException;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList; 
+import java.util.ConcurrentModificationException;
 
 /**
  * @author Wesley Local
@@ -53,25 +58,39 @@ public class MarketShareMeasure {
 	//of company each time it iterates through the for loop. If it finds a company in the list matching the passed
 	//in name, then it stores that value and divides it by the totalMarketPower of the entire list to get the 
 	//equivalent percentage of how much the specific company owns of a market. EG. BurgerKing owns 28.65% of the fastfood Market.
-	static double getMarketPercent(ArrayList<MarketCompany> mcIn, String compName){
+	static double getMarketPercent(ArrayList<MarketCompany> mcIn, String compName) throws MyMarketPercentException{
 		double targetPower = -1;
 		double totalPower = -2;
 		double ret = -3;
 		
-		for (int z = 0; z < mcIn.size(); z ++){
-			  if(compName.equals(mcIn.get(z).getName()))
-			  {
-				  targetPower = (mcIn.get(z).getMarketPower());
-			  }
-			  totalPower = totalPower+(mcIn.get(z).getMarketPower());
-		}
+		try {
+			for (int z = 0; z < mcIn.size(); z ++){
+				  if(compName.equals(mcIn.get(z).getName()))
+				  {
+					  targetPower = (mcIn.get(z).getMarketPower());
+				  }
+				  totalPower = totalPower+(mcIn.get(z).getMarketPower());
+			}
+			
+			ret = (targetPower / totalPower) * 100;
+			System.out.println("Return Value of getMarketPercent() is: " + ret);
+			}
+			catch (ConcurrentModificationException e) {
+				throw new MyMarketPercentException("Caught Concurrent Modification exception, check which threads are accessing the passed in ArrayList 'mcIn'");
+			}
 		
-		ret = (targetPower / totalPower) * 100;
+			catch (IndexOutOfBoundsException  e) {
+				throw new MyMarketPercentException("Caught Array index out of bounds exception. The ArrayList<MarketCompany> mcIn is trying to be accessed or manipulated out of bounds.");
+			}
+		
+			catch (Exception e) {
+				throw new MyMarketPercentException("Caught General Exception");
+			}
 		return ret;
 	
 	}
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws MyMarketPercentException {
 		// TODO Auto-generated method stub
 		
 

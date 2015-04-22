@@ -16,19 +16,16 @@ public class LoginController extends AnchorPane{
 	ComboBox<String> playerNameText;
 
 	private Main application;
-        
-    @FXML
-    private AnchorPane AnchorPane;
+
     @FXML
     private Group theBox;
 
 	public void setApp(Main app){
 		application = app;
-               
 	}
 	
 	@FXML
-	void continueBtnClicked() throws Exception {
+	public void continueBtnClicked() throws Exception {
 		Player player = new Player();
 		String playerName = playerNameText.getValue().toString();
 		boolean exists = player.readFile(playerName);

@@ -86,6 +86,11 @@ public class Investment implements JSONString {
 		return retVal;
 	}
 	
+	public int hashCode() {
+		  assert false : "hashCode not designed";
+		  return 420; // arbitrary value will do, a reference to my favorite CST420 class
+		  }
+	
 	public static String[] getAllCompanyNames() {
 		return lib.getCompanyNames();
 	}

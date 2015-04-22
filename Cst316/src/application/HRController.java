@@ -1,8 +1,8 @@
 package application;
 //
 
+
 import java.util.ArrayList;
-import java.util.Set;
 import java.util.TreeMap;
 
 import javafx.collections.FXCollections;
@@ -19,8 +19,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import cst316.Company;
-import cst316.Employee;
-import cst316.Management;
 import cst316.Player;
 
 /**
@@ -29,21 +27,6 @@ import cst316.Player;
  * @author Sumit
  */
 public class HRController extends AnchorPane {
-
-	private Main application;
-	private Player player;
-	public static ObservableList<Company> CompanyList = FXCollections.observableArrayList(); // to store list of companies
-	public static ObservableList<String> comboList = FXCollections.observableArrayList();
-	public static TreeMap<String, Company> tree1 = new TreeMap<String, Company>();
-	ArrayList<Company> companies;
-
-	@FXML
-	private Label hrTitleLabel;
-
-	@FXML
-	private Button workersListButt;
-	@FXML
-	private Button incorporateButton;
 
 	@FXML
 	private TableView<Company> companyTableView;
@@ -57,106 +40,56 @@ public class HRController extends AnchorPane {
 	@FXML
 	private ImageView createCompanyImage;
 	@FXML
-	private Button productButton;
-	@FXML
-	private TableColumn<?, ?> employeesColumn1;
-	@FXML
-	private TableColumn<?, ?> employeesColumn11;
-	@FXML
-	private Button deleteCompanyButt;
-	@FXML
 	private ComboBox<String> companyComboBox;
-	@FXML
-	private Label totalLabel;
-	@FXML
-	private TableColumn<Company, Number> employeesColumn;
+    @FXML
+    private Label totalLabel;
 
+	private Main application;
+	private Player player;
+	public static ObservableList<Company> CompanyList = FXCollections.observableArrayList(); // to store list of companies
+	public static ObservableList<String> comboList = FXCollections.observableArrayList();
+	public static TreeMap<String, Company> tree1 = new TreeMap<String, Company>(); 
+	ArrayList<Company> companies;
+	
 	@FXML
 	private void productMouseClicked(MouseEvent event) throws Exception {
 		ProductManagementController ctr = (ProductManagementController) application.replaceSceneContent("ProductManagement.fxml", ProductManagementController.class);
 		ctr.setApp(application);
-	}
-	public void setApp(Main app) {
-		this.application = app;
-		companyNameColumn.setCellValueFactory(cellData -> cellData.getValue().getNameProperty());    // -> is lambda expression
-		//employeesColumn.setCellValueFactory(cellData ->cellData.getValue().getTotalEmployeesProperty());
-		Image fire = new Image(this.getClass().getClassLoader().getResourceAsStream("res/deleteEmployee.png"));
-		fireImage.setImage(fire);
-		Image hire = new Image(this.getClass().getClassLoader().getResourceAsStream("res/hireEmployee.png"));
-		hireImage1.setImage(hire);
-		Image company = new Image(this.getClass().getClassLoader().getResourceAsStream("res/createCompany.png"));
-		createCompanyImage.setImage(company);
-		this.player = application.getPlayer();
-
-		if (comboList.size() == 0) {
-			companies = player.getCompanyList();
-			for (int i = 0; i < companies.size(); i++) {
-				tree1.put(companies.get(i).getCompanyName(), (new Company(companies.get(i).getCompanyName())));
-				System.out.println(tree1.keySet());
-				System.out.println(companies.get(i).getCompanyName());
-
-				comboList.add(companies.get(i).getCompanyName());
-				CompanyList.add(new Company(companies.get(i).getCompanyName()));
-
-			}
-
-		} else {
-			System.out.println("dont load player company data again");
-		}
-
-		int a = comboList.size();
-		totalLabel.setText(Integer.toString(a));
-		companyComboBox.setItems(comboList);
-		companyTableView.setItems(CompanyList);
-		companies = player.getCompanyList();
-		System.out.println("com size is "+companies.size());
-
 	}
 
 	//____________________________________________________BACK BUTTON
 	@FXML
 	private void onBack() throws Exception {
 		System.out.println("YOU CLICKED BACK");
-
-		player.saveFile();
+		//player.saveFile();
 		LandingController ctr = (LandingController) application.replaceSceneContent("Landing.fxml", LandingController.class);
 		ctr.setApp(application);
 
 	}
 
 	//_________________________________________________________HIRE
+
 	@FXML
 	private void openHire(MouseEvent event) throws Exception {
 		System.out.println("YOU CLICKED HIRE");
 
-		String a = companyComboBox.getValue(); //get selected company name
-	
-		if(companies.size() !=0) // is existing player
+		String a = companyComboBox.getValue();
+		for(int i = 0; i<companies.size(); i++) 
 		{
-			for (int i = 0; i < companies.size(); i++) 
-			{ //get selected company object from arraylist and pass it to HireController
-				if (companies.get(i).getCompanyName() == a) 
-				{
-					System.out.println("  ");
-					System.out.println("Company current is " + companies.get(i).getCompanyName());
-					System.out.println("  ");
-					HireController ctr = (HireController) application.replaceSceneContent("Hire.fxml", null);
-					ctr.setCompany(companies.get(i));
-					ctr.setApp(application);
-					ctr.setPlayer(player);
-
-				} else 
-				{
-
-				}
+			if (companies.get(i).getCompanyName().equals(a))
+			//if (companies.get(i).getCompanyName() ==a)
+			{
+				System.out.println("Company is" + companies.get(i).getCompanyName());
+				HireController ctr = (HireController) application.replaceSceneContent("Hire.fxml", HireController.class);
+				ctr.setCompany(companies.get(i));
+				ctr.setApp(application);
+				ctr.setPlayer(player);
 			}
-
+			else
+			{
+				
+			}
 		}
-		else
-		{
-			System.out.println("company size is "+companies.size());
-		}
-
 
 	}
 
@@ -188,34 +121,18 @@ public class HRController extends AnchorPane {
 	}
 
 	@FXML
-	private void openFire(MouseEvent event) throws Exception {
+	public void openFire(MouseEvent event) throws Exception {
 		System.out.println("YOU CLICKED FIRE");
-		String a = companyComboBox.getValue(); //get selected company name
-
-		for (int i = 0; i < companies.size(); i++) 
-		{ //get selected company object from arraylist and pass it to HireController
-			if (companies.get(i).getCompanyName() == a) 
-			{
-				System.out.println("  ");
-				System.out.println("Company current is " + companies.get(i).getCompanyName());
-				System.out.println("  ");
-				FireController ctr = (FireController) application.replaceSceneContent("Fire.fxml", null);
-				ctr.setCompany(companies.get(i));
-
-				ctr.setApp(application);
-				ctr.setPlayer(player);
-			} 
-			else 
-			{
-
-			}
-		}
+		FireController ctr = (FireController) application.replaceSceneContent("Fire.fxml", FireController.class);
+		ctr.setApp(application);
+		//ctr.setPlayer(player);
 
 	}
 
 	//____________________________________________________OPEN WORKERS LIST SCREEN
+
 	@FXML
-	private void openWorkersList(ActionEvent event) throws Exception {
+	public void openWorkersList(ActionEvent event) throws Exception {
 		WorkersListController ctr = (WorkersListController) application.replaceSceneContent("WorkersList.fxml", WorkersListController.class);
 		ctr.setApp(application);
 		ctr.setPlayer(player);
@@ -223,8 +140,9 @@ public class HRController extends AnchorPane {
 	}
 
 	//____________________________________________________OPEN CORP SCREEN
+
 	@FXML
-	private void openCorpScreen(ActionEvent event) {//throws Exception{
+	public void openCorpScreen(ActionEvent event) {//throws Exception{
 		try {
 			CorpController ctr = (CorpController) application.replaceSceneContent("Corp.fxml", CorpController.class);
 			ctr.setApp(application);
@@ -235,6 +153,7 @@ public class HRController extends AnchorPane {
 	}
 
 	//____________________________________________________CREATE COMPANY
+
 	@FXML
 	private void createCompanyMouseExit(MouseEvent event) {
 		createCompanyImage.setScaleX(1);
@@ -257,18 +176,110 @@ public class HRController extends AnchorPane {
 		}
 	}
 
+	public void setApp(Main app) {
+		this.application = app;
+		companyNameColumn.setCellValueFactory(cellData -> cellData.getValue().getNameProperty());    // -> is lambda expression
+		this.player = application.getPlayer();
 
+		Image fire = new Image(this.getClass().getClassLoader().getResourceAsStream("res/deleteEmployee.png"));
+		fireImage.setImage(fire);
+		Image hire = new Image(this.getClass().getClassLoader().getResourceAsStream("res/hireEmployee.png"));
+		hireImage1.setImage(hire);
+		Image company = new Image(this.getClass().getClassLoader().getResourceAsStream("res/createCompany.png"));
+		createCompanyImage.setImage(company);
 
-	public void setPlayer(Player player) {
-		this.player = player;
+		//tree1 = player.getCompanyList();
+		
+		/*ArrayList<Company> companies = player.getCompanyList();
+		for(int i = 0; i<companies.size(); i++) 
+		{
+			tree1.put(companies.get(i).getCompanyName(), (new Company(companies.get(i).getCompanyName())));
+			System.out.println(tree1.keySet());
+			System.out.println(companies.get(i).getCompanyName());
+
+			//comboList.add(companies.get(i).getCompanyName());
+			//CompanyList.add(new Company(companies.get(i).getCompanyName()));
+			//combo
+		}
+		// companyTableView.setItems(CompanyList);
+		// companyComboBox.setItems(t);
+		 * 
+		 */
+		companies = player.getCompanyList();
+		comboList.clear();
+		tree1.clear();
+		CompanyList.clear();
+		for(int i = 0; i<companies.size(); i++) 
+		{
+			tree1.put(companies.get(i).getCompanyName(), (new Company(companies.get(i).getCompanyName())));
+			System.out.println(tree1.keySet());
+			System.out.println(companies.get(i).getCompanyName());
+
+			comboList.add(companies.get(i).getCompanyName());
+			CompanyList.add(new Company(companies.get(i).getCompanyName()));
+			//System.out.println("Name Property is"+companies.get(i).getNameProperty().toString());
+				
+		}
+		/*
+		Set<String> setNames = tree1.keySet(); 
+		int q=0;
+		for (String key: setNames)
+		{
+			String u = tree1.get(key).getCompanyName();
+			comboList.add(u);
+			CompanyList.add;
+			q++;
+		}*/
+
+		//comboList.add();
+		int a = comboList.size();
+		totalLabel.setText(Integer.toString(a));
+		companyComboBox.setItems(comboList);
+		companyTableView.setItems(CompanyList);
+		//companyComboBox.getSelectionModel().getSelectedItem();
+		//System.out.println(companyComboBox.getSelectionModel().getSelectedItem());
+		
 	}
-
+	
+	/**
+	 * Remove the company from the selection boxes and also from the JSON file
+	 * @param event
+	 */
 	@FXML
-	private void deleteCompany(ActionEvent event) {
+	private void sellCompany(ActionEvent event) {
+		this.player = application.getPlayer();
+		//Get the selected company's string
+		if(companyTableView.getSelectionModel().getSelectedItem() != null) {
+			String name = (String) companyTableView.getSelectionModel().getSelectedItem().getCompanyName();
+			player.addMoney(player.getCompany(name).getMarketPower()*100);
+			//Remove it from the stored list in this class AND the player class
+			CompanyList.remove(player.getCompany(name));
+			player.removeCompany(name);
+			
+			player.saveFile();
+		}
 	}
+	
+    @FXML
+    private void currentCompany(ActionEvent event) {
+    	System.out.println("YOU SELECTED" + companyComboBox.getSelectionModel().getSelectedItem());
+    	/*String a = companyComboBox.getValue();
+    	System.out.println(a);
+    	companies = player.getCompanyList();
+    	
+		for(int i = 0; i<companies.size(); i++) 
+		{
+			if (companies.get(i).getCompanyName() ==a);
+			{
+				
+			}
+			System.out.println(tree1.keySet());
+			System.out.println(companies.get(i).getCompanyName());
 
-	@FXML
-	private void currentCompany(ActionEvent event) {
-		System.out.println("YOU SELECTED " + companyComboBox.getSelectionModel().getSelectedItem());
-	}
+			comboList.add(companies.get(i).getCompanyName());
+			CompanyList.add(new Company(companies.get(i).getCompanyName()));
+			//System.out.println("Name Property is"+companies.get(i).getNameProperty().toString());
+			
+		}*/
+    }
 }

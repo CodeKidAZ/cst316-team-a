@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import service.InvestmentService;
 import service.TimedEventService;
+import cst316.Company;
 import cst316.Player;
 import cst316.Product;
 import javafx.collections.ObservableList;
@@ -31,6 +32,9 @@ public class CreatePlayerController extends AnchorPane {
     @FXML
     private AnchorPane AnchorPane;
 
+    private Player player;
+    private String compName;
+    
     public void setApp(Main app) {
         application = app;
         String[] allProductNames = Product.getAllProductNames();
@@ -39,10 +43,11 @@ public class CreatePlayerController extends AnchorPane {
             items.add(name);
         }
         productCombo.setItems(items);
+        player = application.getPlayer();
     }
-
-    public void setPlayerName(String playerName) {
-        this.playerName = playerName;
+    
+    public void setCompanyName(String compName){
+    	this.compName = compName;
     }
 
     /*void initialize() {
@@ -70,9 +75,8 @@ public class CreatePlayerController extends AnchorPane {
         try {
             String productName = productCombo.getValue().toString();
             Product product = new Product(productName, 0.0, 0.0);
-            Player player = new Player(0, 100.0, playerName, new ArrayList<String>());
-            application.setPlayer(player);
-            player.setProduct(product);
+            Company comp = player.getCompany(compName);
+            comp.addProducts(product);
             player.saveFile();
             BuildingChoiceController ctr = (BuildingChoiceController) application.replaceSceneContent("BuildingChoice.fxml", BuildingChoiceController.class);
             ctr.setApp(application);

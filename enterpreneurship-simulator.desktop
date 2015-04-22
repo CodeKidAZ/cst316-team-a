@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Enterpreneurship Simulator
+GenericName=Team A CST316 Project
+X-GNOME-FullName=Team A Enterpreneurship Simulator
+Comment=Simulate the process of starting and running your own business
+Exec=java -jar /usr/share/enterpreneurship-simulator/Cst316.jar
+Icon=enterpreneurship-simulator
+Terminal=false
+Type=Application
+Categories=Game;Education;
+StartupNotify=true

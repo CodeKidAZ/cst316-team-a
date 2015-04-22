@@ -10,24 +10,22 @@ import org.json.JSONObject;
 
 public class Management {
 
-    /*public static TreeMap<String, Employee> empTree = new TreeMap<String, Employee>(); //to store all employee data
-    public static TreeMap<String, Employee> hiredTree = new TreeMap<String, Employee>(); // to store all hired employees data
+	final public static TreeMap<String, Employee> empTree = new TreeMap<String, Employee>(); //to store all employee data
+	final public static TreeMap<String, Employee> hiredTree = new TreeMap<String, Employee>(); // to store all hired employees data
 
+	public Management() throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(Management.class.getClassLoader().getResourceAsStream("res/employeeData.txt")));
+		String strLine;
+		while ((strLine = br.readLine()) != null) {
+			JSONObject obj = new JSONObject(strLine);				  //extract employee info from datafile
+			String name = obj.get("name").toString();
+			int wage = obj.getInt("wage");
+			Employee empObject = new Employee(name, wage);	  //create employee objects
+			empTree.put(name, empObject);								//store employee object into hashtable
 
-    public Management() throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(Management.class.getClassLoader().getResourceAsStream("res/employeeData.txt")));
-        String strLine;
-        while ((strLine = br.readLine()) != null) {
-            JSONObject obj = new JSONObject(strLine);                  //extract employee info from datafile
-            String name = obj.get("name").toString();
-            int wage = obj.getInt("wage");
-            Employee empObject = new Employee(name, wage);      //create employee objects
-            empTree.put(name, empObject);                                //store employee object into hashtable
-
-        }
-        in.close();
-        br.close();
-    
-    }*/
+		}
+		in.close();
+		br.close();
+	}
 
 }

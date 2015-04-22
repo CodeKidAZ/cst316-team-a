@@ -66,73 +66,48 @@ public class LandingController extends AnchorPane {
 		statOut = new Image(in);
 		this.player = application.getPlayer();
 	}
-
-	@FXML
-	void initialize(){
-	}
 	
-	public void onStatMouseEntered(MouseEvent event) {
-		if (statBtn != null) {
-			statBtn.setImage(statIn);
-		}
+	public void onStatMouseEntered() {
+		statBtn.setImage(statIn);
 	}
-	public void onStatMouseExit(MouseEvent event) {
-		if (statBtn != null) {
-			statBtn.setImage(statOut);
-		}
+	public void onStatMouseExit() {
+		statBtn.setImage(statOut);
 	}
 	public void onInvMouseEntered(){
-		if (invBtn != null) {
-			invBtn.setImage(invIn);
-		}
+		invBtn.setImage(invIn);
 	}
 
 	public void onInvMouseExit(){
-		if (invBtn != null) {
-			invBtn.setImage(invOut);
-		}
+		invBtn.setImage(invOut);
 	}
 	
 	public void onRndMouseEntered(){
-		if (rndBtn != null) {
-			rndBtn.setImage(rndIn);
-		}
+		rndBtn.setImage(rndIn);
 	}
 
 	public void onRndMouseExit(){
-		if (rndBtn != null) {
-			rndBtn.setImage(rndOut);
-		}
+		rndBtn.setImage(rndOut);
 	}
 	
 	public void onMarkMouseEntered(){
-		if (markBtn != null) {
-			markBtn.setImage(markIn);
-		}
+		markBtn.setImage(markIn);
 	}
 
 	public void onMarkMouseExit(){
-		if (markBtn != null) {
-			markBtn.setImage(markOut);
-		}
+		markBtn.setImage(markOut);
 	}
 	
 	public void onMngMouseEntered(){
-		if (mngBtn != null) {
-			mngBtn.setImage(mngIn);
-		}
+		mngBtn.setImage(mngIn);
 	}
 
 	public void onMngMouseExit(){
-		if (mngBtn != null) {
-			mngBtn.setImage(mngOut);
-		}
+		mngBtn.setImage(mngOut);
 	}
 	
 	public void onMarketingClick() throws Exception {
 		Market3Controller ctr = (Market3Controller) application.replaceSceneContent("MarketingChoice.fxml", Market3Controller.class);
 		ctr.setApp(application);
-		ctr.setPlayer(player);
 	}
 	public void onRNDClick() throws Exception {
 		ResearchDevelopController ctr = (ResearchDevelopController) application.replaceSceneContent("ResearchDevelop.fxml", ResearchDevelopController.class);
@@ -141,16 +116,14 @@ public class LandingController extends AnchorPane {
 	public void onManagementClick() throws Exception {
 		HRController ctr = (HRController) application.replaceSceneContent("HR.fxml", null);
 		ctr.setApp(application);
-		ctr.setPlayer(player);
 	}
 	public void onInvestmentsClick() throws Exception {
 		InvestmentController ctr = (InvestmentController) application.replaceSceneContent("Investment.fxml", null);
 		ctr.setApp(application);
 	}
-	public void onStatMouseClick(MouseEvent event) throws Exception {
+	public void onStatMouseClick() throws Exception {
 		PlayerStatusController ctr = (PlayerStatusController) application.replaceSceneContent("PlayerStatus.fxml", PlayerStatusController.class);
 		ctr.setApp(application);
-		ctr.setPlayer(player);
 	}
 	
 	public void onBasicClicked() throws Exception {
