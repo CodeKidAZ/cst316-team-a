@@ -25,14 +25,12 @@ public class BuildingChoiceController extends AnchorPane {
     private ImageView buildingPicture;
     @FXML
     private Button purchaseButton;
-
+    @FXML
+    private Text doneText;
+    
     private Building output;
     private Main application;
     private Player player;
-    @FXML
-    private AnchorPane anchorPane;
-    @FXML
-    private Text doneText;
 
 	public void setBuilding(Building output) {
 		this.output = output;
@@ -42,6 +40,10 @@ public class BuildingChoiceController extends AnchorPane {
 		descriptionBox.clear();
 		descriptionBox.appendText("Cost: " + output.getTotalCost() + "\n");
 		descriptionBox.appendText("Description: " + output.getDescription() + "\n");
+	}
+	
+	public Building getBuilding() {
+		return output;
 	}
 
 	// Event Listener on ComboBox[#dropMenu].onAction

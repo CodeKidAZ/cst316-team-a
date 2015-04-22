@@ -14,6 +14,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import application.Main;
@@ -28,7 +29,7 @@ public class VideoControllerTest extends Main{
 		
 	}
 
-	@Test
+	@Ignore @Test
 	public void testLoadScene() {
 		try {
 			launch("");

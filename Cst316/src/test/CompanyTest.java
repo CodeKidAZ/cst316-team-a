@@ -59,7 +59,7 @@ public class CompanyTest {
 
 	@Test
 	public void testGetRandD() {
-		assertEquals(c.getRandD(), null);
+		assertEquals(0, c.getRandD().size());
 	}
 
 	@Test

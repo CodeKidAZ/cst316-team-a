@@ -23,7 +23,7 @@ import org.json.JSONString;
 import org.json.JSONTokener;
 
 public class Player implements JSONString {
-	
+
 	private int points;
 	private int employees;
 	private double money;
@@ -33,6 +33,7 @@ public class Player implements JSONString {
 	private ArrayList<Building> buildings;
 	private Product product;
 	private ArrayList<Company> companies;
+
 	/**
 	 * Default construction of a player
 	 */
@@ -46,6 +47,7 @@ public class Player implements JSONString {
 		this.buildings = new ArrayList<Building>();
 		this.companies = new ArrayList<Company>();
 	}
+
 	/**
 	 * @param points
 	 * @param employees
@@ -63,6 +65,7 @@ public class Player implements JSONString {
 		this.buildings = new ArrayList<Building>();
 		this.companies = new ArrayList<Company>();
 	}
+
 	/**
 	 * Initialize a player class
 	 * @param points
@@ -70,7 +73,6 @@ public class Player implements JSONString {
 	 * @param name
 	 * @param assets
 	 */
-
 	public Player(int points, int employees, double money, String name, ArrayList<String> assets) {
 		this.setPoints(points);
 		this.setEmployees(employees);
@@ -81,14 +83,14 @@ public class Player implements JSONString {
 		this.buildings = new ArrayList<Building>();
 		this.companies = new ArrayList<Company>();
 	}
-	
+
 	/**
 	 * Construct a player from a JSONObject
 	 */
 	public Player(JSONObject jsonObject) throws Exception {
 		this.setFromJSONObject(jsonObject);
 	}
-	
+
 	private static String getJSONFilePath(String playerName) {
 		StringBuilder retVal = new StringBuilder();
 		if (System.getProperty("os.name").startsWith("Windows")) {
@@ -101,7 +103,6 @@ public class Player implements JSONString {
 		File directory = new File(retVal.toString()); 
 		if (!directory.exists()) {
 			directory.mkdir();
-			
 		}
 		if (playerName != null) {
 			if (playerName.indexOf(".") != -1 || playerName.indexOf("/") != -1 || playerName.indexOf("\\") != -1) {
@@ -112,7 +113,7 @@ public class Player implements JSONString {
 		}
 		return retVal.toString();
 	}
-	
+
 	public static List<String> getAvailablePlayers() {
 		File directory = new File(getJSONFilePath(null));
 		ArrayList<String> retVal = new ArrayList<>();
@@ -146,12 +147,12 @@ public class Player implements JSONString {
 			obj.put("Product", product);
 			obj.put("Companies", companies);
 			ret = obj.toString();
-		} catch(Exception e) {
+		} catch (Exception e) {
 			System.out.println("Failed to parse.");
 		}
 		return ret; //Return the JSON string
 	}
-	
+
 	/**
 	 * Saves the player's data to a JSON file
 	 */
@@ -161,25 +162,13 @@ public class Player implements JSONString {
 			out.println(toJSONString());
 			out.close();
 			return true;
-		} catch(Exception e) {
+		} catch (Exception e) {
 			System.out.println("Failed to write.");
 		}
 		return false;
 	}
 	
 	public void setFromJSONObject(JSONObject jsonObject) throws Exception {
-		
-		//Extract the data from the JSON file and store it into objects
-		int points = jsonObject.getInt("Points");
-		int employees = jsonObject.getInt("Employees");
-		double money = jsonObject.getDouble("Money");
-		String name = jsonObject.getString("Name");
-		if (!jsonObject.isNull("Product")) {
-			JSONObject productObject = jsonObject.getJSONObject("Product");
-			this.product = new Product(productObject);
-		} else {
-			this.product = null;
-		}
 		
 		//Get the list that is included in the JSON file
 		JSONArray jArrayAssets = jsonObject.getJSONArray("Assets");
@@ -216,6 +205,11 @@ public class Player implements JSONString {
 		for (int i = 0; i != jArrayCompanies.length(); ++i) {
 			companies.add(new Company(jArrayCompanies.getJSONObject(i)));
 		}
+		
+		double money = jsonObject.getDouble("Money");
+		int points = jsonObject.getInt("Points");
+		String name = jsonObject.getString("Name");
+		int employees = jsonObject.getInt("Employees");
 		
 		//Set the class values to what the JSON file produced
 		this.points = points;
@@ -266,7 +260,6 @@ public class Player implements JSONString {
 	 * Removes an asset from the list
 	 * @param str
 	 */
-
 	public void removeAsset(String str) {
 		for (int i = 0; i < assets.size(); i++) {
 			if (assets.get(i).equals(str)) {
@@ -287,85 +280,112 @@ public class Player implements JSONString {
 			}
 		}
 	}
+    
 	/**
 	 * @return points
 	 */
 	public int getPoints() {
 		return points;
 	}
+
 	/**
 	 * @param points
 	 */
 	public void setPoints(int points) {
 		this.points = points;
 	}
+
 	/**
 	 * @param add
 	 */
 	public void addPoints(int points) {
 		this.points += points;
 	}
+
 	/**
 	 * @return money
 	 */
 	public double getMoney() {
 		return money;
 	}
+
 	/**
 	 * @param money
 	 */
 	public void setMoney(double money) {
 		this.money = money;
-	}	
+	}
+
 	/**
 	 * @param money
 	 */
 	public void addMoney(double money) {
 		this.money += money;
 	}
+
 	/**
 	 * @return name
 	 */
 	public String getName() {
 		return name;
 	}
+
 	/**
 	 * @param name
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	/**
 	 * @return employees
 	 */
 	public int getEmployees() {
 		return employees;
 	}
+
 	/**
 	 * @param employees
 	 */
 	public void setEmployees(int employees) {
 		this.employees = employees;
 	}
+
 	/**
 	 * @param employees
 	 */
 	public void addEmployees(int employees) {
 		this.employees += employees;
 	}
+
 	/**
 	 * @return assets
 	 */
 	public ArrayList<String> getAssets() {
 		return assets;
 	}
+
 	/**
 	 * @return investments
 	 */
 	public ArrayList<Investment> getInvestments() {
 		return investments;
 	}
-	
+
+	/**
+	 * @return investments
+	 */
+	public Investment getInvestment(String name) {
+		Investment retVal = null;
+		for (int i = 0, l = investments.size(); i != l; ++i) {
+			Investment investment = investments.get(i);
+			if (investment.getName().equals(name)) {
+				retVal = investment;
+			}
+		}
+		return retVal;
+	}
+    
 	/**
 	 * Takes in a List and populates the assets list, without 
 	 * replacing any data.
@@ -425,17 +445,10 @@ public class Player implements JSONString {
 		//this.money += inv.calculateROI();
 	}
 	
-	public Product getProduct() {
-		return this.product;
-	}
-	
-	public void setProduct(Product product) {
-		this.product = product;
-	}
-	
 	public List<Building> getBuildings() {
 		return buildings;
 	}
+    
 	/**
 	 * Returns the entire company list
 	 * @return ArrayList<Company>
@@ -446,9 +459,11 @@ public class Player implements JSONString {
 		}
 		return companies;
 	}
+    
 	public void addCompanies(Company company) {
 		companies.add(company);
 	}
+    
 	/**
 	 * Searches the company array and if it finds a company equal to the parameter name
 	 * it returns that company object
@@ -476,21 +491,7 @@ public class Player implements JSONString {
 		else 
 			return null;
 	}
-	/**
-	 * Linear search through the company to try and find one with a matching name,
-	 * if it succeeds, that index is removed.
-	 * @param name			 Company's name
-	 * @return boolean 		   true = success; false = failure
-	 */
-	public boolean removeCompany(String name) {
-		for(int i = 0; i<companies.size(); i++) {
-			if(name.equals(companies.get(i).getCompanyName())) {
-				companies.remove(i);
-				return true;
-			}
-		}
-		return false;
-	}
+
 	public boolean investmentExists(String companyName) {
 		boolean e = false;
 		for(int x = 0; x < investments.size(); x++){
@@ -500,14 +501,33 @@ public class Player implements JSONString {
 		}
 		return e;
 	}
-	public Investment getInvestment(String name){
-		Investment inv = null;
-		for(int x = 0; x < investments.size(); x++){
-			if(investments.get(x).getName().equals(name)){
-				inv = investments.get(x);
+   
+
+	public Product getProduct() {
+		return this.product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
+
+	/**
+	 * Linear search through the company to try and find one with a matching
+	 * name, if it succeeds, that index is removed.
+	 *
+	 * @param name Company's name
+	 * @return boolean true = success; false = failure
+	 */
+	public boolean removeCompany(String name) {
+		for (int i = 0; i < companies.size(); i++) {
+			if (name.equals(companies.get(i).getCompanyName())) {
+				companies.remove(i);
+				return true;
 			}
 		}
-		return inv;
+		return false;
 	}
+
 }
 

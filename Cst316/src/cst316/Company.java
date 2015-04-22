@@ -8,10 +8,8 @@ import javafx.beans.property.StringProperty;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class Company 
-{
+public class Company {
     String name;
-    
   
 	private ArrayList<Product> myProducts;
     private ArrayList<ResearchDevelObject> myRandD;
@@ -36,31 +34,31 @@ public class Company
     	this.myProducts = new ArrayList<Product>();
     	
     } 
+
     /**
      * Creates a company based on JSON values in a text file
      * @param jsonObject
      * @throws Exception
      */
-	public Company(JSONObject jsonObject) throws Exception {
+    public Company(JSONObject jsonObject) throws Exception {
         this.name = jsonObject.getString("companyName");
         this.employees = jsonObject.getDouble("employees");
-        this.marketPower = jsonObject.getDouble("marketPower");
-        
+
         try {
-		JSONArray jArrayProducts = jsonObject.getJSONArray("products");
-		ArrayList<Product> tempProducts = new ArrayList<Product>();
-        
-		for (int i = 0; i != jArrayProducts.length(); ++i) {
-			tempProducts.add(new Product(jArrayProducts.getJSONObject(i)));
-		}
-		
-        this.myProducts = tempProducts;
+            JSONArray jArrayProducts = jsonObject.getJSONArray("products");
+            ArrayList<Product> tempProducts = new ArrayList<Product>();
+
+            for (int i = 0; i != jArrayProducts.length(); ++i) {
+                tempProducts.add(new Product(jArrayProducts.getJSONObject(i)));
+            }
+
+            this.myProducts = tempProducts;
         } catch (Exception e) {
-        	System.out.println("Failed to read products inside company class.");
+            System.out.println("Failed to read products inside company class.");
         }
-        
+
     }
-	
+
     public String toJSONString() {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("Name", this.name);
