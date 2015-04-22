@@ -76,7 +76,8 @@ public class HRController extends AnchorPane {
 		String a = companyComboBox.getValue();
 		for(int i = 0; i<companies.size(); i++) 
 		{
-			if (companies.get(i).getCompanyName() ==a)
+			if (companies.get(i).getCompanyName().equals(a))
+			//if (companies.get(i).getCompanyName() ==a)
 			{
 				System.out.println("Company is" + companies.get(i).getCompanyName());
 				/*HireController ctr = (HireController) application.replaceSceneContent("Hire.fxml", HireController.class);
