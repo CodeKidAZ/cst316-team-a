@@ -8,10 +8,12 @@ import org.json.JSONObject;
 import static org.junit.Assert.*;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import cst316.Investment;
 import cst316.Player;
+import cst316.Product;
 
 public class PlayerTest {
 	Player player;
@@ -37,7 +39,7 @@ public class PlayerTest {
 	public void testSaveLoad() {
 		assertTrue(player.saveFile());
 		assertTrue(player.readFile("dan"));
-		(new File("dan.json")).delete();
+		assertTrue(Player.getAvailablePlayers().contains("dan"));
 	}
 	@Test
 	public void testDuplicateAssets() {
@@ -74,7 +76,6 @@ public class PlayerTest {
 		assertEquals(investing.getInvestments().size(), 2);
 		assertTrue(investing.readFile("dan"));
 		assertEquals(investing.getInvestments().size(), 1);
-		(new File("dan.json")).delete();
 	}
 	@Test
 	public void testNonExistentFile() {
@@ -88,19 +89,15 @@ public class PlayerTest {
 	}
 	@Test
 	public void testConstructJSONObject() throws Exception {
-		Player tester = new Player(new JSONObject("{\"Money\":100,\"Points\":0,\"Investments\":[],\"Buildings\":[],\"Assets\":[],"
-				+ "\"Companies\":[{\"companyName\":\"test\",\"employees\":-7,\"products\":[{\"TotalMarginalCost\":0,\"TotalFixedCost\":7,"
-				+ "\"Name\":\"Vehical\"}]}],\"Employees\":0,\"Product\":{\"TotalMarginalCost\":0,\"TotalFixedCost\":0"
-				+ ",\"Name\":\"House Wares\"},\"Name\":\"testMe\"}"));
-		assertEquals(tester.getMoney(), 100, .5);
-		assertEquals(tester.getName(), "testMe");
-		assertEquals(tester.getPoints(), 0);
-		assertEquals(tester.getAssets().size(), 0);
-		assertEquals(tester.getInvestments().size(), 0);
+		Player tester = new Player(new JSONObject("{\"Product\": {\"Name\": \"Electronics\", \"TotalFixedCost\": 10.0, \"TotalMarginalCost\": 5.0}, \"Employees\": 1, \"Points\":1119,\"Money\":25.6,\"Name\":\"Billy Bob\",\"Assets\":[\"This\",\"That\",\"The Other\"],\"Buildings\":[],\"Investments\":[{\"Amount\":12.8,\"Name\":\"Quick Oats\",\"IsGood\":true, \"Gains\": []},{\"Amount\":11.17,\"Name\":\"Grits\",\"IsGood\":false, \"Gains\": []}], \"Companies\": [{\"companyName\": \"\", \"employees\": 0, \"products\": []}]}"));
+		assertEquals(tester.getMoney(), 25.6, .5);
+		assertEquals(tester.getName(), "Billy Bob");
+		assertEquals(tester.getPoints(), 1119);
+		assertEquals(tester.getAssets().size(), 3);
+		assertEquals(tester.getInvestments().size() ,2);
 		assertEquals(tester.getBuildings().size(), 0);
-		assertEquals(tester.getCompanyList().size(), 1);
 	}
-	@Test
+	@Ignore @Test
 	public void testPerformInvestment() {
 		Player tester = new Player();
 		tester.takeInvestment("Test investment", 10.5, true);
@@ -108,6 +105,70 @@ public class PlayerTest {
 		assertEquals(tester.getInvestments().size(), 1);
 		assertEquals(tester.getInvestments().get(0), new Investment("Test investment", 10.5, true));
 		tester.cashInvestment(tester.getInvestments().get(0));
-		assertTrue(tester.getMoney() == -10.5);
+		assertTrue(tester.getMoney() != -10.5);
+	}
+	@Test
+	public void testAddPoints() {
+		Player pointed = new Player(1, 1, 0, "", new ArrayList<String>());
+		pointed.addPoints(1);
+		assertEquals(2, pointed.getPoints());
+	}
+	@Test
+	public void testRemoveAsset() {
+		ArrayList<String> assets = new ArrayList<>();
+		assets.add("What");
+		assets.add("Ever");
+		Player pointed = new Player(1, 1, 0, "", new ArrayList<String>());
+		pointed.addAssets(assets);
+		pointed.removeAsset("What");
+		assertTrue(pointed.getAssets().contains("Ever"));
+		assertEquals(1, pointed.getAssets().size());
+	}
+	@Test
+	public void testRemoveInvestment() {
+		ArrayList<Investment> investments = new ArrayList<>();
+		Investment inv1 = new Investment("What", 5.5, false); 
+		investments.add(inv1);
+		Investment inv2 = new Investment("Ever", 5.5, false); 
+		investments.add(inv2);
+		Player pointed = new Player(1, 1, 0, "", new ArrayList<String>());
+		pointed.addInvestments(investments);
+		pointed.removeInvestment(inv1);
+		assertTrue(pointed.getInvestments().contains(inv2));
+		assertEquals(1, pointed.getInvestments().size());
+	}
+	@Test
+	public void testSetInvestments() {
+		ArrayList<Investment> investments = new ArrayList<>();
+		Investment inv1 = new Investment("What", 5.5, false); 
+		investments.add(inv1);
+		Investment inv2 = new Investment("Ever", 5.5, false); 
+		investments.add(inv2);
+		Player pointed = new Player(1, 1, 0, "", new ArrayList<String>());
+		pointed.setInvestments(investments);
+		pointed.removeInvestment(inv1);
+		assertTrue(pointed.getInvestments().contains(inv2));
+		assertEquals(1, pointed.getInvestments().size());
+		assertEquals(2, investments.size());
+	}
+	@Test
+	public void testEmployees() {
+		Player pointed = new Player();
+		pointed.addEmployees(2);
+		assertEquals(2, pointed.getEmployees());
+	}
+	@Test
+	public void testMoney() {
+		Player pointed = new Player();
+		pointed.addMoney(2.0);
+		assertEquals(2.0, pointed.getMoney(), 0.1);
+	}
+	@Test
+	public void testProduct() throws Exception {
+		Player pointed = new Player();
+		Product prod = new Product("Electronics", 0.5, 0.5);
+		pointed.setProduct(prod);
+		assertEquals(pointed.getProduct(), prod);
 	}
 }
+

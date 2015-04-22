@@ -75,7 +75,7 @@
       </Group>
       <Button fx:id="productButton" layoutX="820.0" layoutY="140.0" mnemonicParsing="false" onMouseClicked="#productMouseClicked" prefHeight="47.0" prefWidth="218.0" text="Go to Product management" />
       <Separator layoutX="707.0" layoutY="-1.0" orientation="VERTICAL" prefHeight="720.0" prefWidth="11.0" />
-      <Button fx:id="deleteCompanyButt" layoutX="546.0" layoutY="395.0" mnemonicParsing="false" onAction="#deleteCompany" prefHeight="53.0" prefWidth="118.0" text="Delete Company" />
+      <Button fx:id="sellCompanyButt" layoutX="546.0" layoutY="395.0" mnemonicParsing="false" onAction="#sellCompany" prefHeight="53.0" prefWidth="118.0" text="Sell Company" />
       <ComboBox fx:id="companyComboBox" layoutX="241.0" layoutY="262.0" onAction="#currentCompany" prefWidth="150.0" />
       <Label layoutX="141.0" layoutY="266.0" text="Curent company: " />
       <Label layoutX="408.0" layoutY="266.0" text="Total:" />

@@ -20,13 +20,13 @@
          <children>
             <Group>
                <children>
-                  <ComboBox fx:id="productCombo" layoutX="116.0" layoutY="155.0" prefHeight="35.0" prefWidth="178.0" promptText="Select a product" />
-                  <Button fx:id="continueBtn" layoutX="166.0" layoutY="215.0" mnemonicParsing="false" onAction="#handle" prefHeight="35.0" prefWidth="68.0" text="Continue" GridPane.rowIndex="1">
+                  <ComboBox fx:id="productCombo" layoutX="190.0" layoutY="152.0" prefHeight="35.0" prefWidth="178.0" promptText="Select a product" />
+                  <Button fx:id="continueBtn" layoutX="245.0" layoutY="202.0" mnemonicParsing="false" onAction="#handle" prefHeight="35.0" prefWidth="68.0" text="Continue" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </GridPane.margin>
                   </Button>
-                  <Label layoutX="172.0" layoutY="86.0" text="PLAYER">
+                  <Label alignment="CENTER" layoutX="126.0" layoutY="88.0" prefHeight="26.0" prefWidth="316.0" text="Select a product for your first company:">
                      <font>
                         <Font size="17.0" />
                      </font>

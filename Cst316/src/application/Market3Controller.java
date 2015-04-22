@@ -1,3 +1,4 @@
+
 package application;
 
 import java.net.URL;
@@ -27,12 +28,7 @@ import javafx.scene.text.Text;
  * @author Wesley Local
  *
  */
-/**
- * @author Wesley Local
- *
- */
 public class Market3Controller extends AnchorPane {
-
 
     @FXML
     private ResourceBundle resources;
@@ -197,7 +193,7 @@ public class Market3Controller extends AnchorPane {
 	 * @param event
 	 * @throws Exception
 	 */
-	@FXML
+
 	public void returnButtonFired(ActionEvent event) throws Exception {
 		LandingController ctr = (LandingController) application.replaceSceneContent("Landing.fxml", LandingController.class);
 		ctr.setApp(application);
@@ -403,3 +399,4 @@ public class Market3Controller extends AnchorPane {
 		
 	}
 }
+
