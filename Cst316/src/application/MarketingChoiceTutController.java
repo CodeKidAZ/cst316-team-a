@@ -1,3 +1,4 @@
+
 package application;
 
 import java.net.URL;
@@ -5,8 +6,11 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.ResourceBundle;
 
+import cst316.Building;
 import cst316.Company;
 import cst316.Employee;
+import cst316.MCamp;
+import cst316.MarketCompany;
 import cst316.Player;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -25,7 +29,6 @@ import javafx.scene.text.Text;
  *
  */
 public class MarketingChoiceTutController extends AnchorPane {
-
 
     @FXML
     private ResourceBundle resources;
@@ -61,10 +64,11 @@ public class MarketingChoiceTutController extends AnchorPane {
     Player player;
     double mP = -1;
     double mProjected = -1;
-    int i = 0;
+    int i = 1;
     
     double mPTemp;
     double MProjTemp;
+    private MCamp mCTemp;
     
 	private double power;
 	private boolean isGood = false;
@@ -75,62 +79,45 @@ public class MarketingChoiceTutController extends AnchorPane {
 	Company targetComp = new Company("default");
     
 
-    
 	//Source: http://giphy.com/gifs/printer-e5aasdfsaf18
-    Image image1 = new Image(Market3Controller.class.getClassLoader().getResourceAsStream("res/printM.gif"));
+    Image image1 = new Image(MarketingChoiceTutController.class.getClassLoader().getResourceAsStream("res/Print Marketing.gif"));
 	//Source: http://giphy.com/gifs/coupouner-asdxcvxcv11
-    Image image2 = new Image(Market3Controller.class.getClassLoader().getResourceAsStream("res/couponM.jpg"));
+    Image image2 = new Image(MarketingChoiceTutController.class.getClassLoader().getResourceAsStream("res/couponM.jpg"));
 	//Source: http://giphy.com/gifs/wackycosplay-fghjgfj13
-    Image image3 = new Image(Market3Controller.class.getClassLoader().getResourceAsStream("res/wackyM2.gif"));
+    Image image3 = new Image(MarketingChoiceTutController.class.getClassLoader().getResourceAsStream("res/wackyM2.gif"));
 	//Source: http://giphy.com/gifs/television-yuituryfgj55
-    Image image4 = new Image(Market3Controller.class.getClassLoader().getResourceAsStream("res/tvM.gif"));
+    Image image4 = new Image(MarketingChoiceTutController.class.getClassLoader().getResourceAsStream("res/tvM.gif"));
     
 	//Source: http://giphy.com/gifs/mickey-45646asdfdas
-    Image image5 = new Image(Market3Controller.class.getClassLoader().getResourceAsStream("res/question.gif"));
+    Image image5 = new Image(MarketingChoiceTutController.class.getClassLoader().getResourceAsStream("res/question.gif"));
     
 	//Source: http://giphy.com/gifs/money-234225qwer
-    Image image6 = new Image(Market3Controller.class.getClassLoader().getResourceAsStream("res/cGames.gif"));
+    Image image6 = new Image(MarketingChoiceTutController.class.getClassLoader().getResourceAsStream("res/cGames.gif"));
     
 	private static Random random = new Random();
 	
     
-
+	public void setMCamp(MCamp mc) {
+		this.outputType = mc.getName();
+		this.mCTemp = mc;
+		dropMenu.getSelectionModel().select(mc.getName());
+		Image image = new Image(getClass().getClassLoader().getResourceAsStream(mc.getImage()));
+		marketingPicture.setImage(image);
+		descriptionBox.clear();
+		descriptionBox.appendText("Cost: " + mc.getTotalCost() + "\n");
+		descriptionBox.appendText("Description: " + mc.getDescription() + "\n");
+	}
+	
+	
     // Event Listener on ComboBox[#dropMenuPotential].onAction
     /**
      * @param event
      */
     @FXML
     public void dropMenuFired(ActionEvent event) {
-        //doneText.setText(null);
-    	outputType = (String) dropMenu.getSelectionModel().getSelectedItem().toString();
-        switch (outputType) {
-            case "Print Marketing":
-                marketingPicture.setImage(image1);
-                descriptionBox.clear();
-                descriptionBox.appendText("Cost: 100 \n");
-                descriptionBox.appendText("Description: Moderately expensive and moderately reliable form of Marketing. +5MP to +15");
-                break;
-            case "Coupon Marketing":
-                marketingPicture.setImage(image2);
-                descriptionBox.clear();
-                descriptionBox.appendText("Cost: 200 \n");
-                descriptionBox.appendText("Description: A more expensive and more reliable form of Marketing. +15 MP to +20 MP");
-                ;
-                break;
-            case "WWITM Marketing":
-                marketingPicture.setImage(image3);
-                descriptionBox.clear();
-                descriptionBox.appendText("Cost: 50 \n");
-                descriptionBox.appendText("Description: The Cheapest Marketing option, and the most unreliable. The 'Wacky Waving Inflatable Tube Man' is either hit or miss with the audience. -10 MP to +40 MP");
-                break;
-            case "Television Marketing":
-                marketingPicture.setImage(image4);
-                descriptionBox.clear();
-                descriptionBox.appendText("Cost: 275 \n");
-                descriptionBox.appendText("Description: The Most Expensive Marketing option, and the most reliable form of marketing. +33 MP to +35 MP");
-                break;
+		String name = (String) dropMenu.getSelectionModel().getSelectedItem().toString();
+		setMCamp(new MCamp(name));
         }
-    }
     
     // Event Listener on ComboBox[#dropMenuPotential].onAction
     /**
@@ -151,12 +138,7 @@ public class MarketingChoiceTutController extends AnchorPane {
 		targetComp = player.getCompany(output);
 		System.out.println("tempComps name " + targetComp.getName());
 		System.out.println(targetComp.getMarketPower());
-		//System.out.println(player.getCompany(output));
-		//System.out.println(player.getCompany(output).getMarketPower());
-        /*output = (dropMenu2.getSelectionModel().getSelectedItem()).toString();
-        Company targetComp = new Company("default");
-        targetComp = player.getCompany(output);
-        */
+
 
 
 
@@ -211,7 +193,7 @@ public class MarketingChoiceTutController extends AnchorPane {
 	 * @param event
 	 * @throws Exception
 	 */
-	@FXML
+
 	public void returnButtonFired(ActionEvent event) throws Exception {
 		LandingController ctr = (LandingController) application.replaceSceneContent("Landing.fxml", LandingController.class);
 		ctr.setApp(application);
@@ -301,11 +283,11 @@ public class MarketingChoiceTutController extends AnchorPane {
 		
         marketingPicture.setImage(image1);
         descriptionBox.clear();
-        descriptionBox.appendText("Cost: x \n");
+        descriptionBox.appendText("Cost: 100 \n");
         descriptionBox.appendText("Description: Moderately expensive and moderately reliable form of Marketing. +5MP to +15");
 
 		playerCompanyList = player.getCompanyList();
-		ArrayList<String> companiesName = null;
+		ArrayList<String> companiesName = new ArrayList<String>();
 		
 		String temp = "hello";
   
@@ -317,10 +299,9 @@ public class MarketingChoiceTutController extends AnchorPane {
 				temp = (playerCompanyList.get(i).getCompanyName());
 				}
 			}
-		
-		i = 0;
+
 		}
-	
+		
 	/**
 	 * @param player
 	 */
@@ -418,3 +399,4 @@ public class MarketingChoiceTutController extends AnchorPane {
 		
 	}
 }
+
