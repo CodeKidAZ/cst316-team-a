@@ -123,7 +123,7 @@ public class Company {
 	}
 
 
-	public TreeMap getHiredTree(){ //something wrong with this one - suppose to access employee objects
+	public TreeMap getHiredTree(){ //something wrong- suppose to access employee objects
 		return hiredTree;
 	}
 
