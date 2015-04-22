@@ -12,10 +12,10 @@ import application.Main;
 import application.SurpriseEventController;
 import application.TimedEventController;
 
-public class TimedEventService extends Service<Void> implements EventHandler<WorkerStateEvent>{
+public class MarketCampaignService extends Service<Void> implements EventHandler<WorkerStateEvent>{
 	private Main app;
 	
-	private TimedEventService(Main app){
+	private MarketCampaignService(Main app){
 		this.app = app;
 		this.setOnSucceeded(this);
 		this.start();
@@ -24,7 +24,7 @@ public class TimedEventService extends Service<Void> implements EventHandler<Wor
 	// This posts to the UI thread whatever should be seen by the user when timers expire
 	@Override
     public void handle(WorkerStateEvent t) {
-		if(app!=null){
+		/*if(app!=null){
 			Stage stage = app.getStage();
 			Scene scene = stage.getScene(); // This is a copy of what the user was doing before
 
@@ -44,12 +44,14 @@ public class TimedEventService extends Service<Void> implements EventHandler<Wor
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			new TimedEventService(app);
-		}
+			new MarketCampaignService(app);
+			
+		}*/
+		
     }
 
 	public static void createNewInstance(Main app){
-		new TimedEventService(app);
+		new MarketCampaignService(app);
 	}
 	
 	// This occurs off of the main UI thread and is where any timing should take place
@@ -60,9 +62,7 @@ public class TimedEventService extends Service<Void> implements EventHandler<Wor
 			@Override
 			protected Void call() throws Exception {
 				int minute = 60000;
-				Random rand = new Random();
-				rand.setSeed(System.currentTimeMillis());
-				int time = rand.nextInt(7*minute)+3*minute;
+				int time = 5*minute;
 				//System.out.println(time/minute + "minutes");
 				Thread.sleep(time);
 				return null;

@@ -1,15 +1,17 @@
 package application;
 
-import cst316.CompanyClass;
 import cst316.Employee;
+
 import java.io.InputStream;
 
 import cst316.Management;
 import cst316.Player;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.JavaFXBuilderFactory;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
@@ -37,7 +39,12 @@ public class Main extends Application {
             stage.setMinHeight(MINIMUM_WINDOW_HEIGHT);
             stage.setScene(scene);
             stage.show();
-          
+            stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                @Override
+                public void handle(WindowEvent event) {
+                    player.saveFile();
+                }
+            });
            
             LoginController ctr = (LoginController) replaceSceneContent("Login.fxml", null);
             

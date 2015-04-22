@@ -51,7 +51,7 @@ public class TimedEventController extends AnchorPane implements EventHandler<Wor
 		
 		// TODO: Investment content added here (time, good/bad, etc.)
 		good = true;
-		name = "FRND1";
+		name = "FRND";
 		wait = Wait.NONE;
 		timeLabel.setText(timeMax/1000 + " Seconds");
 		this.app = app;

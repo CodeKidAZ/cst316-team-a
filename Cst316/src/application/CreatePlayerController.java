@@ -3,6 +3,8 @@ package application;
 import java.io.InputStream;
 import java.util.ArrayList;
 
+import service.InvestmentService;
+import service.TimedEventService;
 import cst316.Player;
 import cst316.Product;
 import javafx.collections.ObservableList;
@@ -74,6 +76,8 @@ public class CreatePlayerController extends AnchorPane {
             player.saveFile();
             BuildingChoiceController ctr = (BuildingChoiceController) application.replaceSceneContent("BuildingChoice.fxml", BuildingChoiceController.class);
             ctr.setApp(application);
+            TimedEventService.createNewInstance(application);
+    		InvestmentService.createNewInstance(application);
         } catch (Exception e) {
             throw new Error(e);
         }

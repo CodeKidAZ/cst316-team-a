@@ -44,7 +44,7 @@ public class Building implements JSONString {
     }
 
     private void loadCommonAttributes() throws Exception {
-        JSONTokener tokener = new JSONTokener(this.getClass().getClassLoader().getResourceAsStream("res/buildings.json"));
+        JSONTokener tokener    = new JSONTokener(this.getClass().getClassLoader().getResourceAsStream("res/buildings.json"));
         JSONObject allProducts = new JSONObject(tokener);
         JSONObject myProduct   = allProducts.getJSONObject(name);
         this.totalCost   = myProduct.getDouble("TotalCost");

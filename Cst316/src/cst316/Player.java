@@ -32,7 +32,7 @@ public class Player implements JSONString {
 	private ArrayList<Investment> investments;
 	private ArrayList<Building> buildings;
 	private Product product;
-	
+	private ArrayList<Company> companies;
 	/**
 	 * Default construction of a player
 	 */
@@ -44,6 +44,7 @@ public class Player implements JSONString {
 		this.assets = new ArrayList<String>();
 		this.investments = new ArrayList<Investment>();
 		this.buildings = new ArrayList<Building>();
+		this.companies = new ArrayList<Company>();
 	}
 	/**
 	 * @param points
@@ -60,6 +61,7 @@ public class Player implements JSONString {
 		this.setAssets(assets);
 		this.investments = new ArrayList<Investment>();
 		this.buildings = new ArrayList<Building>();
+		this.companies = new ArrayList<Company>();
 	}
 	/**
 	 * Initialize a player class
@@ -77,6 +79,7 @@ public class Player implements JSONString {
 		this.setAssets(assets);
 		this.investments = new ArrayList<Investment>();
 		this.buildings = new ArrayList<Building>();
+		this.companies = new ArrayList<Company>();
 	}
 	
 	/**
@@ -141,6 +144,7 @@ public class Player implements JSONString {
 			obj.put("Investments", investments);
 			obj.put("Buildings", buildings);
 			obj.put("Product", product);
+			obj.put("Companies", companies);
 			ret = obj.toString();
 		} catch(Exception e) {
 			System.out.println("Failed to parse.");
@@ -204,6 +208,15 @@ public class Player implements JSONString {
 			buildings.add(new Building(jArrayBuildings.getJSONObject(i)));
 		}
 		
+		//Get the list that is included in the JSON file
+		JSONArray jArrayCompanies = jsonObject.getJSONArray("Companies");
+		ArrayList<Company> companies = new ArrayList<Company>();
+		
+		//Populate the list with the JSON array values
+		for (int i = 0; i != jArrayCompanies.length(); ++i) {
+			companies.add(new Company(jArrayCompanies.getJSONObject(i)));
+		}
+		
 		//Set the class values to what the JSON file produced
 		this.points = points;
 		this.money = money;
@@ -212,6 +225,7 @@ public class Player implements JSONString {
 		this.employees = employees;
 		this.investments = investments;
 		this.buildings = buildings;
+		this.companies = companies;
 	}
 	
 	/**
@@ -345,11 +359,9 @@ public class Player implements JSONString {
 	public ArrayList<String> getAssets() {
 		return assets;
 	}
-	
 	/**
 	 * @return investments
 	 */
-
 	public ArrayList<Investment> getInvestments() {
 		return investments;
 	}
@@ -409,7 +421,8 @@ public class Player implements JSONString {
 	 * @param inv  Investment to take a return from.
 	 */
 	public void cashInvestment(Investment inv) {
-		this.money += inv.calculateROI();
+		// TODO: Sell investment 
+		//this.money += inv.calculateROI();
 	}
 	
 	public Product getProduct() {
@@ -423,4 +436,78 @@ public class Player implements JSONString {
 	public List<Building> getBuildings() {
 		return buildings;
 	}
+	/**
+	 * Returns the entire company list
+	 * @return ArrayList<Company>
+	 */
+	public ArrayList<Company> getCompanyList() {
+		if(companies == null) {
+			companies = new ArrayList<Company>();
+		}
+		return companies;
+	}
+	public void addCompanies(Company company) {
+		companies.add(company);
+	}
+	/**
+	 * Searches the company array and if it finds a company equal to the parameter name
+	 * it returns that company object
+	 * @param name             Company's name
+	 * @return Company         Returns a company object or null
+	 */
+	public Company getCompany(String name) {
+		for(int i = 0; i<companies.size(); i++) {
+			if(name.equals(companies.get(i).getCompanyName()))
+				return companies.get(i);
+		}
+		return null;
+	}
+	/**
+	 * Get the string name of a company using it's index #
+	 * Purpose is to reduce long chain calls to get company names.
+	 * @param index		Company's location in the array list
+	 * @return
+	 */
+	public String fetchCompanyString(int index) {
+		//If statement to ensure that the index actually exists
+		if(!(companies.size() < index))
+			return companies.get(index).getCompanyName();
+		//If the index is bad input, return a null value
+		else 
+			return null;
+	}
+	/**
+	 * Linear search through the company to try and find one with a matching name,
+	 * if it succeeds, that index is removed.
+	 * @param name             Company's name
+	 * @return boolean 	       true = success; false = failure
+	 */
+	public boolean removeCompany(String name) {
+		for(int i = 0; i<companies.size(); i++) {
+			if(name.equals(companies.get(i).getCompanyName())) {
+				companies.remove(i);
+				return true;
+			}
+		}
+		return false;
+	}
+	public boolean investmentExists(String companyName) {
+		boolean e = false;
+		for(int x = 0; x < investments.size(); x++){
+			if(investments.get(x).getName().equals(companyName)){
+				e = true;
+			}
+		}
+		return e;
+	}
+	public Investment getInvestment(String name){
+		Investment inv = null;
+		for(int x = 0; x < investments.size(); x++){
+			if(investments.get(x).getName().equals(name)){
+				inv = investments.get(x);
+			}
+		}
+		return inv;
+	}
 }
+
