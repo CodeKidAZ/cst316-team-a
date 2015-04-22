@@ -80,11 +80,10 @@ public class HRController extends AnchorPane {
 			//if (companies.get(i).getCompanyName() ==a)
 			{
 				System.out.println("Company is" + companies.get(i).getCompanyName());
-				/*HireController ctr = (HireController) application.replaceSceneContent("Hire.fxml", HireController.class);
+				HireController ctr = (HireController) application.replaceSceneContent("Hire.fxml", HireController.class);
 				ctr.setCompany(companies.get(i));
 				ctr.setApp(application);
 				ctr.setPlayer(player);
-				 */
 			}
 			else
 			{
