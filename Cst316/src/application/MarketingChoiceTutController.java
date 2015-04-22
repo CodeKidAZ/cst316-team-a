@@ -28,7 +28,7 @@ import javafx.scene.text.Text;
  * @author Wesley Local
  *
  */
-public class Market3Controller extends AnchorPane {
+public class MarketingChoiceTutController extends AnchorPane {
 
 
     @FXML
@@ -65,6 +65,7 @@ public class Market3Controller extends AnchorPane {
     Player player;
     double mP = -1;
     double mProjected = -1;
+    int i = 0;
     
     double mPTemp;
     double MProjTemp;
@@ -77,14 +78,14 @@ public class Market3Controller extends AnchorPane {
     
 
     
-    Image image1 = new Image(Market3Controller.class.getClassLoader().getResourceAsStream("res/printM.gif"));
-    Image image2 = new Image(Market3Controller.class.getClassLoader().getResourceAsStream("res/couponM.jpg"));
-    Image image3 = new Image(Market3Controller.class.getClassLoader().getResourceAsStream("res/wackyM2.gif"));
-    Image image4 = new Image(Market3Controller.class.getClassLoader().getResourceAsStream("res/tvM.gif"));
+    Image image1 = new Image(MarketingChoiceTutController.class.getClassLoader().getResourceAsStream("res/printM.gif"));
+    Image image2 = new Image(MarketingChoiceTutController.class.getClassLoader().getResourceAsStream("res/couponM.jpg"));
+    Image image3 = new Image(MarketingChoiceTutController.class.getClassLoader().getResourceAsStream("res/wackyM2.gif"));
+    Image image4 = new Image(MarketingChoiceTutController.class.getClassLoader().getResourceAsStream("res/tvM.gif"));
     
-    Image image5 = new Image(Market3Controller.class.getClassLoader().getResourceAsStream("res/question.gif"));
+    Image image5 = new Image(MarketingChoiceTutController.class.getClassLoader().getResourceAsStream("res/question.gif"));
     
-    Image image6 = new Image(Market3Controller.class.getClassLoader().getResourceAsStream("res/cGames.gif"));
+    Image image6 = new Image(MarketingChoiceTutController.class.getClassLoader().getResourceAsStream("res/cGames.gif"));
     
 	private static Random random = new Random();
 	
@@ -235,10 +236,15 @@ public class Market3Controller extends AnchorPane {
 	 * @param event
 	 * @throws Exception
 	 */
+	// Event Listener on ImageView[#questionMark].onMouseEntered
 	@FXML
 	public void questionEntered(MouseEvent event) throws Exception {
-		MarketingChoiceTutController ctr = (MarketingChoiceTutController) application.replaceSceneContent("MarketingChoiceTut.fxml", MarketingChoiceTutController.class);
-		ctr.setApp(application);
+		i++;
+		//System.out.println(i);
+		if (i >= 1){
+			Market3Controller ctr = (Market3Controller) application.replaceSceneContent("MarketingChoice.fxml", Market3Controller.class);
+			ctr.setApp(application);
+		}
 	}
 	
     /**
