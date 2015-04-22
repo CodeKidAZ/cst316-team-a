@@ -43,6 +43,7 @@ public class Company {
     public Company(JSONObject jsonObject) throws Exception {
         this.name = jsonObject.getString("companyName");
         this.employees = jsonObject.getDouble("employees");
+        this.marketPower = jsonObject.getDouble("marketPower");
 
         try {
             JSONArray jArrayProducts = jsonObject.getJSONArray("products");
