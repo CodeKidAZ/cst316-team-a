@@ -3,7 +3,6 @@ package application;
 
 
 import java.util.ArrayList;
-import java.util.Set;
 import java.util.TreeMap;
 
 import javafx.collections.FXCollections;
@@ -20,8 +19,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import cst316.Company;
-import cst316.Employee;
-import cst316.Management;
 import cst316.Player;
 
 /**
@@ -53,7 +50,7 @@ public class HRController extends AnchorPane {
 	public static ObservableList<String> comboList = FXCollections.observableArrayList();
 	public static TreeMap<String, Company> tree1 = new TreeMap<String, Company>(); 
 	ArrayList<Company> companies;
-
+	
 	@FXML
 	private void productMouseClicked(MouseEvent event) throws Exception {
 		ProductManagementController ctr = (ProductManagementController) application.replaceSceneContent("ProductManagement.fxml", ProductManagementController.class);
@@ -243,11 +240,26 @@ public class HRController extends AnchorPane {
 		//System.out.println(companyComboBox.getSelectionModel().getSelectedItem());
 		
 	}
-
+	
+	/**
+	 * Remove the company from the selection boxes and also from the JSON file
+	 * @param event
+	 */
 	@FXML
-	private void deleteCompany(ActionEvent event) {
+	private void sellCompany(ActionEvent event) {
+		this.player = application.getPlayer();
+		//Get the selected company's string
+		if(companyTableView.getSelectionModel().getSelectedItem() != null) {
+			String name = (String) companyTableView.getSelectionModel().getSelectedItem().getCompanyName();
+			player.addMoney(player.getCompany(name).getMarketPower()*100);
+			//Remove it from the stored list in this class AND the player class
+			CompanyList.remove(player.getCompany(name));
+			player.removeCompany(name);
+			
+			player.saveFile();
+		}
 	}
-
+	
     @FXML
     private void currentCompany(ActionEvent event) {
     	System.out.println("YOU SELECTED" + companyComboBox.getSelectionModel().getSelectedItem());

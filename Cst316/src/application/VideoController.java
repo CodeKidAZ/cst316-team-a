@@ -18,7 +18,7 @@ public class VideoController extends AnchorPane{
 	private String name;
 	private Main app;
 	private MediaPlayer player;
-	private CreatePlayerController ctr;
+	
 	
 	public void setApp(Main app, String name){
 		String mediaUri;
@@ -46,7 +46,7 @@ public class VideoController extends AnchorPane{
 		
 		player.stop();
 		try {
-			ctr = (CreatePlayerController) app.replaceSceneContent("CreatePlayer.fxml", null);
+			FirstCompanyController ctr = (FirstCompanyController) app.replaceSceneContent("FirstCompany.fxml", FirstCompanyController.class);
 			ctr.setApp(app);
 			ctr.setPlayerName(name);
 		} catch (Exception e) {
@@ -58,7 +58,7 @@ public class VideoController extends AnchorPane{
 		@Override
 		public void run() {
 			try {
-				ctr = (CreatePlayerController) app.replaceSceneContent("CreatePlayer.fxml", null);
+				FirstCompanyController ctr = (FirstCompanyController) app.replaceSceneContent("FirstCompany.fxml", FirstCompanyController.class);
 				ctr.setApp(app);
 				ctr.setPlayerName(name);
 			} catch (Exception e) {
