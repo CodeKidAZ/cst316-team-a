@@ -26,7 +26,6 @@ public class Company
     	this.marketPower = 0;
     	this.myRandD = new ArrayList<ResearchDevelObject>();
     	this.myProducts = new ArrayList<Product>();
-    	
     } 
     
     public Company(String name, double marketPower){
