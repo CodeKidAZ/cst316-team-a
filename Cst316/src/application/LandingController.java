@@ -124,7 +124,6 @@ public class LandingController extends AnchorPane {
 	public void onStatMouseClick() throws Exception {
 		PlayerStatusController ctr = (PlayerStatusController) application.replaceSceneContent("PlayerStatus.fxml", PlayerStatusController.class);
 		ctr.setApp(application);
-		ctr.setPlayer(player);
 	}
 	
 	public void onBasicClicked() throws Exception {
