@@ -276,12 +276,15 @@ public class HRController extends AnchorPane {
 	private void sellCompany(ActionEvent event) {
 		this.player = application.getPlayer();
 		//Get the selected company's string
-		String name = (String) companyTableView.getSelectionModel().getSelectedItem().getCompanyName();
-		//Remove it from the stored list in this class AND the player class
-		CompanyList.remove(player.getCompany(name));
-		player.removeCompany(name);
-		
-		player.saveFile();
+		if(companyTableView.getSelectionModel().getSelectedItem() != null) {
+			String name = (String) companyTableView.getSelectionModel().getSelectedItem().getCompanyName();
+			player.addMoney(player.getCompany(name).getMarketPower()*100);
+			//Remove it from the stored list in this class AND the player class
+			CompanyList.remove(player.getCompany(name));
+			player.removeCompany(name);
+			
+			player.saveFile();
+		}
 	}
 	
     @FXML
