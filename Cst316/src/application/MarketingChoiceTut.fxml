@@ -38,8 +38,7 @@
                <children>
                   <Button fx:id="purchaseButton" layoutY="237.0" mnemonicParsing="false" onAction="#purchaseButtonFired" prefHeight="161.0" prefWidth="447.0" AnchorPane.bottomAnchor="320.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="237.0" />
                   <Button fx:id="returnButton" layoutX="322.0" layoutY="639.0" mnemonicParsing="false" onAction="#returnButtonFired" prefHeight="31.0" prefWidth="79.0" text="Return" AnchorPane.bottomAnchor="48.0" AnchorPane.rightAnchor="46.0" />
-                  <Button fx:id="chartButton" layoutY="407.0" mnemonicParsing="false" onAction="#chartButtonFired" prefHeight="161.0" prefWidth="226.0" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="221.0" AnchorPane.topAnchor="407.0" />
-                  <Button fx:id="test1Button" layoutX="226.0" layoutY="407.0" mnemonicParsing="false" onAction="#test1ButtonFired" prefHeight="161.0" prefWidth="226.0" />
+                  <Button fx:id="chartButton" layoutY="407.0" mnemonicParsing="false" onAction="#chartButtonFired" prefHeight="161.0" prefWidth="446.0" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="407.0" />
                   <ComboBox fx:id="dropMenu" onAction="#dropMenuFired" onContextMenuRequested="#changeMenu" prefHeight="161.0" prefWidth="447.0" AnchorPane.bottomAnchor="557.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                   <ImageView fx:id="questionMark" fitHeight="106.0" fitWidth="79.0" layoutX="34.0" layoutY="586.0" onMouseEntered="#questionEntered" pickOnBounds="true" preserveRatio="true">
                      <cursor>
@@ -54,7 +53,7 @@
                         <Font name="Arial Bold Italic" size="20.0" />
                      </font>
                   </Text>
-                  <Text fill="#030202" layoutX="11.0" layoutY="444.0" mouseTransparent="true" strokeType="OUTSIDE" strokeWidth="0.0" text="Click this button to see the proportion of Market Share your company currently owns." wrappingWidth="205.0">
+                  <Text fill="#030202" layoutX="21.0" layoutY="444.0" mouseTransparent="true" strokeType="OUTSIDE" strokeWidth="0.0" text="Click this button to see the proportion of Market Share your company currently owns." wrappingWidth="225.0">
                      <font>
                         <Font name="Arial Bold Italic" size="22.0" />
                      </font>
@@ -64,7 +63,7 @@
                         <Image url="@../res/checkout.png" />
                      </image>
                   </ImageView>
-                  <Text fill="#030202" layoutX="14.0" layoutY="28.0" mouseTransparent="true" strokeType="OUTSIDE" strokeWidth="0.0" text="Select a Marketing Campaign from this drop down menu to learn more about the specfic Campaign." wrappingWidth="184.0">
+                  <Text fill="#030202" layoutX="21.0" layoutY="30.0" mouseTransparent="true" strokeType="OUTSIDE" strokeWidth="0.0" text="Select a Marketing Campaign from this drop down menu to learn more about the specfic Campaign." wrappingWidth="184.0">
                      <font>
                         <Font name="Arial Bold Italic" size="20.0" />
                      </font>
@@ -80,7 +79,7 @@
                      </image>
                   </ImageView>
                    <ComboBox fx:id="dropMenu2" layoutY="169.0" onAction="#dropMenu2Fired" onContextMenuRequested="#changeMenu" prefHeight="60.0" prefWidth="447.0" />
-                  <Text fill="#030202" layoutX="14.0" layoutY="195.0" mouseTransparent="true" strokeType="OUTSIDE" strokeWidth="0.0" text="Select a Company to market from this drop down menu." wrappingWidth="404.0">
+                  <Text fill="#030202" layoutX="21.0" layoutY="194.0" mouseTransparent="true" strokeType="OUTSIDE" strokeWidth="0.0" text="Select a Company to market from this drop down menu." wrappingWidth="404.0">
                      <font>
                         <Font name="Arial Bold Italic" size="19.0" />
                      </font>

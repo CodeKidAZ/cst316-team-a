@@ -18,7 +18,7 @@
                     <items>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" SplitPane.resizableWithParent="false">
                            <children>
-                              <ImageView fx:id="marketLogo" fitHeight="150.0" fitWidth="404.0" layoutX="209.0">
+                              <ImageView fx:id="marketLogo" fitHeight="188.0" fitWidth="404.0" layoutX="209.0" layoutY="-38.0">
                                  <image>
                                     <Image url="@../res/mIcon.jpg" />
                                  </image>
@@ -37,8 +37,7 @@
                <children>
                   <Button fx:id="purchaseButton" layoutY="237.0" mnemonicParsing="false" onAction="#purchaseButtonFired" prefHeight="161.0" prefWidth="447.0" text="Purchase" AnchorPane.bottomAnchor="320.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="237.0" />
                   <Button fx:id="returnButton" layoutX="322.0" layoutY="639.0" mnemonicParsing="false" onAction="#returnButtonFired" prefHeight="31.0" prefWidth="79.0" text="Return" AnchorPane.bottomAnchor="48.0" AnchorPane.rightAnchor="46.0" />
-                  <Button fx:id="chartButton" layoutY="407.0" mnemonicParsing="false" onAction="#chartButtonFired" prefHeight="161.0" prefWidth="226.0" text="Market Share" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="221.0" AnchorPane.topAnchor="407.0" />
-                  <Button fx:id="test1Button" layoutX="226.0" layoutY="407.0" mnemonicParsing="false" onAction="#test1ButtonFired" prefHeight="161.0" prefWidth="226.0" text="Test1" />
+                  <Button fx:id="chartButton" layoutY="407.0" mnemonicParsing="false" onAction="#chartButtonFired" prefHeight="161.0" prefWidth="446.0" text="Market Share" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="407.0" />
                   <ComboBox fx:id="dropMenu" onAction="#dropMenuFired" onContextMenuRequested="#changeMenu" prefHeight="161.0" prefWidth="447.0" AnchorPane.bottomAnchor="557.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                   <ImageView fx:id="questionMark" fitHeight="106.0" fitWidth="79.0" layoutX="34.0" layoutY="586.0" onMouseEntered="#questionEntered" pickOnBounds="true" preserveRatio="true">
                      <cursor>
