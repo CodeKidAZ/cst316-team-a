@@ -29,6 +29,9 @@ public abstract class MarketingCampaign implements java.io.Serializable {
     }
 
 
+    /** 
+     * return a formatted string of Marketing Campaign with its attributes name, duration, risk, and capital in a sentence form.
+     */
     public String toString() {
         return "Marketing Campaign: " + name + " has " + duration + "days left to run, " + 
         		"with an estimated risk of: " + risk + "and an estimated capital of: " + capital;

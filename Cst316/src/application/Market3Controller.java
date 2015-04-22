@@ -20,6 +20,14 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
+/**
+ * @author Wesley Local
+ *
+ */
+/**
+ * @author Wesley Local
+ *
+ */
 public class Market3Controller extends AnchorPane {
 
 
@@ -83,6 +91,9 @@ public class Market3Controller extends AnchorPane {
     
 
     // Event Listener on ComboBox[#dropMenuPotential].onAction
+    /**
+     * @param event
+     */
     @FXML
     public void dropMenuFired(ActionEvent event) {
         //doneText.setText(null);
@@ -117,6 +128,9 @@ public class Market3Controller extends AnchorPane {
     }
     
     // Event Listener on ComboBox[#dropMenuPotential].onAction
+    /**
+     * @param event
+     */
     @FXML
     public void dropMenu2Fired(ActionEvent event) {
     	
@@ -177,24 +191,39 @@ public class Market3Controller extends AnchorPane {
 
     // Event Listener on ComboBox[#dropMenu].onContextMenuRequested
 
+    /**
+     * @param event
+     */
     @FXML
     public void changeMenu(ContextMenuEvent event) {
     }
 
     ;
 	// Event Listener on Button[#returnButton].onAction
+	/**
+	 * @param event
+	 * @throws Exception
+	 */
 	@FXML
 	public void returnButtonFired(ActionEvent event) throws Exception {
 		LandingController ctr = (LandingController) application.replaceSceneContent("Landing.fxml", LandingController.class);
 		ctr.setApp(application);
 	}
 	
+	/**
+	 * @param event
+	 * @throws Exception
+	 */
 	@FXML
 	public void chartButtonFired(ActionEvent event) throws Exception {
 		MarketingStatisticsController ctr = (MarketingStatisticsController) application.replaceSceneContent("MarketingStatistics.fxml", MarketingStatisticsController.class);
 		ctr.setApp(application);
 	}
 	
+	/**
+	 * @param event
+	 * @throws Exception
+	 */
 	@FXML
 	public void test1ButtonFired(ActionEvent event) throws Exception {
 		PieChartFromArrayController ctr = (PieChartFromArrayController) application.replaceSceneContent("PieChartFromArray.fxml", PieChartFromArrayController.class);
@@ -202,33 +231,53 @@ public class Market3Controller extends AnchorPane {
 	}
 	
 	// Event Listener on ImageView[#questionMark].onMouseEntered
+	/**
+	 * @param event
+	 * @throws Exception
+	 */
 	@FXML
 	public void questionEntered(MouseEvent event) throws Exception {
 		MarketingChoiceTutController ctr = (MarketingChoiceTutController) application.replaceSceneContent("MarketingChoiceTut.fxml", MarketingChoiceTutController.class);
 		ctr.setApp(application);
 	}
 	
+    /**
+     * @return a random double value between 5 and 15.
+     */
     public double calcPrintPower() {
 			power = (Math.abs((random.nextGaussian() * 10)) + 5);
 		return power;
 	}
     
+    /**
+     * @return  a random double value between 15 and 20.
+     */
     public double calcCouponPower() {
 		power = (Math.abs((random.nextGaussian() * 5)) + 15);
 		return power;
 	}
     
+    
+    /**
+     * @return  a random double value between -10 and 40.
+     */
     public double calcWackyPower() {
 		power = (((random.nextDouble() * 50)) - 10);
 		return power;
 	}
     
+    /**
+     * @return  a random double value between 33 and 35.
+     */
     public double calcTVPower() {
     	power = (Math.abs((random.nextGaussian() * 2)) + 33);
 		return power;
 	}
 	
 	//@Override
+	/**
+	 * @param app
+	 */
 	public void setApp(Main app) {
 		application = app;
 		questionMark.setImage(image5);
@@ -256,10 +305,16 @@ public class Market3Controller extends AnchorPane {
 		
 	}
 	
+	/**
+	 * @param player
+	 */
 	public void setPlayer(Player player) {
 		this.player = player;
 	}
 	
+	/**
+	 * @param event
+	 */
 	@FXML
 	public void purchaseButtonFired(ActionEvent event) {
 		  ArrayList<Company> companies = player.getCompanyList();

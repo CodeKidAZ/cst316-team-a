@@ -60,6 +60,9 @@ public class MarketingStatisticsController extends AnchorPane {
 
 
 	// Event Listener on ComboBox[#dropMenu].onAction
+	/**
+	 * @param event
+	 */
 	@FXML
 	public void dropMenuFired(ActionEvent event) {
 		output = (String) dropMenu.getSelectionModel().getSelectedItem().toString();
@@ -67,7 +70,7 @@ public class MarketingStatisticsController extends AnchorPane {
 		pieChartData.clear();
 		
 		 Company otherComp = new Company("default Name", -1.0);
-		if (companiesName.contains(output)){
+		 if (companiesName.contains(output)){
 			System.out.println("companiesName list does contain the selected value");
 			for (int z = 0; z < companiesName.size(); z ++){
 				if (output.equals(companiesName.get(z))){
@@ -83,7 +86,7 @@ public class MarketingStatisticsController extends AnchorPane {
 				
 			}
 			 piechart.setTitle("Current Market Power Report");
-		        piechart.setData(pieChartData);
+		     piechart.setData(pieChartData);
 		        
 		        if (power > 105){
 			        marketStatsPicture.setImage(goodImg);
@@ -94,8 +97,6 @@ public class MarketingStatisticsController extends AnchorPane {
 		        if (power < 95){
 			        marketStatsPicture.setImage(badImg);
 		        }
-		        	
-
 		}
 		else {
 			System.out.println("Error Selected item is not in the list of company names: ");
@@ -107,6 +108,9 @@ public class MarketingStatisticsController extends AnchorPane {
 		
 	
 	//@Override
+		/**
+		 * @param app
+		 */
 		public void setApp(Main app) {
 			application = app;
 			dropMenu.getItems().setAll(
@@ -131,11 +135,18 @@ public class MarketingStatisticsController extends AnchorPane {
 		        
 		}
 		
+		/**
+		 * @param player
+		 */
 		public void setPlayer(Player player) {
 			this.player = player;
 		}
 	
 	// Event Listener on Button[#returnButton].onAction
+	/**
+	 * @param event
+	 * @throws Exception
+	 */
 	@FXML
 	public void returnButtonFired(ActionEvent event) throws Exception {
 		Market3Controller ctr = (Market3Controller) application.replaceSceneContent("MarketingChoice.fxml", Market3Controller.class);
