@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" > <!-- fx:controller="application.Corp5of5Controller"-->
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"> <!-- fx:controller="application.Corp5of5Controller"-->
    <children>
       <Label layoutX="278.0" layoutY="72.0" text="INCORPORATE PROCESS" AnchorPane.leftAnchor="296.0" AnchorPane.rightAnchor="239.0" AnchorPane.topAnchor="32.0">
          <font>
@@ -33,7 +33,7 @@
             <Text layoutX="278.0" layoutY="462.0" strokeType="OUTSIDE" strokeWidth="0.0" text="All shareholders must sign and file IRS Form 2553 to be treated as an S Corp" textAlignment="CENTER" wrappingWidth="219.0" />
          </children>
       </VBox>
-      <Button fx:id="doneButton" layoutX="345.0" layoutY="465.0" mnemonicParsing="false" onAction="#doneButton" prefHeight="33.0" prefWidth="63.0" text="Done" />
+      <Button fx:id="doneButton" layoutX="408.0" layoutY="530.0" mnemonicParsing="false" onAction="#doneButton" prefHeight="33.0" prefWidth="63.0" text="Done" />
       <Button fx:id="backButton" cancelButton="true" layoutX="199.0" layoutY="31.0" mnemonicParsing="false" onAction="#backButton" prefHeight="30.0" prefWidth="63.0" text="Back" AnchorPane.leftAnchor="216.0" AnchorPane.topAnchor="32.0" />
    </children>
 </AnchorPane>

@@ -36,7 +36,7 @@
       </TableView>
       <Group layoutX="53.0" layoutY="-122.0">
          <children>
-            <ImageView fx:id="fireImage" fitHeight="68.0" fitWidth="71.0" layoutX="263.0" layoutY="255.0" onMouseClicked="#openFire" onMouseEntered="#fireMouseEnter" onMouseExited="#fireMouseExit" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="fireImage" fitHeight="68.0" fitWidth="71.0" layoutX="268.0" layoutY="232.0" onMouseClicked="#openFire" onMouseEntered="#fireMouseEnter" onMouseExited="#fireMouseExit" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../res/deleteEmployee.png" />
                </image>
@@ -44,12 +44,12 @@
                   <DropShadow />
                </effect>
             </ImageView>
-            <Label layoutX="252.0" layoutY="322.0" text="Fire Employees" />
+            <Label layoutX="252.0" layoutY="308.0" text="Fire Employees" />
          </children>
       </Group>
       <Group layoutX="-48.0" layoutY="-122.0">
          <children>
-            <ImageView fx:id="hireImage1" fitHeight="68.0" fitWidth="71.0" layoutX="263.0" layoutY="255.0" onMouseClicked="#openHire" onMouseEntered="#hireMouseEnter" onMouseExited="#hireMouseExit" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="hireImage1" fitHeight="68.0" fitWidth="71.0" layoutX="232.0" layoutY="236.0" onMouseClicked="#openHire" onMouseEntered="#hireMouseEnter" onMouseExited="#hireMouseExit" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../res/hireEmployee.png" />
                </image>
@@ -57,29 +57,26 @@
                   <DropShadow />
                </effect>
             </ImageView>
-            <Label layoutX="252.0" layoutY="322.0" text="Hire Employees" />
+            <Label layoutX="215.0" layoutY="308.0" text="Hire Employees" />
          </children>
       </Group>
-      <Group layoutX="-152.0" layoutY="-122.0">
-         <children>
-            <ImageView fx:id="createCompanyImage" fitHeight="68.0" fitWidth="71.0" layoutX="263.0" layoutY="255.0" onMouseClicked="#createCompany" onMouseEntered="#createCompanyMouseEnter" onMouseExited="#createCompanyMouseExit" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../res/createCompany.png" />
-               </image>
-               <effect>
-                  <DropShadow />
-               </effect>
-            </ImageView>
-            <Label layoutX="252.0" layoutY="322.0" text="Create Company" />
-         </children>
-      </Group>
+      <Group layoutX="-152.0" layoutY="-122.0" />
       <Button fx:id="productButton" layoutX="820.0" layoutY="140.0" mnemonicParsing="false" onMouseClicked="#productMouseClicked" prefHeight="47.0" prefWidth="218.0" text="Go to Product management" />
       <Separator layoutX="707.0" layoutY="-1.0" orientation="VERTICAL" prefHeight="720.0" prefWidth="11.0" />
       <Button fx:id="sellCompanyButt" layoutX="546.0" layoutY="395.0" mnemonicParsing="false" onAction="#sellCompany" prefHeight="53.0" prefWidth="118.0" text="Sell Company" />
       <ComboBox fx:id="companyComboBox" layoutX="241.0" layoutY="262.0" onAction="#currentCompany" prefWidth="150.0" />
-      <Label layoutX="141.0" layoutY="266.0" text="Curent company: " />
+      <Label layoutX="109.0" layoutY="266.0" text="Curent company: " />
       <Label layoutX="408.0" layoutY="266.0" text="Total:" />
       <Label fx:id="totalLabel" layoutX="444.0" layoutY="266.0" text="0" />
+      <ImageView fx:id="createCompanyImage" fitHeight="68.0" fitWidth="71.0" layoutX="43.0" layoutY="113.0" onMouseClicked="#createCompany" onMouseEntered="#createCompanyMouseEnter" onMouseExited="#createCompanyMouseExit" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../res/createCompany.png" />
+         </image>
+         <effect>
+            <DropShadow />
+         </effect>
+      </ImageView>
+      <Label layoutX="28.0" layoutY="187.0" text="Create Company" />
 
    </children>
 </AnchorPane>
