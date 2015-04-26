@@ -35,10 +35,10 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" SplitPane.resizableWithParent="false">
                <children>
-                  <Button fx:id="purchaseButton" layoutY="237.0" mnemonicParsing="false" onAction="#purchaseButtonFired" prefHeight="161.0" prefWidth="447.0" text="Purchase" AnchorPane.bottomAnchor="320.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="237.0" />
+                  <Button fx:id="purchaseButton" layoutX="136.0" layoutY="301.0" mnemonicParsing="false" onAction="#purchaseButtonFired" prefHeight="60.0" prefWidth="160.0" text="Purchase" AnchorPane.bottomAnchor="357.0" AnchorPane.leftAnchor="136.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="301.0" />
                   <Button fx:id="returnButton" layoutX="322.0" layoutY="639.0" mnemonicParsing="false" onAction="#returnButtonFired" prefHeight="31.0" prefWidth="79.0" text="Return" AnchorPane.bottomAnchor="48.0" AnchorPane.rightAnchor="46.0" />
-                  <Button fx:id="chartButton" layoutY="407.0" mnemonicParsing="false" onAction="#chartButtonFired" prefHeight="161.0" prefWidth="446.0" text="Market Share" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="407.0" />
-                  <ComboBox fx:id="dropMenu" onAction="#dropMenuFired" onContextMenuRequested="#changeMenu" prefHeight="161.0" prefWidth="447.0" AnchorPane.bottomAnchor="557.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <Button fx:id="chartButton" layoutX="136.0" layoutY="403.0" mnemonicParsing="false" onAction="#chartButtonFired" prefHeight="73.0" prefWidth="160.0" text="Market Share" AnchorPane.bottomAnchor="242.0" AnchorPane.leftAnchor="136.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="403.0" />
+                  <ComboBox fx:id="dropMenu" layoutX="98.0" layoutY="115.0" onAction="#dropMenuFired" onContextMenuRequested="#changeMenu" prefHeight="39.0" prefWidth="250.0" AnchorPane.bottomAnchor="564.0" AnchorPane.leftAnchor="98.0" AnchorPane.rightAnchor="98.0" AnchorPane.topAnchor="115.0" />
                   <ImageView fx:id="questionMark" fitHeight="106.0" fitWidth="79.0" layoutX="34.0" layoutY="586.0" onMouseEntered="#questionEntered" pickOnBounds="true" preserveRatio="true">
                      <cursor>
                         <Cursor fx:constant="OPEN_HAND" />
@@ -47,7 +47,7 @@
                         <Glow />
                      </effect>
                   </ImageView>
-                  <ComboBox fx:id="dropMenu2" layoutY="169.0" onAction="#dropMenu2Fired" onContextMenuRequested="#changeMenu" prefHeight="60.0" prefWidth="447.0" />
+                  <ComboBox fx:id="dropMenu2" layoutX="100.0" layoutY="218.0" onAction="#dropMenu2Fired" onContextMenuRequested="#changeMenu" prefHeight="39.0" prefWidth="250.0" />
                </children></AnchorPane>
         </items>
       </SplitPane>

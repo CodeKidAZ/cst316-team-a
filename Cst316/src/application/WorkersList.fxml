@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" > <!-- fx:controller="application.WorkersListController" -->
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"> <!-- fx:controller="application.WorkersListController" -->
    <children>
       <TableView fx:id="workerTable" layoutX="62.0" layoutY="113.0" prefHeight="415.0" prefWidth="152.0">
         <columns>
@@ -21,8 +21,8 @@
          </font>
       </Label>
       <Button fx:id="backButton" layoutX="270.0" layoutY="30.0" mnemonicParsing="false" onAction="#backMethod" prefHeight="30.0" prefWidth="63.0" text="Back" AnchorPane.topAnchor="30.0" />
-      <Button layoutX="287.0" layoutY="113.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="70.0" text="Position 1" />
-      <Button layoutX="383.0" layoutY="113.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="70.0" text="Position 2" />
-      <Button layoutX="477.0" layoutY="113.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="70.0" text="Position 3" />
+      <Button layoutX="262.0" layoutY="113.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="95.0" text="Position 1" />
+      <Button layoutX="383.0" layoutY="113.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="88.0" text="Position 2" />
+      <Button layoutX="491.0" layoutY="113.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="88.0" text="Position 3" />
    </children>
 </AnchorPane>
