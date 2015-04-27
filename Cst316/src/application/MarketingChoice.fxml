@@ -39,14 +39,6 @@
                   <Button fx:id="returnButton" layoutX="322.0" layoutY="639.0" mnemonicParsing="false" onAction="#returnButtonFired" prefHeight="31.0" prefWidth="79.0" text="Return" AnchorPane.bottomAnchor="48.0" AnchorPane.rightAnchor="46.0" />
                   <Button fx:id="chartButton" layoutX="136.0" layoutY="403.0" mnemonicParsing="false" onAction="#chartButtonFired" prefHeight="73.0" prefWidth="160.0" text="Market Share" AnchorPane.bottomAnchor="242.0" AnchorPane.leftAnchor="136.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="403.0" />
                   <ComboBox fx:id="dropMenu" layoutX="98.0" layoutY="115.0" onAction="#dropMenuFired" onContextMenuRequested="#changeMenu" prefHeight="39.0" prefWidth="250.0" AnchorPane.bottomAnchor="564.0" AnchorPane.leftAnchor="98.0" AnchorPane.rightAnchor="98.0" AnchorPane.topAnchor="115.0" />
-                  <ImageView fx:id="questionMark" fitHeight="106.0" fitWidth="79.0" layoutX="34.0" layoutY="586.0" onMouseEntered="#questionEntered" pickOnBounds="true" preserveRatio="true">
-                     <cursor>
-                        <Cursor fx:constant="OPEN_HAND" />
-                     </cursor>
-                     <effect>
-                        <Glow />
-                     </effect>
-                  </ImageView>
                   <ComboBox fx:id="dropMenu2" layoutX="100.0" layoutY="218.0" onAction="#dropMenu2Fired" onContextMenuRequested="#changeMenu" prefHeight="39.0" prefWidth="250.0" />
                </children></AnchorPane>
         </items>
