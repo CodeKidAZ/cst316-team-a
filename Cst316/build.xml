@@ -9,9 +9,15 @@
     <property name="main.class" value="application.Main"/>
     <property name="test.dir"   value="test"/>
     <property name="jacocoant.jar" value="${lib.dir}/jacocoant.jar"/>
+    <property name="findbugs.home" value="../findbugs-3.0.1"/>
+    <property name="findbugsant.jar" value="${findbugs.home}/lib/findbugs-ant.jar"/>
     <property name="jacoco.file" value="jacoco.exec"/>
 
     <import file="${lib.dir}/one-jar-ant-task.xml" optional="true" />
+
+    <taskdef name="findbugs" classname="edu.umd.cs.findbugs.anttask.FindBugsTask">
+      <classpath path="${findbugsant.jar}"/>
+    </taskdef>
 
     <taskdef uri="antlib:org.jacoco.ant" resource="org/jacoco/ant/antlib.xml">
       <classpath path="${jacocoant.jar}"/>
@@ -69,6 +75,16 @@
                 <attribute name="Main-Class" value="${main.class}"/>
             </manifest>
         </jarjar>
+    </target>
+
+    <target name="findbugs" depends="jar">
+        <mkdir dir="${test.dir}"/>
+        <findbugs home="${findbugs.home}"
+                  output="xml"
+                  outputFile="${test.dir}/findbugs.xml">
+            <sourcePath path="${source.dir}"/>
+            <class location="${jar.file}"/>
+        </findbugs>
     </target>
 
     <target name="test" depends="jar">
