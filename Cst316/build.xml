@@ -77,13 +77,15 @@
         </jarjar>
     </target>
 
-    <target name="findbugs" depends="jar">
+    <target name="findbugs" depends="compile">
         <mkdir dir="${test.dir}"/>
         <findbugs home="${findbugs.home}"
                   output="xml"
                   outputFile="${test.dir}/findbugs.xml">
             <sourcePath path="${source.dir}"/>
-            <class location="${jar.file}"/>
+            <class location="${class.dir}"/>
+            <auxClasspath location="${lib.dir}/json.jar"/>
+            <auxClasspath location="${lib.dir}/junit-4.10.jar"/>
         </findbugs>
     </target>
 
