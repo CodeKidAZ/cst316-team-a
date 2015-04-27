@@ -6,11 +6,8 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.ResourceBundle;
 
-import cst316.Building;
 import cst316.Company;
-import cst316.Employee;
 import cst316.MCamp;
-import cst316.MarketCompany;
 import cst316.Player;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,7 +17,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.ContextMenuEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
@@ -71,6 +67,8 @@ public class Market3Controller extends AnchorPane {
     private MCamp mCTemp;
     
 	private double power;
+	private boolean typeSelected = false;
+	private boolean compSelected = false;
 	private boolean isGood = false;
     
     
@@ -115,8 +113,13 @@ public class Market3Controller extends AnchorPane {
      */
     @FXML
     public void dropMenuFired(ActionEvent event) {
+    	typeSelected = true;
 		String name = (String) dropMenu.getSelectionModel().getSelectedItem().toString();
 		setMCamp(new MCamp(name));
+		if (typeSelected == true && compSelected == true){
+			purchaseButton.setDisable(false);
+		}
+
         }
     
     // Event Listener on ComboBox[#dropMenuPotential].onAction
@@ -139,7 +142,11 @@ public class Market3Controller extends AnchorPane {
 		System.out.println("tempComps name " + targetComp.getName());
 		System.out.println(targetComp.getMarketPower());
 
-
+		compSelected = true;
+		
+		if (typeSelected == true && compSelected == true){
+			purchaseButton.setDisable(false);
+		}
 
 
         switch (outputType) {
@@ -224,6 +231,7 @@ public class Market3Controller extends AnchorPane {
 	 * @param event
 	 * @throws Exception
 	 */
+	/*
 	@FXML
 	public void questionEntered(MouseEvent event) throws Exception {
 		i++;
@@ -234,6 +242,7 @@ public class Market3Controller extends AnchorPane {
 		}
 
 	}
+	*/
 	
     /**
      * @return a random double value between 5 and 15.
@@ -274,7 +283,7 @@ public class Market3Controller extends AnchorPane {
 	 */
 	public void setApp(Main app) {
 		application = app;
-		questionMark.setImage(image5);
+		//questionMark.setImage(image5);
 		this.player = application.getPlayer();
 		dropMenu.getItems().setAll("Print Marketing",
 								   "Coupon Marketing",
@@ -300,6 +309,8 @@ public class Market3Controller extends AnchorPane {
 				}
 			}
 
+		purchaseButton.setDisable(true);
+		
 		}
 		
 	/**
