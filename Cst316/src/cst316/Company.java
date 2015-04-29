@@ -8,8 +8,9 @@ import javafx.beans.property.StringProperty;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.json.JSONString;
 
-public class Company {
+public class Company implements JSONString {
     String name;
   
 	private ArrayList<Product> myProducts;
@@ -64,6 +65,7 @@ public class Company {
     public String toJSONString() {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("Name", this.name);
+        jsonObject.put("products", this.myProducts);
         return jsonObject.toString(); //Return the JSON string
     }
     
