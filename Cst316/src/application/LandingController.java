@@ -27,6 +27,8 @@ public class LandingController extends AnchorPane {
 	ImageView markBtn;
 	@FXML
 	ImageView statBtn;
+	@FXML
+	private ImageView help_button;
 
 	private Main application;
 	Player player;
@@ -141,6 +143,12 @@ public class LandingController extends AnchorPane {
 
 	public void onCorporateClicked() throws Exception {
 		onBuildingClicked("Corporate HQ");
+	}
+	
+	@FXML
+	public void helpClicked(MouseEvent event) throws Exception {
+			QuickStartController ctr = (QuickStartController) application.replaceSceneContent("QuickStart.fxml", QuickStartController.class);
+			ctr.setApp(application);
 	}
 	
 	private void onBuildingClicked(String name) throws Exception {
