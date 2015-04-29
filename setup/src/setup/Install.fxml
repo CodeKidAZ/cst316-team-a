@@ -28,7 +28,7 @@
                   <VBox alignment="CENTER" layoutX="115.0" layoutY="103.0" spacing="20.0" AnchorPane.bottomAnchor="158.0" AnchorPane.leftAnchor="115.0" AnchorPane.rightAnchor="106.0" AnchorPane.topAnchor="103.0">
                      <children>
                         <ProgressBar fx:id="progress" prefHeight="20.0" prefWidth="312.0" progress="0.0" />
-                        <Button fx:id="continueBtn" disable="true" layoutX="161.0" layoutY="183.0" mnemonicParsing="false" onMouseClicked="#continueBtnClicked" prefHeight="40.0" prefWidth="77.0" text="Continue" GridPane.rowIndex="3">
+                        <Button fx:id="continueBtn" disable="true" layoutX="161.0" layoutY="183.0" mnemonicParsing="false" onMouseClicked="#continueBtnClicked" prefHeight="40.0" prefWidth="77.0" text="Done" GridPane.rowIndex="3">
                            <GridPane.margin>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </GridPane.margin>

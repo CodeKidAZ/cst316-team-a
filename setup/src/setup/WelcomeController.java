@@ -53,9 +53,10 @@ public class WelcomeController extends AnchorPane{
 	@FXML
 	void initialize(){
         installLocationText.getItems().addAll(new String[] {
-            System.getenv("PROGRAMFILES") + "\\Enterpreneurship Simulator\\",
-            System.getenv("USERPROFILE") + "\\Enterpreneurship Simulator\\"
+            System.getenv("PROGRAMFILES") + "\\Entrepreneurship Simulator\\",
+            System.getenv("USERPROFILE") + "\\Entrepreneurship Simulator\\"
         });
+        installLocationText.getSelectionModel().select(System.getenv("PROGRAMFILES") + "\\Entrepreneurship Simulator\\");
 	}
 
 
