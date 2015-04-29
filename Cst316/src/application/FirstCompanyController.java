@@ -30,7 +30,7 @@ public class FirstCompanyController extends AnchorPane {
 	// Event Listener on Button.onMouseClicked
 	@FXML
 	public void doneClicked(MouseEvent event) {
-		Player player = new Player(0, 100.0, playerName, new ArrayList<String>());
+		Player player = new Player(0, 7500.0, playerName, new ArrayList<String>());
 		player.addCompanies(new Company(compInput.getText()));
         application.setPlayer(player);
         CreatePlayerController ctr;
