@@ -53,72 +53,77 @@ public class InstallController extends AnchorPane{
         }
     }
 
-    public void startUninstall() throws Exception {
-        recursiveDelete(new File(installLocation));
-        progress.setProgress(0.33);
-        recursiveDelete(new File(startMenuLocation));
-        progress.setProgress(0.66);
-        Advapi32Util.registryDeleteKey(
-            regRootKey,
-            "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall",
-            "EnterpreneurshipSimulator"
-        );
-        progress.setProgress(1.00);
-        continueBtn.setDisable(false);
+    public void startUninstall() {
+        (new Thread( () -> { try {
+            recursiveDelete(new File(installLocation));
+            progress.setProgress(0.33);
+            recursiveDelete(new File(startMenuLocation));
+            progress.setProgress(0.66);
+            Advapi32Util.registryDeleteKey(
+                regRootKey,
+                "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall",
+                "EnterpreneurshipSimulator"
+            );
+            progress.setProgress(1.00);
+            continueBtn.setDisable(false);
+        } catch (Exception e) { throw new Error(e); } })).start();
     }
 
-    public void startInstall() throws Exception {
-        (new File(installLocation)).mkdir();
-        progress.setProgress(0.00);
-        copyFile("dist/Cst316.jar", installLocation + "\\Cst316.jar");
-        copy((new File(Main.findPathJar(Main.class))).getCanonicalPath(), installLocation + "\\Cst316Setup.jar");
-        progress.setProgress(0.14);
-        copyFile("dist/enterpreneurship-simulator.ico", installLocation + "\\enterpreneurship-simulator.ico");
-        progress.setProgress(0.28);
-        Advapi32Util.registryCreateKey(
-            regRootKey,
-            "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall",
-            "EnterpreneurshipSimulator"
-        );
-        progress.setProgress(0.42);
-        Advapi32Util.registrySetStringValue(
-           regRootKey, 
-            "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\EnterpreneurshipSimulator",
-            "DisplayName",
-            "Enterprensurship Simulator"
-        );
-        progress.setProgress(0.56);
-        Advapi32Util.registrySetStringValue(
-            regRootKey,
-            "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\EnterpreneurshipSimulator",
-            "UninstallString",
-            Main.findPathJava() + " -jar \"" + installLocation + "\\Cst316Setup.jar\" admin"
-        );
-        progress.setProgress(0.70);
-        Advapi32Util.registrySetStringValue(
-            regRootKey,
-            "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\EnterpreneurshipSimulator",
-            "DisplayIcon",
-            installLocation + "\\enterpreneurship-simulator.ico"
-        );
-        Advapi32Util.registrySetStringValue(
-            regRootKey,
-            "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\EnterpreneurshipSimulator",
-            "InstallLocation",
-            installLocation
-        );
-        progress.setProgress(0.84);
-        Advapi32Util.registrySetStringValue(
-            regRootKey,
-            "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\EnterpreneurshipSimulator",
-            "DisplayVersion",
-            "0.1"
-        );
-        progress.setProgress(0.98);
-        (new File(startMenuLocation)).mkdir();
-        createShortcut(installLocation + "\\Cst316.jar", startMenuLocation + "\\Enterprensurship Simulator", installLocation + "\\enterpreneurship-simulator.ico");
-        progress.setProgress(1.00);
-        continueBtn.setDisable(false);
+    public void startInstall() {
+        (new Thread( () -> { try {
+            (new File(installLocation)).mkdir();
+            progress.setProgress(0.00);
+            copyFile("dist/Cst316.jar", installLocation + "\\Cst316.jar");
+            copy((new File(Main.findPathJar(Main.class))).getCanonicalPath(), installLocation + "\\Cst316Setup.jar");
+            progress.setProgress(0.14);
+            copyFile("dist/enterpreneurship-simulator.ico", installLocation + "\\enterpreneurship-simulator.ico");
+            progress.setProgress(0.28);
+            Advapi32Util.registryCreateKey(
+                regRootKey,
+                "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall",
+                "EnterpreneurshipSimulator"
+            );
+            progress.setProgress(0.42);
+            Advapi32Util.registrySetStringValue(
+                regRootKey, 
+                "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\EnterpreneurshipSimulator",
+                "DisplayName",
+                "Enterprensurship Simulator"
+            );
+            progress.setProgress(0.56);
+            Advapi32Util.registrySetStringValue(
+                regRootKey,
+                "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\EnterpreneurshipSimulator",
+                "UninstallString",
+                Main.findPathJava() + " -jar \"" + installLocation + "\\Cst316Setup.jar\" admin"
+            );
+            progress.setProgress(0.70);
+            Advapi32Util.registrySetStringValue(
+                regRootKey,
+                "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\EnterpreneurshipSimulator",
+                "DisplayIcon",
+                installLocation + "\\enterpreneurship-simulator.ico"
+            );
+            Advapi32Util.registrySetStringValue(
+                regRootKey,
+                "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\EnterpreneurshipSimulator",
+                "InstallLocation",
+                installLocation
+            );
+            progress.setProgress(0.84);
+            Advapi32Util.registrySetStringValue(
+                regRootKey,
+                "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\EnterpreneurshipSimulator",
+                "DisplayVersion",
+                "0.1"
+            );
+            progress.setProgress(0.98);
+            (new File(startMenuLocation)).mkdir();
+            copyFile("dist/CreateShortcut.vbs", installLocation + "\\CreateShortcut.vbs");
+            createShortcut(installLocation + "\\Cst316.jar", startMenuLocation + "\\Enterprensurship Simulator.lnk", installLocation + "\\enterpreneurship-simulator.ico");
+            progress.setProgress(1.00);
+            continueBtn.setDisable(false);
+        } catch (Exception e) { throw new Error(e); } })).start();
     }
 
     private void copyFile(String src, String dest) throws Exception {
@@ -130,6 +135,8 @@ public class InstallController extends AnchorPane{
           out.write(buffer, 0, amount);
           amount = in.read(buffer);
         }
+        in.close();
+        out.close();
     }
 
     private void copy(String src, String dest) throws Exception {
@@ -141,17 +148,12 @@ public class InstallController extends AnchorPane{
           out.write(buffer, 0, amount);
           amount = in.read(buffer);
         }
+        in.close();
+        out.close();
     }
 
     private void createShortcut(String src, String dest, String icon) throws Exception {
-        FileWriter out = new FileWriter(dest + ".URL");
-        out.write("[InternetShortcut]\n");
-        out.write("URL=file://" + src.replace("\\", "/") + "\n");
-        if (!"".equals(icon)) {
-            out.write("IconFile=" + icon + "\n");
-        }
-        out.flush();
-        out.close();
+        Runtime.getRuntime().exec("wscript \"" + installLocation + "\\CreateShortcut.vbs\" \"" + src + "\" \"" + dest + "\" \"" + icon + "\"");
     }
 
     private void recursiveDelete(File file) throws Exception {

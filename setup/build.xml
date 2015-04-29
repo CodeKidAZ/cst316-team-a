@@ -53,6 +53,7 @@
                 <include name="**/**.png"/>
                 <include name="**/**.ico"/>
                 <include name="**/**.txt"/>
+                <include name="**/**.vbs"/>
                 <exclude name="**/**.java"/>
                 <exclude name="**/**.psd"/>
             </fileset>
