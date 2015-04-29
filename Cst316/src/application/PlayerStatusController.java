@@ -61,7 +61,6 @@ public class PlayerStatusController extends AnchorPane {
 			for (int i = 0; i < investment.size(); i++) {
 				investmentsText.appendText(investment.get(i).getName()+", ");
 			}
-			productText.appendText(player.getProduct().getName());
 		}
 	}	
 	public void onReturnMouseClick(MouseEvent event) throws Exception {

@@ -9,7 +9,7 @@
    <children>
       <ImageView fitHeight="731.0" fitWidth="1292.0" layoutX="-7.0" layoutY="-7.0">
          <image>
-            <Image url="@../res/wood_bg.jpg" />
+            <Image url="@../res/sky.png" />
          </image>
       </ImageView>
       <ImageView fx:id="returnButton" fitHeight="45.0" fitWidth="144.0" layoutX="1099.0" layoutY="644.0" onMouseClicked="#returnMouseClicked" onMouseEntered="#returnMouseEntered" onMouseExited="#returnMouseExited" preserveRatio="true" AnchorPane.bottomAnchor="35.272727966308594" AnchorPane.rightAnchor="37.0">
