@@ -33,6 +33,10 @@ public class QuickStartController extends AnchorPane {
 	private Button Button4;
 	@FXML
 	private Button Button5;
+	@FXML
+	private Button moneyButton;
+	@FXML
+	private Button marketButton;
 	
 	//Declaring local variables to be used in the Marketing Statistics Display
 	String output;
@@ -40,10 +44,14 @@ public class QuickStartController extends AnchorPane {
 	Player player;
 
 	
-    Image image1 = new Image(Market3Controller.class.getClassLoader().getResourceAsStream("res/cst316quickstart-0.png"));
-    Image image2 = new Image(Market3Controller.class.getClassLoader().getResourceAsStream("res/cst316quickstart-1.png"));
-    Image image3 = new Image(Market3Controller.class.getClassLoader().getResourceAsStream("res/cst316quickstart-2.png"));
-    Image image4 = new Image(Market3Controller.class.getClassLoader().getResourceAsStream("res/cst316quickstart-3.png"));
+    Image image1 = new Image(Market3Controller.class.getClassLoader().getResourceAsStream("res/start1.png"));
+    Image image2 = new Image(Market3Controller.class.getClassLoader().getResourceAsStream("res/start2.png"));
+    Image image3 = new Image(Market3Controller.class.getClassLoader().getResourceAsStream("res/start3.png"));
+    Image image4 = new Image(Market3Controller.class.getClassLoader().getResourceAsStream("res/start4.png"));
+    Image image5 = new Image(Market3Controller.class.getClassLoader().getResourceAsStream("res/start5.png"));
+    
+    Image image6 = new Image(Market3Controller.class.getClassLoader().getResourceAsStream("res/money2.png"));
+    Image image7 = new Image(Market3Controller.class.getClassLoader().getResourceAsStream("res/market1.png"));
 	
 
 	// Event Listener on Button[#Button1].onAction
@@ -53,6 +61,9 @@ public class QuickStartController extends AnchorPane {
 	@FXML
 	public void button1Fired(ActionEvent event) {
 		guideImage.setImage(image1);
+		//guideImage.setPreserveRatio(true);
+		guideImage.setSmooth(true);
+		guideImage.setCache(true);
 	}
 	// Event Listener on Button[#Button2].onAction
 	/**
@@ -87,7 +98,25 @@ public class QuickStartController extends AnchorPane {
 	 */
 	@FXML
 	public void button5Fired(ActionEvent event) {
+		guideImage.setImage(image5);
+	}
 
+	// Event Listener on Button[#Button4].onAction
+	/**
+	 * @param event
+	 */
+	@FXML
+	public void button6Fired(ActionEvent event) {
+		guideImage.setImage(image6);
+		
+	}
+	// Event Listener on Button[#Button5].onAction
+	/**
+	 * @param event
+	 */
+	@FXML
+	public void button7Fired(ActionEvent event) {
+		guideImage.setImage(image7);
 	}
 	
 	//@Override
