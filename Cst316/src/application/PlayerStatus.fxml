@@ -48,16 +48,10 @@
             <Image url="@../res/status/investments.png" />
          </image>
       </ImageView>
-      <ImageView layoutX="212.0" layoutY="624.0">
-         <image>
-            <Image url="@../res/status/product.png" />
-         </image>
-      </ImageView>
       <TextArea fx:id="pointsText" editable="false" layoutX="451.0" layoutY="135.0" prefHeight="33.0" prefWidth="321.0" />
       <TextArea fx:id="employeesText" editable="false" layoutX="451.0" layoutY="227.0" prefHeight="33.0" prefWidth="321.0" />
       <TextArea fx:id="moneyText" editable="false" layoutX="451.0" layoutY="324.0" prefHeight="33.0" prefWidth="321.0" />
       <TextArea fx:id="assetsText" editable="false" layoutX="451.0" layoutY="429.0" prefHeight="33.0" prefWidth="321.0" />
       <TextArea fx:id="investmentsText" editable="false" layoutX="451.0" layoutY="527.0" prefHeight="33.0" prefWidth="321.0" />
-      <TextArea fx:id="productText" editable="false" layoutX="451.0" layoutY="625.0" prefHeight="33.0" prefWidth="321.0" />
    </children>
 </AnchorPane>
