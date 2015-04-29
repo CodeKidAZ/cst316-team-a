@@ -28,7 +28,7 @@ public class InvestmentLib {
 	
 	public String[] getRandomTimedInvestment(){
 		JSONArray arr = investments.getJSONArray("timed");
-		int index = (int)(rnd.nextGaussian() * arr.length());
+		int index = (int)(((rnd.nextGaussian()+1)/2) * arr.length());
 		arr = arr.getJSONArray(index);
 		String[] ret = new String[arr.length()];
 		for(int x = 0; x < arr.length(); x++){

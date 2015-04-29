@@ -53,10 +53,10 @@ public class Investment implements JSONString {
 		double percent;
 		if(isGood){
 			// Between -5% and 30%
-			percent = ((random.nextGaussian() * 30) - 5)/100;
+			percent = ((((random.nextGaussian()+1)/2) * 30) - 5)/100;
 		}else{
 			// Between -20% and 10%
-			percent = ((random.nextGaussian() * 30) - 20)/100;
+			percent = ((((random.nextGaussian()+1)/2) * 30) - 20)/100;
 		}
 		// Monthly interest
 		amount += amount * (percent/12);

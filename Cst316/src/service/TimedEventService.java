@@ -29,12 +29,11 @@ public class TimedEventService extends Service<Void> implements EventHandler<Wor
 			Scene scene = stage.getScene(); // This is a copy of what the user was doing before
 
 			try {
-				// TODO : investment vs. Surprise event
+					// TODO : investment vs. Surprise event
 				if(Math.random()>=.5){
-				TimedEventController ctr = 
-						(TimedEventController)app.replaceSceneContent("TimedEvent.fxml", 
+						TimedEventController ctr = (TimedEventController)app.replaceSceneContent("TimedEvent.fxml", 
 								TimedEventController.class);
-				ctr.setApp(app, scene);
+					ctr.setApp(app, scene);
 				}else{
 					SurpriseEventController ctr = 
 						(SurpriseEventController)app.replaceSceneContent("SurpriseEvent.fxml", 

@@ -52,6 +52,13 @@ public class TimedEventController extends AnchorPane implements EventHandler<Wor
 		// Always 15 seconds
 		this.timeMax = 15000;
 		
+		if(app == null){
+			System.out.println("app null");
+		}
+		if(app.getStage() == null){
+			System.out.println("stage null");
+		}
+		
 		String[] rnd = Investment.getTimedInvestment();
 		name = rnd[0];
 		good = rnd[1].equals("0");
