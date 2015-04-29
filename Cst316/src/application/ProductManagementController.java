@@ -77,7 +77,7 @@ public class ProductManagementController extends AnchorPane  {
 		comboBox.getItems().setAll("Cellphone Product",
 				"Houseware Product",
 				"Movie Development",
-				"Vehical Product",
+				"Vehicle Product",
 				"Software Application");
 		for(int i = 0; i<player.getCompanyList().size(); i++) {
 			cComboBox.getItems().add(player.fetchCompanyString(i));
@@ -166,8 +166,8 @@ public class ProductManagementController extends AnchorPane  {
 			descriptionField.appendText("Risk: 50% chance for success \n");
 			descriptionField.appendText("Description: Everyone loves movies, but not everyne loves ALL movies. This is a high risk high reward investment. \n");
 			break;
-		case "Vehical Product": 
-			selectedProduct = new Product("Vehical",7);
+		case "Vehicle Product": 
+			selectedProduct = new Product("Vehicle",7);
 			descriptionField.clear();
 			descriptionField.appendText("Cost: 7 Employees \n");
 			descriptionField.appendText("Potential Profit: 2000$ \n");

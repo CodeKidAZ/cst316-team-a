@@ -58,7 +58,7 @@ public class MCamp {
 	private String genDescript(String nameT){
 		String descript = "";
 		if (nameT.equals("Print Marketing")){
-			descript = "HEEELLLOOModerately expensive and moderately reliable form of Marketing. +5MP to +15";
+			descript = "Moderately expensive and moderately reliable form of Marketing. +5MP to +15";
 		}
 		if (nameT.equals("Coupon Marketing")){
 			descript = "A more expensive and more reliable form of Marketing. +15 MP to +20 MP";
